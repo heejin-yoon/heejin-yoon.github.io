@@ -21,7 +21,7 @@ I can also be found from [Google Scholar](https://scholar.google.com/citations?u
 
 - Seokhee Lee, **Seokho Son**, and JongWon Kim, _“Cost-effective haptic-based networked virtual environments with high-resolution tiled display,”_ Multimedia Tools and Applications, vol. 54, no. 2. pp. 365–384, 2011. (SCIE, IF: 1.876)
 
-#### Working Papers
+### Working Papers
 
 - **Seokho Son** and Dong-Jae Kang, _“Development of a Testing Tool to Validate Integrity of a Constructed Cloud System based on OpenStack,”_ KIISE Transactions on Computing Practices, Vol. 20, No. 12, pp. 658-663, Dec. 2014.
 
