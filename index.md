@@ -2,7 +2,7 @@
 layout: page
 title: Heejin Yoon
 subtitle: Ph.D. Student in Real Estate and Urban Land Economics UW-Madison
-cover-img: /assets/img/itu-seokho-m4.jpg
+cover-img: /assets/img/grainger.jpg
 ---
 
 <br/>
