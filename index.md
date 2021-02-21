@@ -1,7 +1,6 @@
 ---
 layout: page
 title: Heejin Yoon
-subtitle: Real Estate and Urban Land Economics Department <br/> Wisconsin School of Business, UW-Madison
 cover-img: /assets/img/Grainger2.jpg
 ---
 
