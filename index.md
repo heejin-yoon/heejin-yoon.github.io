@@ -14,5 +14,5 @@ cover-img: /assets/img/itu-seokho-m4.jpg
 ## Contact
 
 **Office**: 5298B Grainger Hall, 975 University Ave, Madison, WI 53706, USA
-
+ 
 **Email**: heejin.yoon[at]wisc.edu or yoon09269[at]gmail.com
