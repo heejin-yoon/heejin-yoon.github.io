@@ -7,7 +7,6 @@ title: Research
 I can also be found from [Google Scholar](https://scholar.google.com/citations?user=yoon09269).
 
 
-# Research Papers
 
 ### Publications
 
