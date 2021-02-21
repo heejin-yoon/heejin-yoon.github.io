@@ -4,7 +4,7 @@
 title: Heejin Yoon
 
 # [수정필요] 간단한 사이트 설명
-description: Personal Website of Heejin Yoon
+description: Personal Webpage of Heejin Yoon
 
 # [수정필요] 웹페이지 아래에 나오는 웹사이트 저자 이름
 author: Heejin Yoon
@@ -21,9 +21,11 @@ navbar-links:
 #  Google Scholar: "https://scholar.google.com/citations?user=yoon09269"
 
 # [수정필요] 아바타 로고 사용 시에는 이미지 파일을 지정 (이미지 파일 업로드 후, 위치 지정)
-avatar: "/assets/img/seokho-square-2.jpg"
+#avatar: "/assets/img/seokho-square-2.jpg"
 # 원형 아바타 이미지 여부 `true` 또는 `false`
-round-avatar: true
+#round-avatar: true
+avatar: "/assets/img/profile_heejin.jpg"
+round-avatar: false
 
 # title text 대신 이미지 사용하고 싶은 경우 설정
 # then specify the following parameter
