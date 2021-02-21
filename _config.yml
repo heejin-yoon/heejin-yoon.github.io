@@ -13,10 +13,10 @@ author: Heejin Yoon
 # 예를 들어 ETRI 라는 항목을 네비게이션 바에 추가하고 싶은 경우, etri.md 파일 생성 후 ETRI: "etri" 라고 지정.
 navbar-links:
   Home: "index"
-  Career: "career"
+  About: "career"
   Research: "research"
 #  Blog: "blog"
-  CV: "project"
+  Teaching: "project"
 #  GitHub: "https://github.com/yoon09269"
 #  Google Scholar: "https://scholar.google.com/citations?user=yoon09269"
 
