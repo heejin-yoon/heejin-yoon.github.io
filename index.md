@@ -1,13 +1,11 @@
 ---
 layout: page
 title: Heejin Yoon
-subtitle: Ph.D. Student in Real Estate and Urban Land Economics UW-Madison
+subtitle: Real Estate and Urban Land Economics Department <br/> Wisconsin School of Business, UW-Madison
 cover-img: /assets/img/Grainger2.jpg
 ---
 
 <br/>
-
-## About me
 
 **Heejin Yoon** is a **Ph.D. student** in Real Estate and Urban Land Economics at the Wisconsin School of Business, UW-Madison. 
 
