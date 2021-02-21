@@ -1,12 +1,12 @@
 ---
 layout: page
-title: Research Career
+title: About
 ---
 
 <br/>
 
 
-# Research Experience
+# Biography
 
 ### Electronics and Telecommunications Research Institute
 #### Senior Researcher, 2014 to Present
