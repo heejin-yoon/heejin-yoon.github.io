@@ -4,6 +4,7 @@ title: Teaching
 ---
 
 
+<br/>
 
 ### Teaching Assistant (UW-Madison)
 - **RE410: Real Estate Finance** (Spring 2021)
