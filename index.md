@@ -4,7 +4,7 @@ title: Heejin Yoon
 cover-img: /assets/img/Grainger2.jpg
 ---
 
-<img src= "assets/img/profile_heejin.jpg" width="220">
+<img src= "/heejin/assets/img/profile_heejin.jpg" width="220">
 <br/>
 
 **Heejin Yoon** is a Ph.D. student in Real Estate and Urban Land Economics at the Wisconsin School of Business, UW-Madison. 
