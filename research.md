@@ -4,7 +4,7 @@ title: Research
 ---
 
 
-I can also be found from [Google Scholar](https://scholar.google.com/citations?user=yoon09269).
+My research can also be found from [Google Scholar](https://scholar.google.com/citations?user=yoon09269).
 
 
 
