@@ -17,8 +17,8 @@ My research can also be found in [Google Scholar](https://scholar.google.com/cit
 
 ### Working Papers
 
-- **Heejin Yoon**, Kyounghun Lee, Frederick D. Oh, and Donglim Shin, “_Innovation  Spillovers  Within  Business  Groups:   Evidence  from  Korean  Chaebol_,” 2020.
+- **Heejin Yoon**, Kyounghun Lee, Frederick D. Oh, and Donglim Shin, “_Innovation spillovers within business groups: evidence from Korean Chaebol_,” 2020.
 
-- **Heejin Yoon**, Kyounghun Lee, Frederick D. Oh, and Donglim Shin, “_Internal Labor Markets and Corporate Innovation: Evidence from Korean Chaebol_,” 2020.
+- **Heejin Yoon**, Kyounghun Lee, Frederick D. Oh, and Donglim Shin, “_Internal labor markets and corporate innovation: evidence from Korean Chaebol_,” 2020.
 
-- **Heejin Yoon**, Kyounghun Lee, Frederick D. Oh, and Donglim Shin, “_Does  Venture  Capital  Investment  Enhance  Corporate  Innovation? Evidence from Korea_,” 2020.
+- **Heejin Yoon**, Kyounghun Lee, Frederick D. Oh, and Donglim Shin, “_Does venture capital investment enhance corporate innovation? evidence from Korea_,” 2020.
