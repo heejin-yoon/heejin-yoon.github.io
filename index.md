@@ -7,7 +7,7 @@ cover-img: /assets/img/Grainger2.jpg
 <img src= "https://yoon09269.github.io/heejin/assets/img/profile_heejin.jpg" width="220">
 <br/>
 
-**Heejin Yoon** is a Ph.D. student in Real Estate and Urban Land Economics at the Wisconsin School of Business, UW-Madison. 
+Heejin Yoon is a Ph.D. student in Real Estate and Urban Land Economics at the Wisconsin School of Business, [_UW-Madison_](https://www.wisc.edu/). 
 
 He received his B.B.A. in Business Administration from Yonsei University and M.S. in Finance from KAIST. Heejin has also worked at the Bank of Korea, the central bank of South Korea, as an economist for four years.
 <br/><br/><br/>
