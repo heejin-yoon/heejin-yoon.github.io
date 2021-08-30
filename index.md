@@ -4,7 +4,7 @@ title: Heejin Yoon
 cover-img: /assets/img/Grainger2.jpg
 ---
 
-<img src= "https://yoon09269.github.io/heejin/assets/img/profile_heejin.jpg" width="220">
+<img src= "https://heejin-yoon.github.io/assets/img/profile_heejin.jpg" width="220">
 <br/>
 
 Welcome! I'm a Ph.D. student in Real Estate and Urban Land Economics at the Wisconsin School of Business, [UW-Madison](https://www.wisc.edu/). 
