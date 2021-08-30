@@ -12,12 +12,12 @@ author: Heejin Yoon
 # [조건부수정] 네비게이션 바에 포함되는 항목 (명칭 수정, 추가, 삭제 가능)
 # 예를 들어 ETRI 라는 항목을 네비게이션 바에 추가하고 싶은 경우, etri.md 파일 생성 후 ETRI: "etri" 라고 지정.
 navbar-links:
-  Home　　: "index"
+  Home　　　: "index"
 #  About: "about"
-  Research　　: "research"
+  Research　　　: "research"
 #  Blog: "blog"
-  Teaching　　: "teaching"
-  CV　　　: "https://uwmadison.box.com/s/xejmhq37gzjuwpwjrrblixrnqqsx6a7a"
+  Teaching　　　: "teaching"
+  CV　　　　: "https://uwmadison.box.com/s/xejmhq37gzjuwpwjrrblixrnqqsx6a7a"
 #  GitHub: "https://github.com/yoon09269"
 #  Google Scholar: "https://scholar.google.com/citations?user=yoon09269"
 
