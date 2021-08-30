@@ -19,6 +19,8 @@ My research can also be found in [Google Scholar](https://scholar.google.com/cit
 
 - “_Does venture capital investment enhance corporate innovation? evidence from Korea_,” (with Kyounghun Lee, Frederick D. Oh, and Donglim Shin), 2021.
 
+  - R&R at the **_Journal of Business Finance & Accounting_**.
+
 - “_Internal labor markets and corporate innovation: evidence from Korean Chaebol_,” (with Kyounghun Lee, Frederick D. Oh, and Donglim Shin), 2021.
 
 - “_Innovation spillovers within business groups: evidence from Korean Chaebol_,” (with Kyounghun Lee, Frederick D. Oh, and Donglim Shin), 2021.
