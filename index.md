@@ -9,7 +9,7 @@ cover-img: /assets/img/Grainger2.jpg
 
 Welcome! I'm a Ph.D. student in Real Estate and Urban Land Economics at the Wisconsin School of Business, [UW-Madison](https://www.wisc.edu/). 
 
-I received his B.B.A. in Business Administration from Yonsei University and M.S. in Finance from KAIST College of Business. I've also worked at the Bank of Korea, the central bank of South Korea, as an economist for four years.
+Prior to joining the program, I was an economist at the Bank of Korea, the central bank of South Korea. I received B.B.A. in Business Administration from Yonsei University and M.S. in Finance from KAIST College of Business. 
 <br/><br/><br/>
 
 ## Contact
