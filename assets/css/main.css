@@ -235,7 +235,7 @@ img {
   }
 
   .navbar-custom .navbar-brand-logo img {
-    height: 3.125rem;
+    height: 1.5rem; /*3.125rem*/
   }
 
   .navbar-expand-md .navbar-nav .nav-link {
