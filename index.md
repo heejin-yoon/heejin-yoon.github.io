@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Heejin Yoon
+title: 
 cover-img: /assets/img/Grainger2.jpg
 ---
 
