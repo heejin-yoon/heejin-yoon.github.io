@@ -484,7 +484,7 @@ footer .footer-custom-content {
 }
 .post-image {
   float: right;
-  height: 12rem;
+  height: 10rem; /*12rem*/
   width: 12rem;
   margin-top: -2.1875rem;
   filter: grayscale(90%);
@@ -494,7 +494,7 @@ footer .footer-custom-content {
 }
 .post-image img {
   border-radius: 6.25rem;
-  height: 12rem;
+  height: 10rem; /*12rem*/
   width: 12rem;
 }
 .post-preview .post-read-more {
