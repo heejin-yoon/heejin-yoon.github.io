@@ -1,7 +1,7 @@
 ---
 layout: page
 title: 
-cover-img: /assets/img/Grainger2.jpg
+cover-img: /assets/img/Grainger3.jpg
 ---
 
 <img src= "https://heejin-yoon.github.io/assets/img/profile_heejin.jpg" width="220">
