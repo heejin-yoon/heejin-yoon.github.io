@@ -8,13 +8,13 @@ title: Teaching
 
 ### Teaching Assistant 
  
-- **UW-Madison**
+- **Wisconsin School of Business**
 
   - **RE410: Real Estate Finance** (Spring 2021, Fall 2021)
 
   - **RE306: Real Estate Process** (Fall 2020)
  <br/> <br/>
  
-- **KAIST**
+- **KAIST College of Business**
 
   - **Corporate Valuation** (Fall 2019)
