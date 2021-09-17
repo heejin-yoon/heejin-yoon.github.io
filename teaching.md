@@ -10,7 +10,7 @@ title: Teaching
  
 - **UW-Madison**
 
-  - **RE410: Real Estate Finance** (Spring 2021)
+  - **RE410: Real Estate Finance** (Spring 2021, Fall 2021)
 
   - **RE306: Real Estate Process** (Fall 2020)
  <br/> <br/>
