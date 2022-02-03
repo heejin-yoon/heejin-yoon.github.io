@@ -18,6 +18,8 @@ My research can also be found in [Google Scholar](https://scholar.google.com/cit
 
 ### Working Papers
 
+- “_How Detrimental is the Unpaused Debt During the Pandemic? The Case of Retail Commercial Mortgages_” (with Ludovic Phalippou and Dayin Zhang), 2022.
+
 - “_Does Venture Capital Investment Enhance Corporate Innovation? Evidence from Korea_” (with Kyounghun Lee, Frederick D. Oh, and Donglim Shin), 2021.
 
   - R&R at the **_Journal of Business Finance_ & _Accounting_**.
