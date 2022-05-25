@@ -11,7 +11,7 @@ My research can also be found in [Google Scholar](https://scholar.google.com/cit
 
 ### Publications
 
-- “[_Does Venture Capital Investment Enhance Corporate Innovation? Evidence from Korea_](https://https://onlinelibrary.wiley.com/doi/full/10.1111/jbfa.12618)” (with Kyounghun Lee, Frederick D. Oh, and Donglim Shin), 2022. **_Journal of Business Finance_ & _Accounting_**, forthcoming.
+- “[_Does Venture Capital Investment Enhance Corporate Innovation? Evidence from Korea_](https://onlinelibrary.wiley.com/doi/full/10.1111/jbfa.12618)” (with Kyounghun Lee, Frederick D. Oh, and Donglim Shin), 2022. **_Journal of Business Finance_ & _Accounting_**, forthcoming.
 
 - “[_Social Capital and Firm Innovation: Evidence from Cooperative Banking in Korea_](https://onlinelibrary.wiley.com/doi/full/10.1111/ajfs.12333)” (with Frederick. D. Oh), 2021. **_Asia-Pacific Journal of Financial Studies_**, 50(2), 147-175.
 
