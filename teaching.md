@@ -14,7 +14,7 @@ title: Teaching
 
     - Office Hour: TBD <!-- 1:00 pm - 2:00 pm, Tuesdays and Thursdays ([Sign-up link to my office hour](https://doodle.com/mm/heejinyoon/officehour1))-->
 
-  - **RE410: Real Estate Finance** (Spring 2021, Fall 2021, Spring 2022)
+  - **RE410: Real Estate Finance** (Spring 2022, Fall 2021, Spring 2021)
 
   - **RE306: Real Estate Process** (Fall 2020)
  <br/> <br/>
