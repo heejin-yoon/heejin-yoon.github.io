@@ -7,7 +7,7 @@ title: Research
 My research interests lie in real estate finance, urban economics, and corporate finance.
  My research can also be found in [Google Scholar](https://scholar.google.com/citations?user=yoon09269).
 -->
-<!---
+
 My research can also be found in [Google Scholar](https://scholar.google.com/citations?user=yoon09269).
 
 ### Publications
@@ -27,4 +27,4 @@ My research can also be found in [Google Scholar](https://scholar.google.com/cit
 - “_Internal Labor Markets and Corporate Innovation: Evidence from Korean Chaebol_” (with Kyounghun Lee, Frederick D. Oh, and Donglim Shin), 2021.
 
 - “_Innovation Spillovers Within Business Groups: Evidence from Korean Chaebol_” (with Kyounghun Lee, Frederick D. Oh, and Donglim Shin), 2021.
--->
+
