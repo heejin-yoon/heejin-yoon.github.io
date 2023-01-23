@@ -12,8 +12,9 @@ My research can also be found in [Google Scholar](https://scholar.google.com/cit
 
 ### Publications
 
-- “[_Does Venture Capital Investment Enhance Corporate Innovation? Evidence from Korea_](https://onlinelibrary.wiley.com/doi/full/10.1111/jbfa.12618)” (with Kyounghun Lee, Frederick D. Oh, and Donglim Shin), 2022. **_Journal of Business Finance_ & _Accounting_**, forthcoming.
+- “_Internal Labor Markets and Corporate Innovation: Evidence from Korean Chaebol_” (with Kyounghun Lee, Frederick D. Oh, and Donglim Shin), 2021. **_International Review of Economics_ & _Finance_**, forthcoming.
 
+- “[_Does Venture Capital Investment Enhance Corporate Innovation? Evidence from Korea_](https://onlinelibrary.wiley.com/doi/full/10.1111/jbfa.12618)” (with Kyounghun Lee, Frederick D. Oh, and Donglim Shin), 2022. **_Journal of Business Finance_ & _Accounting_**, forthcoming.
 
 - “[_Social Capital and Firm Innovation: Evidence from Cooperative Banking in Korea_](https://onlinelibrary.wiley.com/doi/full/10.1111/ajfs.12333)” (with Frederick. D. Oh), 2021. **_Asia-Pacific Journal of Financial Studies_**, 50(2), 147-175.
 
@@ -24,7 +25,4 @@ My research can also be found in [Google Scholar](https://scholar.google.com/cit
 
 - “_How Detrimental is the Unpaused Debt During the Pandemic? The Case of Retail Commercial Mortgages_” (with Ludovic Phalippou and Dayin Zhang), 2022.
 
-- “_Internal Labor Markets and Corporate Innovation: Evidence from Korean Chaebol_” (with Kyounghun Lee, Frederick D. Oh, and Donglim Shin), 2021.
-
 - “_Innovation Spillovers Within Business Groups: Evidence from Korean Chaebol_” (with Kyounghun Lee, Frederick D. Oh, and Donglim Shin), 2021.
-
