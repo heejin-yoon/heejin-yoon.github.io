@@ -23,6 +23,6 @@ My research can also be found in [Google Scholar](https://scholar.google.com/cit
 
 ### Working Papers
 
-- “_How Detrimental is the Unpaused Debt During the Pandemic? The Case of Retail Commercial Mortgages_” (with Ludovic Phalippou and Dayin Zhang), 2022.
+- “_How Detrimental is the UnRelieved Debt During the Pandemic? The Case of Retail Commercial Mortgages_” (with Ludovic Phalippou and Dayin Zhang), 2022.
 
 - “_Innovation Spillovers Within Business Groups: Evidence from Korean Chaebol_” (with Kyounghun Lee, Frederick D. Oh, and Donglim Shin), 2021.
