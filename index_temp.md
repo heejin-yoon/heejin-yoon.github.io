@@ -1,4 +1,4 @@
----
+<!-- ---
 layout: page
 title: 
 cover-img: /assets/img/Grainger2.jpg
@@ -17,3 +17,4 @@ Prior to joining the program, I received B.B.A. in Business Administration from 
 **Office**: 5298B Grainger Hall, 975 University Ave, Madison, WI 53706, USA 
 <br/><br/>
 **Email**: heejin.yoon[at]wisc.edu or yoon09269[at]gmail.com
+ -->
