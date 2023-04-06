@@ -1,4 +1,4 @@
-<!-- ---
+---
 layout: page
 title: Teaching
 ---
@@ -22,4 +22,4 @@ title: Teaching
 - **KAIST College of Business**
 
   - **Corporate Valuation** (Fall 2019)
- -->
+
