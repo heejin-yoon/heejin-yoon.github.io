@@ -23,6 +23,10 @@ My research can also be found in [Google Scholar](https://scholar.google.com/cit
 
 ### Working Papers
 
-- “_How Detrimental is the UnRelieved Debt During the Pandemic? The Case of Retail Commercial Mortgages_” (with Ludovic Phalippou and Dayin Zhang), 2022.
+- “_How Detrimental Was the Pandemic on Commercial Mortgages? Unveiling Long-Term Consequences for Retail Sector_” (with Ludovic Phalippou and Dayin Zhang), 2024.
+
+- “_The American Housing Finance System: Structure, Evolution, and Implications_” (with Yongheng Deng and Susan M. Wachter), 2023.
+
+- “_Localized Housing Prices by Nonbanks_” (with Hyun-Soo Choi and Yongheng Deng), 2023.
 
 - “_Innovation Spillovers Within Business Groups: Evidence from Korean Chaebol_” (with Kyounghun Lee, Frederick D. Oh, and Donglim Shin), 2021.
