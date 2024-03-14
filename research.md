@@ -20,7 +20,7 @@ My research can also be found in [Google Scholar](https://scholar.google.com/cit
 
 - “[_The Role of Chonsei as a Price Protector in the Korean Housing Market_](https://www.tandfonline.com/doi/abs/10.1080/10168737.2019.1570300)” (with Frederick. D. Oh), 2019. **_International Economic Journal_**, 33(1), 27-41. 
 <br/>
-
+ 
 ### Working Papers
 
 - “[_How Detrimental Was the Pandemic on Commercial Mortgages? Unveiling Long-Term Consequences for Retail Sector_](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4714155)” (with Ludovic Phalippou and Dayin Zhang), 2024.
