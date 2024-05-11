@@ -12,7 +12,7 @@ My research can also be found in [Google Scholar](https://scholar.google.com/cit
 
 ### Publications
 
-- “[_Innovation Spillovers Within Business Groups: Evidence from Korean Chaebol_](https://www.sciencedirect.com/science/article/pii/S1566014124000463)” (with Kyounghun Lee, Frederick D. Oh, and Donglim Shin). **_Emerging Markets Review_**, forthcoming.
+- “[_Innovation Spillovers Within Business Groups: Evidence from Korean Chaebol_](https://www.sciencedirect.com/science/article/pii/S1566014124000463)” (with Kyounghun Lee, Frederick D. Oh, and Donglim Shin), 2024. **_Emerging Markets Review_**, 60, 101151.
 
 - “[_Internal Labor Markets and Corporate Innovation: Evidence from Korean Chaebol_](https://doi.org/10.1016/j.iref.2023.01.019)” (with Kyounghun Lee, Frederick D. Oh, and Donglim Shin), 2023. **_International Review of Economics_ & _Finance_**, 85(C), 146-162.
 
