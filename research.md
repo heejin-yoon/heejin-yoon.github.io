@@ -25,7 +25,7 @@ My research can also be found in [Google Scholar](https://scholar.google.com/cit
  
 ### Working Papers
 
-- “[_How Detrimental Was the Pandemic on Commercial Mortgages? Unveiling Long-Term Consequences for Retail Sector_](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4714155)” (with Ludovic Phalippou and Dayin Zhang), 2024.
+- “[_How Detrimental Was the Pandemic on Commercial Mortgages? Unveiling Long-Term Consequences for Retail Sector_](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4714155)” (with Dayin Zhang), 2024.
 
 - “[_The American Housing Finance System: Structure, Evolution, and Implications_](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4750853)” (with Yongheng Deng and Susan M. Wachter), 2024.
 
