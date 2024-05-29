@@ -1,0 +1,203 @@
+/* media queries */
+.aefis-show-mobile {
+    display: none !important;
+}
+
+.aefis-show-mobile-phone {
+    display: none !important;
+}
+
+.aefis-hide-mobile-phone {
+    display: block !important;
+}
+
+input,textarea { 
+    -webkit-user-select:text;
+}
+
+.notification-type-header span.aefis-action-item-category-count {
+    top: -2px;
+}
+
+@media screen and (max-width: 500px) {
+    .aefis-show-mobile-phone {
+        display: block !important;
+    }
+    .aefis-hide-mobile-phone {
+        display: none !important;
+    }
+    .aefis-widget {
+        max-width: 500px !important;
+        width: 100% !important;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .aefis-hide-mobile {
+        display: none !important;
+    }
+    .aefis-show-mobile {
+        display: block !important;
+    }
+}
+
+@media screen and (max-width: 995px) {
+    .aefis-hide-mobile-tablet {
+        display: none !important;
+    }
+    .aefis-show-mobile-tablet {
+        display: block !important;
+    }
+}
+
+/* iphone 5 and lower */
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 568px)
+and (orientation : portrait) {
+    .aefis-hide-mobile-phone--small {
+        display: none;
+    }
+    .mdc-temporary-drawer--right .mdc-temporary-drawer__drawer {
+        -webkit-transform: translateX(320px);
+        transform: translateX(320px);
+        max-width: 320px;
+        width: 320px;
+    }
+    #aefis-object-preview-container-toolbar-title {
+        width:30% !important;
+    }
+    #aefis-object-preview-container-toolbar-button--container {
+        width: 50% !important;
+    }
+    #aefis-main-toolbar-title {
+        display: none !important;
+    }
+    #aefis-main-toolbar--sidebar-search {
+        display: none !important;
+    }
+    ul.aefis-notification--list .mdc-list-item .mdc-list-item__text {
+        width: 320px !important;
+    }
+    .aefis-dashboard-widget {
+        max-width: 300px !important;
+    }
+    .growl.growl-large {
+        width: 300px !important;
+    }
+}
+/*iphone 6,7,8 */
+@media only screen 
+and (min-device-width : 375px) 
+and (max-device-width : 667px)
+and (orientation : portrait) {
+
+    .mdc-temporary-drawer--right .mdc-temporary-drawer__drawer {
+        -webkit-transform: translateX(375px);
+        transform: translateX(375px);
+        max-width: 375px;
+        width: 375px;
+    }
+    .aefis-hide-mobile-phone--medium {
+        display: none;
+    }
+    #aefis-main-toolbar-title {
+        display: none !important;
+    }
+    #aefis-object-preview-container-toolbar-title {
+        width:30% !important;
+    }
+    #aefis-object-preview-container-toolbar-button--container {
+        width: 50% !important;
+    }
+    .aefis-dashboard-widget {
+        max-width: 350px !important;
+    }
+    ul.aefis-notification--list .mdc-list-item .mdc-list-item__text {
+        width: 320px !important;
+    }
+
+    .growl.growl-large {
+        width: 310px !important;
+    }
+}
+/*iphone 6,7,8 Plus */
+@media only screen 
+  and (min-device-width: 414px)
+  and (max-device-width : 736px)
+  and (orientation : portrait)  { 
+    .aefis-hide-mobile-phone--small,
+    .aefis-hide-mobile-phone--medium {
+        display: initial;
+    }
+    #aefis-main-toolbar-title {
+        display: none !important;
+    }
+    #aefis-object-preview-container-toolbar-title {
+        width:40% !important;
+    }
+    #aefis-object-preview-container-toolbar-button--container {
+        width: 50% !important;
+    }
+    .mdc-temporary-drawer--right .mdc-temporary-drawer__drawer {
+        -webkit-transform: translateX(414px);
+        transform: translateX(414px);
+        max-width: 414px;
+        width: 414px;
+    }
+    .aefis-dashboard-widget {
+        max-width: 380px !important;
+    }
+    ul.aefis-notification--list .mdc-list-item .mdc-list-item__text {
+        width: 320px !important;
+    }
+    .growl.growl-large {
+        width: 350px !important;
+    }
+}
+/*iphone X */
+@media only screen 
+and (min-device-width : 375px) 
+and (max-device-width : 812px) 
+and (-webkit-device-pixel-ratio : 3)
+and (orientation : portrait) { 
+    .aefis-hide-mobile-phone--small,
+    .aefis-hide-mobile-phone--medium {
+        display: initial;
+    }
+    #aefis-object-preview-container-toolbar-title {
+        width:40% !important;
+    }
+    #aefis-object-preview-container-toolbar-button--container {
+        width: 50% !important;
+    }
+    #aefis-main-toolbar-title {
+        display: none !important;
+    }
+    .mdc-temporary-drawer--right .mdc-temporary-drawer__drawer {
+        -webkit-transform: translateX(375px);
+        transform: translateX(375px);
+        max-width: 375px;
+        width: 375px;
+    }
+    .aefis-dashboard-widget {
+        max-width: 350px !important;
+    }
+    ul.aefis-notification--list .mdc-list-item .mdc-list-item__text {
+        width: 320px !important;
+    }
+    .growl.growl-large {
+        width: 350px !important;
+    } 
+ }
+
+/* Tablet - Portrait and Landscape */
+@media screen 
+  and (min-width: 768px) 
+  and (max-width: 1024px) 
+  and (-webkit-min-device-pixel-ratio: 2) {
+    .aefis-hide-mobile-phone--small,
+    .aefis-hide-mobile-phone--medium {
+       display: initial;
+    }
+}

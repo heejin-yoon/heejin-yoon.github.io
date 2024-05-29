@@ -1,0 +1,77 @@
+// Copyright (c) 2016 AEFIS, all rights reserved.
+// http://www.aefis.com/
+"use strict";
+
+if (!aefis) {
+	aefis = {};
+};
+
+if (!aefis.widgetClasses) {
+	aefis.widgetClasses = {};
+};
+
+if (!aefis.widget) {
+	aefis.widget = {};
+};
+
+aefis.widgetClasses.widget2 = function ($rootContainer) {
+	var that = this;
+	var $widget = $('#aefis-dashboard-widget--widget2');
+	this.initialize = function($rootContainer) {
+		if (!$rootContainer) {
+			$rootContainer = $('body');
+		};
+
+		$('#aefis-sa-course-sections-and-syllabi-terms-container').off('completed').on('completed', function() {
+			$(window).trigger('refreshDOMObjects');
+		});
+
+		$widget.on('AefisDashboardWidget:refresh', function() {
+			that.refresh();	
+		});
+
+		$('#sa-aefis-course-sections-and-syllabi--current').on('AefisWidgetMenuEvent:currentTerms', function() {
+			that.toggleTerms($('#sa-aefis-course-sections-and-syllabi--current'))
+		});
+
+		$('#sa-aefis-course-sections-and-syllabi--previous').on('AefisWidgetMenuEvent:previousTerms', function() {
+			that.toggleTerms($('#sa-aefis-course-sections-and-syllabi--previous'));
+		});
+
+		that.refresh();	
+
+	};
+
+	this.refresh = function () {
+		that.toggleTerms($('#sa-aefis-course-sections-and-syllabi--current'));
+	};
+
+	this.loadTerms = function() {
+		$widget.trigger('AefisDashboardWidget:loading');
+	}
+
+
+	this.toggleTerms = function(el) {
+		var $obj = $(el);
+		var url = $obj.attr('data-aefis-datasource');
+       	var templateid = $obj.attr('data-aefis-template-id');
+       	var source = $('#'+templateid).html(); 
+		var template = Handlebars.compile(source); 
+
+       	new aefis.ApiWrapper().call(url,{
+			beforeSend: function() {
+				$widget.trigger('AefisDashboardWidget:loading');
+			},
+			onSuccess: function(data){
+				$widget.trigger('AefisDashboardWidget:loaded');
+				$('#aefis-sa-course-sections-and-syllabi-terms-container').fadeOut(function(){
+					$('#aefis-sa-course-sections-and-syllabi-terms-container').html(template({records: data}));
+					$('#aefis-sa-course-sections-and-syllabi-terms-container').fadeIn();
+				});	
+			}
+		});
+		
+	};
+
+
+}

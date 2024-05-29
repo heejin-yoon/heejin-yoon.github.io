@@ -1,0 +1,15 @@
+// Copyright (c) 2014 AEFIS, all rights reserved.
+// http://www.aefis.com/
+"use strict";
+
+//define class in aefis.widgetClasses
+//use widget code (defined in database) for the name
+aefis.widgetClasses.facultyactivity = function () {
+	var that = this;
+
+	this.initialize = function(){
+		
+	}
+	
+
+}

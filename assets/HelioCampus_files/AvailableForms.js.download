@@ -1,0 +1,69 @@
+// Copyright (c) 2014 AEFIS, all rights reserved.
+// http://www.aefis.com/
+"use strict";
+
+if (!aefis) {
+    aefis = {};
+};
+
+if (!aefis.widgetClasses) {
+    aefis.widgetClasses = {};
+};
+
+if (!aefis.widget) {
+    aefis.widget = {};
+};
+
+//define class in aefis.widgetClasses 2
+//use widget code (defined in database) for the name
+aefis.widgetClasses.AvailableForms = function($rootContainer) {
+    var that = this;
+    var $widget = $('#aefis-dashboard-widget--AvailableForms');
+    
+    this.initialize = function($rootContainer) {
+
+        if (!$rootContainer) {
+            $rootContainer = $('body');
+        };
+
+        if ($rootContainer.is('body')) {
+            that.getFormData($('#aefis-continuous-forms-widget-available-forms-tab-button'))
+        };
+
+        $('#aefis-continuous-forms-widget-available-forms-tab-button').on('AefisWidgetMenuEvent:availableForms', function() {
+            that.getFormData($('#aefis-continuous-forms-widget-available-forms-tab-button'))
+        });
+        $('#aefis-continuous-forms-widget-submitted-forms-tab-button').on('AefisWidgetMenuEvent:submittedForms', function() {
+            that.getFormData($('#aefis-continuous-forms-widget-submitted-forms-tab-button'))
+        });
+        $('#aefis-continuous-forms-widget-submitted-by-instructor-forms-tab-button').on('AefisWidgetMenuEvent:submittedByInstructor', function() {
+            that.getFormData($('#aefis-continuous-forms-widget-submitted-by-instructor-forms-tab-button'))
+        });
+    }
+
+    this.getFormData = function(button) {
+        if (button) {
+            var $button = $(button);
+        } else {
+            var $button = $('#aefis-continuous-forms-widget-available-forms-tab-button');
+        }
+        var url = $button.attr('data-aefis-datasource');
+        var templateid = $button.attr('data-aefis-template-id');
+        var target = $button.attr('data-aefis-target');
+        var source = $('#' + templateid).html();
+        var template = Handlebars.compile(source);
+        var $target = $(target);
+
+        new aefis.ApiWrapper().call(url, {
+            beforeSend: function() {
+               $widget.trigger('AefisDashboardWidget:loading');
+            },
+            onComplete: function() {
+               $widget.trigger('AefisDashboardWidget:loaded');
+            },
+            onSuccess: function(data) {
+                $target.html(template({ records: data }));
+            }
+        });
+    };
+};

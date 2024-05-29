@@ -1,0 +1,35 @@
+#aefis-sa{
+	table-layout: fixed;
+}
+.aefis-assessment-parent-row:hover{
+	cursor: pointer;
+}
+.aefis-assessment-child{
+	padding: 5px 0px 5px 0px;
+	border-bottom: 1px solid #ddd;
+}
+
+.aefis-assessment-child:last-child{
+	border-bottom: none !important;
+}
+
+.aefis-assessment-child-row.closed{
+	display: none;
+}
+.aefis-assessment-button{
+	width: 75px;
+}
+.aefis-assessment-modal-titles{
+	margin-top: 5px;
+	border-bottom: 1px solid #ddd;
+	margin-bottom:5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+span.aefis-assessment-info-icon:hover{
+	cursor: pointer;
+};
+
+tr.aefis-assessment-parent-row:hover{
+	background-color: #f7f7f7;
+};

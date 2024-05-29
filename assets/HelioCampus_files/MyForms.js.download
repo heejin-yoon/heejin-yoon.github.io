@@ -1,0 +1,112 @@
+// Copyright (c) 2014 AEFIS, all rights reserved.
+// http://www.aefis.com/
+"use strict";
+
+if (!aefis) {
+    aefis = {};
+};
+
+if (typeof(aefis.widgetClasses) == 'undefined') {
+    aefis.widgetClasses = {};
+};
+
+if (typeof(aefis.widget) == 'undefined') {
+    aefis.widget = {};
+};
+
+//define class in aefis.widgetClasses 2
+//use widget code (defined in database) for the name
+aefis.widgetClasses.myforms = function($rootContainer) {
+    var that = this;
+    var $widget = $('#aefis-dashboard-widget--myforms');
+    this.initialize = function($rootContainer) {
+        if (!$rootContainer) {
+            $rootContainer = $('body');
+        };
+
+        if ($rootContainer.is('body')) {
+            that.getFormData($('#aefis-my-forms-widget-current-forms-tab-button'))
+        };
+
+        $('#aefis-my-forms-widget-current-forms-tab-button').on('AefisWidgetMenuEvent:availableForms', function() {
+			that.getFormData($('#aefis-my-forms-widget-current-forms-tab-button'))
+		});
+
+		$('#aefis-my-forms-widget-in-progress-forms-tab-button').on('AefisWidgetMenuEvent:inprogressForms', function() {
+			that.getFormData($('#aefis-my-forms-widget-in-progress-forms-tab-button'));
+        });
+        
+        $('#aefis-my-forms-widget-completed-forms-tab-button').on('AefisWidgetMenuEvent:completedForms', function() {
+			that.getFormData($('#aefis-my-forms-widget-completed-forms-tab-button'));
+        });
+        
+        $widget.on('AefisDashboardWidget:refresh', function() {
+            $('#aefis-my-forms-widget-current-forms-tab-button').trigger('AefisWidgetMenuEvent:availableForms');
+        }) 
+
+
+    };
+
+    this.openBusinessObjectSelectionDialog = function(button) {
+        var $button = $(button);
+        var businessObjectName = $button.attr('data-aefis-business-object');
+        if (businessObjectName) {
+            var url = $button.attr('data-aefis-business-object-selection-datasource');
+            var title = 'Select a ' + businessObjectName;
+
+            var options = {
+                title: title,
+                contentUrl: url,
+                closeCallback: '',
+                showFooterCloseButton: false,
+                size: 'small',
+                onShown: function() {
+                    var $submitButton = $('#aefis-my-forms-widget-business-object-selection-button');
+                    $submitButton.off('click').on('click', function() {
+                        var $select = $('#EntityId');
+                        var businessObjectId = $select.selectpicker('val');
+                        var formUrl = $button.attr('data-aefis-datasource');
+                        $('.aefis-modal-dialog').modal('toggle');
+                        var newUrl = aefis.util.removeQueryParameter('entityId', formUrl);
+                        newUrl += '&entityId=' + businessObjectId;
+                        $button.attr('data-aefis-datasource', newUrl);
+                        aefis.ui.previewObject($button);
+                    });
+                }
+            };
+
+            aefis.ui.modalDialog(options);
+        } else {
+            aefis.ui.previewObject(button);
+        };
+    }
+
+
+    this.getFormData = function(button) {
+        if (typeof button === 'undefined') {
+            var $button = $('#aefis-my-forms-widget-current-forms-tab-button')
+        } else {
+            var $button = $(button);
+        }
+        var url = $button.attr('data-aefis-datasource');
+        var type = $button.attr('data-aefis-type');
+        var templateid = $button.attr('data-aefis-template-id');
+        var target = $button.attr('data-aefis-target');
+        var source = $('#' + templateid).html();
+        var template = Handlebars.compile(source);
+        var $target = $(target);
+
+        new aefis.ApiWrapper().call(url, {
+            beforeSend: function() {
+               $widget.trigger('AefisDashboardWidget:loading');
+            },
+            onComplete: function() {
+               $widget.trigger('AefisDashboardWidget:loaded');
+            },
+            onSuccess: function(data) {
+                $target.html(template({ records: data }));
+            }
+        });
+    };
+
+}

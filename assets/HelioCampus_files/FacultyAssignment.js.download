@@ -1,0 +1,94 @@
+// Copyright (c) 2016 AEFIS, all rights reserved.
+// http://www.aefis.com/
+"use strict";
+
+if (!aefis) {
+	aefis = {};
+};
+
+if (!aefis.widgetClasses) {
+	aefis.widgetClasses = {};
+};
+
+if (!aefis.widget) {
+	aefis.widget = {};
+};
+
+aefis.widgetClasses.facultyassignment = function ($rootContainer) {
+	var that = this;
+	var $widget = $('#aefis-dashboard-widget--facultyassignment');
+	this.initialize = function($rootContainer) {
+		if (!$rootContainer) {
+			$rootContainer = $('body');
+		}
+
+		$widget.on('AefisDashboardWidget:refresh', function() {
+			that.refresh();	
+		});
+
+		$widget.on('AefisWidgetMenuEvent:active', function() {
+			that.activeAssignments('#aefis-faculty-assignment--active');
+		})
+
+		$widget.on('AefisWidgetMenuEvent:completed', function() {
+			that.completedAssignments('#aefis-faculty-assignment--completed');
+		})
+
+		that.refresh();
+	};
+
+	this.refresh = function () {
+		that.activeAssignments('#aefis-faculty-assignment--active');
+	}
+
+	this.activeAssignments = function (el) {
+		var $obj = $(el);
+		var url = $obj.attr('data-aefis-datasource');
+       	var templateid = $obj.attr('data-aefis-template-id');
+       	var source = $('#'+templateid).html(); 
+		var template = Handlebars.compile(source); 
+		var $target = $($obj.attr('data-aefis-target'));
+       	new aefis.ApiWrapper().call(url,{
+			beforeSend: function() {
+				$widget.trigger('AefisDashboardWidget:loading');
+			},
+			onSuccess: function(data){
+				$widget.trigger('AefisDashboardWidget:loaded');
+				$target.fadeOut(function(){
+					$target.html(template({records: data}));
+					$target.fadeIn().promise().done(function() {
+	                    $('.aefis-circle-chart').each(function() {
+	                        aefis.ui.initializeCircleChart(this);
+	                   })	                    
+	                });
+				});		
+			}
+		});
+	};
+
+	this.completedAssignments = function (el) {
+		var $obj = $(el);
+		var url = $obj.attr('data-aefis-datasource');
+       	var templateid = $obj.attr('data-aefis-template-id');
+       	var source = $('#'+templateid).html(); 
+		var template = Handlebars.compile(source); 
+		var $target = $($obj.attr('data-aefis-target'));
+       	new aefis.ApiWrapper().call(url,{
+			beforeSend: function() {
+				$widget.trigger('AefisDashboardWidget:loading');
+			},
+			onSuccess: function(data){
+				$widget.trigger('AefisDashboardWidget:loaded');
+				$target.fadeOut(function(){
+					$target.html(template({records: data}));
+					$target.fadeIn().promise().done(function() {
+	                    $('.aefis-circle-chart').each(function() {
+	                        aefis.ui.initializeCircleChart(this);
+	                   })	                    
+	                });
+				});		
+			}
+		});
+	};
+
+}

@@ -1,0 +1,412 @@
+// Copyright (c) 2014 AEFIS, all rights reserved.
+// http://www.aefis.com/
+"use strict";
+
+if (typeof aefis == "undefined") {
+	aefis = {};
+}
+
+aefis.widgetClasses = {};
+aefis.widget = {};
+
+aefis.CurrentPage = function () {
+	var that = this;
+
+	//dashboard options
+	var tileSize = 240;
+	var gutter = 20;
+	var transitionDuration = "0.3s";
+
+	var container, totalTileSize, widgetStore;
+
+	this.initialize = function ($rootContainer) {
+		if ($rootContainer.is("body")) {
+			//var welcomeText = $("#aefis-dashboard-welcome-message-container").html();
+			//$("#aefis-breadcrumb").find("li").hide();
+			//$("#aefis-breadcrumb").append(welcomeText);
+
+			//$(window).on('AefisNotifcations:loaded', function() {
+			var autoOpen = $("#aefis-notification-auto-open").val();
+			var totalNotifications = aefis.ui.getTotalNotifications();
+			var $sidebar = $("#aefis-notification--sidebar");
+			if (autoOpen == "true") {
+				if (!$sidebar.hasClass("mdc-temporary-drawer--open")) {
+					$(window).trigger("AefisNotifications:openWithoutLoad");
+				}
+			} else {
+				if (!$sidebar.hasClass("mdc-temporary-drawer--open")) {
+					showDashboardNotification(totalNotifications);
+				}
+			}
+			//});
+			that.initializeWidgets($rootContainer);
+			$(window).on("ready", function () {
+				var $container = $("#aefis-widget-container");
+				$container
+					.fadeIn()
+					.promise()
+					.done(function () {
+						$(window).resize(setContainerWidth);
+						setContainerWidth();
+					});
+			});
+			setTimeout(function () {
+				if ($(".aefis-warning-popover").length) {
+					var $warningPopover = $(".aefis-warning-popover");
+					if (!$warningPopover.hasClass("aefis-initialized")) {
+						$warningPopover.popover("show");
+						$warningPopover.addClass("aefis-initialized");
+					}
+				}
+			}, 4000);
+
+			var openUrls = decodeURIComponent(that.getUrlParam("action", ""));
+			if (openUrls == "openSurveyForm") {
+				var url = $("#aefis-form-dialog-data-source").val();
+				new aefis.ApiWrapper().call(url, {
+					type: "POST",
+					data: "",
+					beforeSend: function () {
+						aefis.ui.fullPagePreloader("Survey Form");
+					},
+					onSuccess: function (data, jqXhr) {
+						if (data.HasForm) {
+							var $btn = $("<button></button>").attr({
+								"data-aefis-datasource": data.Url,
+								"data-aefis-use-iframe": "true",
+								"data-aefis-title": data.Survey.Name,
+								"data-aefis-no-margin": "true",
+								"data-aefis-icon": "fa fa-pencil-alt fa-fw",
+								"data-aefis-hide-export-options": "true",
+								"data-aefis-hide-exit-button": "true",
+								"data-aefis-loading-mask-text": "Loading"
+							});
+							aefis.ui.previewObject($btn);
+						}
+					},
+					onError: function (e, data) {
+						if (window.parent) {
+							window.parent.aefis.ui.hidePreviewObjectLoadingBar();
+						} else {
+							aefis.ui.hidePreviewObjectLoadingBar();
+						}
+					},
+					onComplete: function () {
+						aefis.ui.hideFullPagePreloader("Survey Form");
+					}
+				});
+			} else if (openUrls == "openDataCollectionForm") {
+				var formId = decodeURIComponent(that.getUrlParam("formId", ""));
+				if (formId) {
+					var getFormUrl = $("#aefis-get-data-collection-form-data-source").val();
+					getFormUrl = getFormUrl + "&dataCollectionFormId=" + formId;
+					new aefis.ApiWrapper().call(getFormUrl, {
+						type: "GET",
+						beforeSend: function () {
+							aefis.ui.fullPagePreloader("Data Collection Form");
+						},
+						onSuccess: function (data, jqXhr) {
+							if (data.canView) {
+								var viewForm = $("#aefis-view-data-collection-form-data-source").val();
+								viewForm = viewForm + "&DataCollectionFormId=" + formId;
+								var $btn = $("<button></button>").attr({
+									"data-aefis-datasource": viewForm,
+									"data-aefis-use-iframe": "true",
+									"data-aefis-title": data.dataCollection.name,
+									"data-aefis-loading-mask-text":"Loading Form",
+									"data-aefis-show-history":"true" ,
+									"data-aefis-show-table-of-contents":"true", 
+									"data-aefis-show-review-previous-form":"false", 
+									"data-aefis-no-margin": "true",
+									"data-aefis-icon": "fa fa-pencil-alt fa-fw",
+									"data-aefis-hide-export-options": "true"
+								});
+								aefis.ui.previewObject($btn);
+							} else {
+								aefis.ui.userInfo('You do not have rights to open the form.');
+							}
+						},
+						onError: function (e, data) {
+							if (window.parent) {
+								window.parent.aefis.ui.hidePreviewObjectLoadingBar();
+							} else {
+								aefis.ui.hidePreviewObjectLoadingBar();
+							}
+						},
+						onComplete: function () {
+							aefis.ui.hideFullPagePreloader("Data Collection Form");
+						}
+					});
+				}
+			}
+		}
+	};
+
+	this.getUrlParam = function (parameter, defaultValue) {
+		var urlParameter = defaultValue;
+		if (window.location.href.indexOf(parameter) > -1) {
+			var vars = {};
+			var parts = window.location.href.replace(
+				/[?&]+([^=&]+)=([^&]*)/gi,
+				function (m, key, value) {
+					vars[key] = value;
+				}
+			);
+			urlParameter = vars[parameter];
+		}
+		return urlParameter;
+	};
+
+	this.initializeWidgets = function ($rootContainer) {
+		container = $("#aefis-widget-container");
+		$("#aefis-main-container").addClass("aefis-background-light-gray");
+
+		totalTileSize = tileSize + gutter;
+
+		$(window).resize(setContainerWidth);
+		setContainerWidth();
+
+		$(".aefis-dashboard-widget").each(function (i, itemElem) {
+			var $widget = $(this);
+			var sizex = $widget.attr("data-aefis-sizex");
+			var sizey = $widget.attr("data-aefis-sizey");
+
+			setWidgetSize($widget, sizex, sizey);
+		});
+
+		container.packery({
+			itemSelector: ".aefis-dashboard-widget",
+			gutter: gutter,
+			stamp: ".pinned",
+			columnWidth: tileSize,
+			rowHeight: tileSize,
+			transitionDuration: transitionDuration
+		});
+
+		setContainerHeight();
+
+		//add dragging behavior and callback (for saving order)
+		$("div.aefis-dashboard-widget").each(function (i, itemElem) {
+			var $widget = $(this);
+			$widget.removeClass("aefis-dashboard-widget--hidden");
+
+			var $container = $("#aefis-widget-container");
+			$container.packery("stamp", $widget);
+			$widget.find("div.aefis-dashboard-widget--header").addClass("aefis-no-drag");
+			$widget.attr("draggable", false);
+		});
+
+		//get the menus
+		$("div.aefis-dashboard-widget").each(function (i, itemElem) {
+			var $widget = $(this);
+			var code = $widget.attr("data-aefis-widget-code");
+			var id = $widget.attr("data-aefis-widget-id");
+			var menuContainer = $widget.find(
+				'.aefis-dashboard-widget--menu-options[data-aefis-widget-code="' + code + '"]'
+			);
+			var $menuButton = $widget.find("button.aefis-dashboard-widget--menu-button");
+			$menuButton.on("click", function () {
+				aefis.ui.toggleAriaAttribute($menuButton, "aria-expanded", "true,false");
+			});
+			if (menuContainer.length) {
+				var menuOptionsJSON = JSON.parse(menuContainer.html());
+				var menuOptions = "";
+				$(menuOptionsJSON).each(function () {
+					var option = $(this)[0];
+					var event = option["Event"];
+					var name = option["Name"];
+					var selector = option["Selector"];
+					var additionalData = "";
+					var dividerClass = "";
+					if (option["AdditionalData"]) {
+						additionalData =
+							'data-aefis-additional-data = "' + option["AdditionalData"] + '"';
+					}
+					if (option["UseDivider"]) {
+						dividerClass = "mdl-menu__item--full-bleed-divider";
+					}
+
+					var icon = "";
+
+					menuOptions +=
+						'<li role="button" class="mdl-menu__item ' +
+						dividerClass +
+						'" ' +
+						additionalData +
+						' data-aefis-event="';
+					menuOptions +=
+						event +
+						'" data-aefis-event-selector="' +
+						selector +
+						'" onkeydown = "if (event.keyCode == 13) aefis.util.triggerEvent(this);" onclick="aefis.util.triggerEvent(this);">';
+					if (option["IconClass"]) {
+						var iconClass = option["IconClass"];
+						menuOptions +=
+							'<i aria-hidden="true" class="material-icons aefis-dashboard-widget--menu-option--icon material-inline-font-container">' +
+							iconClass +
+							"</i>";
+					}
+					menuOptions +=
+						'<span class="material-inline-font-container">' + name + "</span>";
+					menuOptions += "</li>";
+				});
+				var menuContainer =
+					'<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu " for="aefis-dashboard-widget--options-' +
+					id +
+					'">' +
+					menuOptions +
+					"</ul>";
+				$menuButton.after(menuContainer);
+			} else {
+				$menuButton.remove();
+			}
+
+			$widget.on("AefisDashboardWidget:loading", function () {
+				var widgetId = $widget.attr("id");
+				var selector = "#" + widgetId + " .aefis-dashboard-widget--content";
+				var progress = "#" + widgetId + " .aefis-dashboard-widget-refresh--progress";
+				aefis.ui.loadingShow(selector, "Loading", "quick", true, false);
+				$(progress).show();
+			});
+
+			$widget.on("AefisDashboardWidget:loaded", function () {
+				var widgetId = $widget.attr("id");
+				var selector = "#" + widgetId + " .aefis-dashboard-widget--content";
+				var progress = "#" + widgetId + " .aefis-dashboard-widget-refresh--progress";
+				aefis.ui.loadingHide(selector);
+				$(progress).fadeOut();
+			});
+		});
+
+		//finally, set up widget javascript
+		$("div.aefis-dashboard-widget").each(function (i, itemElem) {
+			var $widget = $(this);
+
+			var code = $widget.attr("data-aefis-widget-code");
+			if (aefis.widgetClasses[code]) {
+				aefis.widget[code] = new aefis.widgetClasses[code]();
+				if (aefis.widget[code].initialize) {
+					aefis.widget[code].initialize($rootContainer);
+				}
+			}
+		});
+	};
+
+	function showDashboardNotification(totalNotifications) {
+		if (totalNotifications > 0) {
+			var notificationText = "action items";
+			var name = $("#aefis-user-first-name").val();
+			if (totalNotifications == 1) {
+				notificationText = "action item";
+			}
+			var message =
+				name +
+				", you currenly have <strong>" +
+				totalNotifications +
+				"</strong> outstanding " +
+				notificationText +
+				'. Click the following link to:<br/><a href="javascript:void(0);" onclick="aefis.ui.openNotificationsDropDownWithoutLoad();">View Your Notifications</a>.';
+			aefis.ui.userMessage(message, "notify");
+		}
+	}
+
+	var setContainerWidth = function () {
+		//calculated grid width, but go no smaller than 2 tiles wide
+		var newWindowWidth = Math.max(
+			totalTileSize * 2,
+			Math.floor($(window).width() / totalTileSize) * totalTileSize
+		);
+		/*$('#aefis-widget-container').width(newWindowWidth);*/
+	};
+
+	var setContainerHeight = function () {
+		var maxHeight = 0;
+		$(".aefis-dashboard-widget").each(function (i, itemElem) {
+			var bottom = $(this).height() + this.offsetTop;
+			var height = totalTileSize * Math.ceil(bottom / totalTileSize);
+
+			if (height > maxHeight) {
+				maxHeight = height;
+			}
+		});
+		container.height(maxHeight);
+	};
+
+	var setWidgetContent = function (widgetId, widgetUserId) {
+		var widget = findWidgetInStore(widgetId);
+		var url = getWidgetUserContentUrl();
+		var data = { widgetUserId: widgetUserId };
+		var widgetCode = widget.CODE;
+		new aefis.ApiWrapper().call(url, {
+			data: data,
+			onComplete: function () {
+				aefis.ui.loadingHide(
+					"#aefis-widget-" + widgetId + " .aefis-dashboard-widget--content"
+				);
+			},
+			dataType: "html",
+			onSuccess: function (data, jqXhr) {
+				//plug in content
+				var $obj = $("#aefis-widget-" + widgetId);
+				var $contentContainer = $obj.find(".aefis-dashboard-widget--content");
+				$contentContainer.html(data);
+				$obj.find(".widget-close-button").attr("data-aefis-widgetuser-id", widgetUserId);
+				//set up JS for new widget
+				if (aefis.widgetClasses[widgetCode]) {
+					aefis.widget[widgetCode] = new aefis.widgetClasses[widgetCode]();
+					if (aefis.widget[widgetCode].initialize) {
+						aefis.widget[widgetCode].initialize();
+					}
+				}
+			}
+		});
+	};
+
+	var setWidgetSize = function (jgObj, width, height) {
+		jgObj.css({
+			width: width * tileSize + gutter * (width - 1),
+			height: height * tileSize + gutter * (height - 1)
+		});
+	};
+
+	//calculates and saves widget ordering (not exact positioning)
+	var dragHandler = function (pckryInstance, draggedItem) {
+		setContainerHeight();
+
+		var items = pckryInstance.items;
+		var positionData = [];
+		var url = getSavePositionsUrl();
+
+		var itemElems = container.packery("getItemElements");
+		$(itemElems).each(function (i, itemElem) {
+			positionData.push({
+				widgetId: $(this).attr("data-aefis-widget-id"),
+				order: i
+			});
+		});
+		var data = { positionData: JSON.stringify(positionData) };
+		new aefis.ApiWrapper().call(url, {
+			type: "POST",
+			data: JSON.stringify(data),
+			onSuccess: function () {
+				//
+			}
+		});
+	};
+
+	var getRemoveWidgetUrl = function () {
+		return $("#aefis-removeWidgetUrl").val();
+	};
+
+	var getSavePositionsUrl = function () {
+		return $("#aefis-saveWidgetPositionsUrl").val();
+	};
+
+	var getAddWidgetUrl = function () {
+		return $("#aefis-addWidgetUrl").val();
+	};
+
+	var getWidgetUserContentUrl = function () {
+		return $("#aefis-widgetUserContentUrl").val();
+	};
+};
