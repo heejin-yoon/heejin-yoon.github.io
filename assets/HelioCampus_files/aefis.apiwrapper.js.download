@@ -1,0 +1,232 @@
+// Copyright (c) 2018 AEFIS, all rights reserved.
+// http://www.aefis.com/
+
+"use strict";
+
+window.aefis = window.aefis || {};
+var aefis = window.aefis;
+
+aefis.ApiWrapper = function () {
+	var apiRootPath = "";
+
+	this.callsPending = function () {
+		return aefis.callCounter && (aefis.callCounter > 0);
+	}
+
+	this.apiCall = function (command, parameters, type, successFunction) {
+		return this.call(apiRootPath + command + '?apikey=webclient', parameters, type, successFunction);
+	}
+
+	this.postForm = function (form, action, successFunction, errorFunction) {
+		return this.call(action, $(form).serialize(), 'POST', successFunction, errorFunction, "application/x-www-form-urlencoded");
+	}
+
+	this.call = function (url, options) {
+		var ajaxCall = aefis.app.longProcessStart('Ajax call ' + url);
+		var defaults = {
+			data: {},
+			onSuccess: null,
+			onSuccessScope: this,
+			onError: null,
+			onErrorScope: this,
+			onComplete: null,
+			onCompleteScope: this,
+			async: true,
+			beforeSend: null,
+			dataType: 'json',
+			type: 'GET',
+			cache: false,
+			contentType: "application/json; charset=utf-8",
+			returnTopLevelData: false, // when true, returns all data returned from server, not just data in the 'DATA' property key returned.
+			returnGeneratedAjaxOptions: false // when true, returns the generated ajax options instead of a handle on the called ajax object.
+		};
+		// options & defaults to settings
+		var settings = $.extend({}, defaults, options);
+		// debug
+		if(aefis.debug){
+			aefis.app.log("get(): options with defaults: ");
+			aefis.app.log(settings);
+		}
+
+		if (!aefis.callCounter) {
+			aefis.callCounter = 0;
+		}
+		aefis.callCounter++;
+
+		var ajaxOptions = {
+			url: url,
+			data: settings.data,
+			contentType: settings.contentType,
+			dataType: settings.dataType,
+			method: settings.type,
+			async: settings.async,
+			beforeSend: settings.beforeSend,
+			cache: settings.cache,
+			success: function (data, textStatus, jqXhr) {
+				if (aefis.debug) {
+					aefis.app.log("get(): ajax success=true. data returned: ");
+					aefis.app.log(data);
+				}
+				// data might be undefined if the response has no body.
+				if (data && (data.DATA !== undefined)) {
+					if (!settings.returnTopLevelData) {
+						data = data.DATA;
+					}
+					aefis.app.log("get(): ajax success=true. data size: ");
+					aefis.app.log(data.length);
+				};
+				// on success callback
+				if (settings.onSuccess != null) {
+					settings.onSuccess.call(settings.onSuccessScope, data, jqXhr);
+				}
+				$(window).trigger('callSuccess');
+			},
+			error: function (jqXhr, textStatus, errorThrown) {
+				/*
+				if (textStatus == 'abort' || (jqXhr.readyState == 0 && jqXhr.status == 0))
+					return;
+				if (aefis.debug) {
+					aefis.app.error("get(): ajax response failure other than success=false. error returned: ");
+					aefis.app.error(url);
+					aefis.app.error(textStatus);
+					aefis.app.error(errorThrown);
+				}
+				// TODO This is temporary. For some reaon error is prepended to http body. Strip this. OY
+				jqXhr.responseText = jqXhr.responseText.substring(jqXhr.responseText.indexOf('{'));
+
+				//reset any buttons in the loading state
+				$('.btn[data-loading-text]').button('reset');
+
+				if (settings.onError && settings.onError.call(settings.onErrorScope, jqXhr, errorThrown)) {
+					// Error is handled.
+					return true;
+				}
+				*/
+			  // updates to the above (Phil March 13, 2015)
+			  	aefis.ui.loadingHideAll();
+			  	aefis.ui.hideFullPageLoadingMask();
+			  	if (jqXhr.status === 401 && (settings.type == 'post' || settings.type == 'POST' || settings.type == 'Post')) {
+					aefisPendingAjaxRequest.push({
+						url: url,
+						options: options
+					});
+					var sessionHasExpired = true;
+					if (window.parent) {
+						window.parent.aefis.ui.showReloginForm();
+					} else {
+						aefis.ui.showReloginForm();
+					};
+				}
+
+				if ( textStatus == 'abort' )
+					return;
+
+				if (aefis.debug) {
+					aefis.app.error("get(): ajax response failure other than success=false. error returned: ");
+					aefis.app.error(url);
+					aefis.app.error(textStatus);
+					aefis.app.error(errorThrown);
+				}
+				// TODO This is temporary. For some reaon error is prepended to http body. Strip this. OY
+				if ( typeof jqXhr.responseText === 'undefined' )
+					jqXhr.responseText = '';
+				else
+					jqXhr.responseText = jqXhr.responseText.substring(jqXhr.responseText.indexOf('{'));
+
+				//reset any buttons in the loading state
+				$('.btn[data-loading-text]').button('reset');
+
+				if (settings.onError && settings.onError.call(settings.onErrorScope, jqXhr, errorThrown)) {
+					// Error is handled.
+					return true;
+				}
+				if ( jqXhr.readyState == 0 && jqXhr.status == 0 )
+					return;
+			  // END updates to the above (Phil March 13, 2015)
+
+
+				if (jqXhr.status === 400) {
+					// Bad request means validation failed.
+					var response = JSON.parse(jqXhr.responseText);
+
+					if (response.MESSAGE && response.MESSAGE.length) {
+						aefis.ui.userWarning(response.MESSAGE);
+					} else {
+						aefis.ui.userWarning("The operation can not be completed. Please try again.");
+					}
+					return true;
+				} else if (jqXhr.status === 403) {
+					// User is logged on but dees not have access to operation.
+					var response = JSON.parse(jqXhr.responseText);
+					if (response.MESSAGE && response.MESSAGE.length) {
+						aefis.ui.userWarning(response.MESSAGE);
+					} else {
+						aefis.ui.userWarning("Operation can not be completed.");
+					};
+					return true;
+				} else if (jqXhr.status === 401) {
+					// TODO 401 Unauthorized; This means we'll need to forward to login.
+					var response = JSON.parse(jqXhr.responseText);
+					if ( aefis.util.isJson(response.MESSAGE) ) {
+						var data = $.parseJSON(response.MESSAGE);
+						if (sessionHasExpired) {
+							data.action = 'sessionHasExpired';
+						};
+						if ( data.action ) {
+							switch(data.action) {
+								case 'clientcallauthurl':
+									if ( data.url ) {
+										
+										
+										//todo: better to give them a nice dialog with the url as a link/button with explanation
+										console.log('call this url: ' + data.url);
+
+										
+									}
+									break;
+								case 'sessionHasExpired':
+									break;
+								default:
+									aefis.ui.userWarning("You are not authorized for this operation. Your session may have expired.",true,"There was an error");
+							}
+						}
+					} else {
+						if (!sessionHasExpired) {
+							aefis.ui.userWarning("You are not authorized for this operation. Your session may have expired.",true,"There was an error");
+						};
+					}
+					return true;
+				}
+				aefis.ui.userError("An unexpected connection error occurred. Please try reloading the page.",undefined,"There was an error");
+				return true;
+			},
+			complete: function () {
+				aefis.callCounter--;
+				if (aefis.callCounter == 0) {
+					$(window).trigger('callsComplete');
+				};	
+				//reset any buttons in the loading state
+				$('.btn[data-loading-text]:not([data-loading-text-manual])').each(function(){
+					if (!$(this).hasClass('aefis-prev-disabled')) {
+						$(this).button('reset');
+					};
+				});
+				if (ajaxCall) {
+					ajaxCall.complete();
+				};
+				//remove any items that need to be removed due to publish
+				
+				if (settings.onComplete) {
+					return settings.onComplete.call(settings.onCompleteScope);
+				};
+				$(window).trigger('callComplete');
+			}
+		};
+
+		if ( settings.returnGeneratedAjaxOptions ) {
+			return ajaxOptions;
+		} else {
+			return $.ajax(ajaxOptions);
+		}
+	}
+};

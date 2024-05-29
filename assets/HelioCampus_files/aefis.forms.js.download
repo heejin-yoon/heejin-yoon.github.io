@@ -1,0 +1,2937 @@
+// Copyright (c) 2013 AEFIS, all rights reserved.
+// http://www.aefis.com/
+
+"use strict";
+
+window.aefis = window.aefis || {};
+var aefis = window.aefis;
+
+aefis.Forms = function () {
+	var that = this;
+	var datatableAjaxRequest = {};
+	var selectpickerAjaxRequest = {};
+	this.clearFormValues = function (formid) {
+		var form = $("#" + formid);
+		$(":input", form).each(function () {
+			var type = this.type;
+
+			var tag = this.tagName.toLowerCase(); // normalize case
+			if (type == "text" || type == "password" || tag == "textarea") this.value = "";
+			else if (type == "checkbox" || type == "radio") this.checked = false;
+		});
+	};
+
+	function isDataTable(nTable) {
+		// This is necessary for legacy datatables support as it might be initialized multiple times. OY
+		var settings = $.fn.dataTableSettings;
+		for (var i = 0, iLen = settings.length; i < iLen; i++) {
+			if (settings[i].nTable == nTable) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	this.showLegacyDataTable = function (object) {
+		if (isDataTable(object[0])) {
+			return null;
+		}
+		var $obj = $(object);
+		var objID = $obj.attr("id");
+		var defaultRecords = $obj.attr("data-aefis-table-default-records");
+		var showAllRecords = $obj.attr("data-aefis-table-show-allRecords");
+		var customHeader = $("#" + $obj.attr("data-aefis-custom-header")).html();
+		var customTitle = $obj.attr("data-aefis-table-title");
+		var simpleFooter = $obj.attr("data-aefis-simple-footer");
+		var rowGrouping = $obj.attr("data-aefis-table-row-grouping");
+		var noFooter = $obj.attr("data-aefis-hide-footer");
+		var noHeader = $obj.attr("data-aefis-hide-header");
+		var defaultRecordDisplay = 15;
+		var defaultSDOM;
+		var defaultTableHeader = "<'row-fluid'<'span6'T><'span6'f>r>";
+		var customTableHeader = "<'row-fluid aefis-data-table-header'>";
+		var defaultTableFooter =
+			"<'row-fluid aefis-data-table-bottom'<'span4'l><'span4 text-align-center'i><'span4'p>>";
+		var customTableFooter = "<'row-fluid aefis-data-table-bottom'<'span6'i><'span6'p>>";
+		var minHeight;
+		var isFixedHeader = $obj.attr("data-aefis-fixed-header");
+		var isFixedColumn = $obj.attr("data-aefis-fixed-column");
+		var refreshSelector = $obj.attr("data-refresh-selector");
+		var defaultSortColumn = $obj.attr("data-aefis-default-sort-column");
+		var defaultSort = $obj.attr("data-aefis-default-sort");
+		var scrollTableContent = $obj.attr("data-aefis-scroll-content");
+		var bPaginate = true;
+		var returnFormat = aefis.ui.getCurrentReturnFormat();
+		var secondaryGroupingColumnIndex = $obj.attr(
+			"data-aefis-table-row-grouping-secondary-grouping-column"
+		);
+
+		if (!defaultSort) {
+			defaultSort = "desc";
+		}
+
+		if (defaultRecords) {
+			defaultRecordDisplay = defaultRecords;
+		}
+
+		if (showAllRecords || returnFormat == "print" || returnFormat == "pdf") {
+			defaultRecordDisplay = "-1";
+			customTableFooter = "<'row-fluid aefis-data-table-bottom'<'span12 pull-left' i>>";
+		}
+
+		if (customHeader) {
+			defaultSDOM = customTableHeader + "t";
+		} else {
+			defaultSDOM = defaultTableHeader + "t";
+		}
+
+		if (customTitle) {
+			defaultSDOM =
+				"<'row-fluid'<'span6 aefis-table-title aefis-data-table-header' ><'span6'f>r>t";
+		}
+
+		if (noFooter == "true") {
+			customTableFooter = "";
+			defaultTableFooter = "";
+		}
+
+		if (noHeader) {
+			defaultSDOM = "t";
+		}
+
+		if (simpleFooter || returnFormat == "print" || returnFormat == "pdf") {
+			defaultSDOM = defaultSDOM + customTableFooter;
+		} else {
+			defaultSDOM = defaultSDOM + defaultTableFooter;
+		}
+
+		var options = {
+			iDisplayLength: defaultRecordDisplay,
+			sDom: defaultSDOM,
+			fnDrawCallback: function (oSettings) {
+				// find a format possible icons and status
+				$(window).trigger("refreshDOMObjects");
+			},
+			bPaginate: bPaginate,
+			oLanguage: {
+				sSearch: ""
+			},
+			aLengthMenu: [
+				[15, 25, 50, 100, -1],
+				[15, 25, 50, 100, "All"]
+			]
+		};
+
+		if (isFixedColumn && isFixedColumn.toLowerCase() == "true") {
+			options.sScrollX = "100%";
+			options.bScrollCollapse = true;
+			//options.sScrollXInner = '130%';
+			options.sScrollY = "100%";
+			options.bPaginate = false;
+			options.aaSorting = [];
+			options.autoWidth = false;
+			options.aoColumnDefs = [
+				{
+					bSortable: false,
+					aTargets: ["no-sort"]
+				}
+			];
+		}
+
+		options.aoColumnDefs = [
+			{
+				bSortable: false,
+				aTargets: ["no-sort"]
+			}
+		];
+
+		if (scrollTableContent) {
+			options.sScrollY = scrollTableContent;
+			options.bPaginate = false;
+		}
+
+		var oTable = $obj.dataTable(options);
+		var update_size = function () {
+			$(oTable).css({ width: $(oTable).parent().width() });
+			oTable.fnAdjustColumnSizing();
+		};
+
+		$(window).resize(function () {
+			clearTimeout(window.refresh_size);
+			window.refresh_size = setTimeout(function () {
+				update_size();
+			}, 250);
+		});
+		/* set the class of the search field */
+		$(".dataTables_filter input").attr("placeholder", "Search");
+		$(".dataTables_filter input").attr("aria-label", "search");
+		$(".dataTables_filter input").attr("tabindex", "0");
+		//$('.dataTables_filter input').addClass("search-query");
+		if (customHeader !== undefined) {
+			$("#" + objID + "_wrapper .aefis-data-table-header")
+				.html(customHeader)
+				.promise()
+				.done(function () {
+					$(window).trigger("refreshDOMObjects");
+				});
+		}
+		if (customTitle) {
+			$("#" + objID + "_wrapper div.aefis-data-table-header").html(customTitle);
+		}
+		if (rowGrouping == "true") {
+			var groupColumn = $obj.attr("data-aefis-table-row-group-row");
+			var groupOrderByColumn = $obj.attr("data-aefis-table-row-group-order-column");
+
+			if (!(typeof groupColumn !== typeof undefined && groupColumn !== false)) {
+				groupColumn = 0;
+			}
+			if (!(typeof groupOrderByColumn !== typeof undefined && groupOrderByColumn !== false)) {
+				groupOrderByColumn = 0;
+			}
+			if (secondaryGroupingColumnIndex) {
+				oTable.rowGrouping({
+					iGroupingColumnIndex: groupColumn,
+					iGroupingOrderByColumnIndex: groupOrderByColumn,
+					iGroupingColumnIndex2: secondaryGroupingColumnIndex
+				});
+			} else {
+				oTable.rowGrouping({
+					iGroupingColumnIndex: groupColumn,
+					iGroupingOrderByColumnIndex: groupOrderByColumn
+				});
+			}
+		}
+		if (typeof isFixedHeader != "undefined" && isFixedHeader.toLowerCase() == "true") {
+			new FixedHeader(oTable);
+		}
+
+		if (typeof isFixedColumn != "undefined" && isFixedColumn.toLowerCase() == "true") {
+			new FixedColumns(oTable);
+		}
+
+		if (defaultSortColumn) {
+			oTable.fnSort([[defaultSortColumn, defaultSort]]);
+		}
+
+		oTable.fnAdjustColumnSizing(); //resize columns for MSIE
+		aefis.forms.processDatatableTotalsRow();
+		return oTable;
+	};
+
+	this.parseFilterFromTag = function (tagContainer) {
+		var $tagContainer = $(tagContainer);
+		var filter = {};
+		var $tags = $tagContainer.find(".mdl-chip");
+
+		if ($tags.length) {
+			$tags.each(function () {
+				var $token = $(this);
+				var entity = $token.attr("data-aefis-entity-name");
+				var entityId = $token.attr("data-aefis-id");
+				var entityCode = $token.attr("data-aefis-code");
+				var searchFieldId = $token.attr("data-aefis-search-field-id");
+
+				var $searchField = $("#" + searchFieldId);
+				if (!$searchField.length) {
+					$searchField = $("input.aefis-typeahead-generated-field");
+				}
+				var entityList = $searchField.attr("data-aefis-datasource-entity-list");
+				var searchFields = $searchField.attr("data-aefis-datasource-search-list");
+				if (entity.toLowerCase() != "keyword") {
+					var entityListArray = entityList.split(",");
+					var searchFieldArray = searchFields.split(",");
+					var searchField = searchFieldArray[entityListArray.indexOf(entity)];
+					if (entityListArray.indexOf(entity) == -1) {
+						searchField = entity;
+					}
+					if (filter[searchField]) {
+						if ($.isArray(filter[searchField])) {
+							var value = entityId;
+							filter[searchField].push(value);
+						} else {
+							var currentValue = filter[searchField];
+							var newValue = entityId;
+							var value = [];
+							value.push(currentValue);
+							value.push(newValue);
+							filter[searchField] = value;
+						}
+					} else {
+						filter[searchField] = entityId;
+					}
+				}
+			});
+		}
+
+		return JSON.stringify(filter);
+	};
+
+	this.parseKeywordFromTag = function (tagContainer) {
+		var $tagContainer = $(tagContainer);
+		var keywordsArray = [];
+		var keywords = "";
+		var $tags = $tagContainer.find(".mdl-chip");
+		if ($tags.length) {
+			$tags.each(function () {
+				var $token = $(this);
+				var entity = $token.attr("data-aefis-entity-name");
+				var entityId = $token.attr("data-aefis-id");
+				var entityCode = $token.attr("data-aefis-code");
+				var searchFieldId = $token.attr("data-aefis-search-field-id");
+				var $searchField = $("#" + searchFieldId);
+				if (!$searchField.length) {
+					$searchField = $("input.aefis-typeahead-generated-field");
+				}
+				var entityList = $searchField.attr("data-aefis-datasource-entity-list");
+				var searchFields = $searchField.attr("data-aefis-datasource-search-list");
+				if (entity.toLowerCase() == "keyword") {
+					keywordsArray.push(entityId);
+				}
+			});
+
+			if ($.isArray(keywordsArray)) {
+				if (keywordsArray.length == 0) {
+					keywords = "";
+				} else if (keywordsArray.length == 1) {
+					keywords = keywordsArray[0];
+				} else {
+					keywords = JSON.stringify(keywordsArray);
+				}
+			}
+		}
+		return keywords;
+	};
+
+	this.addTagToContainer = function (suggestion, container, triggerEvent, field) {
+		var that = this;
+		var token = aefis.ui.getFormattedTag(suggestion, true);
+		var fireEvent = true;
+		var $parentContainer = $("div.aefis-tag-search-parameters-container-parent");
+		var $container = $(container);
+		var $reset = $container.find("button.aefis-search-reset");
+
+		var existingTags = $container.find('.mdl-chip__text');
+		if (suggestion.Code) {
+			for (var i = 0; i < existingTags.length; i++) {
+				if (existingTags[i].textContent) {
+					if (existingTags[i].textContent.trim().toLowerCase() === suggestion.Code.trim().toLowerCase()) {
+						return;
+					}
+				}
+			}
+		}
+		
+		if (triggerEvent && triggerEvent == "false") {
+			fireEvent = false;
+		}
+
+		$container
+			.append(token)
+			.promise()
+			.done(function () {
+				$(".aefis-tooltip").tooltip();
+				if (fireEvent) {
+					$container.trigger("aefisTagAdded", token);
+					$reset.fadeIn();
+				}
+				$("body")
+					.off("aefisTagRemoving")
+					.on("aefisTagRemoving", function (evt, param) {
+						var $tag = $(param).parent();
+						$(".aefis-tooltip")
+							.tooltip("hide")
+							.promise()
+							.done(function () {
+								$tag.remove();
+							});
+						$container.trigger("aefisTagRemoved", $tag);
+						if ($container.find(".mdl-chip").length == 0) {
+							$reset.fadeOut();
+						}
+					});
+				$(window).trigger("refreshDOMObjects");
+			});
+	};
+
+	this.showSearchFilterContainer = function () {
+		var $container = $("div.aefis-tag-search-parameters-container-parent");
+		$container
+			.animate({ height: 40 })
+			.promise()
+			.done(function () {
+				$(".aefis-manager-tag-search").addClass("aefis-has-tags");
+			});
+	};
+
+	this.hideSearchFilterContainer = function () {
+		var $container = $("div.aefis-tag-search-parameters-container-parent");
+		$container
+			.animate({ height: 0 })
+			.promise()
+			.done(function () {
+				$(".aefis-manager-tag-search").removeClass("aefis-has-tags");
+			});
+	};
+
+	this.processTagsForSearch = function (tagContainer, dataTable, processStateSave) {
+		var $tagContainer = $(tagContainer);
+		//var $tagParent = $('#aefis-tag-search-parameters-container-parent');
+		var filter = {};
+		var keywordsArray = [];
+		var keywords = "";
+		var $tags = $tagContainer.find(".mdl-chip");
+		var $datatable = $(dataTable);
+		var stateSave = true;
+		if (processStateSave && processStateSave == "false") {
+			stateSave = false;
+		}
+		if ($tags.length) {
+			filter = that.parseFilterFromTag($tagContainer);
+			keywords = that.parseKeywordFromTag($tagContainer);
+			$tagContainer.show();
+			$(".aefis-manager-tag-search").addClass("aefis-has-tags");
+			var $searchField = $(
+				"#" +
+					$("#aefis-search-tag-container .mdl-chip")
+						.first()
+						.attr("data-aefis-search-field-id")
+			);
+			if (!$searchField.length) {
+				$searchField = $tagContainer
+					.parents()
+					.find("input.aefis-typeahead-generated-field")
+					.last();
+			}
+			var $target = $($searchField.attr("data-aefis-target"));
+			$target.attr("data-aefis-filter", filter);
+			$target.attr("data-aefis-keywords", keywords);
+			$("#aefis-tag-search-parameter-reset").fadeIn();
+		} else {
+			$tagContainer.hide();
+			$datatable.removeAttr("data-aefis-filter");
+			$datatable.removeAttr("data-aefis-keywords");
+			$target = $datatable;
+			$("#aefis-tag-search-parameter-reset").fadeOut();
+		}
+		if (stateSave) {
+			if ($tagContainer.html().length || filter.length) {
+				var stateData = { parameters: filter, viewdata: $tagContainer.html() };
+				aefis.app.setState(stateData);
+				aefis.app.saveStateOnServer(stateData);
+			} else {
+				aefis.app.clearState();
+				aefis.app.saveStateOnServer({});
+			}
+		}
+
+		setTimeout(function () {
+			$target.trigger("refresh");
+		}, 500);
+		aefis.ui.processCSVExportButtonUrl(filter, keywords);
+	};
+
+	this.removeAllDatatabletags = function (refreshPage) {
+		$("#aefis-search-tag-container")
+			.find(".mdl-chip a")
+			.each(function () {
+				var $clickable = $(this);
+				aefis.util.triggerEvent($clickable);
+			})
+			.promise()
+			.done(function () {
+				$("#aefis-tag-search-parameter-reset").fadeOut();
+			});
+
+		if (refreshPage) {
+			$(window).on("stateSaved", function () {
+				$("#aefis-tag-search-parameter-refresh").fadeOut();
+				aefis.ui.fullPagePreloader();
+				window.location.reload();
+			});
+		}
+	};
+
+	this.initializeDatatableTagSearch = function (tagContainer, datatableContainer, stateLoad) {
+		var $tagsContainer = $(tagContainer);
+		var $tagParent = $("#aefis-tag-search-parameters-container-parent");
+		var $dataTableContainer = $(datatableContainer);
+		var existingFilter = aefis.util.getQueryParameter("tag");
+		var hasTags = 0;
+		var loadState = true;
+		if (stateLoad && stateLoad == "false") {
+			loadState = false;
+		}
+		if ($tagsContainer.html()) {
+			hasTags = $tagsContainer.html().length;
+		}
+		if (!existingFilter) {
+			if (hasTags) {
+				$tagsContainer.hide();
+				$(".aefis-manager-tag-search").removeClass("aefis-has-tags");
+				$("#aefis-tag-search-parameter-reset").fadeIn();
+				$("#aefis-tag-search-parameter-refresh").fadeIn();
+			}
+			if (loadState) {
+				aefis.app.loadStateFromServer(function (data) {
+					if (data) {
+						if (aefis.util.isObject(data)) {
+							data = JSON.stringify(data);
+						}
+						var tagContent = JSON.parse(data);
+					}
+					if (tagContent && tagContent["viewdata"] && tagContent["viewdata"].length) {
+						var tags = tagContent.viewdata;
+						$tagsContainer.html(tags);
+						$(".aefis-manager-tag-search").addClass("aefis-has-tags");
+						$("#aefis-tag-search-parameter-reset").fadeIn();
+						$("#aefis-tag-search-parameter-refresh").fadeIn();
+						//$tagParent.animate({height: 40}).promise().done(function(){
+						$tagsContainer.show();
+						aefis.forms.processTagsForSearch($tagsContainer, $dataTableContainer);
+						//});
+					} else {
+						if (hasTags) {
+							aefis.forms.processTagsForSearch(
+								$tagsContainer,
+								$dataTableContainer,
+								"false"
+							);
+						} else {
+							aefis.forms.refreshDataTable($dataTableContainer);
+						}
+					}
+				});
+			} else {
+				aefis.forms.refreshDataTable($dataTableContainer);
+			}
+		}
+	};
+
+	/**
+	 * datatables 1.10 server-side
+	 * takes one param but has other table data attribute options:
+	 *   data-aefis-datasource : (required) the url to call for server-side data
+	 *   data-aefis-server-side-paging : (required) true or 1 to use server-side paging.
+	 *   data-aefis-row-template-id : (required) handlebars template to be used for each row of the table
+	 *   data-aefis-table-title : (optional) display title for the table
+	 *   data-aefis-sort-default : (optional) [asc|desc] table column header (th tag) attribute for designating the default sort column/direction on server-side paging.
+	 * @param {object} table object to be used as a datatable
+	 */
+	this.refreshDataTable = function (object, destroy) {
+		var $table = $(object);
+		//if ($.fn.dataTable.isDataTable($table)) {
+		that.showServerSideDataTable($table, undefined, true);
+		//};
+	};
+
+	this.showServerSideDataTable = function (object, autoLoaded, refreshAtFirstPage) {
+		var $table = $(object); // table
+		var tableId = $table.attr("id");
+		var url = $table.attr("data-aefis-datasource");
+		var urlParameters = "";
+		var serverSidePaging = $table.attr("data-aefis-server-side-paging"); // true|false, defaults to false
+		var rowTemplateId = $table.attr("data-aefis-row-template-id");
+		var defaultSDOM;
+		var defaultTableHeader = "<'row-fluid'<'span6'T><'span6'f>r>";
+		var defaultTableFooter =
+			"<'row-fluid aefis-data-table-bottom'<'span4'l><'span4 text-align-center'i><'span4'p>>";
+		var simpleFooter = $table.attr("data-aefis-simple-footer");
+		var customTableFooter = "<'row-fluid aefis-data-table-bottom'<'span6'i><'span6'p>>";
+		var customTitle = $table.attr("data-aefis-table-title");
+		var defaultKeywords = $table.attr("data-aefis-default-keywords");
+		var refreshSelector = $table.attr("data-refresh-selector");
+		var noHeader = $table.attr("data-aefis-hide-header");
+		var rowGrouping = $table.attr("data-aefis-table-row-grouping");
+		// you can set keywords and filters for searching.  controller must support it.
+		var keywords = $table.attr("data-aefis-keywords");
+		var filter = $table.attr("data-aefis-filter");
+		var appendTotalsToHeader = $table.attr("data-aefis-append-totals");
+		var addRowNumbers = $table.attr("data-aefis-show-row-numbers");
+		var makeResponsive = true;
+		defaultSDOM = defaultSDOM + defaultTableHeader + "t";
+		var initialOrder = [];
+		var defaultRecordDisplay = 15;
+		var showAllRecords = false;
+		var returnFormat = aefis.ui.getCurrentReturnFormat();
+		var saveTableState = true;
+		var isStaticPage = aefis.app.isStaticPage();
+		var scrollx = false;
+
+		var zeroRecordsTitleParam = $table.attr("data-aefis-zero-records-title");
+		var zeroRecordsMessageParam = $table.attr("data-aefis-no-records-message");
+		var emptySearchResultsTitleParam = $table.attr("data-aefis-empty-search-title");
+		var emptySearchResultsMessageParam = $table.attr("data-aefis-empty-search-message");
+		var customDataLoadingMessage = $table.attr("data-aefis-data-loading-message");
+		var allowScrollX = $table.attr("data-aefis-scroll-x");
+
+		var zeroRecordsTitle = "No Data Found";
+		var zeroRecordsMessage =
+			"No records were returned for the selected item or for your search filters.<br/>Please select new search filters or select another item.";
+
+		var emptySearchResultsTitle = "No Data Found";
+		var emptySearchResultsMessage =
+			"No records were returned for the selected item or for your search filters.<br/>Please select new search filters or select another item.";
+
+		var dataLoadingMessage = "Loading Data";
+
+		if (allowScrollX) {
+			scrollx = allowScrollX;
+		}
+
+		if (customDataLoadingMessage) {
+			dataLoadingMessage = customDataLoadingMessage;
+		}
+
+		if (zeroRecordsTitleParam && zeroRecordsMessageParam) {
+			var zeroRecordsTitle = zeroRecordsTitleParam;
+			var zeroRecordsMessage = zeroRecordsMessageParam;
+		}
+
+		if (emptySearchResultsTitleParam && emptySearchResultsMessageParam) {
+			var emptySearchResultsTitle = emptySearchResultsTitleParam;
+			var emptySearchResultsMessage = emptySearchResultsMessageParam;
+		}
+
+		if (isStaticPage) {
+			saveTableState = false;
+		}
+
+		if (customTitle) {
+			defaultSDOM =
+				"<'row-fluid'<'span6 aefis-table-title aefis-data-table-header' ><'span6'f>r>t";
+		} else {
+			defaultSDOM = defaultTableHeader;
+		}
+
+		if (noHeader) {
+			defaultSDOM = "r";
+		}
+
+		if (filter) {
+			filter = decodeURIComponent(filter);
+			if (filter) {
+				var existingFilter = decodeURIComponent(aefis.util.getQueryParameter("filter", url));
+				if (existingFilter) {
+					url = aefis.util.removeQueryParameter('filter', url);
+					if (aefis.util.isJson(filter) && aefis.util.isJson(existingFilter)) {
+						var newFilterJson = JSON.parse(filter);
+						var existingFilterJson = JSON.parse(existingFilter);
+						var mergedFilter = {...existingFilterJson, ...newFilterJson};
+						filter = JSON.stringify(mergedFilter);
+					} else {
+						let filterContent = filter.substring(1, filter.length-1);
+						let existingFilterContent = existingFilter.substring(1, existingFilter.length-1);
+						filter = "{" + filterContent + "," + existingFilterContent + "}";
+					}
+				}
+			}
+			urlParameters += "&filter=" + encodeURIComponent(filter);
+		}
+
+		if (keywords) {
+			keywords = decodeURIComponent(keywords);
+			urlParameters += "&keywords=" + encodeURIComponent(keywords);
+		}
+		if (simpleFooter) {
+			defaultSDOM = defaultSDOM + "t" + customTableFooter;
+		} else {
+			defaultSDOM = defaultSDOM + "t" + defaultTableFooter;
+		}
+		if (url) {
+			// build column info
+			var columns = [];
+			$table.find("thead tr th").each(function (index, el) {
+				if ($(this).attr("data-aefis-sort-key")) {
+					columns[index] = {
+						orderable: true,
+						name: $(this).attr("data-aefis-sort-key"),
+						data: function () {
+							return "";
+						}
+					};
+				} else {
+					columns[index] = {
+						orderable: false,
+						searchable: false,
+						data: function () {
+							return "";
+						}
+					};
+				}
+				if ($(this).attr("data-aefis-sort-default")) {
+					var orderDir =
+						$(this).attr("data-aefis-sort-default") == "desc" ? "desc" : "asc";
+					initialOrder[initialOrder.length] = [index, orderDir];
+				}
+			});
+		}
+
+		if (!initialOrder.length) {
+			initialOrder[0] = [0, "asc"]; // default ordering first column
+		}
+
+		var maxResultsToDisplay = 99999;
+		if (showAllRecords || returnFormat == "print" || returnFormat == "pdf") {
+			defaultRecordDisplay = maxResultsToDisplay;
+			customTableFooter = "<'row-fluid aefis-data-table-bottom'<'span12 pull-left' i>>";
+			defaultSDOM = defaultSDOM + customTableFooter;
+		}
+
+		// setup options
+		var options = {
+			pageLength: defaultRecordDisplay,
+			scrollX: scrollx,
+			processing: true,
+			serverSide: serverSidePaging && eval(serverSidePaging) ? true : false,
+			stateSave: saveTableState,
+			//"retrieve": true,
+			pagingType: "aefisStyle",
+			responsive: makeResponsive,
+			destroy: true,
+			dom: defaultSDOM,
+			order: initialOrder,
+			infoCallback: function (settings, start, end, max, total, pre) {
+				var message = '<div style="display: inline-block;">';
+				message =
+					'<div style="font-size:14px;">' + start + "-" + end + " of " + total + "</div>";
+				message += "</div>";
+				return message;
+			},
+			columnDefs: [
+				{
+					orderable: false,
+					visible: true,
+					targets: 0
+				}
+			],
+			language: {
+				lengthMenu: "Rows per page: _MENU_",
+				emptyTable:
+					'<div style="padding:40px;"><div><span aria-hidden="true" class="material-icons muted md-36">error_outline</span></div><div style="font-size:1.3em;margin-top:15px;"><strong>' +
+					zeroRecordsTitle +
+					'</strong></div><div style="margin-top:8px;font-size:1.1em;">' +
+					zeroRecordsMessage +
+					"</div></div>",
+				sSearch: "",
+				zeroRecords:
+					'<div style="padding:40px;"><div><span aria-hidden="true" class="material-icons muted md-36">error_outline</span></div><div style="font-size:1.3em;margin-top:15px;"><strong>' +
+					emptySearchResultsTitle +
+					'</strong></div><div style="margin-top:8px;font-size:1.1em;">' +
+					emptySearchResultsMessage +
+					"</div></div>"
+			},
+			drawCallback: function () {
+				var recordsTotal = 0;
+				var recordsToDisplay = 0;
+				var pagesTotal = 0;
+				var currentPage = 0;
+				if ($oTable) {
+					var tableInfo = $oTable.page.info();
+					if (tableInfo) {
+						recordsTotal = tableInfo.recordsTotal;
+						recordsToDisplay = tableInfo.recordsDisplay;
+						pagesTotal = tableInfo.pages;
+						currentPage = tableInfo.page;
+					}
+
+					$(
+						".paginate_button.first,.paginate_button.previous,.paginate_button.next,.paginate_button.last"
+					).addClass("mdl-button mdl-js-button mdl-button--icon");
+					$("div.dataTables_paginate").addClass("material-inline-font-container");
+					$("div.dataTables_length").addClass("material-inline-font-container");
+					if (recordsTotal == 0 || pagesTotal == 0) {
+						$(".dataTables_info").fadeOut();
+						$(".dataTables_paginate").fadeOut();
+					} else {
+						$(".dataTables_info").fadeIn();
+						$(".dataTables_paginate").fadeIn();
+					}
+
+					if (appendTotalsToHeader && tableInfo && recordsToDisplay > 0) {
+						recordsTotal = aefis.util.formatNumberWithCommas(tableInfo.recordsTotal);
+						recordsToDisplay = aefis.util.formatNumberWithCommas(
+							tableInfo.recordsDisplay
+						);
+						var display =
+							'<span class="aefis-table-count-container ">&nbsp;|&nbsp;' +
+							recordsToDisplay +
+							" records</span>";
+						var $container = $("#" + tableId)
+							.parents()
+							.find(".aefis-table-count-container")
+							.first();
+
+						if ($container.length) {
+							$container.html("&nbsp;|&nbsp;" + recordsToDisplay + " records");
+						} else {
+							$("#" + tableId)
+								.parents()
+								.find(".aefis-data-table--title-text")
+								.first()
+								.append(display);
+						}
+					} else {
+						$("#" + tableId)
+							.parents()
+							.find(".aefis-table-count-container")
+							.first()
+							.remove();
+					}
+
+					if (rowGrouping) {
+						var api = this.api();
+						var rows = api.rows({ page: "current" }).nodes();
+						var last = null;
+
+						api.column(0, { page: "current" })
+							.data()
+							.each(function (group, i) {
+								if (last !== group) {
+									$(rows)
+										.eq(i)
+										.before(
+											'<tr class="group"><td colspan="5">' +
+												group +
+												"</td></tr>"
+										);
+
+									last = group;
+								}
+							});
+					}
+				}
+
+				if (defaultRecordDisplay == maxResultsToDisplay) {
+					$(".aefis-data-table-bottom").hide();
+				}
+
+				if (addRowNumbers) {
+					var rowCount = 0;
+					var $tableHeaderRow = $table.find("thead tr");
+					if (!$tableHeaderRow.find("th:first").hasClass("aefis-table-row-count")) {
+						$tableHeaderRow.prepend('<th class="aefis-table-row-count"></th>');
+					}
+					$table.find("tbody tr").each(function () {
+						var $row = $(this);
+						var isEmpty = $row.find("td:first").attr("colspan");
+						if ($row.find("td:first").hasClass("aefis-table-row-count")) {
+							$row.find("td:first").remove();
+						}
+						if (!isEmpty) {
+							rowCount++;
+							$row.prepend(
+								'<td class="aefis-table-row-count"><span class="label">' +
+									rowCount +
+									"</label></td>"
+							);
+						} else {
+							$tableHeaderRow.find("th:first").remove();
+						}
+					});
+				}
+				$("#" + tableId + "tbody").on("click", "tr.group", function () {
+					var currentOrder = table.order()[0];
+					if (currentOrder[0] === 0 && currentOrder[1] === "asc") {
+						table.order([0, "desc"]).draw();
+					} else {
+						table.order([0, "asc"]).draw();
+					}
+				});
+
+				setTimeout(function () {
+					$(document).trigger("pagecomplete");
+				}, 3000);
+			},
+			preDrawCallback: function (settings) {
+				$("#" + tableId + "_wrapper")
+					.children("div.row")
+					.removeClass("row")
+					.addClass("row-fluid"); // layout hack
+				$(".dataTables_filter input").attr("placeholder", "Search");
+				$(".dataTables_filter input").attr("aria-label", "search");
+				$(".dataTables_filter input").attr("tabindex", "0");
+				if (customTitle) {
+					$("#" + tableId + "_wrapper .aefis-data-table-header").html("");
+					$("#" + tableId + "_wrapper .aefis-data-table-header").html(customTitle);
+				}
+				var hasProgress = $("#" + tableId).find("#aefis-data-table-load--progress").length;
+				if (!hasProgress) {
+					var loadingBarHtml =
+						'<div id="aefis-data-table-load--progress" class="mdl-progress mdl-js-progress mdl-progress__indeterminate aefis-background-color--accent"></div>';
+					$("#" + tableId)
+						.find("thead")
+						.append(loadingBarHtml);
+				}
+			}
+		};
+
+		if (url) {
+			if (rowTemplateId) {
+				var rowTemplateSource = $("#" + rowTemplateId).html();
+				var rowTemplate = Handlebars.compile(rowTemplateSource);
+			}
+			options["lengthMenu"] = [
+				[15, 25, 50, 100],
+				[15, 25, 50, 100]
+			];
+			options["columns"] = columns;
+			options["createdRow"] = function (row, data, dataIndex) {
+				$(row).html(rowTemplate({ row: data }));
+			};
+			options["ajax"] = function (data, callback, settings) {
+				// modify for AEFIS standard list params
+				function createColumnOrderString(orderArray, columnsArray) {
+					var sortOrder = [];
+					// loop through if multiple sort cols
+					for (var h = 0; h < orderArray.length; h++) {
+						var orderColIndex = orderArray[h]["column"];
+						var orderColDirection = orderArray[h]["dir"];
+						// format the column for sort
+						var colNameArray = columnsArray[orderColIndex]["name"].split(",");
+						for (var i = 0; i < colNameArray.length; i++) {
+							var parsedColNameArray = colNameArray[i].split(".");
+							var colName =
+								parsedColNameArray.length > 1
+									? parsedColNameArray[0].toLowerCase() +
+									  "." +
+									  parsedColNameArray
+											.slice(1, parsedColNameArray.length)
+											.join(".")
+									: colNameArray[i];
+							if (colName != "") {
+								sortOrder[h + i] = colName + ":" + orderColDirection;
+							}
+						}
+					}
+					return aefis.util.cleanArray(sortOrder);
+				}
+				if (data.order) {
+					// returns array
+					var sortOrder = createColumnOrderString(data.order, data.columns);
+					data["sortorder"] = JSON.stringify(sortOrder);
+					delete data["order"];
+				}
+				if (data.search) {
+					if (data.search.value) {
+						data["keywords"] = '"' + data.search.value + '"';
+						// ** NOTE: The above line was removed as it breaks keyword search. I'm sure it was there for a reason but after discussion we were not sure.
+						data["keywords"] = data.search.value;
+					}
+					delete data["search"];
+				}
+				if (data.length > 0) {
+					data["maxresults"] = data.length;
+					delete data["length"];
+				}
+				if (data && data.length == 0) {
+					$("#" + tableId + " thead th").addClass("no-sort");
+				}
+				delete data["columns"];
+
+				if (datatableAjaxRequest.hasOwnProperty(tableId)) {
+					datatableAjaxRequest[tableId].abort();
+				}
+
+				datatableAjaxRequest[tableId] = new aefis.ApiWrapper().call(
+					encodeURI(url) + urlParameters,
+					{
+						returnTopLevelData: true,
+						data: data,
+						type: "GET",
+						beforeSend: function () {
+							var numberOfColumns = columns.length;
+							var numberOfRows = $("#" + tableId + " tbody tr").length;
+							aefis.ui.initializeAjaxDisabled();
+							aefis.ui.loadingIndicator(
+								"#" + tableId + "_processing",
+								dataLoadingMessage
+							);
+							$(".aefis-data-table-export-options--button")
+								.addClass("disabled")
+								.attr("disabled", "disabled");
+
+							//move this to a function when converted to plugin
+							if (numberOfRows == 0) {
+								var emptyRow =
+									'<tr><td colspan="' +
+									numberOfColumns +
+									'"><div class="aefis-datatables-empty-loading-row"></div></td></tr>';
+								$("#" + tableId + " tbody").append(emptyRow);
+							}
+							$("#" + tableId)
+								.find("#aefis-data-table-load--progress")
+								.fadeIn();
+						},
+						onComplete: function () {
+							aefis.ui.initializeAjaxEnable();
+							$(window).trigger("datatableLoaded");
+							$("#" + tableId + "_processing").trigger("AefisLoadingIndicator:hide");
+							$(".aefis-data-table-export-options--button")
+								.removeClass("disabled")
+								.removeAttr("disabled");
+
+							if (refreshSelector) {
+								$(refreshSelector).trigger("done");
+								if (autoLoaded) {
+									$(refreshSelector).trigger("datatableLoaded", "autoLoaded");
+								} else {
+									$(refreshSelector).trigger("datatableLoaded");
+								}
+							}
+							$("#" + tableId)
+								.find("#aefis-data-table-load--progress")
+								.fadeOut();
+							var $lastButton = $("#" + tableId)
+								.find(".aefis-manager-action--button")
+								.last();
+							$lastButton.addClass("dropup");
+						},
+						onError: function () {
+							$("#" + tableId + "_processing").trigger("AefisLoadingIndicator:hide");
+							$("#" + tableId)
+								.find("#aefis-data-table-load--progress")
+								.fadeOut();
+						},
+						onSuccess: function (data) {
+							// fix any case issue
+							if (data.hasOwnProperty("DATA") && !data.hasOwnProperty("data")) {
+								data["data"] = data["DATA"];
+								delete data["DATA"];
+							}
+							//$('#' + tableId + '_processing').on('AefisLoadingIndicator:hidden', function() {
+
+							// })
+							callback(data);
+						}
+					}
+				);
+			};
+		} else {
+			options["lengthMenu"] = [
+				[10, 15, 25, 50, 100, -1],
+				[10, 15, 25, 50, 100, "All"]
+			];
+		}
+
+		if (defaultKeywords) {
+			options["search"] = { search: defaultKeywords };
+		}
+
+		if (url) {
+			$("#" + tableId).on("processing.dt", function (e, settings, processing) {
+				$("#" + tableId + "_processing").html("");
+				// adapt for standard AEFIS loading dialog
+				if (processing) {
+					$("#" + tableId + "_processing").html("");
+					//$('#' + tableId + ' tbody').animate({ opacity: 0.3 });
+					//aefis.ui.loadingShow('#' + tableId + '_processing', 'Loading Data', 'quick',undefined,undefined,undefined,undefined,true);
+				} else {
+					// $('#' + tableId + ' tbody').animate({ opacity: 1.0 });
+					// aefis.ui.loadingHide('#' + tableId + '_processing');
+				}
+			});
+			// search delay here instead of the 'searchDelay' option as it is only a throttle
+			$("div.dataTables_filter input").off("keyup.DT input.DT");
+			var searchDelay = null;
+
+			$("div.dataTables_filter input").on("keyup", function () {
+				var search = $("div.dataTables_filter input").val();
+				clearTimeout(searchDelay);
+				searchDelay = setTimeout(function () {
+					if (search != null) {
+						$oTable.search(search).draw();
+					}
+				}, 2000);
+			});
+		}
+		// init
+		if (refreshAtFirstPage) {
+			// $oTable.page(0).draw();
+			options["stateLoadParams"] = function (settings, data) {
+				data.start = 0;
+			};
+		}
+		var $oTable = $("#" + tableId).DataTable(options);
+
+		if (url) {
+			$("div.dataTables_filter input").off("keyup.DT input.DT");
+			var searchDelay = null;
+			$("div.dataTables_filter input").on("keyup", function () {
+				var search = $("div.dataTables_filter input").val();
+				clearTimeout(searchDelay);
+				searchDelay = setTimeout(function () {
+					if (search != null) {
+						$oTable.search(search).draw();
+					}
+				}, 2000);
+			});
+		}
+	};
+
+	this.showDataTable = function (object, providedUrl, additionalUrlParams) {
+		var $obj = $(object);
+		var objID = $obj.attr("id");
+		var url = $obj.attr("data-aefis-datasource");
+		var templateid = $obj.attr("data-aefis-template-id");
+		var tableid = $obj.attr("data-aefis-table-id");
+		var rowGrouping = $obj.attr("data-aefis-table-row-grouping");
+		var rowGroupingColumnIndex = $obj.attr("data-aefis-table-row-grouping-column-index");
+		var defaultRecords = $obj.attr("data-aefis-table-default-records");
+		var showAllRecords = $obj.attr("data-aefis-table-show-allRecords");
+		var customHeader = $("#" + $obj.attr("data-aefis-custom-header")).html();
+		var customHeaderWithSearch = $(
+			"#" + $obj.attr("data-aefis-custom-header-with-search")
+		).html();
+		var customTitle = $obj.attr("data-aefis-table-title");
+		var noHeader = $obj.attr("data-aefis-hide-header");
+		var simpleFooter = $obj.attr("data-aefis-simple-footer");
+		var noFooter = $obj.attr("data-aefis-hide-footer");
+		var source = $("#" + templateid).html();
+		var template = Handlebars.compile(source);
+		var defaultRecordDisplay = 15;
+		var defaultSDOM;
+		var defaultTableHeader = "<'row-fluid'<'span6'T><'span6'f>r>";
+		var customTableHeader = "<'row-fluid aefis-data-table-header'>";
+		var defaultTableFooter =
+			"<'row-fluid aefis-data-table-bottom'<'span4'l><'span4 text-align-center'i><'span4'p>>";
+		var customTableFooter = "<'row-fluid aefis-data-table-bottom'<'span6'i><'span6'p>>";
+		var minHeight;
+		var refreshSelector = $obj.attr("data-refresh-selector");
+		var isFixedHeader = $obj.attr("data-aefis-fixed-header");
+		var isFixedColumn = $obj.attr("data-aefis-fixed-column");
+		var defaultSortColumn = $obj.attr("data-aefis-default-sort-column");
+		var defaultSort = $obj.attr("data-aefis-default-sort");
+		var scrollTableContent = $obj.attr("data-aefis-scroll-content");
+		var noHover = $obj.attr("data-aefis-nohover");
+		var bPaginate = true;
+		var returnFormat = aefis.ui.getCurrentReturnFormat();
+		var isStaticPage = aefis.app.isStaticPage();
+		var additionalData = $obj.attr("data-aefis-data-parameters");
+		var addRowNumbers = $obj.attr("data-aefis-show-row-numbers");
+		var makeResponsive = true;
+		//var secondaryGroupingColumnIndex = $obj.attr('data-aefis-table-row-grouping-secondary-grouping-column');
+
+		if (providedUrl) {
+			url = providedUrl;
+		}
+
+		if (additionalUrlParams) {
+			additionalData = additionalUrlParams;
+		}
+
+		var classes = "";
+
+		if (!noHover) {
+			classes = classes + " table-hover";
+		}
+
+		$("#" + objID).html(""); //clear table
+
+		if (defaultRecords) {
+			defaultRecordDisplay = defaultRecords;
+		}
+
+		if (!defaultSort) {
+			defaultSort = "desc";
+		}
+
+		if (showAllRecords) {
+			defaultRecordDisplay = "-1";
+			customTableFooter = "<'row-fluid aefis-data-table-bottom'<'span12 pull-left' i>>";
+		}
+		if (customHeader) {
+			defaultSDOM = customTableHeader + "t";
+		} else {
+			defaultSDOM = defaultTableHeader + "t";
+		}
+
+		if (customHeaderWithSearch) {
+			defaultSDOM = "<'row-fluid'<'span6 aefis-data-table-header' ><'span6'f>r>t";
+		}
+
+		if (customTitle) {
+			defaultSDOM =
+				"<'row-fluid'<'span6 aefis-table-title aefis-data-table-header' ><'span6'f>r>t";
+		}
+
+		if (noFooter == "true") {
+			customTableFooter = "";
+			defaultTableFooter = "";
+		}
+
+		if (noHeader) {
+			defaultSDOM = "t";
+		}
+
+		if (simpleFooter) {
+			defaultSDOM = defaultSDOM + customTableFooter;
+		} else {
+			defaultSDOM = defaultSDOM + defaultTableFooter;
+		}
+
+		if (isFixedColumn && isFixedColumn.toLowerCase() == "true") {
+			bPaginate = false;
+		}
+
+		if (isStaticPage) {
+			bPaginate = false;
+			defaultRecordDisplay = "-1";
+		}
+		new aefis.ApiWrapper().call(url, {
+			data: additionalData,
+			beforeSend: function () {
+				if (!isStaticPage) {
+					aefis.ui.loadingShow("#" + objID, "Loading Data", "quick");
+					aefis.ui.initializeAjaxDisabled();
+				}
+			},
+			onComplete: function () {
+				aefis.ui.initializeAjaxEnable();
+			},
+			onSuccess: function (data) {
+				function drawTable(data) {
+					$obj.html(template({ records: data }))
+						.promise()
+						.done(function () {
+							$("#" + tableid).addClass(
+								"aefis-data-table table " + classes + " aefisTableHeader"
+							);
+							if (
+								(data.length && data.length > 0) ||
+								($.isPlainObject(data) && !$.isEmptyObject(data))
+							) {
+								var options = {
+									iDisplayLength: defaultRecordDisplay,
+									sDom: defaultSDOM,
+									bScrollCollapse: true,
+									bPaginate: bPaginate,
+									responsive: makeResponsive,
+									oLanguage: {
+										sSearch: ""
+									},
+									fnDrawCallback: function (oSettings) {
+										// find a format possible icons and status
+										$(window).trigger("refreshDOMObjects");
+									},
+									aLengthMenu: [
+										[15, 25, 50, 100, -1],
+										[15, 25, 50, 100, "All"]
+									]
+								};
+
+								if (isFixedColumn && isFixedColumn.toLowerCase() == "true") {
+									options.sScrollX = "100%";
+									options.bScrollCollapse = true;
+									options.bPaginate = false;
+									options.aaSorting = [];
+									options.aoColumnDefs = [
+										{
+											bSortable: false,
+											aTargets: ["no-sort"]
+										}
+									];
+								}
+
+								options.aoColumnDefs = [
+									{
+										bSortable: false,
+										aTargets: ["no-sort"]
+									}
+								];
+
+								if (scrollTableContent) {
+									options.sScrollY = scrollTableContent;
+									options.bPaginate = false;
+								}
+
+								var oTable = $("#" + tableid).dataTable(options);
+								/* take care of window resize */
+								var update_size = function () {
+									$(oTable).css({ width: $(oTable).parent().width() });
+									oTable.fnAdjustColumnSizing();
+								};
+
+								oTable.on("draw.dt", function (e, o) {
+									$(window).trigger("datatableDrawn");
+								});
+
+								if (addRowNumbers) {
+									oTable.on("draw", function (e, o) {
+										var rowCount = 0;
+										var $tableHeaderRow = oTable.find("thead tr");
+										if (
+											!$tableHeaderRow
+												.find("th:first")
+												.hasClass("aefis-table-row-count")
+										) {
+											$tableHeaderRow.prepend(
+												'<th class="aefis-table-row-count"></th>'
+											);
+										}
+
+										oTable.find("tbody tr").each(function () {
+											var $row = $(this);
+											var isEmpty = $row.find("td:first").attr("colspan");
+											if (
+												$row
+													.find("td:first")
+													.hasClass("aefis-table-row-count")
+											) {
+												$row.find("td:first").remove();
+											}
+											if (!isEmpty) {
+												rowCount++;
+												$row.prepend(
+													'<td class="aefis-table-row-count"><span class="label">' +
+														rowCount +
+														"</label></td>"
+												);
+											} else {
+												$tableHeaderRow.find("th:first").remove();
+											}
+										});
+									});
+								}
+
+								$(window).resize(function () {
+									clearTimeout(window.refresh_size);
+									window.refresh_size = setTimeout(function () {
+										update_size();
+									}, 250);
+								});
+
+								$(".dataTables_filter input").attr("placeholder", "Search");
+								$(".dataTables_filter input").attr("aria-label", "search");
+								$(".dataTables_filter input").attr("tabindex", "0");
+								//$('.dataTables_filter input').addClass("search-query");
+
+								if (customHeader) {
+									$("#" + objID + " .aefis-data-table-header").html(customHeader);
+									$(window).trigger("refreshDOMObjects");
+								}
+
+								if (customHeaderWithSearch) {
+									$("#" + objID + " .aefis-data-table-header").html("");
+									$("#" + objID + " .aefis-data-table-header").html(
+										customHeaderWithSearch
+									);
+
+									$(window).trigger("refreshDOMObjects");
+								}
+
+								if (customTitle) {
+									$("#" + objID + " .aefis-data-table-header").html("");
+									$("#" + objID + " .aefis-data-table-header").html(customTitle);
+								}
+
+								if (data.length < defaultRecordDisplay) {
+									$("#" + objID + " .dataTables_paginate").addClass("hidden");
+								}
+
+								if (isStaticPage) {
+									$(".dataTables_filter").hide();
+								}
+
+								if (!isStaticPage) {
+									$obj.fadeIn("fast");
+								}
+
+								if (rowGrouping == "true") {
+									if (rowGroupingColumnIndex == "true") {
+										oTable.rowGrouping({
+											iGroupingColumnIndex: 1,
+											sGroupingColumnSortDirection: "asc",
+											iGroupingOrderByColumnIndex: 0
+										});
+									} else {
+										oTable.rowGrouping();
+									}
+								}
+
+								if (isFixedHeader && isFixedHeader.toLowerCase() == "true") {
+									new FixedHeader(oTable);
+								}
+
+								if (isFixedColumn && isFixedColumn.toLowerCase() == "true") {
+									new FixedColumns(oTable, { iLeftWidth: 50 });
+								}
+
+								if (defaultSortColumn) {
+									oTable.fnSort([[defaultSortColumn, defaultSort]]);
+								}
+
+								oTable.fnAdjustColumnSizing(); //resize columns for MSIE
+
+								if (refreshSelector) {
+									oTable.on("filter", function (e, o) {
+										oTable.on("draw", function (e, o) {
+											$(refreshSelector).trigger("datatableSearched", o);
+										});
+									});
+									$(refreshSelector).trigger("done");
+									$(refreshSelector).trigger("datatableLoaded");
+								}
+							} else {
+								if (customHeader) {
+									$obj.prepend(customHeader);
+									$(window).trigger("refreshDOMObjects");
+								}
+
+								$obj.fadeIn("fast");
+								$("#" + tableid + " tbody td").addClass("no-records-found");
+							}
+						});
+				}
+
+				if (!isStaticPage) {
+					$obj.fadeOut("fast")
+						.promise()
+						.done(function () {
+							drawTable(data);
+						});
+				} else {
+					drawTable(data);
+				}
+			}
+		});
+	};
+
+	/*this.processDatatableTotalsRow = function() {
+    	$('table.aefis-datatable-row-totals').each(function() {
+    		var previousRowId = '';
+    		$('tbody tr.aefis-datatable-total-row').each(function() {
+    			var $row = $(this);
+    			var rowId = $row.attr('data-aefis-total-row-id');
+    			if (rowId != previousRowId) {
+    				var $lastRow = $('tbody tr.aefis-datatable-total-row[data-aefis-total-row-id="'+rowId+'"]:last');
+    				var $clonedRow = $lastRow.clone();
+    				$clonedRow.addClass('clonedRow').addClass('aefis-totals-summary-row');
+    				$lastRow.after($clonedRow);
+    				$clonedRow.find('td:not(.aefis-datatable-total-cell)').html('').css('borderRight','none').css('borderLeft','none');
+    				$clonedRow.find('td[data-aefis-totals-title]').each(function(){
+    					var title = $(this).attr('data-aefis-totals-title');
+    					var titleHtml = '<span class="aefis-totals-summary-row-title">'+title+'</span>';
+    					$(this).addClass('aefis-totals-title-right-border');
+    					$(this).html(titleHtml);
+    				});
+    			};
+    			previousRowId = rowId;
+    		});
+
+    		//clear values in total row
+    		$('tbody tr.aefis-datatable-total-row.clonedRow td.aefis-datatable-total-cell').removeAttr('data-aefis-total').find('span.aefis-cell-total-value').html('0');
+
+    		$('tbody tr.aefis-datatable-total-row:not(.clonedRow)').each(function() {
+    			var $row = $(this);
+    			var rowId = $row.attr('data-aefis-total-row-id');
+    			$row.find('td.aefis-datatable-total-cell').each(function() {
+    				var $cell = $(this);
+    				var cellValue = $cell.find('span.aefis-cell-total-value').html();
+    				var cellGroup = $cell.attr('data-aefis-total-group');
+    				var $currentTotalCell = $('tbody tr.aefis-datatable-total-row[data-aefis-total-row-id="'+rowId+'"].clonedRow').find('td.aefis-datatable-total-cell[data-aefis-total-group="'+cellGroup+'"]');
+    				var currentTotalValue = $currentTotalCell.find('span.aefis-cell-total-value').html();
+    				if (!$.isNumeric(cellValue)) {
+    					cellValue = 0;
+    				};
+    				var newTotalValue = Number(currentTotalValue) + Number(cellValue);
+    				$currentTotalCell.find('span.aefis-cell-total-value').html(newTotalValue);
+    			});
+    		});
+    	});
+    }*/
+
+	this.processDatatableTotalsRow = function () {
+		if ($("table.aefis-datatable-row-totals").length == 0) {
+			return;
+		}
+
+		function ProcessArray(data, handler, callback) {
+			var maxtime = 100; // chunk processing time
+			var delay = 20; // delay between processes
+			var queue = data.concat(); // clone original array
+			setTimeout(function () {
+				var endtime = +new Date() + maxtime;
+				do {
+					handler(queue.shift());
+				} while (queue.length > 0 && endtime > +new Date());
+
+				if (queue.length > 0) {
+					setTimeout(arguments.callee, delay);
+				} else {
+					if (callback) callback();
+				}
+			}, delay);
+		}
+
+		var $totalTableRow = $("table.aefis-datatable-row-totals");
+		var tableRowLength = $totalTableRow.length;
+		var data = [];
+
+		//aefis.ui.loadingShow('#aefis-report','Processing Data Totals','quick');
+
+		for (var zz = 0; zz < tableRowLength; zz++) {
+			data[zz] = $totalTableRow[zz];
+			ProcessArray(data, processRow, callback);
+		}
+
+		function callback() {
+			$(document).trigger("DatatableTotalsCompleted");
+			$(".clonedRow").show();
+			//aefis.ui.loadingHide('#aefis-report');
+		}
+
+		function processRow(dataItem) {
+			var tableid = $(dataItem).attr("id");
+			var previousRowId = "";
+			var $lastTableRow = $("#" + tableid + " tr.aefis-datatable-total-row:last").addClass(
+				"last-table-row"
+			);
+			//var numberOfColumns = $('#'+tableid+' tr.aefis-datatable-total-row:first td').length;
+			var columnArray = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+			var prevArray = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+			var $tableRow = $("#" + tableid + " tr.aefis-datatable-total-row");
+			var tableRowLength = $tableRow.length;
+			for (var i = 0; i < tableRowLength; i++) {
+				var $row = $($tableRow[i]);
+				var rowId = $row.attr("data-aefis-total-row-id");
+				var columnCount = 0;
+				if (
+					(rowId != previousRowId && previousRowId != "") ||
+					$row.hasClass("last-table-row")
+				) {
+					prevArray = columnArray;
+					columnArray = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+				}
+				var $tableCell = $row.find("td.aefis-datatable-total-cell");
+				var tableCellLength = $tableCell.length;
+				for (var z = 0; z < tableCellLength; z++) {
+					var cellValue = $($tableCell[z])
+						.find("span.aefis-cell-total-value")
+						.html()
+						.trim();
+					var currentValue = parseFloat(columnArray[columnCount]).toFixed(1);
+
+					if (isNaN(cellValue) || cellValue.length == 0) {
+						cellValue = 0;
+					} else {
+						cellValue = parseFloat(cellValue).toFixed(1);
+					}
+
+					columnArray[columnCount] = parseFloat(
+						(parseFloat(currentValue) + parseFloat(cellValue)).toFixed(1)
+					);
+					columnCount++;
+				}
+
+				if (
+					(rowId != previousRowId && previousRowId != "") ||
+					$row.hasClass("last-table-row")
+				) {
+					var $lastRow = $(
+						"#" +
+							tableid +
+							' tr.aefis-datatable-total-row[data-aefis-total-row-id="' +
+							previousRowId +
+							'"]:last'
+					);
+					//if ($row.hasClass('last-table-row')) {
+					//$lastRow = $('#'+tableid+' tr.aefis-datatable-total-row:last');
+					//}
+					var $clonedRow = $lastRow.clone();
+					$clonedRow.addClass("clonedRow").addClass("aefis-totals-summary-row");
+					$lastRow.after($clonedRow);
+					$clonedRow
+						.find("td:not(.aefis-datatable-total-cell)")
+						.html("")
+						.css("borderRight", "none")
+						.css("borderLeft", "none");
+
+					var $clonedRowTitle = $clonedRow.find("td[data-aefis-totals-title]");
+					var clonedRowTitleLength = $clonedRowTitle.length;
+					for (var zzz = 0; zzz < clonedRowTitleLength; zzz++) {
+						var $cloneTitle = $($clonedRowTitle[zzz]);
+						var title = $cloneTitle.attr("data-aefis-totals-title");
+						var titleHtml =
+							'<span class="aefis-totals-summary-row-title">' + title + "</span>";
+						$cloneTitle.addClass("aefis-totals-title-right-border");
+						$cloneTitle.html(titleHtml);
+					}
+					var rowCount = 0;
+
+					var $cloneCounts = $clonedRow.find("td.aefis-datatable-total-cell");
+					var cloneCountsLength = $cloneCounts.length;
+					for (var z = 0; z < cloneCountsLength; z++) {
+						$($cloneCounts[z]).html(prevArray[rowCount]);
+						rowCount++;
+					}
+				}
+				previousRowId = rowId;
+			}
+		}
+	};
+
+	this.getDataTemplate = function (item) {
+		// This returns the data template attribute of creates a template for the select controls.
+		var template = $(item).attr("data-aefis-template");
+
+		if (template) {
+			return template;
+		}
+
+		var idField = $(item).attr("data-aefis-id-field");
+		var nameTemplate = $(item).attr("data-aefis-name-template");
+		var nameField = $(item).attr("data-aefis-name-field");
+		var notFound = $(item).attr("data-aefis-notfound");
+
+		if (nameField) {
+			nameField = "{{" + nameField + "}}";
+		} else {
+			nameField = nameTemplate;
+		}
+		if (!(idField && nameField)) {
+			aefis.app.error("Invalid screen initialization.");
+			return "";
+		}
+
+		var template =
+			'{{#each records}}\
+							<option value="{{' +
+			idField +
+			'}}">' +
+			nameField +
+			'</option>\
+						{{else}}\
+							<option value="0">' +
+			notFound +
+			"</option>\
+						{{/each}}";
+		if (!$(item).attr("multiple") && $(item).attr("title")) {
+			var title = $(item).attr("title");
+
+			template =
+				'<option disabled="disabled" selected="selected" value="">' +
+				title +
+				"</option>" +
+				template;
+		}
+		return template;
+	};
+
+	//This will get childrens which will be ubdated after $item change
+	function getChildrenToBeUpdated($item) {
+		if (
+			!$item.attr("data-aefis-update-controls") ||
+			$item.attr("data-aefis-update-controls").indexOf("#") < 0
+		) {
+			return [];
+		}
+		var controls = $item.attr("data-aefis-update-controls").split(",");
+		if (controls) {
+			for (var i = 0; i < controls.length; i++) {
+				var control = controls[i];
+				if (control.length > 0) {
+					controls = controls.concat(getChildrenToBeUpdated($(control)));
+				}
+			}
+		}
+		return controls;
+	}
+
+	function calculateParameters(parameters = {}) {
+		var data = {
+			dataType: "GET",
+			contentType: "application/json; charset=utf-8"
+		};
+
+		var totalSize = 0;
+		for (const key in parameters) {
+			if (!isNaN(parameters[key].length)) totalSize += parameters[key].length;
+
+			if (totalSize > 2000) {
+				data["dataType"] = "POST";
+				data["contentType"] = "application/x-www-form-urlencoded; charset=utf-8";
+				break;
+			}
+		}
+
+		return data;
+	}
+
+	// called with search field objects to reload / update. returns false.
+	function updateSearchFilters($itemList, resetValues) {
+		function setDefaultValue($item) {
+			var value = $item.attr("data-aefis-defaultvalue");
+			if (!value) {
+				return;
+			}
+
+			if (value.split) {
+				setControlValue($item, value.split(","));
+			} else {
+				setControlValue($item, value);
+			}
+		}
+		if (aefis.debug) {
+			aefis.app.log("updateSearchFilters $itemlist:");
+			aefis.app.log($itemList);
+		}
+		// Find the ones that will be automatically updated so that they don't get updated twice.
+		var autoUpdateList = $($itemList)
+			.map(function () {
+				return $(this).attr("data-aefis-update-controls");
+			})
+			.get()
+			.join(",");
+
+		$($itemList).each(function () {
+			var load = true;
+			if (autoUpdateList.indexOf("#" + $(this).attr("id")) < 0) {
+				var updateItemScope = this;
+				var url = $(this).attr("data-aefis-datasource");
+				var paramSelectors = $(this).attr("data-aefis-parameters");
+				var paramsForItem = {};
+				var cancelRequest = true;
+
+				if ($(this).attr("data-aefis-no-cancel")) {
+					cancelRequest = false;
+				}
+
+				if (!$.isEmptyObject(resetValues)) {
+					var recursiveAutoUpdateList = getChildrenToBeUpdated($(updateItemScope));
+					for (var field in resetValues.parameters) {
+						if (
+							field != $(this).attr("id") &&
+							(recursiveAutoUpdateList == null ||
+								recursiveAutoUpdateList.length == 0 ||
+								recursiveAutoUpdateList.indexOf("#" + field) < 0)
+						) {
+							paramsForItem[field] = resetValues.parameters[field];
+						}
+					}
+				}
+				// If initial values are passed use them to get the control values.
+				var params = !$.isEmptyObject(paramsForItem)
+					? paramsForItem
+					: getParameters($(paramSelectors));
+
+				//We need to calculate the length of parameters to use either POST or GET method.
+				var paramObject = calculateParameters(params);
+				var dataType = paramObject["dataType"];
+				var contentType = paramObject["contentType"];
+
+				var requireAllParams = $(this).attr("data-aefis-require-all-parameters");
+				if (requireAllParams && paramSelectors) {
+					var paramSelectorCount = paramSelectors.split(",").length;
+					if (params && !$.isEmptyObject(params)) {
+						var paramsLength = Object.keys($(params)[0]).length;
+						if (paramsLength != paramSelectorCount) {
+							load = false;
+						}
+					} else {
+						load = false;
+					}
+				}
+
+				$(updateItemScope).prop("disabled", true);
+				$(updateItemScope).html("");
+				if ($(updateItemScope).hasClass("selectpicker")) {
+					$(updateItemScope).selectpicker("refresh");
+				}
+				if ($(updateItemScope).hasClass("tokeninput")) {
+					$(updateItemScope).tokenInput("clear");
+					$("div.token-input-dropdown-facebook").hide();
+					if (
+						resetValues &&
+						resetValues.parameters &&
+						$(updateItemScope).attr("name") in resetValues.parameters
+					) {
+						url +=
+							"&" +
+							$(updateItemScope).attr("name") +
+							"=" +
+							resetValues.parameters[$(updateItemScope).attr("name")];
+					}
+				}
+
+				if (aefis.debug) {
+					aefis.app.log("calling get for " + this.id + " with parameters:");
+					aefis.app.log(params);
+				}
+				if (load) {
+					var containerId = $(updateItemScope).attr("id");
+					if (selectpickerAjaxRequest.hasOwnProperty(containerId) && cancelRequest) {
+						selectpickerAjaxRequest[containerId].abort();
+					}
+
+					selectpickerAjaxRequest[containerId] = new aefis.ApiWrapper().call(url, {
+						data: params,
+						type: dataType,
+						contentType: contentType,
+						onComplete: function () {
+							delete selectpickerAjaxRequest[containerId];
+							if (Object.keys(selectpickerAjaxRequest).length == 0) {
+								$("#reportFormContainer").trigger("loadFinished");
+							} else {
+								$("#reportFormContainer").trigger("loadContinue");
+							}
+						},
+						onSuccess: function (data) {
+							if ($(updateItemScope).is("select")) {
+								var source = that.getDataTemplate(updateItemScope);
+								if (source) {
+									if (aefis.debug) {
+										try {
+											var template = Handlebars.compile(source);
+										} catch (e) {
+											console.error(
+												"Error calling Handlebars.compile() on this source from the data-aefis-template attribute: "
+											);
+											aefis.app.log(source);
+											aefis.app.log("from this object:");
+											aefis.app.log(updateItemScope);
+											aefis.app.log("error:");
+											aefis.app.log(e);
+										}
+									} else {
+										var template = Handlebars.compile(source);
+									}
+									$(updateItemScope).html(template({ records: data }));
+								} else {
+									if (aefis.debug) {
+										console.warn(
+											"Warning: there is no data-aefis-template attribute for this object so no template was applied:"
+										);
+										console.warn(this);
+									}
+								}
+								$(updateItemScope).trigger("loaded");
+							}
+							setDefaultValue($(updateItemScope));
+
+							if ($(updateItemScope).hasClass("tokeninput")) {
+								$(updateItemScope).trigger("change");
+							}
+
+							$(updateItemScope).prop("disabled", false);
+							if ($(updateItemScope).is("select")) {
+								if ($(updateItemScope).hasClass("selectpicker")) {
+									$(updateItemScope).selectpicker("refresh");
+									$(updateItemScope).selectpicker(
+										"val",
+										$(updateItemScope).val()
+									);
+									aefis.ui.setSelectPickerDefaultValue($(updateItemScope));
+									aefis.ui.setSelectPickerNullOption($(updateItemScope));
+								}
+							}
+						}
+					});
+				}
+			}
+		});
+		return false;
+	}
+	var pD = 0;
+
+	function setControlValue($item, value, pageData) {
+		if ($item.hasClass("tokeninput")) {
+			$item.tokenInput("clear");
+
+			if (pageData) {
+				pD = pageData;
+			} else {
+				pageData = pD;
+			}
+
+			if (value) {
+				if ($.isArray(value)) {
+					var values = value;
+				} else {
+					var values = value.split(",");
+				}
+
+				$.each(values, function (i, val) {
+					if (pageData) {
+						if (pageData.viewdata[$item.attr("id") + "_tokeninput"]) {
+							$item.tokenInput("add", {
+								id: val,
+								name: pageData.viewdata[$item.attr("id") + "_tokeninput"][i]
+							});
+						}
+					} else {
+						if (pageData.viewdata[$item.attr("id") + "_tokeninput"]) {
+							$item.tokenInput("add", {
+								id: val,
+								name: pageData.viewdata[$item.attr("id") + "_tokeninput"][i]
+							});
+						}
+					}
+				});
+			}
+		} else if ($item.attr("type") === "checkbox") {
+			$item.attr("checked", value);
+		} else if ($item.hasClass("btngroupwithall")) {
+			$item.buttonGroup("select", value);
+		} else if ($item.hasClass("aefis-button-group")) {
+			$item.buttonGroup("select", value);
+			if ($item.hasClass("data-aefis-update-default")) {
+				$item.val(value);
+			}
+		} else {
+			if ($item.hasClass("selectpicker") && value.split) {
+				$item.val(value.split(","));
+			} else {
+				if ($item.attr("type") == "hidden") {
+					$item.val(value).trigger("change");
+				} else {
+					$item.val(value);
+				}
+			}
+		}
+		if ($item.hasClass("selectpicker")) {
+			$item.selectpicker("refresh");
+		}
+	}
+
+	function initializeFilterDefaults($form) {
+		var pageSavedData = {};
+
+		function initDefaults() {
+			for (var curId in pageSavedData.parameters) {
+				if (pageSavedData.parameters.hasOwnProperty(curId)) {
+					// Below line is put because of buttons in reports. Without click, report parameters doesn't load from server correctly
+					if (curId == "levelid" || curId == "levelId") {
+						$('#'+curId).find('button[val="' + pageSavedData.parameters[curId] + '"]').click();						
+					}
+					$form
+						.find("#" + curId)
+						.attr("data-aefis-defaultvalue", pageSavedData.parameters[curId])
+						.one("change", function () {
+							// $(this).removeAttr('data-aefis-defaultvalue');
+						});
+				}
+			}
+
+			// regular old selects
+			$form.find("select:not([data-aefis-datasource])").each(function () {
+				var value = $(this).attr("data-aefis-defaultvalue");
+				if (!value) {
+					return;
+				}
+				setControlValue($(this), value, pageSavedData);
+			});
+
+			// Set the default values
+			$form.find(":not(select)[data-aefis-defaultvalue]").each(function () {
+				setControlValue($(this), $(this).attr("data-aefis-defaultvalue"), pageSavedData);
+			});
+
+			// Update the filters and initialize
+			updateSearchFilters($form.find("select[data-aefis-datasource]"), pageSavedData);
+
+			if ($form.hasClass("report-form")) {
+				$form.find("[data-aefis-update-controls]").change(function () {
+					var toUpdate = $(this).attr("data-aefis-update-controls");
+
+					if (aefis.debug) {
+						aefis.app.log("Selection changed for " + $(this).attr("id"));
+					}
+					var serverData = pageSavedData;
+					var isInitiliazed = $(this).attr("data-aefis-is-initiliazed");
+					if (!isInitiliazed) {
+						$(this).attr("data-aefis-is-initiliazed", true);
+					} else {
+						serverData = {};
+					}
+					updateSearchFilters(toUpdate, serverData);
+				});
+			}
+
+			// Initialize the parameters display after the controls are updated.
+			setTimeout(function () {
+				reportParameterDisplay($form);
+			}, 1000);
+		}
+
+		try {
+			var stateData = aefis.app.getState();
+
+			if (stateData) {
+				pageSavedData = stateData;
+				initDefaults();
+				if (pageSavedData.submit) {
+					window.setTimeout(function () {
+						if (aefis.callCounter && aefis.callCounter > 0) {
+							$(window).one("callsComplete", function () {
+								// To prevent submission of Assessment Graph Report but to be able use the selectpicker attributes OY.
+								if (!$form.hasClass("chart-form")) {
+									$form.submit();
+								}
+							});
+						} else {
+							// To prevent submission of Assessment Graph Report but to be able use the selectpicker attributes OY.
+							if (!$form.hasClass("chart-form")) {
+								$form.submit();
+							}
+						}
+					}, 100);
+				}
+			} else if ($form.hasClass("report-form")) {
+				aefis.app.loadStateFromServer(function (data) {
+					if (data && data.length) {
+						pageSavedData = eval("(" + data + ")");
+					}
+					initDefaults();
+				});
+			} else {
+				initDefaults();
+			}
+		} catch (e) {
+			aefis.app.log("Error loading parameters: ", e);
+			initDefaults();
+		}
+	}
+
+	// gets value parameters from search fields. returns an object with properties.
+	function getParameters($itemList) {
+		// get param object, convert vals to string, won't include undefined choices / val
+		if (aefis.debug) {
+			aefis.app.log("getParameters called with itemlist:");
+			aefis.app.log($itemList);
+		}
+		var parameters = {};
+		var curId, curVal, curValType, tokenValues;
+		var isInstitutionLevel = false;
+
+		$($itemList).each(function () {
+			var altParam = $(this).attr("data-aefis-alternate-parameter-id");
+			curId = $(this).attr("id");
+			if (altParam) {
+				curId = altParam;
+			}
+			
+			if (curId === "levelid" || curId === "levelId") {
+				var levelId = $(this).find("button.active").attr("val");
+				$(this).find("button.active").click();
+
+				if (levelId == -1 || levelId == "-1") isInstitutionLevel = true;
+			}
+			if ($(this))
+				if ($(this).hasClass("tokeninput")) {
+					// if tokeninput, build value, otherwise just get the val()
+					curVal = "";
+					tokenValues = $(this).tokenInput("get");
+					for (var i = 0; i < tokenValues.length; i++) {
+						curVal += (i ? "," : "") + tokenValues[i].id;
+					}
+				} else if ($(this).attr("type") === "checkbox") {
+					/*else if ($(this).attr('data-toggle') == 'buttons-radio' && $(this).hasClass('btn-group')) {
+				curVal = $(this).find('.btn').hasClass('.active');
+			} */
+					curVal = $(this).is(":checked");
+				} else if ($(this).attr("type") === "radio") {
+					curVal = $(this).is(":active");
+				} else if ($(this).hasClass("selectpicker")) {
+					curVal = $(this).val();
+					if (curVal === null) {
+						var id = $(this).attr("id");
+						if (
+							!isInstitutionLevel &&
+							(id === "deptcodeid" ||
+								id === "departmentCodeid" ||
+								id === "departmentid" ||
+								id === "collegeid")
+						) {
+							// Get all the option values. This was added because of a permission issue where sending empty parameter givess access to all objects.
+							var opts = $(this)[0].options;
+							var curVal = $.map(opts, function (elem) {
+								return elem.value || elem.text;
+							});
+						}
+					}
+				} else {
+					curVal = $(this).val();
+				}
+			curValType = jQuery.type(curVal);
+			if (curVal) {
+				if (curValType === "number") {
+					parameters[curId] = String(curVal);
+				} else if (curValType === "checkbox") {
+					if (this.checked) {
+						parameters[curId] = this.value;
+					}
+				} else if (curValType === "radio") {
+					if (this.checked) {
+						parameters[curId] = this.value;
+					}
+				} else if (curValType === "array") {
+					parameters[curId] = curVal.join(",");
+				} else {
+					parameters[curId] = curVal;
+				}
+			}
+		});
+		return parameters;
+	}
+
+	function reportParameterDisplay($parametersContainer) {
+		// When the form fields are changed update the text
+		$parametersContainer
+			.find(":input:not(:button), div.btn-group")
+			.change(updateParameterDisplay)
+			.each(updateParameterDisplay);
+	}
+
+	this.initialize = function ($rootContainer) {
+		if (aefis.app.isStaticPage()) {
+			var returnFormat = aefis.ui.getCurrentReturnFormat();
+			if (returnFormat != "pdf" && returnFormat != "print") {
+				$rootContainer
+					.find(".report-form select[data-aefis-update-controls]")
+					.attr("data-aefis-update-controls", "");
+			}
+		}
+		// get data, set defaults and update report parameters
+		if ($rootContainer.find(".report-form, .editor-form").length) {
+			$rootContainer.find(".report-form, .editor-form").each(function () {
+				initializeFilterDefaults($(this));
+			});
+		}
+		// add change event to search fields that update other controls
+		$rootContainer
+			.find(".editor-form")
+			.find("[data-aefis-update-controls]")
+			.change(function () {
+				var toUpdate = $(this).attr("data-aefis-update-controls");
+
+				if (aefis.debug) {
+					aefis.app.log("Selection changed for " + $(this).attr("id"));
+				}
+				updateSearchFilters(toUpdate);
+			});
+		$rootContainer.find("form[data-aefis-ajax]").each(function () {
+			that.ajaxifyFormSubmissionAsJson($(this), null, function (response, jqXHR) {
+				var message = $(this).attr("data-aefis-success");
+				var $modal = $(this).parents(".aefis-modal-dialog").first();
+				var trigger = $(this).attr("data-aefis-refresh");
+				var contentLocation = jqXHR.getResponseHeader("Content-Location");
+
+				var response = {
+					result: "success",
+					value: contentLocation
+				};
+
+				if ($modal.length) {
+					$modal.on("hidden", function (e) {
+						if (message && message.length) {
+							aefis.ui.userSuccess(message, true, "Success");
+						}
+					});
+					$modal.modal("hide");
+					if ($(".aefis-modal-dialog").length == 0) {
+						$("body").removeClass("modal-open");
+						$(".modal-backdrop").remove();
+						$(".modal-scrollable").remove();
+					}
+				} else {
+					if (message && message.length && message != "") {
+						aefis.ui.userSuccess(message, true, "Success");
+					}
+				}
+
+				if (trigger) {
+					$(trigger).trigger("refresh", response);
+				}
+
+				return false;
+			});
+		});
+
+		$rootContainer.find(".reset-parameters").click(function () {
+			var $form = $(this).parents("form");
+
+			$form.find(":input:not(:button), div.btn-group").each(function () {
+				$(this).removeAttr("data-aefis-defaultvalue");
+				setControlValue($(this), "");
+			});
+			updateSearchFilters($form.find("select[data-aefis-datasource]"));
+			// Initialize the parameters display after the controls are updated.
+			setTimeout(function () {
+				var $form = $(this).parents("form");
+
+				reportParameterDisplay($form);
+			}, 1000);
+		});
+	};
+
+	function updateParameterDisplay() {
+		function getSelectListText(list) {
+			return $(list)
+				.find("option:selected:lt(2)")
+				.map(function () {
+					return this.text;
+				})
+				.get()
+				.join(", ");
+		}
+
+		function getTokenListText(list) {
+			return $.map(list, function (v) {
+				return v.name;
+			}).join(", ");
+		}
+
+		function getSelectListCount(list) {
+			return $(list).find("option:selected").length;
+		}
+
+		function getButtonListText(list) {
+			return $(list)
+				.map(function () {
+					return this.innerText;
+				})
+				.get()
+				.join(", ");
+		}
+
+		if ($(this).hasClass("tokeninput")) {
+			var list = $(this).tokenInput("get");
+			var listCount = list.length;
+			var listText = getTokenListText(list);
+
+			if (listCount > 2) {
+				$("#" + $(this).attr("id") + "Selection")
+					.text(listText + " and " + (listCount - 2) + " more...")
+					.parent("div")
+					.show();
+			} else if (listText != "") {
+				$("#" + $(this).attr("id") + "Selection")
+					.text(listText)
+					.parent("div")
+					.show();
+			} else {
+				$("#" + $(this).attr("id") + "Selection")
+					.text(listText)
+					.parent("div")
+					.hide();
+			}
+		} else if ($(this).hasClass("data-aefis-report-range")) {
+			if ($(this).val() != "") {
+				$("#" + $(this).attr("id") + "Selection")
+					.text($(this).val())
+					.parent("div")
+					.show();
+			} else {
+				$("#" + $(this).attr("id") + "Selection")
+					.text("")
+					.parent("div")
+					.hide();
+			}
+		} else if ($(this).is("select")) {
+			var listCount = getSelectListCount(this);
+			var listText = getSelectListText(this);
+
+			if (listCount > 2) {
+				$("#" + $(this).attr("id") + "Selection")
+					.text(listText + " and " + (listCount - 2) + " more...")
+					.parent("div")
+					.show();
+			} else if (listText != "") {
+				$("#" + $(this).attr("id") + "Selection")
+					.text(listText)
+					.parent("div")
+					.show();
+			} else {
+				$("#" + $(this).attr("id") + "Selection")
+					.text(listText)
+					.parent("div")
+					.hide();
+			}
+		} else if ($(this).hasClass("btngroupwithall") || $(this).hasClass("btn-group")) {
+			var listCount = $(this).find("button.active[val!='0']").length;
+			var listText = getButtonListText($(this).find("button.active:lt(2)"));
+			if (listCount > 2) {
+				$("#" + $(this).attr("id") + "Selection")
+					.text(listText + " and " + (listCount - 2) + " more...")
+					.parent("div")
+					.show();
+			} else if (listText != "") {
+				$("#" + $(this).attr("id") + "Selection")
+					.text(listText)
+					.parent("div")
+					.show();
+			} else {
+				$("#" + $(this).attr("id") + "Selection")
+					.text(listText)
+					.parent("div")
+					.hide();
+			}
+		} else if ($(this).is("input") && $(this).attr("type") === "checkbox") {
+			var listText = $(this).is(":checked") ? "Yes" : "";
+
+			if (listText != "") {
+				$("#" + $(this).attr("id") + "Selection")
+					.text(listText)
+					.parent("div")
+					.show();
+			} else {
+				$("#" + $(this).attr("id") + "Selection")
+					.text(listText)
+					.parent("div")
+					.hide();
+			}
+		}
+	}
+
+	// error - error object
+	// hideLoading - (optional) if true, attempts to hide the loading ui notice using the default loading selector.
+	//     if you designate loadingShow directly with anything other than the default, you must hide it
+	//     yourself using your custom selector as a param... not here
+	this.reportError = function (error, hideLoading) {
+		var defaultMessage =
+			"There was an error processing your form request. If this continues, please try reloading the page in your browser.";
+		if (hideLoading) {
+			aefis.ui.loadingHide(
+				null,
+				function () {
+					aefis.ui.userError(defaultMessage);
+				},
+				this
+			);
+		} else {
+			aefis.ui.userError(defaultMessage);
+		}
+		if (aefis.debug) {
+			aefis.app.log("Error processing form request:");
+			console.error(error);
+		}
+	};
+
+	this.toggleFilterPanel = function () {
+		if ($("#reportFormContainer").is(":visible")) {
+			$("#reportFormContainer").hide();
+			$("#report-titles").show();
+		} else {
+			$("#report-titles").hide();
+			$("#reportFormContainer").show();
+		}
+		return;
+	};
+
+	this.getFormParameters = function (parametersContainer, skipDisabledParameters) {
+		if (skipDisabledParameters) {
+			return getParameters(
+				$(
+					parametersContainer +
+						" :input:not(:button):not([disabled]), "+
+						parametersContainer +
+						" div.btn-group"
+				), skipDisabledParameters
+			); // fix for getting active button group buttons
+		} else {
+			return getParameters(
+				$(
+					parametersContainer +
+						" :input:not(:button), " +
+						parametersContainer +
+						" div.btn-group"
+				), skipDisabledParameters
+			); // fix for getting active button group buttons
+		}
+	};
+
+	this.getParameters = function ($container, skipDisabledParameters) {
+		// find(":input:not(:button):not([disabled]), div.btn-group")
+		if (skipDisabledParameters) {
+			return getParameters($container.find(":input:not(:button):not([disabled]), div.btn-group"), skipDisabledParameters); // fix for getting active button group buttons
+		} else {
+			return getParameters($container.find(":input:not(:button), div.btn-group"), skipDisabledParameters); // fix for getting active button group buttons
+		}
+	};
+
+	this.getFormViewData = function (parametersContainer) {
+		var viewData = {};
+
+		$(parametersContainer + " .tokeninput").each(function () {
+			var curId = $(this).attr("id");
+			var tokenValues = $(this).tokenInput("get");
+
+			if (tokenValues.length > 0) {
+				var names = [];
+				for (var i = 0; i < tokenValues.length; i++) {
+					names.push(tokenValues[i].name);
+				}
+				viewData[curId + "_tokeninput"] = names;
+			}
+		});
+		return viewData;
+	};
+
+	this.getStaticTemplate = function (item) {
+		// This returns the static template and returns it for the select controls.
+		var template = $(item).attr("data-aefis-static-template");
+		var idField = $(item).attr("data-aefis-id-field");
+		var nameField = $(item).attr("data-aefis-name-field");
+
+		if (!(idField && nameField)) {
+			aefis.app.error("Invalid screen initialization.");
+			return "";
+		}
+		return template;
+	};
+	
+	this.logFormInputs = function (formSelector){
+		var inputs = [];
+		$(formSelector).find(":input:not(:button)").each(function(){
+			if ( $(this).attr("id")) {
+				var input= {};
+				input["id"] = $(this).attr("id");
+				input["isVisible"] = $(this).is(":visible");
+				input["isDisabled"] = $(this).is(":disabled");
+				input["value"] = $(this).val()
+				inputs.push(input);
+			}
+		});
+		aefis.app.log(inputs);
+	}
+	/////////////////////////////
+	// FORMS - processFormRequest(formSelector,options)
+	// FORMS Function: This is to get results using form values and process results that should be broken into a single or multiple sets Drawing is done with a Handlebars template.
+	// 'formSelector' - can be set to null if no form is available. used to get a handle on the form for values
+	// 'options' - object with additional properties
+	//     'dataContainerSelector' - (optional if url is specified) used to get the url (optional data-aefis-datasource attribute) used for getting data and where to set the data once processed
+	//     'url' - (optional if dataContainerSelector with datasource specified) url to post to. if dataContainerSelector is specified and has attributes 'data-aefis-datasource', this is ignored
+	//     'groupingPropertiesList' - string list of property names. if designated, makes sequential template calls with unique groups based on sequential records that have matching grouping properties
+	//     'successCallback' - (optional) called on success processing. passed data
+	//     'callbackScope' - (optional) scope to use for the callback
+	//     'additionalParams' - (optional) serves as defaults for params gathered from the form, will not overwrite form values
+	// 	   'skipDisabledParameters' - (optional) if false disabled form items will not be sent to server. Default value is false. 
+	this.processFormRequest = function (formSelector, options) {
+		// option defaults
+		var defaults = {
+			url: "",
+			dataContainerSelector: "",
+			rootContainerSelector: null,
+			loadingSelector: "#aefis-loadingcontainer",
+			groupingPropertiesList: "",
+			hideOnLoad: "",
+			exportOnly: false,
+			successCallback: null,
+			callbackScope: this,
+			additionalParams: {}, // serves as defaults for params gathered from the form, will not overwrite form values
+			skipDisabledParameters: false
+		};
+
+		// options & defaults to settings
+		var settings = $.extend({}, defaults, options);
+		var params = {};
+		var getUrl = settings["url"].length
+			? settings["url"]
+			: $(settings.dataContainerSelector).attr("data-aefis-datasource");
+
+		if (!settings.rootContainerSelector) {
+			settings.rootContainerSelector = settings.dataContainerSelector;
+		}
+
+		if (!(getUrl && getUrl.length)) {
+			aefis.ui.userError("Unexpected system error.");
+			aefis.app.error("Invalid form process path.");
+			return;
+		}
+		if (aefis.debug) {
+			aefis.app.log("processFormRequest(): url for the call is " + getUrl);
+		}
+		
+		if (settings.skipDisabledParameters){
+			aefis.app.log('Form Submission Behaviour: Disabled Form Items Ignored');
+			$(formSelector).find(":input:not(:button):not(:disabled)").each(function(){
+				$("#" + $(this).attr("id") + "Selection")
+						.parent("div")
+						.show();
+			});
+			$(formSelector).find(":input:not(:button):disabled").each(function(){
+				$("#" + $(this).attr("id") + "Selection")
+						.parent("div")
+						.hide();
+			});
+		} else {
+			aefis.app.log('Form Submission Behaviour: Normal Behaviour');
+		}
+
+		this.toggleFilterPanel();
+		if (settings.hideOnLoad) {
+			$(settings.hideOnLoad).hide();
+		}
+		$(settings.rootContainerSelector).fadeOut(0, function () {
+			if (settings.loadingSelector) {
+				aefis.ui.loadingShow(settings.loadingSelector, "Loading", "quick");
+			}
+		});
+
+		if (formSelector) {
+			params = this.getFormParameters(formSelector, settings.skipDisabledParameters);
+		}
+		params = $.extend({}, params, settings.additionalParams);
+
+		var paramObject = calculateParameters(params);
+		var dataType = paramObject["dataType"];
+		var contentType = paramObject["contentType"];
+
+		if (aefis.debug) {
+			aefis.app.log(
+				"processFormRequest(): form parameters after applying any additionalParams:"
+			);
+			aefis.app.log(params);
+		}
+
+		//get
+		if (!settings.exportOnly) {
+			var apiWrapper = new aefis.ApiWrapper();
+
+			apiWrapper.call(getUrl, {
+				data: params,
+				type: dataType,
+				contentType: contentType,
+				onSuccess: function (data) {
+					var template = $(settings.dataContainerSelector).attr("data-aefis-template-id");
+					aefis.ui.addPDFHashToUrl();
+					if (template) {
+						if (data.length) {
+							$("div.aefis-report-export-button").show();
+						} else {
+							$("div.aefis-report-export-button").hide();
+						}
+						$(settings.dataContainerSelector).html("");
+						if (settings["groupingPropertiesList"].length) {
+							if (aefis.debug) {
+								aefis.app.log(
+									"processFormRequest():  onSuccess of data call. found grouping properties. calling  aefis.ui.drawObjectArrayMultipleGroupsWithTemplate"
+								);
+							}
+							aefis.ui.drawObjectArrayMultipleGroupsWithTemplate(
+								data,
+								settings.dataContainerSelector,
+								settings.groupingPropertiesList
+							);
+						} else {
+							if (aefis.debug) {
+								aefis.app.log(
+									"processFormRequest():  onSuccess of data call. did not find grouping properties. calling  aefis.ui.drawWithTemplate"
+								);
+							}
+							aefis.ui.drawWithTemplate(data, settings.dataContainerSelector);
+						}
+					}
+					if (jQuery.type(settings["successCallback"]) === "function") {
+						if (aefis.debug) {
+							aefis.app.log(
+								"processFormRequest():  onSuccess of data call. calling callback function."
+							);
+						}
+						settings.successCallback.call(settings.callbackScope, data);
+					}
+				},
+				onSuccessScope: this,
+				onError: function (error) {
+					that.reportError(error, true);
+				},
+				onComplete: function (error) {
+					if (settings.loadingSelector) {
+						aefis.ui.loadingHide(settings.loadingSelector, function () {
+							$(settings.rootContainerSelector).fadeIn(400);
+						});
+					} else {
+						$(settings.rootContainerSelector).fadeIn(400);
+					}
+				},
+				onErrorScope: this
+			});
+		}
+
+		if ($(formSelector).hasClass("report-form")) {
+			var stateData = { parameters: params, viewdata: this.getFormViewData(formSelector) };
+
+			stateData["submit"] = true;
+			aefis.app.setState(stateData);
+			aefis.app.saveStateOnServer(stateData);
+			aefis.ui.addPDFHashToUrl();
+		}
+
+		if (settings.exportOnly) {
+			var $exportMessageContainer = $("#aefis-report-export-only-message");
+			$("div.aefis-report-export-button").show();
+			aefis.ui.hidePrintAndPDFOptions();
+
+			if (settings.loadingSelector) {
+				aefis.ui.loadingHide(settings.loadingSelector, function () {
+					$(settings.rootContainerSelector).fadeIn(400);
+				});
+			} else {
+				$(settings.rootContainerSelector).fadeIn(400);
+			}
+			$(settings.dataContainerSelector).html($exportMessageContainer.html());
+		} else {
+			aefis.ui.showPrintAndPDFOptions();
+		}
+	};
+
+	this.callFormUrl = function (baseUrl, formId) {
+		var params = aefis.forms.getFormParameters(formId);
+		for (var key in params) {
+			baseUrl += "&" + key + "=" + params[key];
+		}
+		window.location.assign(baseUrl);
+	};
+
+	this.callPrintUrl = function (baseUrl, formId) {
+		var params = aefis.forms.getFormParameters(formId);
+		for (var key in params) {
+			baseUrl += "&" + key + "=" + params[key];
+		}
+		window.open(baseUrl);
+	};
+
+	// Form post/update functions
+	this.serializeObject = function ($form) {
+		var o = {};
+		var $formElements = $($form.prop("elements"));
+		if ($formElements && $formElements.length) {
+			$formElements.each(function () {
+				var $formElement = $(this);
+				var name = $formElement.attr("name");
+				var value = $formElement.val();
+				var data = $formElement.attr("data-aefis-object");
+				var type = $formElement.attr("type");
+				var checkableElement = false;
+				var isChecked = false;
+
+				if (type == "checkbox" || type == "radio") {
+					checkableElement = true;
+					isChecked = $formElement.is(":checked");
+					if (value == "on") {
+						value = true;
+					}
+				}
+				if ((name && !checkableElement) || (name && checkableElement && isChecked)) {
+					var subObject = o;
+					if (data) {
+						if (!o[data]) {
+							o[data] = {};
+						}
+						subObject = o[data];
+					}
+					if (subObject[name]) {
+						if (!subObject[name].push) {
+							subObject[name] = [subObject[name]];
+						}
+						subObject[name].push(value || "");
+					} else {
+						subObject[name] = value || "";
+					}
+				}
+			});
+		}
+
+		return o;
+	};
+
+	/*this.serializeObject = function($form) {
+        var o = {};
+        var a = $form.serializeArray();
+        var t = $form;
+
+        $.each(a, function() {
+            var data = t.find('#' + this.name).attr('data-aefis-object');
+            if (!data) {
+                data = t.find('input[name="'+this.name+'"]').attr('data-aefis-object');
+            }
+            var subObject = o;
+            if (data) {
+                if (!o[data]) {
+                    o[data] = {};
+                }
+                subObject = o[data];
+            }
+            if (subObject[this.name] !== undefined) {
+                if (!subObject[this.name].push) {
+                    subObject[this.name] = [subObject[this.name]];
+                }
+                subObject[this.name].push(this.value || '');
+            } else {
+                subObject[this.name] = this.value || '';
+            }
+        });
+        return o;
+    };*/
+
+	this.formError = function ($form, errors) {
+		if (errors.MESSAGE && errors.MESSAGE.length) {
+			aefis.ui.userError(errors.MESSAGE, false, "An Error Occurred");
+		}
+		/* if (errors.DATA && errors.DATA.INVALID) {
+            $.each(errors.DATA.INVALID, function(index, value) {
+                var inputId = '#' + value.FIELD;
+                var $errorInput = $(inputId).hasClass('selectpicker') ? $(inputId).parents("div.control-group").find(".bootstrap-select") :
+                    $(inputId);
+                if ($errorInput.data('tooltip') != null || $('.tooltip.fade', $errorInput.closest('form')).length == 0) {
+                    var fields = {};
+                    fields[value.FIELD] = value.MESSAGE;
+                    ($form).validate().showErrors(fields);
+                }
+                $errorInput.parents("div.control-group").addClass("error");
+            });
+        }*/
+	};
+
+	function submitCall(form, rootObject, successFunction) {
+		var formJson = that.serializeObject($(form));
+		var mixedSettingsForm = $(form).hasClass("aefis-mixed-setting-groups");
+
+		new aefis.ApiWrapper().call($(form).attr("data-aefis-ajax"), {
+			data: JSON.stringify(rootObject ? formJson[rootObject] : formJson),
+			type: "POST",
+			onSuccess: successFunction,
+			onSuccessScope: form,
+			beforeSend: function () {
+				var $submitButton = $(form).find("button[data-loading-text]");
+				if ($submitButton.length) {
+					$submitButton.button("loading");
+				} else {
+					$submitButton = $("body").find("button.btn-primary");
+					$submitButton.prop("disabled", "disabled").addClass("disabled");
+				}
+				/*	var settingsForm = $(form).hasClass('aefis-settings-form');
+                	if (settingsForm) {
+                		var settingsPage = $('div.aefis-settings-page');
+                		//window.scrollTo(0,0);
+                		$('body').addClass('modal-open');
+                		if (settingsPage.length) {
+                			aefis.ui.loadingShow('div.aefis-settings-page','Saving Settings','',true,false);
+                		} else {
+                			aefis.ui.loadingShow('form.aefis-settings-form','Saving Settings','',true,false);
+                		};
+                		$('body').addClass('no-overflow');
+                	};*/
+			},
+			onComplete: function () {
+				var $submitButton = $("body").find("button[data-loading-text]");
+				if ($submitButton.length) {
+					$submitButton.button("reset");
+				}
+				$submitButton = $("body").find("button.btn-primary");
+				if ($submitButton.length) {
+					$submitButton.removeAttr("disabled");
+					$submitButton.removeClass("disabled");
+				}
+				var settingsForm = $(form).hasClass("aefis-settings-form");
+				if (settingsForm) {
+					var settingsPage = $("div.aefis-settings-page");
+					if (settingsPage.length) {
+						aefis.ui.loadingShow(
+							"div.aefis-settings-page",
+							"Refreshing Settings",
+							"",
+							true,
+							false
+						);
+						$(window).scrollTop(0);
+					} else {
+						aefis.ui.loadingShow(
+							"form.aefis-settings-form",
+							"Refreshing Settings",
+							"",
+							true,
+							false
+						);
+						$(window).scrollTop(0);
+					}
+
+					$("body").addClass("no-overflow");
+					window.location.reload();
+				}
+				$(form).trigger("completed");
+			},
+			onError: function (jqXhr, error) {
+				var $submitButton = $("body").find("button[data-loading-text]");
+				if ($submitButton.length) {
+					$submitButton.button("reset");
+				} else {
+					$submitButton = $("body").find("button.btn-primary");
+					$submitButton.removeAttr("disabled").removeClass("disabled");
+				}
+				if (jqXhr.status === 400) {
+					// Bad request means validation failed.
+					that.formError($(form), JSON.parse(jqXhr.responseText));
+					return true;
+				} else if (jqXhr.status === 403) {
+					// User is logged on but dees not have access to operation.
+					var response = JSON.parse(jqXhr.responseText);
+
+					if (response.MESSAGE && response.MESSAGE.length) {
+						aefis.ui.userWarning(response.MESSAGE);
+					} else {
+						aefis.ui.userError("Operation can not be completed.");
+					}
+					return true;
+				} else if (jqXhr.status === 401) {
+					// TODO 401 Unauthorized; This means we'll need to forward to login.
+					aefis.ui.userWarning("You are not authorized for this operation.");
+					return true;
+				}
+				that.reportError(error);
+				return true;
+			},
+			onErrorScope: form
+		});
+	}
+
+	this.addAefisRemoteValidation = function () {
+		$.validator.addMethod(
+			"aefisremote",
+			function (value, element, param, method) {
+				if (this.optional(element)) {
+					return "dependency-mismatch";
+				}
+
+				var previous = this.previousValue(element),
+					validator,
+					data;
+
+				if (!this.settings.messages[element.name]) {
+					this.settings.messages[element.name] = {};
+				}
+				previous.originalMessage = this.settings.messages[element.name].remote;
+				this.settings.messages[element.name].remote = previous.message;
+
+				param = (typeof param === "string" && { url: param }) || param;
+
+				if (previous.old === value) {
+					return previous.valid;
+				}
+
+				previous.old = value;
+				validator = this;
+				this.startRequest(element);
+				data = {};
+				data[element.name] = value;
+				$.ajax(
+					$.extend(
+						true,
+						{
+							url: param,
+							mode: "abort",
+							port: "validate" + element.name,
+							dataType: "json",
+							data: data,
+							context: validator.currentForm,
+							success: function (response) {
+								var valid = response.valid === true || response === "true",
+									errors,
+									message,
+									submitted;
+
+								validator.settings.messages[element.name].remote =
+									previous.originalMessage;
+								if (valid) {
+									submitted = validator.formSubmitted;
+									validator.prepareElement(element);
+									validator.formSubmitted = submitted;
+									validator.successList.push(element);
+									delete validator.invalid[element.name];
+									validator.showErrors();
+								} else {
+									errors = {};
+									message =
+										response.message ||
+										validator.defaultMessage(element, "aefisRemote");
+									errors[element.name] = previous.message = $.isFunction(message)
+										? message(value)
+										: message;
+									validator.invalid[element.name] = true;
+									validator.showErrors(errors);
+								}
+								previous.valid = valid;
+								validator.stopRequest(element, valid);
+							}
+						},
+						param
+					)
+				);
+				return "pending";
+			},
+			"pending"
+		);
+	};
+	this.ajaxifyFormSubmissionAsJson = function ($form, rootObject, successFunction) {
+		that.addAefisRemoteValidation();
+
+		$($form).validate({
+			debug: true,
+			submitHandler: function (form) {
+				var confirm = $(form).attr("data-aefis-confirm-message");
+				$form.find("button[data-loading-text]").button("loading");
+				$("select.aefis-list-box-target option").each(function () {
+					$(this).prop("selected", "selected");
+				});
+				if (confirm) {
+					var confirmTitle = $(form).attr("data-aefis-confirm-title");
+					var confirmButtonText = $(form).attr("data-aefis-confirm-button-text");
+
+					if (!confirmTitle || confirmTitle == "") {
+						confirmTitle = "Submit Form";
+					}
+
+					if (!confirmButtonText || confirmButtonText == "") {
+						confirmButtonText = "Submit";
+					}
+
+					var options = {
+						title: confirmTitle,
+						content: confirm,
+						successMessage: "",
+						errormessage: "",
+						cancelAction: function () {
+							return false;
+						},
+						confirmAction: function () {
+							submitCall(form, rootObject, successFunction);
+							return false;
+						},
+						confirmActionName: confirmButtonText,
+						cancelActionName: "Cancel"
+					};
+					aefis.ui.confirm(options);
+				} else {
+					//no confirmation, just submit
+					submitCall(form, rootObject, successFunction);
+					return false;
+				}
+			}
+		});
+		return false;
+	};
+
+	this.tinyMceFirefoxFix = function ($rootContainer) {
+		if (aefis.util.getAefisBrowserType() == "Firefox") {
+			$rootContainer.find("textarea.editor").each(function () {
+				var $textarea = $(this);
+				var delay = (function () {
+					var timer = 0;
+					return function (callback, ms) {
+						clearTimeout(timer);
+						timer = setTimeout(callback, ms);
+					};
+				})();
+				$textarea.on("tinyMCEInitiliazed", function () {
+					var textareaId = $textarea.attr("id");
+					var $tinyMCE = tinymce.get(textareaId);
+					$tinyMCE.on("KeyUp", function () {
+						delay(function () {
+							$textarea.trigger("change");
+						}, 500);
+					});
+				});
+			});
+		}
+	};
+};

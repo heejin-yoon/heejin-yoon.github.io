@@ -1,0 +1,3230 @@
+// Copyright (c) 2013 AEFIS, all rights reserved.
+// http://www.aefis.com/
+
+"use strict";
+
+window.aefis = window.aefis || {};
+var aefis = window.aefis;
+var aefisPendingAjaxRequest = [];
+var loadedScripts = [];
+
+aefis.load = function () {
+	// Load and set variables. Called initially before Dom ready.
+	aefis.logging = true;
+	if (aefis.Utilities) {
+		aefis.util = new aefis.Utilities();
+	}
+	if (aefis.UI) {
+		aefis.ui = new aefis.UI();
+	}
+	if (aefis.Forms) {
+		aefis.forms = new aefis.Forms();
+	}
+	if (aefis.FormItems) {
+		aefis.formItems = new aefis.FormItems();
+	}
+	if (!aefis.user) {
+		aefis.user = {};
+	}
+	aefis.app = new aefis.Application();
+};
+
+aefis.Application = function () {
+	this.initialize = function () {
+		initComponents();
+
+		if (aefis.isLoggedOn) {
+			aefis.app.startSession();
+		}
+		aefis.app.initializePage();
+		aefis.app.addPageEventHandler();
+	};
+
+	this.sessionTimeout = function () {
+		if (logoutTimer) clearTimeout(logoutTimer);
+		$(document).unbind("mousemove");
+		$(document).unbind("keypress");
+
+		aefis.ui.confirm({
+			title: "Warning",
+			content: aefis.sessiontimeout28min,
+			titleIconClass: "fa fa-lock",
+			confirmActionName: aefis.yessignout,
+			confirmAction: function () {
+				window.location = aefis.url;
+			},
+			cancelActionName: aefis.keepmysessionactive,
+			cancelAction: function () {
+				aefis.app.renewSession();
+			}
+		});
+
+		/*
+        $().bootstrapModal({
+        	title: aefis.warning,
+        	title_style: 'error',
+        	body: aefis.sessiontimeout28min,
+        	action: {
+        		label: aefis.yessignout,
+        		style: 'danger',
+        		callback: function(){
+        			window.location = aefis.url;
+        		}
+        	},
+        	dismiss: true,
+        	dismiss_label: '<i class="icon-ban-circle"></i> '+aefis.keppmysessionactive
+        });
+
+        $('[data-dismiss="modal"]').click(function(){
+        	aefis.app.renewSession();
+        });
+        $('.btn.btn-danger').click(function(){
+        	aefis.app.cancelSession();
+        });
+        */
+		logoutTimer = setTimeout(aefis.app.forceSessionEnd, 2 * 60 * 1000);
+	};
+
+	this.forceSessionEnd = function () {
+		clearTimeout(logoutTimer);
+		window.location = aefis.url;
+	};
+
+	this.startSession = function () {
+		// Only root frame should track the session.
+		if (parent != self) return;
+		if (!aefis.isLoggedOn) return;
+		$(document).mousemove(aefis.app.renewSession);
+		$(document).keypress(aefis.app.renewSession);
+		aefis.app.renewSession();
+	};
+
+	var lastRenew = 0;
+	var logoutTimer = 0;
+
+	this.renewSession = function () {
+		var TIMEOUT_TIME = 4 * 60 * 60 * 1000;
+		var SESSION_REFRESH = 10000;
+		var current = new Date().getTime();
+
+		if (current - lastRenew < SESSION_REFRESH) return;
+		if (logoutTimer) clearTimeout(logoutTimer);
+		logoutTimer = setTimeout(aefis.app.sessionTimeout, TIMEOUT_TIME);
+		lastRenew = current;
+	};
+
+	this.loginAsUser = function (el) {
+		var $obj = $(el);
+		var url = $obj.attr("data-aefis-datasource");
+		var options = {
+			title: "Login As User",
+			titleIconClass: "aefis-object-action signin",
+			content:
+				"This action will allow you to login as the selected user.<br/><br/>Are you sure?",
+			confirmAction: function () {
+				aefis.ui.loadingShow(
+					"#aefis-business-object-container",
+					"Log In as User",
+					"",
+					true,
+					false
+				);
+				window.location.href = url;
+			},
+			confirmActionName: "Login As User",
+			cancelActionName: "Cancel"
+		};
+		aefis.ui.confirm(options);
+	};
+
+	this.restoreUser = function (el) {
+		var $obj = $(el);
+		var url = $obj.attr("data-aefis-datasource");
+		var options = {
+			title: "Restore User Session",
+			titleIconClass: "aefis-object-action refresh",
+			content: "This action will restore your previous user session.<br/><br/>Are you sure?",
+			confirmAction: function () {
+				aefis.ui.loadingShow("body", "Restoring Session", "", true, false);
+				window.location.href = url;
+			},
+			confirmActionName: "Restore Session",
+			cancelActionName: "Cancel"
+		};
+		aefis.ui.confirm(options);
+	};
+
+	this.cancelSession = function () {
+		if (logoutTimer) clearTimeout(logoutTimer);
+	};
+
+	this.log = function () {
+		try {
+			if (aefis.debug) {
+				console.log(
+					"AEFIS",
+					new Date().format ? new Date().format("isoUtcDateTime") : new Date(),
+					arguments
+				);
+			}
+		} catch (err) {}
+	};
+
+	this.error = function () {
+		try {
+			console.error(
+				"AEFIS",
+				new Date().format ? new Date().format("isoUtcDateTime") : new Date(),
+				arguments
+			);
+		} catch (err) {}
+	};
+
+	var processCounter = 0;
+	this.longProcessStart = function (name) {
+		var timer = new Date().getTime();
+
+		$("#working").show();
+		$("#working").animate({ top: "0" }, 500);
+		$(".status-panel #busy").show();
+		$(".status-panel #status").hide();
+		processCounter++;
+		aefis.app.log("Process (" + processCounter + ")" + name + " started ");
+
+		return {
+			complete: function (more) {
+				aefis.app.log(
+					"Process (" +
+						processCounter +
+						")" +
+						name +
+						"complete in " +
+						(new Date().getTime() - timer) +
+						" ms. " +
+						more,
+					"p"
+				);
+				processCounter--;
+				if (processCounter === 0) {
+					$("#working").animate({ top: "-26", opacity: "hide" }, 500);
+					//$('#working').hide();
+					$(".status-panel #busy").hide();
+					$(".status-panel #status").show();
+				}
+				if (!more) more = "";
+			}
+		};
+	};
+
+	this.openBrowserWindow = function (url, name) {
+		window.open(url);
+	};
+
+	this.setAefisLocalStorage = function (objectKey, objectId, objectName, objectValue, options) {
+		if (!aefis.util.supportsLocalStorage()) {
+			return false;
+		}
+		var defaults = {
+			useSessionStorage: false
+		};
+		var options = $.extend({}, defaults, options);
+		var data = data || {};
+		var id = objectId;
+		var name = objectName;
+		var val = objectValue;
+		var key = objectKey;
+
+		if (!objectName) {
+			name = "NA";
+		}
+
+		var tempData = {
+			id: id,
+			name: name,
+			val: val
+		};
+
+		data[id] = tempData;
+		if (options.useSessionStorage) {
+			sessionStorage.setItem(key, JSON.stringify(data));
+		} else {
+			localStorage.setItem(key, JSON.stringify(data));
+		}
+	};
+
+	this.getAefisLocalStorage = function (objectKey, options) {
+		if (!aefis.util.supportsLocalStorage()) {
+			return false;
+		}
+		var defaults = {
+			useSessionStorage: false
+		};
+		var options = $.extend({}, defaults, options);
+		var key = objectKey;
+		var storage = "";
+		var parsedResults = "";
+
+		if (options.useSessionStorage) {
+			storage = sessionStorage.getItem(key);
+		} else {
+			storage = localStorage.getItem(key);
+		}
+
+		parsedResults = JSON.parse(storage);
+
+		return parsedResults;
+	};
+
+	this.deleteAefisLocalStorage = function (objectKey, options) {
+		if (!aefis.util.supportsLocalStorage()) {
+			return false;
+		}
+		var defaults = {
+			useSessionStorage: false
+		};
+		var options = $.extend({}, defaults, options);
+		var key = objectKey;
+
+		if (options.useSessionStorage) {
+			sessionStorage.removeItem(key);
+		} else {
+			localStorage.removeItem(key);
+		}
+
+		return true;
+	};
+
+	this.setFormValidation = function ($rootContainer) {
+		// if (!loaded) {
+		var toValidate = $rootContainer.find(
+			"form:not('.aefis-no-validate'):not('.bootstrap-select-searchbox') input,form:not('.aefis-no-validate') textarea,form:not('.aefis-no-validate') select"
+		);
+		// filter out select search boxes
+		toValidate = toValidate.filter(function () {
+			return $(this).parent().is(":not(.bootstrap-select-searchbox)");
+		});
+		// bind
+
+		$rootContainer.find("form:not('.aefis-no-validate')").submit(function (e) {
+			if ($(this).attr("data-aefis-no-validate-hidden-fields") == "true") {
+				var isSurveyForm = $(this).attr("data-aefis-is-survey-form");
+				if (typeof isSurveyForm !== typeof undefined && isSurveyForm == "true") {
+					$rootContainer.find(".ignore-validation").removeClass("ignore-validation");
+					$rootContainer.find(":hidden.required").each(function () {
+						var $item = $(this);
+						var checkVisible = $item
+							.closest(".aefis-question-wrapper")
+							.find(".survey-question-required-marker")
+							.is(":visible");
+						if (checkVisible == false) {
+							$item.addClass("ignore-validation");
+						}
+					});
+					$(this).validate().settings.ignore = ".ignore-validation";
+				} else {
+					$(this).validate().settings.ignore = ":hidden";
+				}
+			}
+
+			//-- drag drop doc validation, needs improvement
+			/*var isDocValid = true;
+            if ( $(this).find('.document-drag-drop-question').length != 0 ) {
+                var $docContainer = $(this).find('.document-drag-drop-question');
+                isDocValid = ($docContainer.find('.aefis-object-action').length > 0);
+                if (!isDocValid && $docContainer.find('.document-url').length != 0 ) {
+                    isDocValid = ($docContainer.find('.document-url').val() != '');
+                    if (!isDocValid) {
+                        aefis.ui.alert('Required Field', 'You should upload document or enter url.');
+                    }
+                } else {
+                    if (!isDocValid) {
+                        aefis.ui.alert('Required Field', 'You should upload document.');
+                    }   
+                } 
+            }*/
+
+			if ($(this).valid()) {
+				$(this).find(".btn[data-loading-text]").button("loading");
+			} else {
+				//console.log($('.modal-footer').find('.btn[data-loading-text]').length)
+				if ($(".modal-footer").find(".btn[data-loading-text]").length) {
+					$(".modal-footer")
+						.find(".btn[data-loading-text]")
+						.each(function () {
+							var $button = $(this);
+							$button.trigger("reset");
+						});
+				}
+				if ($("body").find(".aefis-container-mask").length) {
+					$(".aefis-container-mask").fadeOut(); //hide any mask if not valid submit
+					/*if ($('body').find('.aefis-validation-error').length){
+                    	var $obj = $('.aefis-validation-error').first();
+                    	aefis.ui.scrollToElement($obj);
+                    };*/
+					parent.aefis.ui.loadingHideAll();
+
+					var isDataCollectionForm = $("form.aefis-data-collection-form").length > 0;
+					var isSurveyForm = $('form[name="surveyForm"]').length > 0;
+					if (!isDataCollectionForm && !isSurveyForm) {
+						aefis.ui.userError(
+							"Some required fields were missing responses. Please verify your responses."
+						);
+					}
+					if (window.parent) {
+						window.parent.aefis.ui.hidePreviewObjectLoadingBar();
+					}
+					//$('.alert-error').addClass('animated shake');
+				}
+			}
+		});
+
+		$("form.aefis-no-validate").submit(function (e) {
+			$(this).find(".btn[data-loading-text]").button("loading");
+		});
+
+		$(".bootstrap-date").each(function (index) {
+			if ($(this).attr("disabled") == "disabled") {
+				$(this).rules("remove", "greaterThanToday");
+			}
+		});
+
+		$(".datepicker").on("changeDate", function (ev) {
+			try {
+				$(this).valid();
+			} catch (err) {}
+		});
+		// }
+	};
+
+	this.initializeAsyncTaskPolling = function () {
+		if (document.cookie.indexOf("AEFIS-ASYNC-TASK") != -1) {
+			(function poll() {
+				function readCookie(name) {
+					var nameEQ = name + "=";
+					var ca = document.cookie.split(";");
+					for (var i = 0; i < ca.length; i++) {
+						var c = ca[i];
+						while (c.charAt(0) == " ") c = c.substring(1, c.length);
+						if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+					}
+					return null;
+				}
+
+				function eraseCookie(name) {
+					aefis.util.createCookie(name, "", -1);
+				}
+
+				var cookieValue = readCookie("AEFIS-ASYNC-TASK");
+				var cookieValueArray = JSON.parse(cookieValue);
+				var taskId = cookieValueArray[0].Id;
+				var url = cookieValueArray[0].Url;
+				var userid = cookieValueArray[0].UserId;
+				var $iFrame = $("#aefis-hidden-iframe");
+				var iFrameName = $iFrame.attr("name");
+				var currentUserId = $("#aefis-current-user-id").val();
+				var $notification = $(".aefis-processing-document-notification");
+				if (userid == currentUserId) {
+					setTimeout(function () {
+						new aefis.ApiWrapper().call(url, {
+							data: { Id: taskId },
+							onSuccess: function (data, jqXHR) {
+								if (data.Status) {
+									var status = data.Status;
+									if (status == "COMPLETED") {
+										var documentUrl = data.Url;
+										var message =
+											'Your requested document has been automatically downloaded to your computer. To download the document again, you may click <a href="' +
+											documentUrl +
+											'">this link</a>.';
+										eraseCookie("AEFIS-ASYNC-TASK");
+										aefis.ui.userSuccess(message);
+										aefis.ui.initializeNotifications();
+										if ($notification.length) {
+											if ($notification.first().css("display") != "hidden") {
+												//$('.aefis-processing-document-notification').hide();
+												//aefis.ui.decrementTotalNotifications();
+											}
+										}
+										window.open(documentUrl, iFrameName);
+									} else if (status == "RUNNING") {
+										poll();
+										if ($notification.length) {
+											if ($notification.first().css("display") == "hidden") {
+												//$('.aefis-processing-document-notification').show();
+												//aefis.ui.incrementTotalNotifications();
+											}
+										}
+									} else if (status == "TERMINATED") {
+										var message =
+											"Your requested document could not be downloaded to your computer. An error occurred during the process.";
+										aefis.ui.initializeNotifications();
+										eraseCookie("AEFIS-ASYNC-TASK");
+										aefis.ui.userError(message);
+										if ($notification.length) {
+											if ($notification.first().css("display") != "hidden") {
+												$(".aefis-processing-document-notification").hide();
+												aefis.ui.decrementTotalNotifications();
+											}
+										}
+									}
+								}
+							}
+						});
+					}, 10000);
+				}
+			})();
+		}
+	};
+
+	this.windowEventListener = function (handler) {
+		// Create IE + others compatible event handler
+		var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+		var eventer = window[eventMethod];
+		var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+
+		// Listen to message from child window
+		eventer(messageEvent, handler, false);
+	};
+
+	this.isStaticPage = function () {
+		var format = aefis.util.getQueryParameter("rf").toLowerCase();
+
+		return format != null && format.toLowerCase() != "" && format.toLowerCase() != "html";
+	};
+
+	this.isRequestFromPdfServer = function () {
+		return aefis.util.getQueryParameter("toolsServerPdfRequest").toLowerCase() == "true";
+	};
+
+	aefis.tinyMceFlag = 0;
+
+	this.initTinyMCE = function (editor) {
+		aefis.tinyMceFlag = aefis.tinyMceFlag + 1;
+		$(editor.getElement()).trigger("tinyMCEInitiliazed");
+		if(document.getElementById(editor.id).hasAttribute('disabled')) {
+			editor.getBody().setAttribute('contenteditable',false);
+			editor.getBody().style.backgroundColor = "#eee";
+			editor.setMode('readonly');
+		}
+	};
+
+	aefis.windowQueue = [];
+
+	this.initializePage = function ($rootContainer) {
+		if (!$rootContainer) {
+			$rootContainer = $("body");
+		}
+		aefis.windowQueue.push($rootContainer);
+
+		if ($().popover) {
+			$(".popover").popover();
+			$rootContainer
+				.find("[rel=popover]")
+				.popover({
+					html: true,
+					delayIn: 500,
+					delayOut: 100,
+					content: function () {
+						return $(this).attr("data-content");
+					}
+				})
+				.click(function (e) {
+					e.preventDefault();
+				});
+
+			// Close all the popovers if clicked on the body.
+			$("body").on("click", function (e) {
+				if (!$("body").hasClass("aefis-ignore-close-popover")) {
+					$("[data-toggle=popover]").each(function () {
+						// hide any open popovers when the anywhere else in the body is clicked
+						if (
+							!$(this).is(e.target) &&
+							$(this).has(e.target).length === 0 &&
+							$(".popover").has(e.target).length === 0
+						) {
+							$(this).popover("hide");
+						}
+					});
+				}
+			});
+		}
+
+		//some events
+
+		$(window).on("AefisFramework.UI.Application:load", function () {
+			aefis.ui.showApplicationLoadingBar();
+		});
+
+		$(window)
+			.off("loadAefisProgress")
+			.on("loadAefisProgress", function () {
+				var progressbar = document.getElementById("aefis-loadingcontainer-progressbar");
+				if (progressbar) {
+					componentHandler.upgradeElement(progressbar, "MaterialProgress");
+				}
+			});
+
+		$(window)
+			.off("callSuccess")
+			.on("callSuccess", function () {
+				$(window).trigger("refreshDOMObjects");
+			});
+
+		//code moved from validate function
+		$(window)
+			.off("refreshDOMObjects")
+			.on("refreshDOMObjects", function () {
+				aefis.ui.refreshDOMObjects();
+			});
+
+		$("#aefis-refresh-action-items-container").on("refresh", function () {
+			aefis.ui.initializeNotifications();
+		});
+
+		aefis.ui.initializeAefisMaterialComponents();
+
+		//Replacement for deprecated jquery.browser() function.   Needed for some js libraries
+		jQuery.browser = {};
+
+		jQuery.browser.msie = false;
+		jQuery.browser.version = 0;
+		if (navigator.userAgent.match(/MSIE ([0-9]+)\./)) {
+			jQuery.browser.msie = true;
+			jQuery.browser.version = RegExp.$1;
+		}
+
+		jQuery.support.placeholder = (function () {
+			var i = document.createElement("input");
+			return "placeholder" in i;
+		})();
+
+		$("[data-toggle=popover]").on("hidden", function (e) {
+			e.cancelBubble = true;
+			e.stopPropagation();
+		});
+
+		if ($("#aefis-login-as-top-menu").length) {
+			$("#aefis-main-container").css("margin-top", "40px");
+			$("#aefis-main-nav-bar").css("top", "40px");
+		}
+
+		// Hidden iFrame for document download
+		$(document)
+			.off("hiddenFrameLoaded")
+			.on("hiddenFrameLoaded", function () {
+				var $iFrame = $("#aefis-hidden-iframe");
+				var iFrameName = $iFrame.attr("name");
+
+				try {
+					var content = $iFrame.contents().find("body").html();
+					if ($.trim(content) != "") {
+						var response = JSON.parse(content);
+						var runtime = response[0].RunTime;
+						var taskId = response[0].TaskId;
+						var url = response[0].Target;
+						var type = response[0].Type;
+						var status = response[0].Status;
+						var userid = $("#aefis-current-user-id").val();
+						if (status == "RUNNING") {
+							var contentUrl = $("#aefis-long-running-process-div").attr(
+								"data-aefis-datasource"
+							);
+							var renameUrl = $("#aefis-long-running-process-div").attr(
+								"data-aefis-datasource-rename"
+							);
+							if (taskId) {
+								contentUrl = contentUrl + "&taskId=" + taskId;
+							}
+							var options = {
+								title: type + " Download",
+								contentUrl: contentUrl,
+								titleIconClass: "fa fa-cloud-download-alt",
+								closeCallback: function () {
+									aefis.ui.initializeNotifications();
+									var taskNewName = $("#asynTaskDocName").val();
+									if (taskNewName && taskId) {
+										new aefis.ApiWrapper().call(renameUrl, {
+											type: "POST",
+											data: JSON.stringify({
+												taskId: taskId,
+												taskName: taskNewName
+											})
+										});
+									}
+									var cookieValueArray = [];
+									var cookieValues = {
+										Id: taskId,
+										Url: url,
+										UserId: userid
+									};
+									cookieValueArray.push(cookieValues);
+									//document.cookie = 'AEFIS-ASYNC-TASK=' + JSON.stringify(cookieValueArray) + '; Secure; SameSite=None; path=/';
+									aefis.util.createCookie(
+										"AEFIS-ASYNC-TASK",
+										JSON.stringify(cookieValueArray),
+										undefined,
+										true,
+										"SameSite=None"
+									);
+									aefis.app.initializeAsyncTaskPolling();
+								},
+								showFooterCloseButton: true,
+								closeButtonText: "Ok, Continue"
+							};
+							aefis.ui.modalDialog(options);
+						}
+					}
+				} catch (e) {
+					aefis.ui.userError("There was an error completing your request.");
+					aefis.ui.loadingHideAll();
+					return;
+				}
+			});
+
+		//existing reporting running
+		if (document.cookie.indexOf("AEFIS-ASYNC-TASK")) {
+			aefis.app.initializeAsyncTaskPolling();
+		}
+
+		var $window = $(window);
+		$window.resize(function () {
+			var $obj = $(this);
+			aefis.ui.mainToolbarShadow($obj);
+		});
+
+		$window.scroll(function () {
+			var $obj = $(this);
+			aefis.ui.mainToolbarShadow($obj);
+		});
+
+		// Form Filter
+		$(".aefis-table-filter-field").each(function () {
+			var removeSign =
+				'<a href="javascript:void(0);" class="aefis-filter-field-clear"><i class="fa fa-times-circle " aria-hidden="true" ></i></a>';
+			var $field = $(this);
+			var showSearchClear = $field.attr("data-aefis-search-clear");
+			if (!showSearchClear || (showSearchClear && showSearchClear == "true")) {
+				$field.after(removeSign);
+			}
+			$(".aefis-filter-field-clear")
+				.unbind("click")
+				.click(function (e) {
+					$field.val("");
+					$(this).fadeOut();
+				});
+		});
+		$(".aefis-table-filter-field").keyup(function () {
+			var tableObj = $(this).attr("data-aefis-target-table");
+			var rows = $("#" + tableObj + " tbody").find("tr");
+			var data = this.value.split(" ");
+			var valueLength = this.value.length;
+			if (valueLength > 0) {
+				$(".aefis-filter-field-clear").fadeIn();
+			} else {
+				$(".aefis-filter-field-clear").fadeOut();
+			}
+			$("#" + tableObj + " tbody")
+				.find("tr")
+				.hide();
+			$.each(data, function (i, v) {
+				rows = rows.filter(function () {
+					return $(this).text().toLowerCase().indexOf(v.toLowerCase()) > -1;
+				});
+			});
+			rows.show();
+		});
+
+		$(".aefis-list-filter-field").on("click", function (e) {
+			e.stopPropagation();
+		});
+
+		$(".aefis-list-filter-field").keyup(function (e) {
+			if (e.which == 32) {
+				var newValue = $(this).val() + " ";
+				$(this).val(newValue);
+			}
+			var tableObj = $(this).attr("data-aefis-target");
+			var rows = $(tableObj).find("li");
+			var data = this.value.split(" ");
+			var valueLength = this.value.length;
+			$(tableObj).width($(tableObj).width());
+			if (valueLength > 0) {
+				$(".aefis-filter-field-clear").fadeIn();
+			} else {
+				$(".aefis-filter-field-clear").fadeOut();
+			}
+			$(tableObj).find("li").addClass("filtered").hide();
+			$.each(data, function (i, v) {
+				rows = rows.filter(function () {
+					return $(this).text().toLowerCase().indexOf(v.toLowerCase()) > -1;
+				});
+			});
+			rows.show();
+		});
+
+		$(".aefis-container-filter-field").keyup(function () {
+			var $input = $(this);
+			aefis.ui.searchFilter($input);
+		});
+
+		if ($(".modal-footer").find(".btn[data-loading-text]").length) {
+			$(".modal-footer")
+				.find(".btn[data-loading-text]")
+				.on("click", function () {
+					var $button = $(this);
+					//$button.button('loading');
+				});
+		}
+
+		if ($(".aefis-dropdown-menu").length) {
+			var $buttons = $("button.aefis-dropdown-menu");
+			$buttons.on("click", function () {
+				var $button = $(this);
+				aefis.ui.toggleAriaAttribute($button, "aria-expanded", "true,false");
+			});
+		}
+
+		if ($(".modal-footer").find(".btn[data-loading-text]").length) {
+			$(".modal-footer")
+				.find(".btn[data-loading-text]")
+				.each(function () {
+					var $button = $(this);
+					$button.on("reset", function () {
+						$button.button("reset");
+					});
+				});
+		}
+
+		$(window).on("datatableLoaded", function () {
+			//manage option click
+
+			if ($rootContainer.find("button.aefis-manage-button").length) {
+				$("button.aefis-manage-button")
+					.parent()
+					.find("ul.dropdown-menu a")
+					.on("click", function () {
+						var $button = $(this)
+							.parent()
+							.parent()
+							.parent()
+							.find("button.aefis-manage-button");
+						aefis.ui.animateManageOption($button);
+					});
+			}
+		});
+
+		//aefis-button
+		if ($rootContainer.find(".aefis-button:not(.hide-loading)").length) {
+			$(".aefis-button:not(.hide-loading)").each(function () {
+				var $obj = $(this);
+				aefis.ui.initializeAefisButton($obj);
+			});
+		}
+
+		//aefis-action-button
+		if ($rootContainer.find(".aefis-action-button:not(.hide-loading)").length) {
+			$(".aefis-action-button:not(.hide-loading)").each(function () {
+				var $obj = $(this);
+				aefis.ui.initializeAefisActionButton($obj);
+			});
+		}
+
+		//tours
+		//aefis.ui.initializePageTour(undefined,$rootContainer);
+
+		//resizable panels
+		if ($rootContainer.find(".aefis-resizable-panel--left").length) {
+			var $panel = $rootContainer.find(".aefis-resizable-panel--left");
+			$panel.aefisResizable({
+				handleSelector: ".aefis-resizable-panel--splitter",
+				resizeHeight: false
+			});
+		}
+
+		if ($rootContainer.find(".aefis-resizable-panel--top").length) {
+			var $panel = $rootContainer.find(".aefis-resizable-panel--top");
+			$panel.aefisResizable({
+				handleSelector: ".aefis-resizable-panel--splitter-horizontal",
+				resizeWidth: false
+			});
+		}
+
+		$(".aefis-tab").on("click", function (e) {
+			var $tab = $(this);
+			if ($tab.hasClass("disabled")) {
+				e.preventDefault();
+				return false;
+			}
+		});
+
+		//select refresh after addition
+
+		$("#aefis-select-refresh-container")
+			.off("refresh")
+			.on("refresh", function (e, returnedData) {
+				if (typeof returnedData == "object" && returnedData !== null) {
+					var objectId = returnedData.value;
+					var selectId = $("#aefis-select-refresh-container").attr(
+						"data-aefis-refresh-container"
+					);
+					var $select = $(selectId);
+					$select.attr("data-select-default-value", objectId);
+					$select.aefisselect();
+				}
+			});
+
+		//notifcations
+		if ($rootContainer.find("#aefis-notification-messages-container")) {
+			if (!$rootContainer.hasClass("aefis-modal-dialog")) {
+				var messageContent = $("#aefis-notification-messages-container").html();
+				if (messageContent && messageContent.length) {
+					var messageContentJSON = JSON.parse(messageContent);
+					$(messageContentJSON).each(function () {
+						var message = $(this)[0];
+						var payload = message["Message"];
+						var type = message["Type"];
+						if (message["Title"]) {
+							aefis.ui.userMessage(payload, type, message["Title"]);
+						} else {
+							aefis.ui.userMessage(payload, type);
+						}
+					});
+				}
+			}
+		}
+
+		if (
+			$("#aefis-current-returnFormat").length &&
+			($("#aefis-current-returnFormat").val() == "word" ||
+				$("#aefis-current-returnFormat").val() == "WORD")
+		) {
+			$("i").hide(); //word hack
+		}
+
+		//handlebar template handling
+		if ($rootContainer.find(".aefis-handlebars-template").length) {
+			$rootContainer.find(".aefis-handlebars-template").each(function () {
+				var $obj = $(this);
+				aefis.ui.initializeHandlebarsTemplate($obj);
+			});
+		}
+
+		if ($rootContainer.find(".aefis-ajax-disabled").length) {
+			aefis.ui.initializeAjaxDisabled();
+			$(document).ajaxStop(function () {
+				aefis.ui.initializeAjaxEnable();
+			});
+		}
+
+		//aefis text area
+		if ($rootContainer.find("textarea.aefis-textarea").length) {
+			$rootContainer.find("textarea.aefis-textarea").each(function () {
+				var $obj = $(this);
+				aefis.ui.initializeAefisTextarea($obj);
+			});
+		}
+
+		//editable table
+		if ($rootContainer.find("table.aefis-editable-table").length) {
+			$rootContainer.find("table.aefis-editable-table").editableTable();
+		}
+
+		//designer toolbar content
+		if ($rootContainer.find(".aefis-designer-toolbar-template").length) {
+			$(".aefis-designer-toolbar-template").each(function () {
+				var $obj = $(this);
+				aefis.ui.initializeDesignerToolbarTemplate($obj);
+			});
+		}
+
+		//designer main content
+		if ($rootContainer.find(".aefis-designer-main-content-template").length) {
+			$(".aefis-designer-main-content-template").each(function () {
+				var $obj = $(this);
+				aefis.ui.initializeDesignerMainTemplate($obj);
+			});
+		}
+
+		//Add header to Export menu
+		if ($rootContainer.find("ul.aefis-business-object-export-menu").length) {
+			$("ul.aefis-business-object-export-menu").each(function () {
+				var $obj = $(this);
+				var optionHtml = '<li class="nav-header">Overview</li>';
+				$obj.prepend(optionHtml);
+			});
+		}
+
+		//sidebar highlight
+		$("#aefis-sidebar li.sub-nav").on("click", function () {
+			var $link = $(this);
+			$("#aefis-sidebar li.sub-nav")
+				.each(function () {
+					$(this).removeClass("active").removeClass("aefis-sidebarLoading");
+				})
+				.promise()
+				.done(function () {
+					$link.addClass("active").addClass("aefis-sidebarLoading");
+				});
+		});
+
+		//X Editable
+		if ($rootContainer.find(".aefis-editable").length) {
+			aefis.ui.initializeEditable();
+		}
+
+		//
+		if ($rootContainer.find("button.aefis-toggle-icon-button").length) {
+			var $button = $rootContainer.find("button.aefis-toggle-icon-button");
+			$button.on("click", function () {
+				aefis.ui.aefisToggleButton($button);
+			});
+		}
+
+		//dropdown checks
+		if ($rootContainer.find(".dropdown-menu.check").length) {
+			aefis.ui.initializeDropdownMenuCheck();
+		}
+
+		//pdf button event
+		if ($rootContainer.find(".aefis-object-action.pdf").length) {
+			aefis.ui.initializePDFDownloadNotification();
+		}
+
+		//pdf button event
+		if ($rootContainer.find('input.mdl-switch__input[type="checkbox"]').length) {
+			aefis.ui.initializeToggle();
+		}
+
+		//pdfzip button event
+		if ($rootContainer.find(".aefis-object-action.pdfzip").length) {
+			aefis.ui.initializePDFDownloadNotification();
+		}
+
+		//csv button event
+		if ($rootContainer.find(".aefis-object-action.csv").length) {
+			aefis.ui.initializeCSVDownloadNotification();
+		}
+
+		//excel button event
+		if ($rootContainer.find(".aefis-object-action.excel").length) {
+			aefis.ui.initializeCSVDownloadNotification();
+		}
+
+		//disable label for settings
+		if ($rootContainer.find(".aefis-control-label-for").length) {
+			$rootContainer.find(".aefis-control-label-for").each(function () {
+				var $label = $(this);
+				var canEdit = $label.attr("data-aefis-can-edit");
+				var target = $label.attr("for");
+				if (target) {
+					var $target = $("#" + target);
+				}
+				if (canEdit) {
+					if (canEdit == "false") {
+						if ($target) {
+							$target.attr("disabled", "disabled").addClass("disabled");
+						}
+					} else {
+						if ($target) {
+							$target.removeAttr("disabled").removeClass("disabled");
+						}
+					}
+				}
+			});
+		}
+
+		//do not show again
+		$(".aefis-do-not-show-again").on("click", function () {
+			var $checkbox = $(this);
+			if ($checkbox.is(":checked")) {
+				var target = $checkbox.attr("data-aefis-target");
+				var objectKey = "aefis-alert-dismiss-" + target;
+				var objectId = target;
+				var objectName = "aefis-alert-dismiss";
+				var objectValue = "dismiss";
+				aefis.app.setAefisLocalStorage(objectKey, objectId, objectName, objectValue);
+			} else {
+				var target = $checkbox.attr("data-aefis-target");
+				var objectKey = "aefis-alert-dismiss-" + target;
+				aefis.app.deleteAefisLocalStorage(objectKey);
+			}
+		});
+
+		//**** loading js when needed
+
+		//date autocomplete
+		if ($rootContainer.find("input.aefis-location-autocomplete").length) {
+			aefis.util.loadScript(
+				"GoogleAutoComplete",
+				"//maps.googleapis.com/maps/api/js?key=AIzaSyD9Qjqh0CWlP7aW0r12rzqERUak0HoszRA&libraries=places",
+				function () {
+					aefis.ui.initializeLocationAutocomplete();
+				}
+			);
+		}
+
+		//word cloud
+		if ($rootContainer.find(".aefis-word-cloud").length) {
+			aefis.util.loadScript(
+				"AEFISWordCloud",
+				"/assets/js/jqcloud/jqcloud-1.0.4.min.js",
+				function () {
+					aefis.ui.initializeWordCloud();
+				}
+			);
+		}
+
+		//social shares
+		if ($rootContainer.find(".aefis-social-sharing").length) {
+			aefis.util.loadScript(
+				"AEFISSocialSharing",
+				"/assets/js/jssocials/1.4.0/jssocials.min.js",
+				function () {
+					$rootContainer.find(".aefis-social-sharing").each(function () {
+						aefis.ui.initializeSocialSharing($(this));
+					});
+				}
+			);
+		}
+
+		//aefis tag popover
+		if ($rootContainer.find(".aefis-tag-popover").length) {
+			aefis.ui.initializeAefisTagPopover();
+		}
+
+		if ($rootContainer.find(".aefis-interactive-popover").length) {
+			aefis.ui.initializeAefisInteractivePopover();
+		}
+
+		//ajax search field
+		if ($rootContainer.find("input.aefis-keyword-search-field").length) {
+			$(".aefis-keyword-search-field").each(function () {
+				aefis.ui.initializeKeywordSearchField($(this));
+			});
+		}
+
+		this.addPageEventHandler = function (obj, searchValues) {
+			$(document).on("pagecomplete", function () {
+				// This event might be raised by some of the pages when page loading is completes.
+				// So that PDF conversion can start.
+				try {
+					setTimeout(function () {
+						if (
+							typeof ExpertPdfJSObj !== "undefined" &&
+							ExpertPdfJSObj.startConversion
+						) {
+							ExpertPdfJSObj.startConversion();
+						}
+					}, 2000);
+				} catch (err) {}
+			});
+		};
+
+		this.runSearchFieldSearch = function (obj, searchValues, keywordKey, searchingText) {
+			var $obj = $(obj);
+			var url = $obj.attr("data-aefis-datasource");
+			var templateid = $obj.attr("data-aefis-template-id");
+			var highlight = $obj.attr("data-aefis-highlight-results");
+			var targetid = $obj.attr("data-aefis-target");
+			var minLength = $obj.attr("data-aefis-min-length");
+
+			if (!keywordKey) {
+				var keywordKey = "keywords";
+			}
+
+			if (!searchingText) {
+				var searchingText = "Searching Library";
+			}
+
+			var searchData = {};
+			searchData[keywordKey] = searchValues;
+
+			if (url) {
+				$obj.attr("disabled", "disabled").addClass("disabled");
+				var trigger = $obj.attr("data-aefis-refresh");
+				var source = $("#" + templateid).html();
+				var template = Handlebars.compile(source);
+				var $aefisSearchSidebar = $("#aefis-search--sidebar");
+				new aefis.ApiWrapper().call(url, {
+					beforeSend: function () {
+						if ($aefisSearchSidebar.hasClass("mdc-temporary-drawer--open")) {
+							$(window).trigger("AefisSearch:searching");
+						} else {
+							$("#" + targetid).html("");
+							aefis.ui.loadingShow("#" + targetid, searchingText, "quick");
+						}
+						$(window).trigger("AefisSearch:searching");
+					},
+					data: searchData,
+					onComplete: function () {
+						$obj.parent().find("button.aefis-container-filter-field-clear").fadeIn();
+						if ($aefisSearchSidebar.hasClass("mdc-temporary-drawer--open")) {
+							$(window).trigger("AefisSearch:completed");
+						}
+						$(window).trigger("AefisSearch:completed");
+						$obj.removeAttr("disabled", "disabled").removeClass("disabled");
+					},
+					onSuccess: function (data, jqXHR) {
+						$obj.removeAttr("disabled").removeClass("disabled");
+						var contentLocation = jqXHR.getResponseHeader("Content-Location");
+						var response = {
+							result: "success",
+							value: data.length
+						};
+						if (data && $aefisSearchSidebar.hasClass("mdc-temporary-drawer--open")) {
+							$aefisSearchSidebar
+								.find("#aefis-search--sidebar-results-count")
+								.attr("data-badge", data.length);
+							$(window).trigger("AefisSearch:success");
+						}
+
+						$("#" + targetid).fadeOut("fast", function () {
+							$("#" + targetid).html(template({ records: data }));
+							$("#" + targetid)
+								.fadeIn()
+								.promise()
+								.done(function () {
+									if (trigger) {
+										$(trigger).trigger("refresh", response);
+									}
+									if (highlight) {
+										$("#" + targetid).highlight(searchValues);
+									}
+									$(window).trigger("AefisSearchField:completed");
+								});
+						});
+						$(window).trigger("AefisSearchField:completed");
+					}
+				});
+			} else {
+				var $target = $(targetid);
+				$target.show();
+				$target.unhighlight();
+				$target.each(function () {
+					var $item = $(this);
+					if ($item.css("display") != "none") {
+						var itemHtml = $item.html().toLowerCase();
+						var itemFound = itemHtml.indexOf(searchValues.toLowerCase());
+						if (itemFound > -1) {
+							$item.addClass("aefis-search-value-found");
+						} else {
+							$item.addClass("aefis-search-value-not-found");
+						}
+					}
+				});
+				$target.find(".aefis-search-value-not-found").fadeOut();
+				$target.highlight(searchValues);
+			}
+		};
+
+		//update user action item count
+		if ($rootContainer.find("#aefis-notification-count").length) {
+			if ($rootContainer.find("#aefis-notification-auto-load").length) {
+				aefis.ui.initializeNotifications();
+			} else {
+				var objectId = "aefis-notication-action-item-count";
+				var objectKey = "aefis-notification-total-count";
+				var totalNotifications = aefis.app.getAefisLocalStorage(objectKey);
+				var total = 0;
+				if (totalNotifications) {
+					total = totalNotifications[objectId].val;
+				}
+				aefis.ui.updateTotalNotifications(total);
+			}
+		}
+
+		//filter favorites
+		if (
+			$("#aefis-main-toolbar--sidebar-favorite-filter").hasClass(
+				"aefis-main-toolbar--sidebar-favorite-filter--active"
+			)
+		) {
+			$("#aefis-main-toolbar--sidebar-favorite-filter").click();
+		}
+
+		//filter visibility
+		if (
+			$("#aefis-main-toolbar--sidebar-visibility-filter").hasClass(
+				"aefis-main-toolbar--sidebar-visibility-filter--active"
+			)
+		) {
+			$("#aefis-main-toolbar--sidebar-visibility-filter").click();
+		}
+
+		if ($rootContainer.find(".aefis-quick-filter").length) {
+			$(".aefis-quick-filter").each(function () {
+				var $quickfilter = $(this);
+				var $list = $(this).find("ul.aefis-quick-filter-list");
+				aefis.ui.initializeHandlebarsTemplate($list);
+			});
+		}
+
+		//detect click on favorite center
+		if ($rootContainer.find("#aefis-topnav-favorite-dropdown").length) {
+			aefis.ui.initializeFavorites();
+			$("#aefis-topnav-favorite-dropdown").on("click", function (e) {
+				e.stopPropagation();
+				var $dropdown = $(this);
+				if ($dropdown.hasClass("open")) {
+					//aefis.ui.fadeOutMainContent();
+				} else {
+					//aefis.ui.fadeInMainContent();
+				}
+			});
+		}
+		//Page Section Header Actions
+		if ($rootContainer.find(".aefis-section-header-options-list").length) {
+			$(".aefis-section-header-options-list").each(function () {
+				var obj = $(this);
+				var templateid = obj.attr("data-aefis-template-id");
+				var source = $("#" + templateid).html();
+				source = source.replace("<ul>", "");
+				source = source.replace("</ul>", "");
+				var template = Handlebars.compile(source);
+				obj.html(template);
+				aefis.ui.initializeAjaxDisabled();
+			}); //end of each
+		}
+
+		if ($rootContainer.find(".aefis-circle-chart").length) {
+			$(".aefis-circle-chart").each(function () {
+				var $obj = $(this);
+				aefis.ui.initializeCircleChart($obj);
+			}); //end of each
+		}
+
+		if ($rootContainer.find("duet-date-picker").length) {
+			$("duet-date-picker").each(function () {
+				var $obj = $(this);
+				aefis.ui.accessibleDatePicker($obj);
+			});
+		}
+
+		if ($rootContainer.find(".aefis-select.aefis-add-preview-button").length) {
+			aefis.ui.initializePreviewButtons();
+		}
+
+		//settings toggle
+		if ($rootContainer.find("input.aefis-setting-toggle").length) {
+			aefis.ui.initializeSettingsToggle();
+		}
+
+		//sparklines
+		if ($rootContainer.find(".aefis-sparkline").length) {
+			aefis.ui.initializeSparkline();
+		}
+
+		//Modal
+		if ($rootContainer.find(".aefis-modal-dialog").length) {
+			//aefis.ui.initializeModalDialog();
+		}
+
+		//Modal
+		if ($rootContainer.find("button.aefis-ajax-disabled").length) {
+			aefis.ui.initializeAjaxDisabled();
+		}
+
+		//Tooltip
+		if ($rootContainer.find(".aefis-tooltip").length) {
+			aefis.ui.initializeTooltip();
+		}
+
+		if ($rootContainer.find(".aefis-progress-bar").length) {
+			aefis.ui.initializeAefisProgressBar();
+		}
+
+		//Page Section Primary Header Actions
+		if ($rootContainer.find(".aefis-section-header-options-primary").length) {
+			$(".aefis-section-header-options-primary").each(function () {
+				var obj = $(this);
+				var templateid = obj.attr("data-aefis-template-id");
+				var source = $("#" + templateid).html();
+				if (source != undefined) {
+					var template = Handlebars.compile(source);
+					obj.html(template);
+					aefis.ui.initializeAjaxDisabled();
+				}
+			}); //end of each
+		}
+
+		//Data Tables
+		//data tables using a template
+		if ($rootContainer.find("div.aefis-data-table-template").length) {
+			$("div.aefis-data-table-template").each(function () {
+				var $obj = $(this);
+				var empty = $obj.html().length;
+				if ($obj.html().length == 0) {
+					new aefis.Forms().showDataTable($obj);
+				}
+			}); //end of each
+		}
+		//server-side data tables using a table instead of div template
+		if ($rootContainer.find("table.aefis-data-table-template").length) {
+			$("table.aefis-data-table-template").each(function () {
+				var $obj = $(this);
+				new aefis.Forms().showServerSideDataTable($obj, true);
+			}); //end of each
+		}
+
+		//Data Tables for Legacy tables
+		if ($rootContainer.find(".aefis-data-table-legacy").length) {
+			$(".aefis-data-table-legacy").each(function () {
+				var obj = $(this);
+				new aefis.Forms().showLegacyDataTable(obj);
+			}); //end of each
+		}
+
+		//Remove options if object published
+		if ($rootContainer.find(".aefis-remove-if-published").length) {
+			aefis.ui.removeIfPublished();
+		}
+
+		//tokens
+		if ($rootContainer.find(".aefis-token-list-object").length) {
+			aefis.ui.processAefisTokenListObject();
+		}
+
+		if ($rootContainer.find(".aefis-checklist").length) {
+			aefis.ui.processAefisChecklistObject();
+		}
+
+		//resizable
+		if ($rootContainer.find(".aefis-container-resize").length) {
+			$(".aefis-container-resize").each(function () {
+				var $inputObj = $(this);
+				$inputObj.addClass("aefis-initialized");
+				$inputObj.resizable();
+			});
+		}
+
+		//default value
+		if ($rootContainer.find("input[data-aefis-input-default-value]").length) {
+			$("input[data-aefis-input-default-value]").each(function () {
+				var $inputObj = $(this);
+				var inputDefaultValue = $inputObj.attr("data-aefis-input-default-value");
+
+				$inputObj.attr("value", inputDefaultValue);
+			});
+		}
+
+		//number spinner
+		if ($rootContainer.find("input.aefis-number-input").length) {
+			aefis.ui.initializeAefisNumberInput();
+		}
+
+		//currency input
+		if ($rootContainer.find("input.aefis-currency-input").length) {
+			$rootContainer
+				.find("input.aefis-currency-input")
+				.mask("000,000,000,000", { reverse: true });
+		}
+
+		//integer input
+		if ($rootContainer.find("input.aefis-integer-input").length) {
+			$rootContainer.find("input.aefis-integer-input").mask("000", { reverse: true });
+		}
+
+		//percent input
+		if ($rootContainer.find("input.aefis-percent-input").length) {
+			$rootContainer.find("input.aefis-percent-input").mask("000%", { reverse: true });
+		}
+
+		//search header
+		if ($rootContainer.find("div.aefis-search-header--container").length) {
+			$rootContainer.find("div.aefis-search-header--container").each(function () {
+				var $container = $(this);
+				aefis.ui.initializeSearchHeader($(this));
+			});
+		}
+
+		//range slider
+		if ($rootContainer.find("input.aefis-range-slider").length) {
+			$rootContainer.find("input.aefis-range-slider").each(function () {
+				aefis.ui.initializeRangeSlider($(this));
+			});
+		}
+
+		//eula
+		if ($rootContainer.find("#aefis-user-eula--container").length) {
+			aefis.ui.displayEULADialog();
+		}
+
+		if ($rootContainer.find("#aefis-feature-announcement--container").length) {
+			aefis.ui.displayFeatureAnnouncementDialog();
+		}
+
+		//delegated authority popup
+		if ($rootContainer.find("#aefis-user-delegated-auth--container").length) {
+			aefis.ui.displayDelegatedAuthorityDialog();
+		}
+
+		//iCheck
+		if ($rootContainer.find("input[type=radio].aefis-radio-input").length) {
+			aefis.ui.initializeAefisInput();
+		}
+
+		if ($rootContainer.find("input[type=checkbox].aefis-checkbox-input").length) {
+			aefis.ui.initializeAefisInput();
+		}
+
+		if ($rootContainer.find("select").length) {
+			$("select").each(function () {
+				var $obj = $(this);
+
+				if ($obj.attr("data-aefis-static-template")) {
+					var options = aefis.forms.getStaticTemplate($obj);
+					$obj.html(options);
+					if ($obj.hasClass("selectpicker")) {
+						$obj.selectpicker("refresh");
+					}
+				}
+			});
+		}
+
+		//number spinner
+		if ($rootContainer.find("a.aefis-file-preview").length) {
+			aefis.ui.initializeFilePreview();
+		}
+
+		if ($rootContainer.find("textarea.aefis-notification-textarea").length) {
+			var removeStyles = false;
+			var removeSpans = false;
+			var options = {
+				menu: {
+					edit: {
+						title: "Edit",
+						items: "undo redo | cut copy paste pastetext | selectall"
+					},
+					insert: { title: "Insert", items: "link media | template hr" },
+					view: { title: "View", items: " code | preview " },
+					format: {
+						title: "Format",
+						items: "bold italic underline strikethrough superscript subscript | formats | removeformat"
+					},
+					table: {
+						title: "Table",
+						items: "inserttable tableprops deletetable | cell row column"
+					},
+					tools: { title: "Tools", items: "spellchecker" }
+				},
+				theme: "modern",
+				plugins: [
+					"paste textcolor link image advlist lists code preview contextmenu table wordcount"
+				],
+				paste_remove_styles: removeStyles,
+				paste_remove_spans: removeSpans,
+				paste_strip_class_attributes: false,
+				force_br_newlines: true,
+				force_p_newlines: false,
+				paste_text_sticky: true,
+				paste_auto_cleanup_on_paste: true,
+				browser_spellcheck: true,
+				paste_word_valid_elements:
+					"b,strong,i,em,h1,h2,p,ol,ul,li,a,u,table,tr,td,th,thead,tbody",
+				paste_postprocess: function (pl, o) {
+					var content = o.node.innerHTML;
+					content = content.replace("<p>", "").replace("</p>", "");
+					o.node.innerHTML = content;
+				},
+				paste_preprocess: function (pl, o) {
+					var content = aefis.util.stripTags(o.content, "");
+					o.content = content;
+				},
+				resize: false
+			};
+
+			$("textarea.aefis-notification-textarea").each(function () {
+				var $textarea = $(this);
+				var selector = "#" + $textarea.attr("id");
+				var toolbar =
+					"undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | table | link image | forecolor backcolor ";
+				var menubar = "edit view variables custom_preview_context";
+				toolbar = false;
+				var height = 175;
+				var customButton = $textarea.attr("data-aefis-custom-button-data-container");
+				var previewEmailButton = $textarea.attr("data-aefis-preview-email-button");
+
+				if (customButton || previewEmailButton) {
+					options.setup = function (editor, event) {
+						if (customButton) {
+							var $data = $(customButton);
+							var buttonName = $textarea.attr("data-aefis-custom-button-name");
+							var $object = JSON.parse($data.html());
+							var customButtonMenuItems = "";
+
+							$.each($object, function (index, object) {
+								var menuArray = [];
+								$.each(object, function (attribute, value) {
+									customButtonMenuItems += attribute + " ";
+
+									$.each(value, function (attribute, value) {
+										menuArray.push({
+											text: value.Name,
+											value: "{{" + value.Name + "}}",
+											onclick: function (e) {
+												editor.insertContent(this.value());
+											}
+										});
+									});
+
+									editor.addMenuItem(attribute, {
+										text: attribute,
+										context: "variables",
+										menu: menuArray
+									});
+								});
+							});
+
+							editor.on("PostProcess", function (e, o) {
+								aefis.app.log("TinyMCE Process");
+
+								// Remove multiple nested comments (for Word paste)
+								var content = e.content;
+
+								content = content.replace(/<!--[\s\S]*?-->/g, "");
+								content = content.replace(/<!--[\s\S]*?-->/g, "");
+								content = content.replace(/<!--[\s\S]*?-->/g, "");
+								content = content.replace(/<!--[\s\S]*?-->/g, "");
+								e.content = content;
+							});
+
+							options.menu["variables"] = {
+								title: buttonName,
+								items: customButtonMenuItems
+							};
+						}
+
+						if (previewEmailButton && previewEmailButton === "true") {
+							var customPreviewButtonMenuItems = " preview_email ";
+							editor.addMenuItem("preview_email", {
+								text: "Preview",
+								context: "custom_preview_context",
+								onclick: function (e) {
+									var options = {
+										title: "Preview Email",
+										contentURL: $textarea.attr(
+											"data-aefis-preview-email-datasource"
+										),
+										titleIconClass: "fa fa-list",
+										size: "medium",
+										showFooterCloseButton: true
+									};
+									aefis.ui.modalDialog(options);
+								}
+							});
+							options.menu["custom_preview_context"] = {
+								title: "Preview",
+								items: customPreviewButtonMenuItems
+							};
+						}
+					};
+				}
+
+				if ($textarea.attr("data-aefis-editor-height")) {
+					height = $textarea.attr("data-aefis-editor-height");
+				}
+				if ($textarea.attr("data-aefis-editor-toolbar")) {
+					toolbar = $textarea.attr("data-aefis-editor-toolbar");
+				}
+				if ($textarea.attr("data-aefis-editor-menubar")) {
+					menubar = $textarea.attr("data-aefis-editor-menubar");
+				}
+				options.menubar = menubar;
+				options.selector = selector;
+				options.height = height;
+				options.toolbar = toolbar;
+				options.browser_spellcheck = true;
+
+				tinymce.init(options);
+			});
+		}
+
+		// Aefis Select Picker
+		if ($().aefisselect) {
+			$rootContainer.find("select.aefis-select").aefisselect();
+		}
+
+		//mdl sortable table
+		if ($rootContainer.find("table.mdl-sortable-table").length) {
+			aefis.ui.initializeSortableTable();
+		}
+
+		// Select Picker
+		if ($().selectpicker) {
+			$rootContainer
+				.find("select.selectpicker")
+				.selectpicker({ dropupAuto: false })
+				.each(function () {
+					aefis.ui.setSelectPickerDefaultValue($(this));
+					aefis.ui.setSelectPickerNullOption($(this));
+					aefis.ui.setSelectPickerAriaOptions($(this));
+				});
+		}
+
+		// Date time picker
+
+		if ($().datetimepicker) {
+			var defaults = {
+				pickDate: false,
+				pickTime: true,
+				useMinutes: true,
+				useSeconds: false,
+				useCurrent: true,
+				minuteStepping: 1,
+				minDate: "1/1/1900",
+				showToday: true,
+				language: "en",
+				defaultDate: "",
+				disabledDates: [],
+				enabledDates: [],
+				icons: {
+					time: "fa fa-clock",
+					date: "far fa-calendar",
+					up: "fa fa-chevron-up",
+					down: "fa fa-chevron-down"
+				},
+				useStrict: false,
+				sideBySide: false,
+				daysOfWeekDisabled: []
+			};
+
+			$rootContainer.find(".aefis-timepicker").datetimepicker(defaults);
+		}
+
+		// Date Picker
+		if ($().datepicker) {
+			var $endDateObj = $rootContainer.find("#enddate");
+			var $startDateObj = $rootContainer.find("#startdate");
+			if (!$endDateObj.length && !$startDateObj.length) {
+				$startDateObj = $rootContainer.find("input.datepicker[data-aefis-start-date]");
+				$endDateObj = $rootContainer.find("input.datepicker[data-aefis-end-date]");
+			}
+
+			var nowTemp = new Date();
+			var now = new Date(
+				nowTemp.getFullYear(),
+				nowTemp.getMonth(),
+				nowTemp.getDate(),
+				0,
+				0,
+				0,
+				0
+			);
+
+			if ($endDateObj.length && $startDateObj.length) {
+				$rootContainer.find("input.datepicker").each(function () {
+					var $datepicker = $(this);
+					var datepickerValue = $datepicker.val();
+					var startDate = $datepicker.attr("data-aefis-form-startdate");
+					var today = new Date(
+						new Date().getFullYear(),
+						new Date().getMonth(),
+						new Date().getDate()
+					);
+
+					var isStartDate = false;
+					var isEndDate = false;
+
+					if ($datepicker.attr("data-aefis-start-date")) {
+						isStartDate = true;
+					}
+
+					if ($datepicker.attr("data-aefis-end-date")) {
+						isEndDate = true;
+					}
+
+					if (startDate && startDate != null) {
+						now = startDate;
+					} else {
+						now = "";
+					}
+					if (isEndDate && datepickerValue == "") {
+						$datepicker.prop("disabled", "true");
+					}
+
+					$datepicker
+						.datepicker({
+							format: $datepicker.attr("data-aefis-format"),
+							startDate: now,
+							autoclose: true,
+							todayHighlight: true,
+							todayBtn: true,
+							orientation: "auto"
+						})
+						.on("changeDate", function () {
+							var $picker = $(this);
+							var restrictEndDate = false;
+							var isStartDate = false;
+							var isEndDate = false;
+							var restrictTarget = $picker.attr("data-aefis-restrict-target");
+
+							if ($picker.attr("data-aefis-start-date")) {
+								isStartDate = true;
+							}
+
+							if ($picker.attr("data-aefis-end-date")) {
+								isEndDate = true;
+							}
+
+							if (restrictTarget) {
+								var $restrictTarget = $rootContainer.find("#" + restrictTarget);
+								var restrictDate = new Date($picker.val());
+								restrictDate.setDate(restrictDate.getDate() + 1);
+
+								if (
+									restrictDate.getTime() >
+									new Date($restrictTarget.val()).getTime()
+								) {
+									$restrictTarget.datepicker("setStartDate", restrictDate);
+									$restrictTarget.datepicker("update", restrictDate);
+								}
+							}
+
+							if (isStartDate) {
+								var $endDateObject = $("#" + $picker.attr("data-aefis-target"));
+								if (
+									$endDateObject &&
+									$endDateObject.attr("data-aefis-restrict-end-date")
+								) {
+									restrictEndDate = true;
+								}
+								var endDate = $endDateObject.val();
+								var newStartDate = $picker.val();
+								if ($endDateObject && endDate == "" && newStartDate != "") {
+									$endDateObject.prop("disabled", false);
+								}
+								if (newStartDate != "") {
+									$endDateObject.prop("disabled", false);
+									$endDateObject.val("");
+									if (restrictEndDate) {
+										var newStartDatePlusOne = new Date(newStartDate);
+										newStartDatePlusOne.setDate(
+											newStartDatePlusOne.getDate() + 1
+										);
+										$endDateObject.datepicker(
+											"setStartDate",
+											newStartDatePlusOne
+										);
+									}
+									//$('#enddate').focus();
+								}
+							}
+						});
+				});
+			} else {
+				$rootContainer.find(".datepicker").each(function () {
+					var $datepicker = $(this);
+					var startDt = $datepicker.attr("data-aefis-start-date");
+					var daysOfWeekDisabled = $datepicker.attr("data-aefis-days-of-week-disabled");
+					var options = {
+						format: $(this).attr("data-aefis-format"),
+						todayBtn: true,
+						todayHighlight: true,
+						autoclose: true,
+						orientation: "auto"
+					};
+					if ($datepicker.attr("data-aefis-view-mode")) {
+						var attribute = $datepicker.attr("data-aefis-view-mode");
+						var attributeValue = 0;
+						if (attribute == "months") {
+							attributeValue = 1;
+						}
+						if (attribute == "years") {
+							attributeValue = 2;
+							options["format"] = "yyyy";
+						}
+						options["minViewMode"] = attributeValue;
+					}
+					if ($datepicker.attr("data-aefis-default-value")) {
+						options["defaultViewDate"] = $datepicker.attr("data-aefis-default-value");
+					}
+					if (daysOfWeekDisabled) {
+						options.daysOfWeekDisabled = daysOfWeekDisabled;
+					}
+					if (startDt) {
+						options.startDate = startDt;
+					}
+
+					$datepicker.datepicker(options).on("changeDate", function () {
+						var $picker = $(this);
+						var restrictTarget = $picker.attr("data-aefis-restrict-target");
+
+						if (restrictTarget) {
+							var $restrictTarget = $rootContainer.find("#" + restrictTarget);
+							var restrictDate = new Date($picker.val());
+							restrictDate.setDate(restrictDate.getDate() + 1);
+
+							$restrictTarget.datepicker("setStartDate", restrictDate);
+							$restrictTarget.datepicker("update", restrictDate);
+						}
+					});
+				});
+			}
+		}
+
+		// Token Input
+		if ($().tokenInput) {
+			$rootContainer.find(".tokeninput").each(function () {
+				var $input = $(this);
+				var idTemplate = Handlebars.compile($input.attr("data-aefis-id"));
+				var nameTemplate = Handlebars.compile($input.attr("data-aefis-name"));
+				var allowUserInput = $input.attr("data-aefis-allow-user-input");
+				var placeholder = $input.attr("placeholder");
+				var noResultsText = $input.attr("data-aefis-no-results-text");
+				var fireChangeEvents = $input.attr("data-aefis-fire-change-events");
+				var updateControls = $(this).attr("data-aefis-update-controls");
+				var paramSelectors = $(this).attr("data-aefis-parameters");
+				var tokenLimit = $(this).attr("data-aefis-token-limit");
+				var noHeight = $(this).attr("data-aefis-no-height");
+				if (!tokenLimit) {
+					tokenLimit = 4;
+				}
+
+				var allowInput = false;
+				if (allowUserInput) {
+					var allowInput = allowUserInput;
+				}
+				var options = {
+					tokenLimit: tokenLimit,
+					preventDuplicates: true,
+					allowFreeTagging: allowInput,
+					placeholder: placeholder,
+					noResultsText: noResultsText,
+					theme: "facebook",
+					onResult: function (results) {
+						if (results.DATA) {
+							results = results.DATA;
+						}
+						$.each(results, function (item, itemValue) {
+							itemValue.id = idTemplate({ record: itemValue });
+							itemValue.name = nameTemplate({
+								record: itemValue.replace ? itemValue.replace(/\//, "-") : itemValue
+							});
+						});
+						if (updateControls) {
+							$(updateControls).each(function () {
+								$(this).trigger("change");
+							});
+						}
+
+						return results;
+					}
+				};
+
+				if (fireChangeEvents) {
+					options["onAdd"] = function () {
+						$input.trigger("change");
+					};
+					options["onDelete"] = function () {
+						$input.trigger("change");
+					};
+				}
+
+				if ($(this).attr("data-aefis-result")) {
+					//resultsFormatter: function(item){ return "<li>" + "<img src='" + item.url + "' height='25px' width='25px' />" + "<div style='display: inline-block; padding-left: 10px;'><div class='full_name'>" + item.Code + " " + item.Name + "</div><div class='email'>" + item.email + "</div></div></li>" },
+					//tokenFormatter: function(item) { return "<li><p>" + item.Code + " <b style='color: red'>" + item.Name + "</b></p></li>" },
+					var resultTemplate = Handlebars.compile($(this).attr("data-aefis-result"));
+
+					options.resultsFormatter = function (item) {
+						var result = resultTemplate({ record: item });
+						return result;
+					};
+				}
+
+				if ($(this).attr("data-aefis-token")) {
+					var tokenTemplate = Handlebars.compile($(this).attr("data-aefis-token"));
+
+					options.tokenFormatter = function (item) {
+						return tokenTemplate({ record: item });
+					};
+				}
+
+				if ($(this).attr("data-aefis-prepopulate-id")) {
+					var array = [
+						{
+							id: $(this).attr("data-aefis-prepopulate-id"),
+							name: $(this).attr("data-aefis-prepopulate-name")
+						}
+					];
+					options.prePopulate = array;
+				}
+				//[{id: 3, name: "test"}, {id: 5, name: "awesome"}]
+				if ($(this).attr("data-aefis-token-limit")) {
+					options.tokenLimit = $(this).attr("data-aefis-token-limit");
+				}
+
+				if ($(this).attr("data-aefis-populate")) {
+					var populateId = $(this).attr("data-aefis-populate");
+					var data = $("#" + populateId).html();
+
+					if (data && data.length) {
+						data = JSON.parse(data);
+
+						if (data.constructor != Array) {
+							var arrayData = [];
+
+							arrayData.push(data);
+							data = arrayData;
+						}
+						options.prePopulate = data;
+						options.processPrePopulate = true;
+					}
+				}
+				var tokenInput = $(this);
+				var urlCreator = function () {
+					var dataSourceUrl = tokenInput.attr("data-aefis-datasource");
+					var params = aefis.forms.getFormParameters(paramSelectors);
+					if (params && !$.isEmptyObject(params)) {
+						for (var param in params) {
+							dataSourceUrl += "&" + param + "=" + decodeURIComponent(params[param]);
+						}
+					}
+					return dataSourceUrl;
+				};
+				var $tokenInput = $(this).tokenInput(urlCreator, options);
+				if (noHeight) {
+					setTimeout(function () {
+						$tokenInput
+							.parent()
+							.find("ul.token-input-list-facebook")
+							.addClass("noheight");
+					}, 300);
+				}
+			});
+		}
+
+		if ($().tokenfield) {
+			$(".aefis-tokenfield").tokenfield({
+				autocomplete: {
+					source: [
+						"red",
+						"blue",
+						"green",
+						"yellow",
+						"violet",
+						"brown",
+						"purple",
+						"black",
+						"white"
+					],
+					delay: 100
+				},
+				showAutocompleteOnFocus: true
+			});
+
+			var engine = new Bloodhound({
+				local: [
+					{ value: "red" },
+					{ value: "blue" },
+					{ value: "green" },
+					{ value: "yellow" },
+					{ value: "violet" },
+					{ value: "brown" },
+					{ value: "purple" },
+					{ value: "black" },
+					{ value: "white" }
+				],
+				datumTokenizer: function (d) {
+					return Bloodhound.tokenizers.whitespace(d.value);
+				},
+				queryTokenizer: Bloodhound.tokenizers.whitespace
+			});
+
+			engine.initialize();
+
+			$(".tokenfield").tokenfield({
+				typeahead: {
+					source: engine.ttAdapter()
+				}
+			});
+		}
+
+		//tag typeahead
+		if ($().typeahead) {
+			$rootContainer.find(".aefis-tag-typeahead").aefistagtypeahead();
+		}
+
+		// Button group with all option
+		if ($().buttonGroup) {
+			$rootContainer.find("div.btngroupwithall, div.aefis-button-group").each(function () {
+				$(this).buttonGroup();
+			});
+
+			$rootContainer.find("div.aefis-button-group button.btn").each(function () {
+				var $button = $(this);
+				if ($button.hasClass("default")) {
+					$button.click();
+				}
+			});
+		}
+
+		if ($().dropzone) {
+			aefis.ui.initializeDropZone();
+		}
+
+		this.setFormValidation($rootContainer);
+
+		if (aefis.forms) {
+			aefis.forms.initialize($rootContainer);
+		}
+		if (aefis.formItems) {
+			aefis.formItems.initialize($rootContainer);
+		}
+		if (aefis.CurrentPage && aefis.PageShared && aefis.PageOwned) {
+			aefis.page = jQuery.extend(
+				new aefis.CurrentPage(),
+				new aefis.PageShared(),
+				new aefis.PageOwned()
+			);
+		} else if (aefis.CurrentPage && aefis.PageOwned) {
+			aefis.page = jQuery.extend(new aefis.CurrentPage(), new aefis.PageOwned());
+		} else if (aefis.CurrentPage && aefis.PageShared) {
+			aefis.page = jQuery.extend(new aefis.CurrentPage(), new aefis.PageShared());
+		} else if (aefis.CurrentPage) {
+			aefis.page = new aefis.CurrentPage();
+		} else if (aefis.PageShared) {
+			aefis.page = new aefis.PageShared();
+		}
+		if (aefis.page && aefis.page.initialize) {
+			aefis.page.initialize($rootContainer);
+		}
+
+		aefis.forms.tinyMceFirefoxFix($rootContainer);
+
+		if (!(typeof Highcharts === "undefined")) {
+			this.createSparkLines($rootContainer);
+		}
+
+		// TODO For some reason this requires an asynch focus. Not a great way. Might be resolved. OY
+		/*setTimeout(function(){
+        	$rootContainer.find("form:visible:first:not(.aefis-no-focus)").find(":input:visible:first").focus();
+        }, 500);*/
+	};
+
+	function initComponents() {
+		if (tinyMCE && tinyMCE.init) {
+			// Standard initialization for TinyMCE
+			var toolbar =
+				"undo redo | styleselect | cut copy paste | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | table | link | forecolor backcolor | code";
+			var simpleToolbar =
+				"undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist | link";
+			tinymce.init({
+				selector: "textarea.editor",
+				forced_root_block: "",
+				force_br_newlines: true,
+				force_p_newlines: false,
+				content_css: ["https://fonts.googleapis.com/css?family=Roboto"],
+				font_formats: "Roboto=Roboto",
+				menubar: false,
+				statusbar: true,
+				theme: "modern",
+				convert_urls: true,
+				relative_urls: false,
+				browser_spellcheck: true,
+				plugins: [
+					"paste print preview textcolor link code contextmenu advlist lists table"
+				],
+				//contextmenu: "link image inserttable | cell row column deletetable",
+				image_advtab: true,
+				toolbar1: toolbar,
+				//paste_retain_style_properties: true,
+				//paste_enable_default_filters: false,
+				//paste_auto_cleanup_on_paste : true,
+				//paste_remove_styles: false,
+				//paste_remove_styles_if_webkit: false,
+				paste_word_valid_elements:
+					"b,strong,i,em,h1,h2,p,ol,ul,li,a,u,table,tr,td,th,thead,tbody",
+				resize: "height",
+				init_instance_callback: "aefis.app.initTinyMCE",
+
+				setup: function (editor, event) {
+					editor.on("focus", function () {});
+					editor.on("blur", function () {
+						tinymce.triggerSave();
+						$("#" + this.id).trigger("change");
+					});
+					editor.on("change", function () {
+						//tinyMCE.triggerSave();
+					});
+					editor.on("PostProcess", function (e, o) {
+						aefis.app.log("TinyMCE Process");
+
+						// Remove multiple nested comments (for Word paste)
+						var content = e.content;
+
+						content = content.replace(/<!--[\s\S]*?-->/g, "");
+						content = content.replace(/<!--[\s\S]*?-->/g, "");
+						content = content.replace(/<!--[\s\S]*?-->/g, "");
+						content = content.replace(/<!--[\s\S]*?-->/g, "");
+						e.content = content;
+					});
+				}
+			});
+
+			toolbar =
+				"undo redo | cut copy paste | alignleft aligncenter alignright alignjustify | code ";
+			tinymce.init({
+				selector: "textarea.basicEditor",
+				forced_root_block: "",
+				force_br_newlines: true,
+				force_p_newlines: false,
+				menubar: false,
+				statusbar: true,
+				theme: "modern",
+				convert_urls: true,
+				relative_urls: false,
+				browser_spellcheck: true,
+				plugins: [
+					"paste print preview textcolor link image code advlist lists contextmenu table advlist"
+				],
+				//contextmenu: "link image inserttable | cell row column deletetable",
+				image_advtab: true,
+				toolbar1: toolbar,
+				//paste_retain_style_properties: true,
+				//paste_enable_default_filters: false,
+				//paste_auto_cleanup_on_paste : true,
+				//paste_remove_styles: false,
+				//paste_remove_styles_if_webkit: false,
+				paste_word_valid_elements:
+					"b,strong,i,em,h1,h2,p,ol,ul,li,a,u,table,tr,td,th,thead,tbody",
+				resize: "height",
+				init_instance_callback: "aefis.app.initTinyMCE",
+
+				setup: function (editor, event) {
+					/*if ($("textarea#" + editor.id).attr("disabled") == "disabled") {
+			             editor.settings.readonly = true;
+			        }*/
+
+					editor.on("focus", function () {});
+					editor.on("blur", function () {
+						tinymce.triggerSave();
+						$("#" + this.id).trigger("change");
+					});
+					editor.on("change", function () {
+						//tinyMCE.triggerSave();
+					});
+					editor.on("PostProcess", function (e, o) {
+						aefis.app.log("TinyMCE Process");
+
+						// Remove multiple nested comments (for Word paste)
+						var content = e.content;
+
+						content = content.replace(/<!--[\s\S]*?-->/g, "");
+						content = content.replace(/<!--[\s\S]*?-->/g, "");
+						content = content.replace(/<!--[\s\S]*?-->/g, "");
+						content = content.replace(/<!--[\s\S]*?-->/g, "");
+						e.content = content;
+					});
+				}
+			});
+		}
+
+		var validatorErrorArray = [];
+		var previousNumberOfFormErrors = 0;
+		if ($.validator) {
+			// jQuery Validator initialization.
+
+			$.validator.setDefaults({
+				ignore: "[disabled],[type='hidden']",
+				rules: {
+					//startdate: { required: true, greaterThanToday: true },
+					startdate: { required: true },
+					//enddate: {  required:true , greaterThan: "#startdate" },
+					enddate: { required: true },
+					//delayresultsuntil: {  greaterThan: "#enddate"},
+					delayresultsuntil: { required: true },
+					zip: { required: true, digits: true, minlength: 5, maxlength: 5 }
+				},
+				messages: {
+					startdate: {
+						required: "This Entry Cannot Be Blank. Please Enter a valid date."
+					},
+					enddate: {
+						required:
+							"The end date can not be blank and must be greater than the start date. Please Enter Valid Data",
+						greaterThan: "The End Date Must Be After The Start Date."
+					},
+					delayresultsuntil: {
+						greaterThan: "Delay Results Until Must Be After The End Date."
+					}
+				},
+				onkeyup: false,
+				onfocusout: false,
+				onsubmit: true,
+				onclick: false,
+				focusInvalid: false,
+				focusCleanup: false,
+				showErrors: function (errorMap, errorList) {
+					var showErrors = false;
+					var isDataCollectionForm = $("form.aefis-data-collection-form").length > 0;
+					var isSurveyForm = $('form[name="surveyForm"]').length > 0;
+
+					$.each(errorList, function (index, value) {
+						var $errorInput = $(value.element);
+						if (value.message && !isDataCollectionForm && !isSurveyForm) {
+							aefis.ui.formValidationErrorNotification(value.message);
+						}
+						var errorInputName = $errorInput.attr("name");
+						aefis.ui.formatFormFieldMarkup($errorInput, false);
+
+						if (validatorErrorArray.indexOf(errorInputName) === -1) {
+							validatorErrorArray.push(errorInputName);
+						} else if (validatorErrorArray.indexOf(errorInputName) > -1) {
+							validatorErrorArray.splice(
+								validatorErrorArray.indexOf(errorInputName),
+								1
+							);
+						}
+						previousNumberOfFormErrors = validatorErrorArray.length;
+					});
+					var $growl = $("#growls").find(".aefis-form-error--notification");
+					if (previousNumberOfFormErrors != this.numberOfInvalids() || !$growl.length) {
+						showErrors = true;
+					}
+					if (validatorErrorArray.length && this.numberOfInvalids() > 0 && showErrors) {
+						var errorMessage =
+							"There are <strong>" +
+							this.numberOfInvalids() +
+							"</strong> required fields that have not been completed. You must complete these required fields to submit the form.";
+						aefis.ui.formValidationErrorNotification(errorMessage);
+					}
+					if (window.parent) {
+						setTimeout(function () {
+							window.parent.aefis.ui.hidePreviewObjectLoadingBar();
+						}, 1000);
+					}
+					aefis.ui.hidePreviewObjectLoadingBar();
+				}
+			});
+
+			$.validator.addMethod(
+				"futuredate",
+				function (value, element) {
+					var curDate = new Date();
+					var inputDate = new Date(value);
+					if (inputDate >= curDate) return true;
+					return false;
+				},
+				"Please enter a future date."
+			); // error message
+		}
+
+		if (Handlebars && Handlebars.registerHelper) {
+			// HandleBars initialization
+			Handlebars.registerHelper("each-index", function (context, options) {
+				var fn = options.fn,
+					inverse = options.inverse;
+				var i = 0,
+					ret = "",
+					data;
+
+				if (options.data) {
+					data = Handlebars.createFrame(options.data);
+				}
+
+				if (context && typeof context === "object") {
+					if (context instanceof Array) {
+						for (var j = context.length; i < j; i++) {
+							if (data) {
+								data.index = i + 1;
+							}
+							ret = ret + fn(context[i], { data: data });
+						}
+					} else {
+						for (var key in context) {
+							if (context.hasOwnProperty(key)) {
+								if (data) {
+									data.key = key;
+								}
+								ret = ret + fn(context[key], { data: data });
+								i++;
+							}
+						}
+					}
+				}
+
+				if (i === 0) {
+					ret = inverse(this);
+				}
+				return ret;
+			});
+			Handlebars.registerHelper("reverseArray", function (arr) {
+				var newArr = [];
+				if (arr.length) {
+					for (var i = arr.length; i > 0; i--) {
+						newArr.push(arr[i]);
+					}
+				}
+				return newArr;
+			});
+			Handlebars.registerHelper("stringifyJSON", function (obj) {
+				return JSON.stringify(obj);
+			});
+			Handlebars.registerHelper("var", function (name, value, context) {
+				this[name] = value;
+			});
+			Handlebars.registerHelper("unescape", function (options) {
+				var text = options.fn(this);
+				return new Handlebars.SafeString(text.split("\\/").join("/"));
+			});
+			Handlebars.registerHelper("counter", function (index) {
+				return index + 1;
+			});
+			Handlebars.registerHelper("uuid", function (index) {
+				return aefis.util.createUUID();
+			});
+			Handlebars.registerHelper("randomint", function (index) {
+				return aefis.util.getRandomInt();
+			});
+			Handlebars.registerHelper("reverseArray", function (arr) {
+				arr.reverse();
+			});
+			Handlebars.registerHelper("lowercaseIfDefined", function (str) {
+				if (str) {
+					return str.toLowerCase();
+				} else {
+					return str;
+				}
+			});
+			Handlebars.registerHelper("reverse", function (collection, options) {
+				var result = "";
+				for (var i = collection.length - 1; i >= 0; i--) {
+					result += options.fn(collection[i]);
+				}
+				return result;
+			});
+			Handlebars.registerHelper("loop", function (collection, options) {
+				var result = "";
+				for (var i = 0; i <= collection.length - 1; i++) {
+					result += options.fn(collection[i]);
+				}
+				return result;
+			});
+			Handlebars.registerHelper("escape", function (variable) {
+				if (variable && variable != "") {
+					return variable.replace(/(['"])/g, "\\$1");
+				} else {
+					return variable;
+				}
+			});
+
+			Handlebars.registerHelper("removeQuotes", function (variable) {
+				if (variable && variable != "") {
+					return variable.replace(/(['"])/g, "");
+				} else {
+					return variable;
+				}
+			});
+
+			Handlebars.registerHelper("urlencode", function (variable) {
+				if (variable && variable != "") {
+					return encodeURIComponent(variable);
+				}
+				return variable;
+			});
+
+			Handlebars.registerHelper("addEscapeToSingleQuote", function (variable) {
+				return variable.replace(/'/g, "\\'");
+			});
+
+			Handlebars.registerHelper("formatDateWithTZ", function (variable, format) {
+				return moment.parseZone(variable).format(format);
+			});
+
+			Handlebars.registerHelper("urldecode", function (variable) {
+				if (variable && variable != "") {
+					return decodeURIComponent(variable);
+				}
+				return variable;
+			});
+
+			Handlebars.registerHelper("statusClass", function (status) {
+				var str = status.toLowerCase();
+				return "aefis-status--" + str.replace(" ", "-");
+			});
+
+			Handlebars.registerHelper("replaceSpaces", function (status) {
+				//remove after status finalized conversion to published
+				var str = status;
+				return str.split(" ").join("-");
+			});
+
+			Handlebars.registerHelper("replaceWithNonBreakingSpace", function (status) {
+				var str = status;
+				return str.replaceAll(" ", "&nbsp;");
+			});
+
+			// register handlebars helpers
+			Handlebars.registerHelper("each_with_index", function (array, options) {
+				var total = array.length;
+				var buffer = "";
+				var fn = options.fn;
+				var previous = "";
+
+				//Better performance: http://jsperf.com/for-vs-foreach/2
+				for (var i = 0, j = total; i < j; i++) {
+					var item = array[i];
+
+					// stick an index property onto the item, starting with 1, may make configurable later
+					item.index = i;
+					item.total = total;
+					item.$first = i === 0;
+					if (item.name == previous) {
+						item.print = 0;
+					} else {
+						item.print = 1;
+					}
+					// show the inside of the block
+					buffer += fn(item);
+					previous = item.name;
+				}
+
+				// return the finished buffer
+				return buffer;
+			});
+
+			// register handlebars helpers
+			Handlebars.registerHelper("keyExists", function (array, searchValue) {
+				var exists = false;
+				$.each(array, function (obj) {
+					if (obj == searchValue) {
+						exists = true;
+					}
+				});
+				if (exists) {
+					return options.fn(this);
+				} else {
+					return options.inverse(this);
+				}
+			});
+
+			// register handlebars helpers
+			Handlebars.registerHelper("keyNotExists", function (array, searchValue, options) {
+				var exists = false;
+				$.each(array, function (obj) {
+					if (obj == searchValue) {
+						exists = true;
+					}
+				});
+				if (exists) {
+					return options.inverse(this);
+				} else {
+					return options.fn(this);
+				}
+			});
+
+			Handlebars.registerHelper("unless_blank", function (item, block) {
+				return item && ("" + item).replace(/\s/g, "").length
+					? block.fn(this)
+					: block.inverse(this);
+			});
+
+			Handlebars.registerHelper("filesize", function (bytes) {
+				var sizes = ["Bytes", "KB", "MB", "GB", "TB"];
+				if (bytes == 0) return "0 Bytes";
+				var i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
+				return (bytes / Math.pow(1024, i)).toFixed(2) + " " + sizes[i];
+			});
+
+			Handlebars.registerHelper("dateformat", function (context, block) {
+				if (window.moment && context && moment(context).isValid()) {
+					if (block) {
+						var f = block.hash.format || "MMM Do, YYYY";
+					} else {
+						var f = "MMM Do, YYYY";
+					}
+					return moment.utc(context).format(f);
+				} else {
+					return context; //  moment plugin is not available, context does not have a truthy value, or context is not a valid date
+				}
+			});
+
+			Handlebars.registerHelper("datetimeformat", function (context, block) {
+				if (window.moment && context && moment(context).isValid()) {
+					if (block) {
+						var f = block.hash.format || "MMM Do, YYYY @ HH:mm:ss";
+					} else {
+						var f = "MMM Do, YYYY @ HH:mm:ss ZZ";
+					}
+
+					return moment.utc(context).format(f);
+				} else {
+					return context; //  moment plugin is not available, context does not have a truthy value, or context is not a valid date
+				}
+			});
+
+			Handlebars.registerHelper("timeformat", function (context, block) {
+				if (window.moment && context && moment(context).isValid()) {
+					if (block) {
+						var f = block.hash.format || "HH:mm";
+					} else {
+						var f = "HH:mm";
+					}
+
+					return moment.utc(context).format(f);
+				} else {
+					return context; //  moment plugin is not available, context does not have a truthy value, or context is not a valid date
+				}
+			});
+
+			Handlebars.registerHelper("isodatetimeformat", function (context, block) {
+				if (window.moment && context && moment(context).isValid()) {
+					if (block) {
+						var f = block.hash.format || "YYYY-MM-DD @ HH:mm";
+					} else {
+						var f = "YYYY-MM-DD @ HH:mm ZZ";
+					}
+
+					return moment.utc(context).format(f);
+				} else {
+					return context; //  moment plugin is not available, context does not have a truthy value, or context is not a valid date
+				}
+			});
+
+			Handlebars.registerHelper("splitCamelCase", function (text) {
+				var newText = text.replace(/([A-Z])/g, " $1");
+				var result = newText.charAt(0).toUpperCase() + newText.slice(1);
+				return new Handlebars.SafeString(newText);
+			});
+
+			Handlebars.registerHelper("aefisProgressChartColorClass", function (data) {
+				var colorClass = "";
+				if (isNaN(parseFloat(data)) && !isFinite(data)) {
+					return colorClass;
+				}
+				if (data < 25) {
+					colorClass = "first-quarter";
+				} else if (data >= 25 && data < 50) {
+					colorClass = "second-quarter";
+				} else if (data >= 50 && data < 75) {
+					colorClass = "third-quarter";
+				} else if (data >= 75) {
+					colorClass = "fourth-quarter";
+				} else {
+					colorClass = "";
+				}
+
+				return colorClass;
+			});
+
+			Handlebars.registerHelper("percentage", function percentage(num1, num2, options) {
+				var result = 0;
+				function isInt(n) {
+					return Number(n) === n && n % 1 === 0;
+				}
+				function isFloat(n) {
+					return Number(n) === n && n % 1 !== 0;
+				}
+
+				if (isInt(num1)) {
+					num1 = parseInt(num1, 10);
+				} else {
+					num1 = parseFloat(num1, 10);
+				}
+
+				if (isInt(num2)) {
+					num2 = parseInt(num2, 10);
+				} else {
+					num2 = parseFloat(num2, 10);
+				}
+
+				if (num2 > 0) {
+					result = Math.round((num1 / num2) * 100);
+				}
+				return result;
+			});
+
+			Handlebars.registerHelper("isodateformat", function (context, block) {
+				if (window.moment && context && moment(context).isValid()) {
+					//var f = block.hash.format || "YYYY-MM-DD";
+					var f = "YYYY-MM-DD";
+					return moment.utc(context).format(f);
+				} else {
+					return context; //  moment plugin is not available, context does not have a truthy value, or context is not a valid date
+				}
+			});
+
+			Handlebars.registerHelper("isotimeformat", function (context, block) {
+				if (window.moment && context && moment(context).isValid()) {
+					if (block) {
+						var f = block.hash.format || "HH:mm A";
+					} else {
+						var f = "HH:mm A";
+					}
+					return moment.utc(context).format(f);
+				} else {
+					return context; //  moment plugin is not available, context does not have a truthy value, or context is not a valid date
+				}
+			});
+
+			Handlebars.registerHelper("inCommaList", function (context, compare, options) {
+				var commaList = context;
+				if (!commaList.length) {
+					return options.inverse(this);
+				}
+				if (commaList.indexOf(compare) != -1) {
+					return options.fn(this);
+				} else {
+					return options.inverse(this);
+				}
+			});
+
+			Handlebars.registerHelper(
+				"isSurveyTemplateEditable",
+				function (context, compare, options) {
+					var commaList = context;
+					if (!commaList.length) {
+						return options.fn(this);
+					}
+					if (!compare.length) {
+						return options.fn(this);
+					}
+
+					var list = compare.split(",");
+					for (var item of list) {
+						if (commaList.indexOf(item) != -1) {
+							return options.inverse(this);
+						}
+						if (!compare.length) {
+							return options.fn(this);
+						}
+
+						var list = compare.split(",");
+						for (var item of list) {
+							if (commaList.indexOf(item) != -1) {
+								return options.inverse(this);
+							}
+						}
+						return options.fn(this);
+					}
+				}
+			);
+
+			Handlebars.registerHelper("round", function (value, decimalPlaces) {
+				var oper = Math.pow(10, +decimalPlaces);
+				return Math.round(value * oper) / oper;
+			});
+			Handlebars.registerHelper("minuteToHour", function (value) {
+				var hour = Math.floor(value / 60);
+				var minute = value % 60;
+				if (hour > 1 && minute != 0) {
+					var time = hour + "h " + minute + "m";
+					return time;
+				} else if (hour > 1 && minute == 0) {
+					var time = hour + "h";
+					return time;
+				} else if (hour == 1 && minute == 0) {
+					var time = hour + "h";
+					return time;
+				} else if (hour == 1 && minute != 0) {
+					var time = hour + "h " + minute + "m";
+					return time;
+				} else {
+					return minute + "m";
+				}
+				return true;
+			});
+			Handlebars.registerHelper("debug", function (optionalValue) {
+				console.log("Current Context");
+				console.log("====================");
+				console.log(this);
+				if (optionalValue) {
+					console.log("Value");
+					console.log("====================");
+					console.log(optionalValue);
+				}
+			});
+			Handlebars.registerHelper("if_gt", function (context, options) {
+				if (context > options.hash.compare) return options.fn(this);
+				return options.inverse(this);
+			});
+
+			Handlebars.registerHelper("if_eq", function (context, options) {
+				if (context == options.hash.compare) return options.fn(this);
+				return options.inverse(this);
+			});
+			Handlebars.registerHelper("if_neq", function (context, options) {
+				if (context != options.hash.compare) return options.fn(this);
+				return options.inverse(this);
+			});
+			Handlebars.registerHelper("if_eq_no_case", function (context, compare, options) {
+				if (context) {
+					var contStr = context.toString();
+				} else {
+					var contStr = "";
+				}
+				if (compare) {
+					var compStr = compare.toString();
+				} else {
+					var compStr = "";
+				}
+				if (contStr.toLowerCase() == compStr.toLowerCase()) return options.fn(this);
+				return options.inverse(this);
+			});
+			Handlebars.registerHelper("unless_eq", function (context, options) {
+				if (context == options.hash.compare) return options.inverse(this);
+				return options.fn(this);
+			});
+
+			Handlebars.registerHelper("each_upto", function (ary, max, options) {
+				if (!ary || ary.length == 0) return options.inverse(this);
+
+				var result = [];
+				for (var i = 0; i < max && i < ary.length; ++i) result.push(options.fn(ary[i]));
+				return result.join("");
+			});
+
+			Handlebars.registerHelper("removeHtml", function (str) {
+				if (str !== null && typeof str !== "undefined" && str.length > 0) {
+					str = str.replace(/<[^>]*(?:>|$)/g, "");
+					return new Handlebars.SafeString(str);
+				}
+				return str;
+			});
+
+			Handlebars.registerHelper("sanitizeHtml", function (str) {
+				if (str !== null && typeof str !== "undefined" && str.length > 0) {
+					str = str.replace(/<[^>]*(?:>|$)/g, "");
+					str = str.replace(/&##.*?;/g, "");
+					str = str.replace("&nbsp;", "");
+					return new Handlebars.SafeString(str);
+				}
+				return str;
+			});
+
+			// pads the whole number with leading zeros to specified length, keeps value after the decimal point in tact but does not include it in the padding length
+			Handlebars.registerHelper("leadingZero", function (val, len) {
+				try {
+					var valFloat = parseFloat(val).toString();
+					var valIntStr = parseInt(val).toString();
+					while (valIntStr.length < len) {
+						valIntStr = "0" + valIntStr;
+						valFloat = "0" + valFloat;
+					}
+					return valFloat;
+				} catch (e) {
+					return val;
+				}
+			});
+			// turns json to string for use in data attributes
+			Handlebars.registerHelper("jsonToString", function (context, obj) {
+				var object = context || obj;
+				return JSON.stringify(object);
+			});
+
+			Handlebars.registerHelper("timeRemainingText", function (context, obj) {
+				var date = new Date(context || obj);
+				var textRemaining = "";
+				var days = Math.round((date - Date.now()) / (1000 * 60 * 60 * 24));
+				var hours = Math.round((date - Date.now()) / (1000 * 60 * 60));
+				var minutes = Math.round((date - Date.now()) / (1000 * 60));
+				var seconds = Math.round((date - Date.now()) / 1000);
+
+				if (days > 0) {
+					textRemaining = days + " days remaining";
+				} else if (hours > 0) {
+					textRemaining = hours + " hours remaining";
+				} else if (minutes > 0) {
+					textRemaining = minutes + " minutes remaining";
+				} else if (seconds > 0) {
+					textRemaining = seconds + " seconds remaining";
+				} else {
+					textRemaining = days * -1 + " days passed";
+				}
+
+				return textRemaining;
+			});
+
+			Handlebars.registerHelper("doesJSONHaveAttribute", function (json, item, options) {
+				json = json.replace(/\r?\n|\r|\t/g, "");
+				if (
+					json &&
+					json != "" &&
+					json != "{}" &&
+					json != "[]" &&
+					$.parseJSON(json)[item] &&
+					$.parseJSON(json)[item].length > 0
+				) {
+					return options.fn(this);
+				}
+				return options.inverse(this);
+			});
+
+			Handlebars.registerHelper("getValueFromJSON", function (json, item) {
+				if (json && json != "" && json != "{}" && json != "[]") {
+					return $.parseJSON(json)[item];
+				}
+				return "";
+			});
+
+			Handlebars.registerHelper("getCriteriaName", function (serializedCriteria, item) {
+				if (serializedCriteria && serializedCriteria.length > 0) {
+					for (var i = 0; i < serializedCriteria.length; i++) {
+						if (serializedCriteria[i].Id == item) {
+							return serializedCriteria[i].Name;
+						}
+					}
+				}
+				return "";
+			});
+
+			Handlebars.registerHelper(
+				"find_in_array",
+				function (theArray, valueToFind, optionalObjProperty, options) {
+					if (!theArray) {
+						return -1;
+					}
+					if (!Array.isArray(theArray)) {
+						try {
+							theArray = JSON.parse(theArray);
+						} catch (err) {}
+					}
+
+					if (
+						optionalObjProperty &&
+						($.isNumeric(optionalObjProperty) || optionalObjProperty.length)
+					) {
+						for (var i = 0; i < theArray.length; i++) {
+							if (theArray[i][optionalObjProperty] == valueToFind) {
+								return i;
+							}
+						}
+						return -1;
+					} else {
+						return theArray.indexOf(valueToFind);
+					}
+				}
+			);
+
+			Handlebars.registerHelper(
+				"find_in_array_and_get_field",
+				function (theArray, valueToFind, optionalObjProperty, field, options) {
+					if (
+						optionalObjProperty &&
+						($.isNumeric(optionalObjProperty) || optionalObjProperty.length)
+					) {
+						for (var i = 0; i < theArray.length; i++) {
+							if (theArray[i][optionalObjProperty] == valueToFind) {
+								return theArray[i][field];
+							}
+						}
+					}
+
+					return "-1000";
+				}
+			);
+
+			Handlebars.registerHelper(
+				"find_numeric_in_array_has_value",
+				function (theArray, optionalObjProperty, options) {
+					if (optionalObjProperty && optionalObjProperty.length) {
+						for (var i = 0; i < theArray.length; i++) {
+							if ($.isNumeric(theArray[i][optionalObjProperty])) {
+								return i;
+							}
+						}
+					}
+					return -1;
+				}
+			);
+
+			Handlebars.registerHelper(
+				"array_get_at",
+				function (theArray, index, optionalObjProperty, options) {
+					if (index < 0) return;
+					if (optionalObjProperty && optionalObjProperty.length) {
+						return theArray[index][optionalObjProperty];
+					} else {
+						return theArray[index];
+					}
+				}
+			);
+
+			Handlebars.registerHelper("array_len_gt", function (theArray, lengthToCheck, options) {
+				if (theArray.length > lengthToCheck) {
+					return options.fn(this);
+				} else {
+					return options.inverse(this);
+				}
+			});
+
+			Handlebars.registerHelper("is_undefined", function (value) {
+				if (value) {
+					return false;
+				} else {
+					return true;
+				}
+			});
+
+			Handlebars.registerHelper("math", function (lvalue, operator, rvalue, options) {
+				lvalue = parseFloat(lvalue);
+				rvalue = parseFloat(rvalue);
+
+				return {
+					"+": lvalue + rvalue,
+					"-": lvalue - rvalue,
+					"*": lvalue * rvalue,
+					"/": lvalue / rvalue,
+					"%": lvalue % rvalue
+				}[operator];
+			});
+
+			Handlebars.registerHelper("everyNth", function (context, every, options) {
+				var fn = options.fn,
+					inverse = options.inverse;
+				var ret = "";
+				if (context && context.length > 0) {
+					for (var i = 0, j = context.length; i < j; i++) {
+						var modZero = i % every === 0;
+						ret =
+							ret +
+							fn(
+								$.extend({}, context[i], {
+									isModZero: modZero,
+									isModZeroNotFirst: modZero && i > 0,
+									isLastMod: modZero && context.length - i < every,
+									isLast: i === context.length - 1,
+									currentIndex: i
+								})
+							);
+					}
+				} else {
+					ret = inverse(this);
+				}
+				return ret;
+			});
+
+			Handlebars.registerHelper("formatCurrency", function (value) {
+				return value.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+			});
+
+			Handlebars.registerHelper("htmlDecode", function (str) {
+				if (str.length > 0) {
+					var decoded = $("<div></div>").html(str).text();
+					return decoded;
+				} else {
+					return str;
+				}
+			});
+
+			Handlebars.registerHelper("stripQuotes", function (str) {
+				if (str.length > 0) {
+					var string = str.replace(/['"]+/g, "");
+					return string;
+				} else {
+					return str;
+				}
+			});
+
+			Handlebars.registerHelper("arrayToList", function (str, options) {
+				var newArray = [];
+				if (
+					options &&
+					options.hash !== undefined &&
+					options.hash.compare !== undefined &&
+					str.length > 0
+				) {
+					for (var s in str) {
+						var option = str[s];
+						newArray.push(option[options.hash.compare]);
+					}
+				}
+				if (str.length > 0) {
+					if (newArray && newArray.length) {
+						var array = [];
+						for (var i = 0; i < newArray.length; i++) {
+							array[i] = newArray[i];
+						}
+					} else {
+						var array = [];
+						for (var i = 0; i < str.length; i++) {
+							array[i] = str[i];
+						}
+					}
+
+					return array.join(", ");
+				} else {
+					return str;
+				}
+			});
+
+			Handlebars.registerHelper("includes", function (str, strToSearch, options) {
+				return str.includes(strToSearch) ? options.fn(this) : options.inverse(this);
+			});
+
+			Handlebars.registerHelper("formatSupplementalData", function (str) {
+				var splitStr = str.toLowerCase().split(",");
+				for (var i = 0; i < splitStr.length; i++) {
+					splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
+				}
+				return splitStr.join(", ");
+			});
+
+			Handlebars.registerHelper("math", function (lvalue, operator, rvalue, options) {
+				lvalue = parseFloat(lvalue);
+				rvalue = parseFloat(rvalue);
+
+				return {
+					"+": lvalue + rvalue,
+					"-": lvalue - rvalue,
+					"*": lvalue * rvalue,
+					"/": lvalue / rvalue,
+					"%": lvalue % rvalue
+				}[operator];
+			});
+
+			Handlebars.registerHelper("trimString", function (str, len) {
+				if (str !== null && typeof str !== "undefined" && str.length > 0) {
+					str = str.replace(/<[^>]*(?:>|$)/g, "");
+					str = str.substring(0, len) + "...";
+					return new Handlebars.SafeString(str);
+				}
+				return "";
+			});
+
+			Handlebars.registerHelper("getSparklineTypes", function (rubrics) {
+				if (rubrics !== null && typeof rubrics !== "undefined" && rubrics.length > 0) {
+					var sparklineTypes = [];
+					for (var rubric of rubrics) {
+						sparklineTypes.push({ name: rubric.Name, data: [rubric.Count] });
+					}
+					return JSON.stringify(sparklineTypes);
+				}
+				return "";
+			});
+
+			Handlebars.registerHelper("getSparklineColors", function (rubrics) {
+				if (rubrics !== null && typeof rubrics !== "undefined" && rubrics.length > 0) {
+					var sparklineColors = [];
+					for (var rubric of rubrics) {
+						sparklineColors.push("#" + rubric.Color);
+					}
+					return JSON.stringify(sparklineColors);
+				}
+				return "";
+			});
+		}
+
+		if (aefis.artifacts) {
+			aefis.artifacts.initialize();
+		}
+	}
+
+	this.encodeData = function (data) {
+		return Base64.encode(JSON.stringify(data));
+	};
+
+	this.decodeData = function (data) {
+		return JSON.parse(Base64.decode(decodeURIComponent(data)));
+	};
+
+	this.setState = function (data) {
+		location.hash = this.encodeData(data);
+	};
+
+	this.clearState = function () {
+		location.hash = "";
+	};
+
+	this.getState = function () {
+		if (!location.hash) {
+			return null;
+		}
+		try {
+			var result = this.decodeData(location.hash);
+			return result;
+		} catch (err) {
+			return null;
+		}
+	};
+
+	this.addState = function (name, value) {
+		var state = this.getState();
+
+		if (!state) {
+			state = {};
+		}
+		state[name] = value;
+		this.setState(state);
+	};
+
+	this.saveStateOnServer = function (stateData) {
+		try {
+			var pageData = {
+				data: stateData,
+				controller: aefis.constant.controller,
+				action: aefis.constant.action
+			};
+			var apiWrapper = new aefis.ApiWrapper();
+
+			apiWrapper.call(aefis.constant.serviceSaveDataUrl, {
+				data: JSON.stringify(pageData),
+				type: "POST",
+				onSuccess: function (data) {
+					$(window).trigger("stateSaved");
+				},
+				onSuccessScope: this,
+				onError: function (error) {
+					aefis.app.log("Error saving state: ", error);
+				},
+				onErrorScope: this
+			});
+		} catch (e) {
+			aefis.app.error("Error saving state: ", e);
+		}
+	};
+
+	this.loadStateFromServer = function (initFunction) {
+		try {
+			var pageData = { controller: aefis.constant.controller, action: aefis.constant.action };
+			var apiWrapper = new aefis.ApiWrapper();
+			var stateData = null;
+
+			apiWrapper.call(aefis.constant.serviceGetDataUrl, {
+				data: pageData,
+				type: "GET",
+				onSuccess: function (data) {
+					stateData =
+						data === undefined || data == null || data.length <= 0 ? null : data;
+				},
+				onError: function (error) {
+					aefis.app.log("Error loading state: ", error);
+				},
+				onComplete: function () {
+					initFunction(stateData);
+				},
+				async: true
+			});
+		} catch (e) {
+			aefis.app.error("Error loading state: ", e);
+		}
+	};
+
+	this.createSparkLines = function ($rootContainer) {
+		aefis.ui.initializeSparkline($rootContainer);
+	};
+
+	var waitEventsBeforePrint = [];
+	this.addEventToWaitListBeforePrint = function (eventName) {
+		waitEventsBeforePrint.push(eventName);
+	};
+	this.dispatchPrintReadyEvent = function (eventName) {
+		waitEventsBeforePrint = waitEventsBeforePrint.filter(function (event) {
+			return event !== eventName;
+		});
+		var event = new Event(eventName);
+		window.document.dispatchEvent(event);
+	};
+	this.waitForPrintReadyEvents = function (triggerPrintCallback) {
+		var eventsToWait = waitEventsBeforePrint.map(function (eventName) {
+			return new Promise(function (resolve) {
+			  document.addEventListener(eventName, resolve, { once: true });
+			});
+		});
+		var allEventsFired = Promise.all(eventsToWait);
+		allEventsFired.then(function () {
+			waitEventsBeforePrint = [];
+			triggerPrintCallback();
+		});
+	};
+};

@@ -1,0 +1,165 @@
+// no current page context here. it is included by template if needed to fire this all off.
+// setup refresh listeners
+// artifacts namespace
+aefis.artifacts = {
+	
+	//aefis.artifacts.init() should be called to initialize artifacts after page load
+	initialize: function(){
+		if ( $('#aefis-tasks:not(.aefis-ignore-auto-load)').length || $('.artifact-banner #task-panel').length ) {
+			aefis.artifacts.loadTasks();
+		}
+		if ( $('#aefis-notes:not(.aefis-ignore-auto-load)').length || $('.artifact-banner #note-panel').length) {
+			aefis.artifacts.loadNotes();
+		}
+		if ( $('#aefis-documents:not(.aefis-ignore-auto-load)').length || $('.artifact-banner #document-panel').length) {
+			aefis.artifacts.loadDocuments();
+		}
+		if ( $('#aefis-tags:not(.aefis-ignore-auto-load)').length || $('.artifact-banner #tag-panel').length) {
+			aefis.artifacts.loadTags();
+		}
+		if ( $('#aefis-history:not(.aefis-ignore-auto-load)').length || $('#aefis-panel').length) {
+			aefis.artifacts.loadHistory();
+		}
+		
+		$($('#aefis-notes:not(.aefis-ignore-auto-load)').length ? '#aefis-notes' : '#note-panel').on('refresh', function () {
+			aefis.artifacts.loadNotes();
+		});
+
+		$($('#aefis-tasks:not(.aefis-ignore-auto-load)').length ? '#aefis-tasks' : '#task-panel').on('refresh', function () {
+			aefis.artifacts.loadTasks();
+		});
+
+		$($('#aefis-documents:not(.aefis-ignore-auto-load)').length ? '#aefis-documents' : '#document-panel').on('refresh', function () {
+			aefis.artifacts.loadDocuments();
+		});
+		
+		$($('#aefis-tags:not(.aefis-ignore-auto-load)').length ? '#aefis-tags' : '#tag-panel').on('refresh', function () {
+			aefis.artifacts.loadTags();
+		});
+
+		$($('#aefis-history:not(.aefis-ignore-auto-load)').length ? '#aefis-history' : '#history-panel').on('refresh', function () {
+			aefis.artifacts.loadHistory();
+		});
+
+		$(window).on('refreshTags', function() {
+			aefis.artifacts.loadTags();
+		})
+	},
+	
+	loadTasks: function(){
+		if ($('#aefis-artifact-tasks-loadingcontainer').length) {
+			aefis.ui.loadingShow('#aefis-artifact-tasks-loadingcontainer','Loading', 'quick', true);
+		}
+		aefis.forms.processFormRequest(null, {
+			dataContainerSelector: $('#aefis-tasks:not(.aefis-ignore-auto-load)').length ? '#aefis-tasks' : '#task-panel',
+			loadingSelector: false,
+			successCallback: function(data){
+				aefis.ui.loadingHide('#aefis-artifact-tasks-loadingcontainer');
+				
+				$('.artifact-banner #task-panel').each( function(i) { 
+					$(this).find('.label').html(data.length);
+					var source = $(this).attr('data-aefis-template');
+					var template = Handlebars.compile(source);
+					$(this).attr('data-content', template({records: data}));
+				});
+			},
+			callbackScope: this
+		});
+		return false;
+	},
+	
+	loadNotes: function(){
+		if ($('#aefis-artifact-notes-loadingcontainer').length) {
+				aefis.ui.loadingShow('#aefis-artifact-tasks-loadingcontainer','Loading', 'quick', true);
+		}
+		aefis.forms.processFormRequest(null, {
+			dataContainerSelector: $('#aefis-notes:not(.aefis-ignore-auto-load)').length ? '#aefis-notes' : '#note-panel',
+			loadingSelector: false,
+			successCallback: function(data){
+				aefis.ui.loadingHide('#aefis-artifact-notes-loadingcontainer');
+				
+				$('.artifact-banner #note-panel').each( function(i) { 
+					$(this).find('.label').html(data.length);
+					var source = $(this).attr('data-aefis-template');
+					var template = Handlebars.compile(source);
+					$(this).attr('data-content', template({records: data}));
+				});
+			},
+			callbackScope: this
+		});
+		return false;
+	},
+
+	loadDocuments: function(){
+		if ($('#aefis-artifact-documents-loadingcontainer').length) {
+			aefis.ui.loadingShow('#aefis-artifact-tasks-loadingcontainer','Loading', 'quick', true);
+		}
+		aefis.forms.processFormRequest(null, {
+			dataContainerSelector: $('#aefis-documents:not(.aefis-ignore-auto-load)').length ? '#aefis-documents' : '#document-panel',
+			loadingSelector: false,
+			successCallback: function(data){
+				aefis.ui.loadingHide('#aefis-artifact-documents-loadingcontainer');
+				
+				$('.artifact-banner #document-panel').each( function(i) { 
+					$(this).find('.label').html(data.length);
+					var source = $(this).attr('data-aefis-template');
+					var template = Handlebars.compile(source);
+					$(this).attr('data-content', template({records: data}));
+				});
+			},
+			callbackScope: this
+		});
+		return false;
+	},
+	
+	loadTags: function(){
+		if ($('#aefis-artifact-tags-loadingcontainer').length) {
+			aefis.ui.loadingShow('#aefis-artifact-tasks-loadingcontainer','Loading', 'quick', true);
+		}
+		aefis.forms.processFormRequest(null, {
+			dataContainerSelector: $('#aefis-tags:not(.aefis-ignore-auto-load)').length ? '#aefis-tags' : '#tag-panel', 
+					loadingSelector: false,
+					successCallback: function(data){
+						aefis.ui.loadingHide('#aefis-artifact-tags-loadingcontainer');
+						var count = 0;
+						var taggedByArray = [];
+						if (data.length) {
+							$(data).each(function() {
+								if (this.TaggedBy) {
+									taggedByArray = this.TaggedBy;
+									count = taggedByArray.length;
+								};
+							});
+						};
+						
+						$('.artifact-banner #tag-panel').each( function(i) { 
+							if (taggedByArray.length) {
+								$(this).find('.label').html(count);
+								var source = $(this).attr('data-aefis-template');
+								var template = Handlebars.compile(source);
+								$(this).attr('data-content', template({records: taggedByArray}));
+							} else {
+								$(this).find('.label').html(0)
+							};
+						});
+					},
+					callbackScope: this
+		});
+		return false;
+	},
+	
+	loadHistory: function(){
+		if ($('#aefis-artifact-documents-loadingcontainer').length) {
+			aefis.ui.loadingShow('#aefis-artifact-tasks-loadingcontainer','Loading', 'quick', true);
+		}
+		aefis.forms.processFormRequest(null, {
+			dataContainerSelector: '#aefis-history',
+			loadingSelector: false,
+			successCallback: function(){
+				aefis.ui.loadingHide('#aefis-artifact-history-loadingcontainer');
+			},
+			callbackScope: this
+		});
+		return false;
+	}
+};
