@@ -16,9 +16,9 @@ My research can also be found in [Google Scholar](https://scholar.google.com/cit
 
 - “[_Nonbank Growth and Local Housing Prices_](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4746656)” (with Hyun-Soo Choi and Yongheng Deng), 2024.
 
-<br/>
 
 ### Publications
+<br/>
 
 #### Book Chapter
 
