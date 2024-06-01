@@ -14,13 +14,17 @@ My research can also be found in [Google Scholar](https://scholar.google.com/cit
 
 - “[_How Detrimental Was the Pandemic on Commercial Mortgages? Unveiling Long-Term Consequences for Retail Sector_](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4714155)” (with Dayin Zhang), 2024.
 
-- “[_The American Housing Finance System: Structure, Evolution, and Implications_](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4750853)” (with Yongheng Deng and Susan M. Wachter), 2024.
-
 - “[_Nonbank Growth and Local Housing Prices_](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4746656)” (with Hyun-Soo Choi and Yongheng Deng), 2024.
 
 <br/>
 
-### Pre-Doctoral Works
+### Publications
+
+#### Book Chapter
+
+- “[_The American Housing Finance System: Structure, Evolution, and Implications_](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4750853)” (with Yongheng Deng and Susan M. Wachter), 2024, Oxford Research Encyclopedia of Finance and Economics, _forthcoming_.
+
+#### Pre-Doctoral Works
 
 - “[_Innovation Spillovers Within Business Groups: Evidence from Korean Chaebol_](https://www.sciencedirect.com/science/article/pii/S1566014124000463)” (with Kyounghun Lee, Frederick D. Oh, and Donglim Shin), 2024. **_Emerging Markets Review_**, 60, 101151.
 
