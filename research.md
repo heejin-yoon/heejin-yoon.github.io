@@ -21,11 +21,11 @@ My research can also be found in [Google Scholar](https://scholar.google.com/cit
 ### Publications
 
 
-#### Book Chapter
+### Book Chapter
 
 - “[_The American Housing Finance System: Structure, Evolution, and Implications_](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4750853)” (with Yongheng Deng and Susan M. Wachter), **_Oxford Research Encyclopedia of Economics and Finance_**, _forthcoming_.
 
-#### Pre-Doctoral Works
+### Pre-Doctoral Works
 
 - “[_Innovation Spillovers Within Business Groups: Evidence from Korean Chaebol_](https://www.sciencedirect.com/science/article/pii/S1566014124000463)” (with Kyounghun Lee, Frederick D. Oh, and Donglim Shin), 2024. **_Emerging Markets Review_**, 60, 101151.
 
