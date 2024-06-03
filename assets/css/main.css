@@ -69,7 +69,7 @@ hr.small {
   content: "";
   display: block;
   height: 2.125rem; /* navbar height 3.125rem;*/
-  margin: -3.125rem 0 0;
+  margin: -2.125rem 0 0;
 }
 
 .main-content {
