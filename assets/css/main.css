@@ -207,7 +207,7 @@ img {
 }
 
 .navbar-toggler {
-  font-size: 1.625rem;
+  font-size: 1.125rem; /* 1.625rem; */
   margin: 0.5rem 0;
 }
 .navbar-custom .navbar-toggler:focus,
