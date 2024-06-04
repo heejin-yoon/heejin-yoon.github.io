@@ -9,7 +9,7 @@ cover-img: /assets/img/Grainger2.jpg
 
 Welcome! I'm a fourth-year Ph.D. student in Real Estate and Urban Land Economics at the University of Wisconsin-Madison. 
 
-Prior to joining the program, I received B.B.A. in Business Administration from Yonsei University and M.S. in Finance from KAIST College of Business. Also, I had worked at the Bank of Korea, the central bank of South Korea. 
+Prior to joining the program, I received B.B.A. in Business Administration from Yonsei University and M.S. in Finance from KAIST College of Business.
 <br/><br/><br/>
 
 ### Contact
