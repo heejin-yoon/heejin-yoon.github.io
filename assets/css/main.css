@@ -151,13 +151,6 @@ img {
   padding-bottom: 0;
 }
 
-.navbar-custom .navbar-brand {
-  line-height: 1;
-  padding-top: 0.625rem;
-  padding-bottom: 0.625rem;
-  font-size: 1.5rem;
-}
-
 .navbar-custom .navbar-brand-logo {
   -webkit-transition: padding .5s ease-in-out;
   -moz-transition: padding .5s ease-in-out;
@@ -208,10 +201,13 @@ img {
 
 .navbar-custom .navbar-brand,
 .navbar-custom .navbar-nav .nav-link {
+  line-height: 1;
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
+  font-size: 1.5rem;
   font-family: sans-serif;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 1px;
-  font-size: 1.5rem
   color: {{ site.navbar-text-col | default: "#404040" }};
 }
 
