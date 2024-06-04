@@ -33,7 +33,7 @@ h1,h2,h4,h5,h6 {
 h3 {
   /*font-family: sans-serif;*/
   font-weight: 700;
-  line-height: 1.0;
+  line-height: 1.6;
 }
 
 h1 {
@@ -46,7 +46,7 @@ h3 {
   font-size: 1.5rem;
 }
 h4 {
-  font-size: 1.325rem;
+  font-size: 1.25rem;
 }
 a {
   color: {{ site.link-col | default: "#008AFF" }};
@@ -194,7 +194,7 @@ img {
 
 .navbar-custom .navbar-nav .nav-item {
   /*text-transform: uppercase;*/
-  font-size: 1rem; /* 0.75 */
+  font-size: 1.25rem; /* 0.75 */
   letter-spacing: 0.0625rem;
 }
 
@@ -749,7 +749,7 @@ footer .footer-custom-content {
 .pagination .page-item .page-link {
   font-family: sans-serif;
   /*text-transform: uppercase;*/
-  font-size: 0.875rem;
+  font-size: 1.25rem;
   font-weight: 500;
   letter-spacing: 1px;
   padding: 0.625rem 0.3125rem;
