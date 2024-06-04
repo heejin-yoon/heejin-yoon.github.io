@@ -11,8 +11,8 @@ html {
 }
 
 body {
-  font-family: 'Open Sans';
-  font-size: 1.125rem;
+  font-family: sans-serif;
+  font-size: 1.25rem;
   color: #404040;
   position: relative;
   background-color: {{ site.page-col | default: "#FFFFFF" }};
