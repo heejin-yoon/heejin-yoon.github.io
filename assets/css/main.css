@@ -68,7 +68,7 @@ hr.small {
 :target:before {
   content: "";
   display: block;
-  height: 2.125rem; /* navbar height 3.125rem;*/
+  height: 3.125rem; /* navbar height 3.125rem;*/
   margin: -3.125rem 0 0;
 }
 
