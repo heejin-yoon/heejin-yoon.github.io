@@ -6,22 +6,23 @@ title: Teaching
 
 <br/>
 
-### Teaching Assistant 
- 
-- **Wisconsin School of Business**
+### Instructor (UW-Madison)
+- **Urban and Regional Economics (BBA)**, Fall 2024 (Scheduled)
 
-  - **RE420/RE720: Urban and Regional Economics** (Fall 2023, Fall 2022)
+### Teaching Assistant (UW-Madison)
  
-    - Course evaluation survey ([RE420](/assets/pdf/RE420_Fall23.pdf)/[RE720](/assets/pdf/RE470_Fall23.pdf))
+  - **Urban and Regional Economics (BBA/MBA)**, Fall 2023, Fall 2022
+ 
+    - Course evaluation survey ([BBA](/assets/pdf/RE420_Fall23.pdf)/[MBA](/assets/pdf/RE470_Fall23.pdf))
 
     <!-- - Office Hour: TBD 1:00 pm - 2:00 pm, Tuesdays and Thursdays ([Sign-up link to my office hour](https://doodle.com/mm/heejinyoon/officehour1))-->
 
-  - **RE410: Real Estate Finance** (Spring 2022, Fall 2021, Spring 2021)
+  - **Real Estate Finance (BBA)**, Spring 2022, Fall 2021, Spring 2021
 
-  - **RE306: Real Estate Process** (Fall 2020)
+  - **Real Estate Process (BBA)**, Fall 2020
  <br/> <br/>
  
-- **KAIST College of Business**
+### Teaching Assistant (**KAIST College of Business**)
 
-  - **Corporate Valuation** (Fall 2019)
+  - **Corporate Valuation (MBA)**, Fall 2019
 
