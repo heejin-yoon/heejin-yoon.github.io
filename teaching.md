@@ -10,7 +10,9 @@ title: Teaching
  
 - **Wisconsin School of Business**
 
-  - **RE420/RE720: Urban and Regional Economics** (Fall 2022)
+  - **RE420/RE720: Urban and Regional Economics** (Fall 2023, Fall 2022)
+ 
+    - Course evaluation survey ([RE420](/assets/pdf/RE420_Fall23.pdf)/[RE720](/assets/pdf/RE470_Fall23.pdf))
 
     <!-- - Office Hour: TBD 1:00 pm - 2:00 pm, Tuesdays and Thursdays ([Sign-up link to my office hour](https://doodle.com/mm/heejinyoon/officehour1))-->
 
