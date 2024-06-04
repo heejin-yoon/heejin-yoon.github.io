@@ -11,7 +11,7 @@ My research interests lie in real estate finance, urban economics, and corporate
 My research can also be found in [Google Scholar](https://scholar.google.com/citations?user=jjDsVq8AAAAJ&hl=en).
 
 ### Working Papers
-
+ 
 - “[How Detrimental Was the Pandemic on Commercial Mortgages? Unveiling Long-Term Consequences for Retail Sector](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4714155)” (with Dayin Zhang), 2024.
 
 - “[Nonbank Growth and Local Housing Prices](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4746656)” (with Hyun-Soo Choi and Yongheng Deng), 2024.
@@ -22,13 +22,13 @@ My research can also be found in [Google Scholar](https://scholar.google.com/cit
 
 
 #### _Book Chapter_
-
+ 
 - “[The American Housing Finance System: Structure, Evolution, and Implications](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4750853)” (with Yongheng Deng and Susan M. Wachter), **_Oxford Research Encyclopedia of Economics and Finance_**, _forthcoming_.
 
 
 #### 　
 #### _Pre-Doctoral Works_
-
+ 
 - “[Innovation Spillovers Within Business Groups: Evidence from Korean Chaebol](https://www.sciencedirect.com/science/article/pii/S1566014124000463)” (with Kyounghun Lee, Frederick D. Oh, and Donglim Shin), 2024. **_Emerging Markets Review_**, 60, 101151.
 
 - “[Internal Labor Markets and Corporate Innovation: Evidence from Korean Chaebol](https://doi.org/10.1016/j.iref.2023.01.019)” (with Kyounghun Lee, Frederick D. Oh, and Donglim Shin), 2023. **_International Review of Economics_ & _Finance_**, 85(C), 146-162.
