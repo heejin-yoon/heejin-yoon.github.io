@@ -404,7 +404,7 @@ footer .list-inline {
   margin-bottom: 1.875rem;
 }
 footer .copyright {
-  font-family: Arial;
+  font-family: sans-serif;
   text-align: center;
   margin-bottom: 0;
   margin-top: 0;
@@ -416,7 +416,7 @@ footer .theme-by {
 footer .footer-custom-content {
   text-align: center;
   margin-bottom: 0.9375rem;
-  font-family: Arial;
+  font-family: sans-serif;
 }
 
 @media (min-width: 768px) {
@@ -479,7 +479,7 @@ footer .footer-custom-content {
   margin: 0 0 0.625rem;
 }
 .post-preview .post-entry {
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: sans-serif;
 }
 .post-entry-container {
   display: inline-block;
@@ -516,7 +516,7 @@ footer .footer-custom-content {
 /* --- Tags --- */
 
 .blog-tags {
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: sans-serif;
   color: #999;
   font-size: 0.9375rem;
   margin-bottom: 1.875rem;
@@ -609,7 +609,7 @@ footer .footer-custom-content {
   font-size: 1.6875rem;
   line-height: 1.1;
   display: block;
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: sans-serif;
   font-weight: 300;
   margin: 0.625rem 0 0;
 }
@@ -634,7 +634,7 @@ footer .footer-custom-content {
   padding: 0.3125rem 0.625rem;
   font-size: 0.6875rem;
   color: #EEE;
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: sans-serif;
   right: 0;
   bottom: 0;
   display: none;
@@ -749,7 +749,7 @@ footer .footer-custom-content {
 }
 
 .pagination .page-item .page-link {
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: sans-serif;
   text-transform: uppercase;
   font-size: 0.875rem;
   font-weight: 800;
@@ -906,7 +906,7 @@ pre {
 }
 
 #full-tags-list {
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: sans-serif;
 }
 
 #full-tags-list .tag-entry {
