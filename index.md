@@ -2,6 +2,7 @@
 layout: page
 title: 
 cover-img: /assets/img/Grainger2.jpg
+nav-short: true
 ---
 
 <img src= "https://heejin-yoon.github.io/assets/img/profile_heejin.jpg" width="220">
