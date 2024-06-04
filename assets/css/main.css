@@ -26,12 +26,12 @@ p {
   margin: 1.875rem 0;
 }
 h1,h2,h3 {
-  font-family: Arial;
+  font-family: sans-serif;
   font-weight: 800;
   line-height: 1.6;
 }
 h4,h5,h6 {
-  font-family: 'Open Sans';
+  font-family: sans-serif;
   font-weight: 800;
   line-height: 1.6;
 }
@@ -134,7 +134,7 @@ img {
 .navbar-custom {
   background-color: {{ site.navbar-col | default: "#F5F5F5" }};
   border-bottom: 1px solid {{ site.navbar-border-col | default: "#EAEAEA" }};
-  font-family: Arial; /*'Helvetica Neue', Helvetica, Arial, sans-serif;*/
+  font-family: sans-serif; /*'Helvetica Neue', Helvetica, Arial, sans-serif;*/
   {% if site.navbar-img %}
     background-image: url({{ site.navbar-img | relative_url }});
     background-attachment: fixed;
