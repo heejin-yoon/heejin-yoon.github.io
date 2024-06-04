@@ -9,6 +9,8 @@ title: Teaching
 ### Instructor (UW-Madison)
 - **Urban and Regional Economics (BBA)**, Fall 2024 (Scheduled)
 
+ <br/> <br/>
+
 ### Teaching Assistant (UW-Madison)
  
   - **Urban and Regional Economics (BBA/MBA)**, Fall 2023, Fall 2022
@@ -20,7 +22,7 @@ title: Teaching
   - **Real Estate Finance (BBA)**, Spring 2022, Fall 2021, Spring 2021
 
   - **Real Estate Process (BBA)**, Fall 2020
- <br/> <br/>
+ <br/>
  
 ### Teaching Assistant (**KAIST College of Business**)
 
