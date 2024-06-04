@@ -8,7 +8,7 @@ My research interests lie in real estate finance, urban economics, and corporate
  My research can also be found in [Google Scholar](https://scholar.google.com/citations?user=yoon09269).
 -->
 
-My research can also be found in [Google Scholar](https://scholar.google.com/citations?user=yoon09269).
+My research can also be found in [Google Scholar](https://scholar.google.com/citations?user=jjDsVq8AAAAJ&hl=en).
 
 ### Working Papers
 
