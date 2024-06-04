@@ -210,6 +210,7 @@ img {
 .navbar-custom .navbar-nav .nav-link {
   font-family: sans-serif;
   font-weight: 500;
+  letter-spacing: 1px;
   font-size: 1.25rem
   color: {{ site.navbar-text-col | default: "#404040" }};
 }
