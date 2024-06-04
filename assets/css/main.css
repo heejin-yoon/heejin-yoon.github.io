@@ -202,14 +202,15 @@ img {
   padding-top: 0;
   padding-bottom: 0;
   line-height: 1.5;
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
+  padding-top: 1.6rem;
+  padding-bottom: 1.6rem;
 }
 
 .navbar-custom .navbar-brand,
 .navbar-custom .navbar-nav .nav-link {
   font-family: sans-serif;
   font-weight: 500;
+  font-size: 1.25rem
   color: {{ site.navbar-text-col | default: "#404040" }};
 }
 
