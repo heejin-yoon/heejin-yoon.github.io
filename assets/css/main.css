@@ -244,6 +244,8 @@ img {
 
   .navbar-expand-md .navbar-nav .nav-link {
     font-size: 1.35rem;
+    font-weight: 530;
+    color: #404040;
     padding-left: 0.9375rem;
     padding-right: 0.9375rem;
   }
@@ -747,8 +749,6 @@ footer .footer-custom-content {
 .pagination .page-item .page-link {
   font-family: sans-serif;
   /*text-transform: uppercase;*/
-  font-size: 1.25rem;
-  font-weight: 550;
   letter-spacing: 1px;
   padding: 0.625rem 0.3125rem;
   background-color: #FFF;
