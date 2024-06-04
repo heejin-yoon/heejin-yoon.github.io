@@ -15,8 +15,8 @@ navbar-links:
    Home: "index"
    Research: "research"
 #   Resources:
-     - Beautiful Jekyll: "https://beautifuljekyll.com"
-     - Learn markdown: "https://www.markdowntutorial.com/"
+#     - Beautiful Jekyll: "https://beautifuljekyll.com"
+#     - Learn markdown: "https://www.markdowntutorial.com/"
    CV     : "https://uwmadison.box.com/s/bx5m541nlrlg4u4qh5brqt0quhy0xmkq"
 #  About: "about"
 #   Teaching: "teaching"
