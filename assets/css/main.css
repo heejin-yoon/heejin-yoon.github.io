@@ -187,7 +187,7 @@ img {
 
 .navbar-custom .navbar-nav .nav-item {
   /*text-transform: uppercase;*/
-  font-size: 1.25rem; /* 0.75 */
+  font-size: 1.5rem; /* 0.75 */
   letter-spacing: 0.0625rem;
 }
 
@@ -746,8 +746,8 @@ footer .footer-custom-content {
 .pagination .page-item .page-link {
   font-family: sans-serif;
   /*text-transform: uppercase;*/
-  font-size: 1.25rem;
-  font-weight: 500;
+  font-size: 1.5rem;
+  font-weight: 550;
   letter-spacing: 1px;
   padding: 0.625rem 0.3125rem;
   background-color: #FFF;
