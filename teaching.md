@@ -10,7 +10,8 @@ title: Teaching
 
  - **Urban and Regional Economics (Undergrad)**, Fall 2024 (Scheduled)
 
-   - 
+   <!-- - Office Hour: 1:00 pm - 2:00 pm, Tuesdays and Thursdays -->
+
 <br/> 
 
 ### Teaching Assistant (UW-Madison)
