@@ -6,7 +6,7 @@ title: Teaching
 
 
 ### Instructor (UW-Madison)
- 
+
  - **Urban and Regional Economics (Undergrad)**, Fall 2024 (Scheduled)
 
 <br/> 
