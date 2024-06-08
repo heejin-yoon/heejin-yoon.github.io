@@ -6,7 +6,7 @@ title: Teaching
 
 <br/> 
 
-### Instructor (UW-Madison)
+### Instructor (UW&ndash;Madison)
 
  - **Urban and Regional Economics (Undergrad)**, Fall 2024 (Scheduled)
 
@@ -14,7 +14,7 @@ title: Teaching
 
 <br/> 
 
-### Teaching Assistant (UW-Madison)
+### Teaching Assistant (UW&ndash;Madison)
 
  - **Advanced Real Estate Finance (PhD)**, Spring 2024
 
