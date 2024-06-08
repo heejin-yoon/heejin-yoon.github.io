@@ -29,8 +29,8 @@ title: Teaching
    - Course evaluation survey ([Undergrad](/assets/pdf/RE410_Fall21.pdf))
 
 <br/>
- <!---
- ### Teaching Assistant (KAIST College of Business)
+
+<!--- ### Teaching Assistant (KAIST College of Business)
  
  - **Corporate Valuation (MBA)**, Fall 2019
 --->
