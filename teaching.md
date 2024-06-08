@@ -14,9 +14,9 @@ title: Teaching
 
 ### Teaching Assistant (UW-Madison)
  
- - **Urban and Regional Economics (BBA/MBA)**, Fall 2023, Fall 2022
+ - **Urban and Regional Economics (MBA/BBA)**, Fall 2023, Fall 2022
  
-   - Course evaluation survey ([BBA](/assets/pdf/RE420_Fall23.pdf)/[MBA](/assets/pdf/RE720_Fall23.pdf))
+   - Course evaluation survey ([MBA](/assets/pdf/RE720_Fall23.pdf)/[BBA](/assets/pdf/RE420_Fall23.pdf))
 
     <!-- - Office Hour: TBD 1:00 pm - 2:00 pm, Tuesdays and Thursdays ([Sign-up link to my office hour](https://doodle.com/mm/heejinyoon/officehour1))-->
 
