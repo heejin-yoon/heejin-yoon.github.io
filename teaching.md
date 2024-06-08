@@ -18,7 +18,7 @@ title: Teaching
 
  - **Advanced Real Estate Finance (PhD)**, Spring 2024
 
-   - Course evaluation survey not available due to small class size
+   - Course evaluation survey result not available due to small class size
  
  - **Urban and Regional Economics (MBA/Undergrad)**, Fall 2023, Fall 2022
  
