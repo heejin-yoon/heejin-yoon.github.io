@@ -22,11 +22,11 @@ title: Teaching
  
  - **Urban and Regional Economics (MBA/Undergrad)**, Fall 2023, Fall 2022
  
-   - Course evaluation survey ([MBA](/assets/pdf/RE720_Fall23.pdf)/[Undergrad](/assets/pdf/RE420_Fall23.pdf))
+   - Course evaluation survey ([MBA](https://uwmadison.box.com/s/lf7g5ywmon0cjzivtb5kklf94nn3a8kw)/[Undergrad](https://uwmadison.box.com/s/bmmq8xfpmnzj9gkyeir3jmrgc8v3ond5))
 
 - **Real Estate Finance (Undergrad)**, Spring 2022, Fall 2021, Spring 2021
 
-   - Course evaluation survey ([Undergrad](/assets/pdf/RE410_Fall21.pdf))
+   - Course evaluation survey ([Undergrad](https://uwmadison.box.com/s/ap2fhvvxfo5rxzp84zpgwpnytxeox0rm))
 
 <br/>
 
