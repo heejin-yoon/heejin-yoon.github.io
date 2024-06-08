@@ -22,7 +22,7 @@ title: Teaching
 
 - **Real Estate Finance (BBA)**, Spring 2022, Fall 2021, Spring 2021
 
-- **Real Estate Process (BBA)**, Fall 2020
+   - Course evaluation survey ([BBA](/assets/pdf/RE410_Fall21.pdf))
 
 <br/>
  
