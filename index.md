@@ -8,7 +8,7 @@ nav-short: true
 <img src= "https://heejin-yoon.github.io/assets/img/profile_heejin.jpg" width="220">
 <br/>
 
-Welcome! I'm a fourth-year Ph.D. student in Real Estate and Urban Land Economics at the University of Wisconsin&ndash;Madison. 
+Welcome! I'm a fifth-year Ph.D. student in Real Estate and Urban Land Economics at the University of Wisconsin&ndash;Madison. In Fall 2024, I will be the instructor for RE420 (Urban and Regional Economics).
 
 Prior to joining the program, I received B.B.A. in Business Administration from Yonsei University and M.S. in Finance from KAIST College of Business.
 <br/><br/><br/>
