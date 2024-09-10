@@ -10,6 +10,8 @@ title: Teaching
 
  - **Urban and Regional Economics (Undergrad)**, Fall 2024
 
+   - Lectures: 4:00 pm - 5:15 pm, Mondays and Wednesdays
+ 
    - Office Hour: 3:00 pm - 4:30 pm, Tuesdays and Thursdays
 
 <br/> 
