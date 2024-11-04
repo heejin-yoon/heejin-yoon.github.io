@@ -10,9 +10,12 @@ title: Teaching
 
  - **Urban and Regional Economics (Undergrad)**, Fall 2024
 
-   - Lectures: 4:00 pm - 5:15 pm, Mondays and Wednesdays
+   - Class Hours: 4:00 pm - 5:15 pm, Mondays and Wednesdays
  
-   - Office Hour: 3:00 pm - 4:30 pm, Tuesdays and Thursdays
+   - Office Hours: 3:00 pm - 4:30 pm, Tuesdays and Thursdays
+
+   - [Class Materials](https://heejin-yoon.github.io/teaching/RE420/)
+
 
 <br/> 
 
