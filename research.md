@@ -23,7 +23,7 @@ My research can also be found in [Google Scholar](https://scholar.google.com/cit
 
 #### _Book Chapter_
  
-- “[The American Housing Finance System: Structure, Evolution, and Implications](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4750853)” (with Yongheng Deng and Susan M. Wachter), **_Oxford Research Encyclopedia of Economics and Finance_**, _forthcoming_.
+- “[The American Housing Finance System: Structure, Evolution, and Implications](https://oxfordre.com/economics/display/10.1093/acrefore/9780190625979.001.0001/acrefore-9780190625979-e-924)” (with Yongheng Deng and Susan M. Wachter), 2024, August. **_Oxford Research Encyclopedia of Economics and Finance_**. [[SSRN](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4750853)]
 
    <!-- - Office Hour: 1:00 pm - 2:00 pm, Tuesdays and Thursdays -->
 
