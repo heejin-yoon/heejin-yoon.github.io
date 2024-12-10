@@ -21,17 +21,18 @@ title: Teaching
 
 ### Teaching Assistant (UW&ndash;Madison)
 
- - **Advanced Real Estate Finance (PhD)**, Spring 2024
+- **Real Estate Finance (Undergrad)**, Spring 2022, Fall 2021, Spring 2021
 
-   - Course evaluation survey result not available due to small class size
- 
+   - Course evaluation survey ([Undergrad](https://uwmadison.box.com/s/ap2fhvvxfo5rxzp84zpgwpnytxeox0rm))
+
  - **Urban and Regional Economics (MBA/Undergrad)**, Fall 2023, Fall 2022
  
    - Course evaluation survey ([MBA](https://uwmadison.box.com/s/lf7g5ywmon0cjzivtb5kklf94nn3a8kw)/[Undergrad](https://uwmadison.box.com/s/bmmq8xfpmnzj9gkyeir3jmrgc8v3ond5))
 
-- **Real Estate Finance (Undergrad)**, Spring 2022, Fall 2021, Spring 2021
+- **Advanced Real Estate Finance (PhD)**, Spring 2024
 
-   - Course evaluation survey ([Undergrad](https://uwmadison.box.com/s/ap2fhvvxfo5rxzp84zpgwpnytxeox0rm))
+   - Course evaluation survey result not available due to small class size
+ 
 
 <br/>
 
