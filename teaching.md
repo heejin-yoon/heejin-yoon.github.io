@@ -10,12 +10,12 @@ title: Teaching
 
  - **Urban and Regional Economics (Undergrad)**, Fall 2024
 
+   - Course evaluation survey
+
    - [Syllabus](https://heejin-yoon.github.io/teaching/RE420/RE420_Syllabus_Fall2024.pdf)
 
    - [Class materials](https://heejin-yoon.github.io/teaching/RE420/)
      
-   - Course evaluation survey
-
 
 <br/> 
 
