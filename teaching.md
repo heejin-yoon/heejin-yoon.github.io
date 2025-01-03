@@ -14,9 +14,7 @@ title: Teaching
 
    - [Class materials](https://heejin-yoon.github.io/teaching/RE420/)
   
-   - City of Madison–WSB Sustainable Development Project Poster Session
-   
-     - [Story: Wisconsin School of Business students connect research and community with Madison-based sustainability projects](https://univercity.wisc.edu/2025/01/02/wisconsin-school-of-business-students-connect-research-and-community-with-madison-based-sustainability-projects/)
+   - [Story: Wisconsin School of Business students connect research and community with Madison-based sustainability projects](https://univercity.wisc.edu/2025/01/02/wisconsin-school-of-business-students-connect-research-and-community-with-madison-based-sustainability-projects/)
      
 
 <br/> 
