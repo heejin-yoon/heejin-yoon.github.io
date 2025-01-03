@@ -6,15 +6,15 @@ title: Teaching
 
 <br/> 
 
-### Instructor (UW&ndash;Madison)
+### Instructor (UW–Madison)
 
  - **Urban and Regional Economics (Undergrad)**, Fall 2024
 
    - [Course evaluation survey](https://uwmadison.box.com/s/nusin6et3ga9mbs4jgk34vh3kgetq4ot)
 
-   - [Syllabus](https://heejin-yoon.github.io/teaching/RE420/RE420_Syllabus_Fall2024.pdf)
-
    - [Class materials](https://heejin-yoon.github.io/teaching/RE420/)
+  
+   - [City of Madison–Wisconsin School of Business Sustainable Development Project Poster Session](https://univercity.wisc.edu/2025/01/02/wisconsin-school-of-business-students-connect-research-and-community-with-madison-based-sustainability-projects/)
      
 
 <br/> 
