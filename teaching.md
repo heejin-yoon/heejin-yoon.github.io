@@ -14,7 +14,8 @@ title: Teaching
 
    - [Class materials](https://heejin-yoon.github.io/teaching/RE420/)
   
-   - [Story: Wisconsin School of Business students connect research and community with Madison-based sustainability projects](https://univercity.wisc.edu/2025/01/02/wisconsin-school-of-business-students-connect-research-and-community-with-madison-based-sustainability-projects/)
+   - Featured story
+     - "[Wisconsin School of Business Students Connect Research and Community with Madison-Based Sustainability Projects.](https://univercity.wisc.edu/2025/01/02/wisconsin-school-of-business-students-connect-research-and-community-with-madison-based-sustainability-projects/)" _UniverCity Alliance_, 2 Jan. 2025.
      
 
 <br/> 
