@@ -1,9 +1,6 @@
 # --- Basic options --- #
 
-# [수정필요] 웹페이지 이름
 title: Heejin Yoon
-
-# [수정필요] 간단한 사이트 설명
 description: Personal Webpage of Heejin Yoon
 
 # [수정필요] 웹페이지 아래에 나오는 웹사이트 저자 이름
@@ -140,6 +137,7 @@ gtag: "G-PKD0PNE49E"
 #  issue-term: title   # Mapping between blog posts and GitHub issues
 #  theme: github-light # Utterances theme
 #  label: blog-comments # Label that will be assigned to GitHub Issues created by Utterances
+theme: minima
 
 # To use Staticman comments, first invite `staticmanlab` as a collaborator to your repository and
 # accept the invitation by going to `https://staticman3.herokuapp.com/v3/connect/github/<username>/<repo-name>`.
