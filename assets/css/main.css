@@ -11,7 +11,7 @@ layout: null
 }
 @font-face {
   font-family: 'Charter';
-  src: url('/fonts/charter_bold.ttf') format('truetype');
+  src: url('/font/charter_bold.ttf') format('truetype');
   font-weight: bold;
   font-style: normal;
 }
