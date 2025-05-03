@@ -75,11 +75,11 @@ h4 {
   font-size: 1.25rem;
 }
 a {
-  color: {{ site.link-col | default: "#008AFF" }};
+  color: {{ site.link-col | default: "#21758F" }};
 }
 a:hover,
 a:focus {
-  color: {{ site.hover-col | default: "#0085A1" }};
+  color: {{ site.hover-col | default: "#21758F" }};
 }
 blockquote {
   color: #808080;
