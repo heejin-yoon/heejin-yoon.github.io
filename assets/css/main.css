@@ -3,6 +3,12 @@ layout: null
 ---
 
 @import url("pygment_highlights.css");
+@font-face {
+  font-family: 'Charter';
+  src: url('font/charter_regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 
 /* --- General --- */
 
@@ -11,7 +17,7 @@ html {
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  font-family: 'Charter', 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
 /*   font-family: sans-serif; */
   font-size: 1.25rem;
   color: #2d3748
