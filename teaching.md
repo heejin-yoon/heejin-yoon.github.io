@@ -10,7 +10,7 @@ title: Teaching
 
  - **Urban and Regional Economics (Undergrad)**, Fall 2024
 
-   - Recognized with the Henry C. Naiman Graduate Teaching Award, Wisconsin School of Business
+   - Recognized with the _Henry C. Naiman Graduate Teaching Award_
 
    - [Course evaluation survey](https://uwmadison.box.com/s/nusin6et3ga9mbs4jgk34vh3kgetq4ot)
 
