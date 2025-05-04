@@ -6,7 +6,7 @@ layout: null
 @font-face {
   font-family: 'Charter';
   src: url('font/charter_regular.ttf') format('truetype');
-  font-weight: 400;
+  font-weight: 500;
   font-style: normal;
 }
 /* @font-face {
