@@ -78,13 +78,7 @@ h3 {
 h4 {
   font-size: 1.25rem;
 }
-a {
-  color: {{ site.link-col | default: "#21758F" }};
-}
-a:hover,
-a:focus {
-  color: {{ site.hover-col | default: "#21758F" }};
-}
+
 blockquote {
   color: #808080;
   font-style: italic;
@@ -164,7 +158,7 @@ img {
 .navbar-custom {
   background-color: {{ site.navbar-col | default: "#F5F5F5" }};
   border-bottom: 1px solid {{ site.navbar-border-col | default: "#EAEAEA" }};
-  font-family: 'Lato', sans-serif; /*'Helvetica Neue', Helvetica, Arial, sans-serif;*/
+  font-family: sans-serif; /*'Helvetica Neue', Helvetica, Arial, sans-serif;*/
   {% if site.navbar-img %}
     background-image: url({{ site.navbar-img | relative_url }});
     background-attachment: fixed;
@@ -234,7 +228,7 @@ img {
   padding-top: 0.625rem;
   padding-bottom: 0.625rem;
   font-size: 1.5rem;
-  font-family: 'Lato', sans-serif;
+  font-family: sans-serif;
   font-weight: 600;
   letter-spacing: 1px;
   color: {{ site.navbar-text-col | default: "#404040" }};
