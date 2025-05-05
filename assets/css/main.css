@@ -947,45 +947,4 @@ pre {
   font-size: 1rem;
 }
 
-/* === Prevent Navbar Shrinking on Scroll === */
 
-/* === Force Smaller Static Navbar (No Shrink on Scroll) === */
-
-/* Apply shorter height and lock it */
-.navbar-custom,
-.navbar-custom.top-nav-short,
-.navbar-custom.top-nav-short-permanent {
-  padding-top: 0.625rem !important;
-  padding-bottom: 0.625rem !important;
-}
-
-/* Reduce logo image height */
-.navbar-custom .navbar-brand-logo img,
-.navbar-custom.top-nav-short .navbar-brand-logo img,
-.navbar-custom.top-nav-short-permanent .navbar-brand-logo img {
-  height: 0.625rem !important;
-}
-
-/* Keep avatar visible and positioned properly (if used) */
-.navbar-custom .avatar-container,
-.navbar-custom.top-nav-short .avatar-container,
-.navbar-custom.top-nav-short-permanent .avatar-container {
-  opacity: 1 !important;
-  visibility: visible !important;
-  margin-top: 0.5rem !important; /* Adjust avatar vertical alignment */
-  transition: none !important;
-}
-
-/* Optional: shrink navbar brand text */
-.navbar-custom .navbar-brand {
-  padding-top: 0.25rem !important;
-  padding-bottom: 0.25rem !important;
-  font-size: 1.1rem !important;
-}
-
-/* Optional: adjust nav link spacing */
-.navbar-custom .navbar-nav .nav-link {
-  padding-top: 0.75rem !important;
-  padding-bottom: 0.75rem !important;
-  font-size: 1rem !important;
-}
