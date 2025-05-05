@@ -46,10 +46,6 @@ body {
   /*{% endif %}*/
 }
 
-a {
-  color: #21758F;
-}
-
 strong, b {
   font-family: 'Charter', Georgia, serif;
   font-weight: 700;
@@ -945,4 +941,27 @@ pre {
   color: #808080;
   font-style: italic;
   font-size: 1rem;
+}
+
+/* === Prevent Navbar Shrinking on Scroll === */
+
+/* Force consistent navbar padding, even when .top-nav-short is added */
+.navbar-custom.top-nav-short,
+.navbar-custom.top-nav-short-permanent {
+  padding-top: 1.25rem !important;
+  padding-bottom: 1.25rem !important;
+}
+
+/* Keep logo image size consistent */
+.navbar-custom.top-nav-short .navbar-brand-logo img,
+.navbar-custom.top-nav-short-permanent .navbar-brand-logo img {
+  height: 1.5rem !important;
+}
+
+/* Keep avatar visible if used */
+.navbar-custom.top-nav-short .avatar-container,
+.navbar-custom.top-nav-short-permanent .avatar-container {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transition: none !important;
 }
