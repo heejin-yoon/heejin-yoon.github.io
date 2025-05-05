@@ -46,6 +46,10 @@ body {
   /*{% endif %}*/
 }
 
+a {
+  color: #21758F;
+}
+
 strong, b {
   font-family: 'Charter', Georgia, serif;
   font-weight: 700;
@@ -959,5 +963,5 @@ pre {
 .navbar-custom .navbar-brand-logo img,
 .navbar-custom.top-nav-short .navbar-brand-logo img,
 .navbar-custom.top-nav-short-permanent .navbar-brand-logo img {
-  height: 1.25rem !important;
+  height: 0.625rem !important;
 }
