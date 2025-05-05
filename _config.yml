@@ -1,32 +1,26 @@
 # --- Basic options --- #
 
-# title: "Heejin Yoon"
-description: "Personal Webpage of Heejin Yoon"
+# [수정필요] 웹페이지 이름
+title: Heejin Yoon
+
+# [수정필요] 간단한 사이트 설명
+description: Acedemic Website of Heejin Yoon
 
 # [수정필요] 웹페이지 아래에 나오는 웹사이트 저자 이름
-author: "Heejin Yoon"
+author: Heejin Yoon
 
 # [조건부수정] 네비게이션 바에 포함되는 항목 (명칭 수정, 추가, 삭제 가능)
 # 예를 들어 ETRI 라는 항목을 네비게이션 바에 추가하고 싶은 경우, etri.md 파일 생성 후 ETRI: "etri" 라고 지정.
 navbar-links:
-   Home: "index"
-   Research: "research"
-#   Resources:
-#     - Beautiful Jekyll: "https://beautifuljekyll.com"
-#     - Learn markdown: "https://www.markdowntutorial.com/"
-   Teaching: "teaching"
-#  CV     : "https://uwmadison.box.com/s/bx5m541nlrlg4u4qh5brqt0quhy0xmkq"
-#  About: "about"
-#  Blog: "blog"
-#  GitHub: "https://github.com/yoon09269"
-#  Google Scholar: "https://scholar.google.com/citations?user=yoon09269"
+  Home: "index"
+  Research: "research"
+  Teaching: "teaching"
+
 
 # [수정필요] 아바타 로고 사용 시에는 이미지 파일을 지정 (이미지 파일 업로드 후, 위치 지정)
-#avatar: "/assets/img/seokho-square-2.jpg"
+# avatar: "/assets/img/seokho-square-2.jpg"
 # 원형 아바타 이미지 여부 `true` 또는 `false`
-#round-avatar: true
-#avatar: "/assets/img/profile_heejin.jpg"
-#round-avatar: false
+round-avatar: false
 
 # title text 대신 이미지 사용하고 싶은 경우 설정
 # then specify the following parameter
@@ -41,7 +35,7 @@ navbar-links:
 social-network-links:
   email: "heejin.yoon@wisc.edu"
 #  facebook: seokho.son.korea
-#  github: yoon09269
+#  github: seokho-son
 #  linkedin: seokho-son
 #  twitter: daattali
 #  rss: true
@@ -63,15 +57,15 @@ social-network-links:
 # [수정필요] 연락을 위한 타 사이트 정보 활성화 여부 지정 (필요 없는 경우 주석 처리)
 # --- General options --- #
 # Select which social network share links to show in posts
-share-links-active:
+# share-links-active:
 #  twitter: true
-  facebook: true
-  linkedin: true
+#  facebook: true
+#  linkedin: true
 #  vk: false
 
 # How to display the link to your website in the footer
 # Remove this if you don't want a link in the footer
-# url-pretty: "heejin-yoon.github.io"
+# url-pretty: "MyWebsite.com"
 
 # Create a "tags" index page and make tags on each post clickable
 link-tags: true
@@ -88,8 +82,8 @@ navbar-col: "#F5F5F5"
 navbar-text-col: "#404040"
 navbar-border-col: "#EAEAEA"
 page-col: "#FFFFFF"
-link-col: "#21758F" /*"#008AFF"*/
-hover-col: "#21758F" /*"#0085A1"*/
+link-col: "#21758F"
+hover-col: "#21758F"
 footer-col: "#F5F5F5"
 footer-text-col: "#777777"
 footer-link-col: "#404040"
@@ -107,7 +101,7 @@ footer-link-col: "#404040"
 #gtag: ""
 
 # Fill in your Google Analytics ID to track your website using GA
-gtag: "G-PKD0PNE49E"
+#google_analytics: ""
 
 # Google Tag Manager ID
 #gtm: ""
@@ -137,7 +131,6 @@ gtag: "G-PKD0PNE49E"
 #  issue-term: title   # Mapping between blog posts and GitHub issues
 #  theme: github-light # Utterances theme
 #  label: blog-comments # Label that will be assigned to GitHub Issues created by Utterances
-theme: minima
 
 # To use Staticman comments, first invite `staticmanlab` as a collaborator to your repository and
 # accept the invitation by going to `https://staticman3.herokuapp.com/v3/connect/github/<username>/<repo-name>`.
@@ -169,7 +162,7 @@ date_format: "%B %-d, %Y"
 # --- You don't need to touch anything below here (but you can if you want) --- #
 
 # Output options (more information on Jekyll's site)
-timezone: "America/Chicago"
+timezone: "America/Vancouver"
 markdown: kramdown
 highlighter: rouge
 permalink: /:year-:month-:day-:title/
@@ -195,7 +188,6 @@ defaults:
     values:
       layout: "page"
       show-avatar: true
-      nav-short: true
 
 # Exclude these files from production site
 exclude:
@@ -211,7 +203,6 @@ exclude:
 plugins:
   - jekyll-paginate
   - jekyll-sitemap
-  - jekyll-seo-tag
 
 # prose.io config
 prose:
