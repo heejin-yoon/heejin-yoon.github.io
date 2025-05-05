@@ -46,6 +46,10 @@ body {
   /*{% endif %}*/
 }
 
+a {
+  color: #21758F;
+}
+
 strong, b {
   font-family: 'Charter', Georgia, serif;
   font-weight: 700;
