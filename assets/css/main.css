@@ -952,15 +952,15 @@ pre {
 .navbar-custom,
 .navbar-custom.top-nav-short,
 .navbar-custom.top-nav-short-permanent {
-  padding-top: 1.125rem !important;
-  padding-bottom: 1.125rem !important;
+  padding-top: 1.250rem !important;
+  padding-bottom: 1.250rem !important;
 }
 
 /* Reduce logo image height */
 .navbar-custom .navbar-brand-logo img,
 .navbar-custom.top-nav-short .navbar-brand-logo img,
 .navbar-custom.top-nav-short-permanent .navbar-brand-logo img {
-  height: 1.125rem !important;
+  height: 1.250rem !important;
 }
 
 /* Keep avatar visible and positioned properly (if used) */
@@ -984,6 +984,6 @@ pre {
 .navbar-custom .navbar-nav .nav-link {
   padding-top: 0.75rem !important;
   padding-bottom: 0.75rem !important;
-  font-size: 1rem !important;
+  /*  font-size: 1rem !important; */
 }
 
