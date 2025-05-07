@@ -50,6 +50,11 @@ a {
   color: #0085A1;
 }
 
+a:hover,
+a:focus {
+  color: { site.hover-col | default: "#21758F" !important };
+}
+
 strong, b {
   font-family: 'Charter', Georgia, serif;
   font-weight: 700;
