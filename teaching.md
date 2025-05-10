@@ -14,9 +14,9 @@ title: Teaching
 
    - [Course evaluation survey](https://uwmadison.box.com/s/nusin6et3ga9mbs4jgk34vh3kgetq4ot)
   
-   - Featured story: "[Wisconsin School of Business Students Connect Research and Community with Madison-Based Sustainability Projects.](https://univercity.wisc.edu/2025/01/02/wisconsin-school-of-business-students-connect-research-and-community-with-madison-based-sustainability-projects/)" _UniverCity Alliance_, 2 Jan. 2025.
+   - Featured story: "[Wisconsin School of Business Students Connect Research and Community with Madison-Based Sustainability Projects.](https://business.wisc.edu/centers/graaskamp/news/wisconsin-school-of-business-students-connect-research-and-community-with-madison-based-sustainability-projects/)" _UniverCity Alliance_, 2 Jan. 2025.
 
-   - Recognized with the _**Henry C. Naiman Outstanding Teaching Award**_  
+   - Recognized with the [_**Henry C. Naiman Outstanding Teaching Award**_](https://business.wisc.edu/centers/graaskamp/news/three-real-estate-faculty-and-teaching-staff-receive-distinguished-awards-from-the-wisconsin-school-of-business/)  
 
 <br/> 
 
