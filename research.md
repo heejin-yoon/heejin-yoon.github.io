@@ -14,7 +14,7 @@ My research can also be found in [Google Scholar](https://scholar.google.com/cit
  
 - “[Nonbank Growth and Local Housing Booms](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4746656)” (with H. S. Choi and Y. Deng).
 
-  - Media coverage: [_IMF News_](https://www.insidemortgagefinance.com/articles/230744-more-nonbank-lending-democratizes-home-price-inflation?v=preview)
+  - Press coverage: [_IMF News_](https://www.insidemortgagefinance.com/articles/230744-more-nonbank-lending-democratizes-home-price-inflation?v=preview)
 
 
 
