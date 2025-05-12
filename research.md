@@ -12,9 +12,9 @@ My research can also be found in [Google Scholar](https://scholar.google.com/cit
 
 ### Working Papers
  
-- “[Nonbank Growth and Local Housing Booms](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4746656)” (with H. S. Choi and Y. Deng), 2024.
+- “[Nonbank Growth and Local Housing Booms](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4746656)” (with H. S. Choi and Y. Deng).
 
-- “[How Detrimental Was the Pandemic on Commercial Mortgages? Unveiling Long-Term Consequences for Retail Sector](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4714155)” (with D. Zhang), 2024.
+- “[How Detrimental Was the Pandemic on Commercial Mortgages? Unveiling Long-Term Consequences for Retail Sector](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4714155)” (with D. Zhang).
 
 <br/>
 
