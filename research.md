@@ -21,8 +21,9 @@ My research can also be found in [Google Scholar](https://scholar.google.com/cit
 
 
 - “[How Detrimental Was the Pandemic on Commercial Mortgages? Unveiling Long-Term Consequences for Retail Sector](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4714155)” (with D. Zhang).
-
+<div style="font-size: 0.5em;">
   - Presentations 2022: AREUEA-ASSA Conference<sup>\*</sup> <br> (\* indicates presentation by coauthor) 
+</div>
 
 <br/>
 
