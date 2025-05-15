@@ -13,18 +13,16 @@ My research can also be found in [Google Scholar](https://scholar.google.com/cit
 ### Working Papers 
  
 - “[Nonbank Growth and Local Housing Booms](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4746656)” (with H. S. Choi and Y. Deng).
-<div style="font-size: 0.5em;">
+<!---
   - Presentations 2025: ABFER Annual Conference, 2024: AREUEA National Conference, Annual Conference on Asia-Pacific Financial Markets<sup>\*</sup>, Asia-Pacific Association of Derivatives<sup>\*</sup>, FSU-UF Critical Issues in Real Estate Symposium, Nanyang Technological University<sup>\*</sup>, National University of Singapore<sup>\*</sup>, Seoul National University<sup>\*</sup>, Sungkyunkwan University<sup>\*</sup>, TFA-KFA Joint Conference<sup>*</sup> <br> (\* indicates presentation by coauthor) 
-
+-->
   - Press coverage: [_IMF News_](https://www.insidemortgagefinance.com/articles/230744-more-nonbank-lending-democratizes-home-price-inflation?v=preview)
-</div>
 
 
 - “[How Detrimental Was the Pandemic on Commercial Mortgages? Unveiling Long-Term Consequences for Retail Sector](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4714155)” (with D. Zhang).
-<div style="font-size: 0.5em;">
+<!---
   - Presentations 2022: AREUEA-ASSA Conference<sup>\*</sup> <br> (\* indicates presentation by coauthor) 
-</div>
-
+-->
 <br/>
 
 ### Publications
