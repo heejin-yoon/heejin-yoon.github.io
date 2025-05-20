@@ -17,7 +17,7 @@ My research can also be found in [Google Scholar](https://scholar.google.com/cit
   - Press coverage: [_IMF News_](https://www.insidemortgagefinance.com/articles/230744-more-nonbank-lending-democratizes-home-price-inflation?v=preview)
     
   - Presentations 2025: ABFER Annual Conference, 2024: AREUEA National Conference, Annual Conference on Asia-Pacific Financial Markets<sup>\*</sup>, Asia-Pacific Association of Derivatives<sup>\*</sup>, FSU-UF Critical Issues in Real Estate Symposium, Nanyang Technological University<sup>\*</sup>, National University of Singapore<sup>\*</sup>, Seoul National University<sup>\*</sup>, Sungkyunkwan University<sup>\*</sup>, TFA-KFA Joint Conference<sup>\*</sup> <br> (\*: presentation by coauthor)
-/*(†: scheduled, \*: presentation by coauthor)*/
+
 
 - “[How Detrimental Was the Pandemic on Commercial Mortgages? Unveiling Long-Term Consequences for Retail Sector](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4714155)” (with D. Zhang).
 
