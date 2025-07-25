@@ -12,8 +12,9 @@ My research can also be found in [Google Scholar](https://scholar.google.com/cit
 
 ### Job Market Paper 
 
-- “[Barriers to Reentry: Initial Borrowing Frictions,
-Refinancing, and Wealth Redistribution](https://uwmadison.box.com/s/k1wb204duthhw3ig9itaxrqe6cp1htvf)” 
+<ul>
+  <li>“<a href="https://uwmadison.box.com/s/k1wb204duthhw3ig9itaxrqe6cp1htvf">Barriers to Reentry: Initial Borrowing Frictions,
+Refinancing, and Wealth Redistribution</a>”</li>
 
  <div style="margin-left: 3em;">
  <details>
@@ -23,13 +24,20 @@ Refinancing, and Wealth Redistribution](https://uwmadison.box.com/s/k1wb204duthh
  </p>
  </details>
  </div>
-     
-    - <p style="color:rgb(215,90,0)"><b>Winner of USC Marshall PhD Conference in Finance 2025 Best Paper Award</b></p>
-    
-  - **Winner of ABFER 2025 Best Poster Award**
 
-  - Presentations 2025: ABFER Annual Conference (Poster Session), AsianFA Annual Conference, BFWG International Conference, FIRS, USC Marshall PhD Conference in Finance, WSB Summer Research Conference
 
+<ul>
+      <li>
+        <p style="color:rgb(215,90,0)"><b>Winner of USC Marshall PhD Conference in Finance 2025 Best Paper Award</b></p>
+      </li>
+       <li>
+        <p style="color:rgb(215,90,0)"><b>Winner of ABFER Annual Conference 2025 Best Poster Award</b></p>
+      </li>
+      <li>
+        <p>Presentations 2025: ABFER Annual Conference (Poster Session), AsianFA Annual Conference, BFWG International Conference, FIRS, USC Marshall PhD Conference in Finance, WSB Summer Research Conference</p>
+      </li>
+    </ul>
+    </ul>
 
 <br/>
 
