@@ -10,7 +10,7 @@ My research interests lie in real estate finance, urban economics, and corporate
 
  
 - “[Does Climate Change Hinder Women’s Financial Inclusion? Evidence from
-Rural India](../assets/pdf/Discussion_Ke_AsianFA)” 
+Rural India](../assets/pdf/Discussion_Ke_AsianFA.pdf)” 
 
   - Written by: Da Ke
     
