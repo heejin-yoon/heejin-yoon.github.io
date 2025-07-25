@@ -12,13 +12,13 @@ My research interests lie in real estate finance, urban economics, and corporate
 - “[Does Climate Change Hinder Women’s Financial Inclusion? Evidence from
 Rural India](link)” 
 
-  - Written By: Da Ke
+  - Da Ke
     
-  - Conference: Asian Finance Association Annual Conference (June 27, 2025)
+  - Asian Finance Association Annual Conference (June 27, 2025)
 
 
-- “[What Matters for Consumer Credit Choice? Evidence from the Philippine Digital Credit Market ](link)”
+- “[What Matters for Consumer Credit Choice? Evidence from the Philippine Digital Credit Market ](assets/pdf/Discussion_King_et_al_BFWG.pdf)”
 
-  - Written By: Michael King, Paolina Medina, Benjamin Radoc, Roland Umanan
+  - Michael King, Paolina Medina, Benjamin Radoc, Roland Umanan
     
-  - Conference: Behavioural Finance Working Group International Conference (June 6, 2025)
+  - Behavioural Finance Working Group International Conference (June 6, 2025)
