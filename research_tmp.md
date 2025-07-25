@@ -24,7 +24,7 @@ This paper examines how frictions encountered during the initial purchase mortga
 </details>
 </div>
      
-  - <p style="color:rgb(205,100,60)"><b>Winner of ABFER 2025 Best Poster Award</b></p>
+  - <p style="color:rgb(215,90,0)"><b>Winner of USC Marshall PhD Conference in Finance 2025 Best Paper Award</b></p>
     
   - **Winner of ABFER 2025 Best Poster Award**
 
