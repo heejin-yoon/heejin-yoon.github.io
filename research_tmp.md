@@ -16,7 +16,7 @@ My research can also be found in [Google Scholar](https://scholar.google.com/cit
   <li>“<a href="https://uwmadison.box.com/s/k1wb204duthhw3ig9itaxrqe6cp1htvf">Barriers to Reentry: Initial Borrowing Frictions,
 Refinancing, and Wealth Redistribution</a>”</li>
 
- <div style="margin-left: 3em;">
+ <div style="margin-left: 1em; line-height: 1.5">
  <details>
    <summary><em>Abstract</em></summary>
   <p style="margin-left: 1em; font-size: 0.9em">
