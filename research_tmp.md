@@ -15,20 +15,12 @@ My research can also be found in [Google Scholar](https://scholar.google.com/cit
 - “[Barriers to Reentry: Initial Borrowing Frictions,
 Refinancing, and Wealth Redistribution](https://uwmadison.box.com/s/k1wb204duthhw3ig9itaxrqe6cp1htvf)” 
 
-
+<div style="margin-left: 3em; font-size: 0.8em; line-height: 1.5">
 <details>
-  <div style="margin-left: 2em; font-size: 0.8em; line-height: 1.5">
   <summary><em>Abstract</em></summary>
-  </div>
-
-  <div style="margin-left: 3em; font-size: 0.8em; line-height: 1.5">
-
 This paper examines how frictions encountered during the initial purchase mortgage origination process shape borrowers’ future refinancing behavior and contribute to wealth disparities. Leveraging variation in loan officer workload as a quasi-random source of lender-induced origination delays, I find that experiencing a 60+ day delay lowers quarterly refinancing rates by 16–24%. Minority borrowers, low-income households, and those with lower credit scores are more likely to encounter such frictions, with evidence pointing to lender bias as a potential driver of racial disparities. A structural model implies a present value loss of \$6,641 per delayed borrower, which amounts to \$2.8 billion in overpayments each year when scaled to the U.S. market. Importantly, these losses are not evenly distributed: conditional on the same delay event, minority borrowers incur greater financial losses than White borrowers, largely due to a lower baseline likelihood of acting on refinancing opportunities. Together, these findings demonstrate how subtle frictions in the origination process can lead to persistent financial disadvantages and entrench wealth inequality.
-</div>
-
 </details>
-
-  - _Abstract_: This paper examines how frictions encountered during the initial purchase mortgage origination process shape borrowers’ future refinancing behavior and contribute to wealth disparities. Leveraging variation in loan officer workload as a quasi-random source of lender-induced origination delays, I find that experiencing a 60+ day delay lowers quarterly refinancing rates by 16–24%. Minority borrowers, low-income households, and those with lower credit scores are more likely to encounter such frictions, with evidence pointing to lender bias as a potential driver of racial disparities. A structural model implies a present value loss of $6,641 per delayed borrower, which amounts to $2.8 billion in overpayments each year when scaled to the U.S. market. Importantly, these losses are not evenly distributed: conditional on the same delay event, minority borrowers incur greater financial losses than White borrowers, largely due to a lower baseline likelihood of acting on refinancing opportunities. Together, these findings demonstrate how subtle frictions in the origination process can lead to persistent financial disadvantages and entrench wealth inequality.
+</div>
  
   - Presentations 2025: ABFER Annual Conference (Poster Session), AsianFA Annual Conference, BFWG International Conference, FIRS, USC Marshall PhD Conference in Finance, WSB Summer Research Conference
     
