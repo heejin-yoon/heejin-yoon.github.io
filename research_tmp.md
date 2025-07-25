@@ -21,6 +21,8 @@ Refinancing, and Wealth Redistribution](https://uwmadison.box.com/s/k1wb204duthh
     
   - **Best Paper Award**: ABFER (2025), USC Marshall PhD Conference in Finance (2025)
 
+<br/>
+
 ### Working Papers 
  
 - “[Nonbank Growth and Local Housing Booms](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4746656)” (with H. S. Choi and Y. Deng).  
