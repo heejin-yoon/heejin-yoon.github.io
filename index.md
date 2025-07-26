@@ -1,6 +1,6 @@
 ---
 layout: page
-title: index
+title: false
 nav-short: true
 ---
 <!---  cover-img: /assets/img/Grainger2.jpg --->
