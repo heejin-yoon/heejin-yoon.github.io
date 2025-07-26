@@ -958,12 +958,12 @@ pre {
 
 
 /* Apply shorter height and lock it */
-.navbar-custom,
+/* .navbar-custom,
 .navbar-custom.top-nav-short,
 .navbar-custom.top-nav-short-permanent {
   padding-top: 1.250rem !important;
   padding-bottom: 1.250rem !important;
-}
+} */
 
 /* Reduce logo image height */
 .navbar-custom .navbar-brand-logo img,
@@ -973,14 +973,14 @@ pre {
 }
 
 /* Keep avatar visible and positioned properly (if used) */
-.navbar-custom .avatar-container,
+/* .navbar-custom .avatar-container,
 .navbar-custom.top-nav-short .avatar-container,
 .navbar-custom.top-nav-short-permanent .avatar-container {
   opacity: 1 !important;
   visibility: visible !important;
   margin-top: 0.5rem !important; /* Adjust avatar vertical alignment */
   transition: none !important;
-}
+} */
 
 /* Temporary */
 /* .navbar-custom {
