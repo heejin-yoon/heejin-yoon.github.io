@@ -4,8 +4,11 @@ nav-short: true
 ---
 <!---  cover-img: /assets/img/Grainger2.jpg --->
 
+<p>
 <img src= "https://heejin-yoon.github.io/assets/img/profile_heejin.jpg" width="220">
-<br/>
+</p>
+
+<div style="margin-bottom: 1em;margin-top: 1em;">ㅤ</div>
 
 Welcome! I'm a fifth-year Ph.D. student in Real Estate and Urban Land Economics at the University of Wisconsin&ndash;Madison.
 
