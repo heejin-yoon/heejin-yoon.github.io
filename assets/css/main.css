@@ -232,7 +232,7 @@ img {
   font-size: 1rem;
   font-family: Helvetica, Arial, sans-serif;
   font-weight: 400;
-  letter-spacing: 1px;
+  letter-spacing: 0.75px;
   color: #404040;
 }
 
@@ -244,7 +244,7 @@ img {
   padding-bottom: 0.15rem;
   font-size: 1.25rem;
   font-family: Helvetica, Arial, sans-serif;
-  font-weight: 500;
+  font-weight: 550;
   letter-spacing: 1px;
   color: {{ site.navbar-text-col | default: "#404040" }};
 }
