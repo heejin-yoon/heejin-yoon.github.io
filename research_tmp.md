@@ -16,7 +16,7 @@ My research can also be found in [Google Scholar](https://scholar.google.com/cit
 “<a href="https://uwmadison.box.com/s/k1wb204duthhw3ig9itaxrqe6cp1htvf">Barriers to Reentry: Initial Borrowing Frictions,
 Refinancing, and Wealth Redistribution</a>” </p></li>
 
- <p style="margin-left: 1.5em;"> /* line-height: 1.5*/
+ <p style="margin-left: 1.5em;"> 
  <details>
    <summary><em>Abstract</em></summary>
   <div style="margin-left: 1em; font-size: 0.9em">
@@ -42,12 +42,20 @@ Refinancing, and Wealth Redistribution</a>” </p></li>
 <br/>
 
 ### Working Papers 
+<ul>
+  <li><p>
+“<a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4746656">Nonbank Growth and Local Housing Booms</a>” 
+  </p></li>
  
-- “[Nonbank Growth and Local Housing Booms](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4746656)” (with H. S. Choi and Y. Deng).  
-
-  - Press coverage: [_IMF News_](https://www.insidemortgagefinance.com/articles/230744-more-nonbank-lending-democratizes-home-price-inflation?v=preview)
-    
-  - Presentations 2025: ABFER Annual Conference, 2024: AREUEA National Conference, Annual Conference on Asia-Pacific Financial Markets<sup>\*</sup>, Asia-Pacific Association of Derivatives<sup>\*</sup>, FSU-UF Critical Issues in Real Estate Symposium, Nanyang Technological University<sup>\*</sup>, National University of Singapore<sup>\*</sup>, Seoul National University<sup>\*</sup>, Sungkyunkwan University<sup>\*</sup>, TFA-KFA Joint Conference<sup>\*</sup> <br> (\*: presentation by coauthor)
+<ul>
+      <li>
+        <div><a href="https://www.insidemortgagefinance.com/articles/230744-more-nonbank-lending-democratizes-home-price-inflation?v=preview">IMF News</a>  </div>
+      </li>
+       <li>
+        <div>Presentations 2025: ABFER Annual Conference, 2024: AREUEA National Conference, Annual Conference on Asia-Pacific Financial Markets<sup>\*</sup>, Asia-Pacific Association of Derivatives<sup>\*</sup>, FSU-UF Critical Issues in Real Estate Symposium, Nanyang Technological University<sup>\*</sup>, National University of Singapore<sup>\*</sup>, Seoul National University<sup>\*</sup>, Sungkyunkwan University<sup>\*</sup>, TFA-KFA Joint Conference<sup>\*</sup> <br> (\*: presentation by coauthor)</div>
+      </li>
+    </ul>
+    </ul>
 
 
 - “[How Detrimental Was the Pandemic on Commercial Mortgages? Unveiling Long-Term Consequences for Retail Sector](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4714155)” (with D. Zhang).
