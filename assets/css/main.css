@@ -226,10 +226,10 @@ img {
 
 .navbar-custom .navbar-nav .nav-link {
   line-height: 1;
-  padding-top: 0.45rem;
-  padding-bottom: 0.45rem;
-  padding-left: 0.0rem;
-  padding-right: 1.5rem;
+  padding-top: 0.65rem;
+  padding-bottom: 0.65rem;
+  padding-left: 0.5rem;
+  padding-right: 1.0rem;
   font-size: 1rem;
   font-family: sans-serif;
   font-weight: 400;
