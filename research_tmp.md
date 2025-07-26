@@ -27,43 +27,62 @@ Refinancing, and Wealth Redistribution</a>”
  </details>
  </div>
   </li>
-
-
-
-<ul>
+ <ul>
       <li>
-        <div style="color:rgb(215,90,0);margin-bottom: 0.5em;margin-top: 0.5em;"><b>Winner of USC Marshall PhD Conference in Finance 2025 Best Paper Award</b></div>
+        <div style="color:rgb(215,90,0);margin-bottom: 0.5em;margin-top: 0.5em;">
+         <b>Winner of USC Marshall PhD Conference in Finance 2025 Best Paper Award</b>
+        </div>
       </li>
        <li>
-        <div style="color:rgb(215,90,0);margin-bottom: 0.5em;margin-top: 0.5em;"><b>Winner of ABFER Annual Conference 2025 Best Poster Award</b></div>
+        <div style="color:rgb(215,90,0);margin-bottom: 0.5em;margin-top: 0.5em;">
+         <b>Winner of ABFER Annual Conference 2025 Best Poster Award</b>
+        </div>
       </li>
       <li>
-        <div style="margin-bottom: 0.5em;margin-top: 0.5em;">Presentations 2025: ABFER Annual Conference (Poster Session), AsianFA Annual Conference, BFWG International Conference, FIRS, USC Marshall PhD Conference in Finance, WSB Summer Research Conference</div>
+        <div style="margin-bottom: 0.5em;margin-top: 0.5em;">
+         Presentations 2025: ABFER Annual Conference (Poster Session), AsianFA Annual Conference, BFWG International Conference, FIRS, USC Marshall PhD Conference in Finance, WSB Summer Research Conference
+        </div>
       </li>
     </ul>
-    </ul>
+</ul>
     
 
 ### Working Papers 
 <ul>
-  <li><div style="margin-bottom: 1em;margin-top: 1em">
-“<a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4746656">Nonbank Growth and Local Housing Booms</a>” 
-  </div></li>
+  <li>
+   <div style="margin-bottom: 1em;margin-top: 1em">
+“<a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4746656">Nonbank Growth and Local Housing Booms</a>” (with Hyun-Soo Choi and Yongheng Deng). 
+  </div>
+  </li>
  
-<ul>
+   <ul>
       <li>
-        <div style="margin-bottom: 0.5em;margin-top: 0.5em;"><a href="https://www.insidemortgagefinance.com/articles/230744-more-nonbank-lending-democratizes-home-price-inflation?v=preview">IMF News</a>  </div>
+        <div style="margin-bottom: 0.5em;margin-top: 0.5em;">
+         <a href="https://www.insidemortgagefinance.com/articles/230744-more-nonbank-lending-democratizes-home-price-inflation?v=preview">IMF News</a>  
+        </div>
       </li>
        <li>
-        <div style="margin-bottom: 0.5em;margin-top: 0.5em;">Presentations 2025: ABFER Annual Conference, 2024: AREUEA National Conference, Annual Conference on Asia-Pacific Financial Markets<sup>*</sup>, Asia-Pacific Association of Derivatives<sup>*</sup>, FSU-UF Critical Issues in Real Estate Symposium, Nanyang Technological University<sup>*</sup>, National University of Singapore<sup>*</sup>, Seoul National University<sup>*</sup>, Sungkyunkwan University<sup>*</sup>, TFA-KFA Joint Conference<sup>*</sup> <br> (*: presentation by coauthor)</div>
+        <div style="margin-bottom: 0.5em;margin-top: 0.5em;">
+         Presentations 2025: ABFER Annual Conference, 2024: AREUEA National Conference, Annual Conference on Asia-Pacific Financial Markets<sup>*</sup>, Asia-Pacific Association of Derivatives<sup>*</sup>, FSU-UF Critical Issues in Real Estate Symposium, Nanyang Technological University<sup>*</sup>, National University of Singapore<sup>*</sup>, Seoul National University<sup>*</sup>, Sungkyunkwan University<sup>*</sup>, TFA-KFA Joint Conference<sup>*</sup> <br> (*: presentation by coauthor)
+        </div>
       </li>
     </ul>
+</ul>
+
+<ul>
+  <li>
+   <div style="margin-bottom: 1em;margin-top: 1em">
+“<a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4714155">How Detrimental Was the Pandemic on Commercial Mortgages? Unveiling Long-Term Consequences for Retail Sector</a>” (with Dayin Zhang).
+  </div>
+  </li>
+ <ul>
+  <li>
+        <div style="margin-bottom: 0.5em;margin-top: 0.5em;">
+         Presentations 2022: AREUEA-ASSA Conference<sup>*</sup> <br> (*: presentation by coauthor) 
+        </div>
+      </li>
     </ul>
-
-
-- “[How Detrimental Was the Pandemic on Commercial Mortgages? Unveiling Long-Term Consequences for Retail Sector](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4714155)” (with D. Zhang).
-
-  - Presentations 2022: AREUEA-ASSA Conference<sup>\*</sup> <br> (\*: presentation by coauthor) 
+</ul>
 
 <br/>
 
