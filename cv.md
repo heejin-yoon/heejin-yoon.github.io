@@ -8,6 +8,25 @@ Click <a href="link">here</a> to download the PDF version (Last updated: July 20
 </div>
 
 
+### Contact
+
+<ul>
+  <li>
+   <div style="margin-bottom: 1em;margin-top: 1em">
+<b>Office:</b> 5298B Grainger Hall, 975 University Ave, Madison, WI 53706, USA 
+  </div>
+  </li>
+  <li>
+   <div style="margin-bottom: 1em;margin-top: 1em">
+<b>Email:</b> heejin.yoon [at] wisc.edu or yoon09269 [at] gmail.com
+  </div>
+  </li>
+</ul>
+
+<div style="margin-bottom: 0em;margin-top: 0.5em;">
+  ㅤ
+</div>
+
 ### Education
 
 <ul>
