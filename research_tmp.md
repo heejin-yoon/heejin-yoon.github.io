@@ -117,18 +117,18 @@ Refinancing, and Wealth Redistribution</a>”
   </div>
   </li>
   <li>
-   <div style="margin-bottom: 1em;margin-top: 1em" style="font-weight: 900">
-“<a href="https://onlinelibrary.wiley.com/doi/full/10.1111/jbfa.12618">Does Venture Capital Investment Enhance Corporate Innovation? Evidence from Korea</a>” (with Kyounghun Lee, Frederick Oh, and Donglim Shin), 2022.  <b><i>Journal of Business Finance</i> & <i>Accounting</i></b>, 50(1-2), 236–266.
+   <div style="margin-bottom: 1em;margin-top: 1em">
+“<a href="https://onlinelibrary.wiley.com/doi/full/10.1111/jbfa.12618" style="font-weight: 900">Does Venture Capital Investment Enhance Corporate Innovation? Evidence from Korea</a>” (with Kyounghun Lee, Frederick Oh, and Donglim Shin), 2022.  <b><i>Journal of Business Finance</i> & <i>Accounting</i></b>, 50(1-2), 236–266.
   </div>
   </li>
    <li>
-   <div style="margin-bottom: 1em;margin-top: 1em" style="font-weight: 900">
-“<a href="https://onlinelibrary.wiley.com/doi/full/10.1111/ajfs.12333">Social Capital and Firm Innovation: Evidence from Cooperative Banking in Korea</a>” (with Frederick Oh), 2021.  <b><i>Asia-Pacific Journal of Financial Studies</i></b>, 50(2), 147-175.
+   <div style="margin-bottom: 1em;margin-top: 1em">
+“<a href="https://onlinelibrary.wiley.com/doi/full/10.1111/ajfs.12333" style="font-weight: 900">Social Capital and Firm Innovation: Evidence from Cooperative Banking in Korea</a>” (with Frederick Oh), 2021.  <b><i>Asia-Pacific Journal of Financial Studies</i></b>, 50(2), 147-175.
   </div>
   </li>
   <li>
-   <div style="margin-bottom: 1em;margin-top: 1em" style="font-weight: 900">
-“<a href="https://www.tandfonline.com/doi/abs/10.1080/10168737.2019.1570300">The Role of Chonsei as a Price Protector in the Korean Housing Market</a>” (with Frederick Oh), 2019.  <b><i>International Economic Journal</i></b>, 33(1), 27-41. 
+   <div style="margin-bottom: 1em;margin-top: 1em">
+“<a href="https://www.tandfonline.com/doi/abs/10.1080/10168737.2019.1570300" style="font-weight: 900">The Role of Chonsei as a Price Protector in the Korean Housing Market</a>” (with Frederick Oh), 2019.  <b><i>International Economic Journal</i></b>, 33(1), 27-41. 
   </div>
   </li>
 </ul>
