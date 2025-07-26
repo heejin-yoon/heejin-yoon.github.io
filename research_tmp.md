@@ -52,7 +52,7 @@ Refinancing, and Wealth Redistribution</a>”
 <ul>
   <li>
    <div style="margin-bottom: 1em;margin-top: 1em">
-“<a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4746656" style="font-weight: 900>Nonbank Growth and Local Housing Booms</a>” (with Hyun-Soo Choi and Yongheng Deng). 
+“<a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4746656" style="font-weight: 900">Nonbank Growth and Local Housing Booms</a>” (with Hyun-Soo Choi and Yongheng Deng). 
   </div>
   </li>
  
