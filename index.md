@@ -1,6 +1,6 @@
 ---
 layout: page
-title: 
+title: index
 nav-short: true
 ---
 <!---  cover-img: /assets/img/Grainger2.jpg --->
@@ -12,11 +12,20 @@ Welcome! I'm a fifth-year Ph.D. student in Real Estate and Urban Land Economics 
 
 Prior to joining the program, I received B.B.A. in Business Administration from Yonsei University and M.S. in Finance from KAIST College of Business.
 
-<br/><br/><br/>
+<div style="margin-bottom: 1em;margin-top: 1em;">ㅤ</div>
 
 ### Contact
 
-**Office**: 5298B Grainger Hall, 975 University Ave, Madison, WI 53706, USA 
-<br/><br/>
-**Email**: heejin.yoon [at] wisc.edu or yoon09269 [at] gmail.com
+<ul>
+  <li>
+   <div style="margin-bottom: 1em;margin-top: 1em">
+<b>Office:</b> 5298B Grainger Hall, 975 University Ave, Madison, WI 53706, USA 
+  </div>
+  </li>
+  <li>
+   <div style="margin-bottom: 1em;margin-top: 1em">
+<b>Email:</b> heejin.yoon [at] wisc.edu or yoon09269 [at] gmail.com
+  </div>
+  </li>
+</ul>
 
