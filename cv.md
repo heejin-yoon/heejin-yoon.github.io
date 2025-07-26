@@ -3,6 +3,9 @@ layout: page
 title: false
 ---
 
+<div style="margin-bottom: 1em;margin-top: 0.0em">
+Click <a href="link">here</a> to download the PDF version (July 2025).
+</div>
 
 
 ### Education
@@ -46,7 +49,11 @@ title: false
       </li>
     </ul>
 </ul>
- 
+
+<div style="margin-bottom: 0em;margin-top: 0.5em;">
+  ㅤ
+</div>
+
 ### Employment
 
 <ul>
