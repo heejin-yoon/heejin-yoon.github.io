@@ -3,8 +3,8 @@ layout: page
 title: false
 ---
 
-<div style="margin-bottom: 1em;margin-top: 0.0em">
-Click <a href="link">here</a> to download the PDF version (July 2025).
+<div style="margin-bottom: 3em;margin-top: 0.0em">
+Click <a href="link">here</a> to download the PDF version (Last updated: July 2025).
 </div>
 
 
