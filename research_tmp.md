@@ -85,8 +85,6 @@ Refinancing, and Wealth Redistribution</a>”
     </ul>
 </ul>
 
-<br/>
-
 ### Publications
 
 #### _Book Chapter_
@@ -99,18 +97,33 @@ Refinancing, and Wealth Redistribution</a>”
   </li>
 </ul>
 
-   <!-- - Office Hour: 1:00 pm - 2:00 pm, Tuesdays and Thursdays -->
 
-
-#### 　
 #### _Pre-Doctoral Works_
- 
-- “[Innovation Spillovers Within Business Groups: Evidence from Korean Chaebol](https://www.sciencedirect.com/science/article/pii/S1566014124000463)” (with K. Lee, F. Oh, and D. Shin), 2024. **_Emerging Markets Review_**, 60, 101151.
 
-- “[Internal Labor Markets and Corporate Innovation: Evidence from Korean Chaebol](https://doi.org/10.1016/j.iref.2023.01.019)” (with K. Lee, F. Oh, and D. Shin), 2023. **_International Review of Economics_ & _Finance_**, 85, 146-162.
-
-- “[Does Venture Capital Investment Enhance Corporate Innovation? Evidence from Korea](https://onlinelibrary.wiley.com/doi/full/10.1111/jbfa.12618)” (with K. Lee, F. Oh, and D. Shin), 2022. **_Journal of Business Finance_ & _Accounting_**, 50(1-2), 236–266.
-
-- “[Social Capital and Firm Innovation: Evidence from Cooperative Banking in Korea](https://onlinelibrary.wiley.com/doi/full/10.1111/ajfs.12333)” (with F. Oh), 2021. **_Asia-Pacific Journal of Financial Studies_**, 50(2), 147-175.
-
-- “[The Role of Chonsei as a Price Protector in the Korean Housing Market](https://www.tandfonline.com/doi/abs/10.1080/10168737.2019.1570300)” (with F. Oh), 2019. **_International Economic Journal_**, 33(1), 27-41. 
+<ul>
+  <li>
+   <div style="margin-bottom: 1em;margin-top: 1em">
+“<a href="https://www.sciencedirect.com/science/article/pii/S1566014124000463">Innovation Spillovers Within Business Groups: Evidence from Korean Chaebol</a>” (with Kyounghun Lee, Frederick Oh, and Donglim Shin), 2024. <b><i>Emerging Markets Review</i></b>, 85, 146-162.
+  </div>
+  </li>
+   <li>
+   <div style="margin-bottom: 1em;margin-top: 1em">
+“<a href="https://doi.org/10.1016/j.iref.2023.01.019">Internal Labor Markets and Corporate Innovation: Evidence from Korean Chaebol</a>” (with Kyounghun Lee, Frederick Oh, and Donglim Shin), 2024.  <b><i>International Review of Economics</i> & <i>Finance</i></b>, 60, 101151.
+  </div>
+  </li>
+  <li>
+   <div style="margin-bottom: 1em;margin-top: 1em">
+“<a href="https://onlinelibrary.wiley.com/doi/full/10.1111/jbfa.12618">Does Venture Capital Investment Enhance Corporate Innovation? Evidence from Korea</a>” (with Kyounghun Lee, Frederick Oh, and Donglim Shin), 2024.  <b><i>Journal of Business Finance</i> & <i>Accounting</i></b>, 50(1-2), 236–266.
+  </div>
+  </li>
+   <li>
+   <div style="margin-bottom: 1em;margin-top: 1em">
+“<a href="https://onlinelibrary.wiley.com/doi/full/10.1111/ajfs.12333">Social Capital and Firm Innovation: Evidence from Cooperative Banking in Korea</a>” (with Frederick Oh), 2024.  <b><i>Asia-Pacific Journal of Financial Studies</i></b>, 50(2), 147-175.
+  </div>
+  </li>
+  <li>
+   <div style="margin-bottom: 1em;margin-top: 1em">
+“<a href="https://www.tandfonline.com/doi/abs/10.1080/10168737.2019.1570300">The Role of Chonsei as a Price Protector in the Korean Housing Market</a>” (with Frederick Oh), 2024.  <b><i>International Economic Journal</i></b>, 33(1), 27-41. 
+  </div>
+  </li>
+</ul>
