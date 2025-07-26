@@ -13,10 +13,10 @@ My research interests lie in real estate finance, urban economics, and corporate
 ### Job Market Paper 
 
 <ul>
-  <li><div style="margin-bottom: 0.5em;margin-top: 0.5em;">
+  <li><div style="margin-bottom: 1em;margin-top: 1em;">
 “<a href="https://uwmadison.box.com/s/k1wb204duthhw3ig9itaxrqe6cp1htvf">Barriers to Reentry: Initial Borrowing Frictions,
 Refinancing, and Wealth Redistribution</a>” </div></li>
- <div style="margin-left: 1.5em;"> 
+ <div style="margin-left: 1.5em;margin-bottom: 0.5em;margin-top: 0.5em;"> 
  <details>
    <summary><em>Abstract</em></summary>
   <div style="margin-left: 1em; font-size: 0.9em">
@@ -28,13 +28,13 @@ Refinancing, and Wealth Redistribution</a>” </div></li>
 
 <ul>
       <li>
-        <div style="color:rgb(215,90,0)"><b>Winner of USC Marshall PhD Conference in Finance 2025 Best Paper Award</b></div>
+        <div style="color:rgb(215,90,0);margin-bottom: 0.5em;margin-top: 0.5em;"><b>Winner of USC Marshall PhD Conference in Finance 2025 Best Paper Award</b></div>
       </li>
        <li>
-        <div style="color:rgb(215,90,0)"><b>Winner of ABFER Annual Conference 2025 Best Poster Award</b></div>
+        <div style="color:rgb(215,90,0);margin-bottom: 0.5em;margin-top: 0.5em;"><b>Winner of ABFER Annual Conference 2025 Best Poster Award</b></div>
       </li>
       <li>
-        <div>Presentations 2025: ABFER Annual Conference (Poster Session), AsianFA Annual Conference, BFWG International Conference, FIRS, USC Marshall PhD Conference in Finance, WSB Summer Research Conference</div>
+        <div style="margin-bottom: 0.5em;margin-top: 0.5em;">Presentations 2025: ABFER Annual Conference (Poster Session), AsianFA Annual Conference, BFWG International Conference, FIRS, USC Marshall PhD Conference in Finance, WSB Summer Research Conference</div>
       </li>
     </ul>
     </ul>
