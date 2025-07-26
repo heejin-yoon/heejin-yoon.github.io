@@ -18,7 +18,7 @@ My research interests lie in real estate finance, urban economics, and corporate
 “<a href="https://uwmadison.box.com/s/k1wb204duthhw3ig9itaxrqe6cp1htvf">Barriers to Reentry: Initial Borrowing Frictions,
 Refinancing, and Wealth Redistribution</a>”
    </div>
-    <div style="margin-left: 1.5em;margin-bottom: 1em;margin-top: 0.5em;"> 
+    <div style="margin-left: 1.5em;margin-bottom: 1em;margin-top: 1em;"> 
  <details>
    <summary><em>Abstract</em></summary>
   <div style="margin-left: 1em; font-size: 0.9em">
