@@ -4,6 +4,8 @@ nav-short: true
 ---
 <!---  cover-img: /assets/img/Grainger2.jpg --->
 
+<div style="margin-top: -2.0em;"></div>
+
 <p>
 <img src= "https://heejin-yoon.github.io/assets/img/profile_heejin.jpg" width="220">
 </p>
