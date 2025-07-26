@@ -30,12 +30,12 @@ Refinancing, and Wealth Redistribution</a>”
  <ul>
       <li>
         <div style="color:rgb(215,90,0);margin-bottom: 0.5em;margin-top: 0.5em;">
-         <b>Winner of USC Marshall PhD Conference in Finance 2025 Best Paper Award</b>
+         <b>Winner of the Best Paper Award, USC Marshall PhD Conference in Finance 2025</b>
         </div>
       </li>
        <li>
         <div style="color:rgb(215,90,0);margin-bottom: 0.5em;margin-top: 0.5em;">
-         <b>Winner of ABFER Annual Conference 2025 Best Poster Award</b>
+         <b>Winner of the Best Poster Award, ABFER Annual Conference 2025</b> 
         </div>
       </li>
       <li>
