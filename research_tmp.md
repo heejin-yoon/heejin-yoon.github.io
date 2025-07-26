@@ -40,7 +40,7 @@ Refinancing, and Wealth Redistribution</a>”
       </li>
       <li>
         <div style="margin-bottom: 0.5em;margin-top: 0.5em;">
-         Presentations 2025: FMA Annual Meeting (Scheduled), Real Estate Finance and Investment Symposium (Scheduled), UEA North American Meeting (Scheduled), ABFER Annual Conference (Poster Session), AsianFA Annual Conference, BFWG International Conference, FIRS, USC Marshall PhD Conference in Finance, WSB Summer Research Conference
+         Presentations 2025: FMA Annual Meeting (Scheduled), Real Estate Finance and Investment Symposium (Scheduled), UEA North American Meeting (Scheduled), ABFER Annual Conference Poster Session, AsianFA Annual Conference, BFWG International Conference, FIRS, USC Marshall PhD Conference in Finance, WSB Summer Research Conference
         </div>
       </li>
     </ul>
