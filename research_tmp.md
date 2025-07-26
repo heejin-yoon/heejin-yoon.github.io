@@ -11,10 +11,10 @@ My research interests lie in real estate finance, urban economics, and corporate
 My research can also be found in [Google Scholar](https://scholar.google.com/citations?user=jjDsVq8AAAAJ&hl=en).
 
 ### Job Market Paper 
-
 <ul>
-  <li>“<a href="https://uwmadison.box.com/s/k1wb204duthhw3ig9itaxrqe6cp1htvf">Barriers to Reentry: Initial Borrowing Frictions,
-Refinancing, and Wealth Redistribution</a>”</li>
+  <li><p>
+“<a href="https://uwmadison.box.com/s/k1wb204duthhw3ig9itaxrqe6cp1htvf">Barriers to Reentry: Initial Borrowing Frictions,
+Refinancing, and Wealth Redistribution</a>” </p></li>
 
  <p style="margin-left: 1.5em; line-height: 1.5">
  <details>
