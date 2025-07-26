@@ -226,8 +226,9 @@ img {
 
 .navbar-custom .navbar-nav .nav-link {
   line-height: 1;
-  padding-top: 0.625rem;
-  padding-bottom: 0.625rem;
+  padding-top: 0.15rem;
+  padding-bottom: 0.15rem;
+  padding-right: 2.0rem;
   font-size: 1.2rem;
   font-family: sans-serif;
   font-weight: 400;
@@ -237,8 +238,8 @@ img {
 
 .navbar-custom .navbar-brand {
   line-height: 1;
-  padding-top: 0.625rem;
-  padding-bottom: 0.625rem;
+  padding-top: 0.15rem;
+  padding-bottom: 0.15rem;
   font-size: 1.2rem;
   font-family: sans-serif;
   font-weight: 600;
@@ -279,7 +280,7 @@ img {
   }
 
   .navbar-expand-md .navbar-nav .nav-link {
-    font-size: 1.35rem;
+    font-size: 1.2rem;
     font-weight: 530;
     color: #404040;
     padding-left: 0.9375rem;
@@ -341,9 +342,9 @@ img {
     padding: 0.5rem 0;
   }
 
-  .navbar-custom .navbar-nav .nav-link {
-    padding: 0.675rem 0 0.675rem 1rem;
-  }
+/*   .navbar-custom .navbar-nav .nav-link {
+    padding: 0.15rem 0 0.15rem 2rem;
+  } */
 
   .navbar-custom .nav-item.dropdown.show {
     background: rgba(0, 0, 0, 0.2);
@@ -981,17 +982,4 @@ pre {
   transition: none !important;
 }
 
-/* Optional: shrink navbar brand text */
-.navbar-custom .navbar-brand {
-  padding-top: 0.25rem !important;
-  padding-bottom: 0.25rem !important;
-  /* font-size: 1.1rem !important; */
-}
-
-/* Optional: adjust nav link spacing */
-.navbar-custom .navbar-nav .nav-link {
-  padding-top: 0.75rem !important;
-  padding-bottom: 0.75rem !important;
-  font-size: 1.2rem !important; 
-}
 
