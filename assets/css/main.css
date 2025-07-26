@@ -252,8 +252,9 @@ img {
 
 .navbar-toggler {
   font-size: 1.125rem; /* 1.625rem; */
-  margin: 0.5rem 0;
-}
+  margin: 0.25rem 0; /* smaller top/bottom margin */
+  padding: 0.25rem 0.5rem; /* optional: makes the button smaller */
+}}
 .navbar-custom .navbar-toggler:focus,
 .navbar-custom .navbar-toggler:hover {
   background-color: initial;
