@@ -229,7 +229,7 @@ img {
   padding-bottom: 0.5rem;
   padding-left: 0.5rem;
   padding-right: 1.0rem;
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-family: Helvetica, Arial, sans-serif;
   font-weight: 400;
   letter-spacing: 0.75px;
@@ -288,7 +288,8 @@ img {
     color: #404040;
 /*     padding-left: 0.9375rem;
     padding-right: 0.9375rem; */
-  } */
+  } 
+*/
 
 /*   .navbar-expand-md .navbar-nav .nav-item:not(.dropdown):last-child .nav-link {
     padding-right: 2.0rem;
