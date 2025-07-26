@@ -231,10 +231,10 @@ img {
   padding-left: 0.5rem;
   padding-right: 1.0rem;
   font-size: 1.1rem;
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: 'Charter', Helvetica, Arial, sans-serif;
   font-weight: 400;
-  letter-spacing: 0.75px;
-  color: #404040;
+  letter-spacing: 1px;
+  color: rgba(0, 0, 0, .75); 
 }
 
 .navbar-custom .navbar-brand {
@@ -283,14 +283,14 @@ img {
     height: 1.5rem; /*3.125rem*/
   }
 
-/*   .navbar-expand-md .navbar-nav .nav-link {
+   .navbar-expand-md .navbar-nav .nav-link {
     font-size: 1rem;
     font-weight: 400;
     color: #404040;
      padding-left: 0.9375rem;
     padding-right: 0.9375rem; 
   } 
-*/
+
 
 /*   .navbar-expand-md .navbar-nav .nav-item:not(.dropdown):last-child .nav-link {
     padding-right: 2.0rem;
