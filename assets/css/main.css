@@ -229,16 +229,18 @@ img {
   padding-top: 0.15rem;
   padding-bottom: 0.15rem;
   padding-left: 0.0rem;
-  padding-right: 1.0rem;
+  padding-right: 1.5rem;
   font-size: 1rem;
   font-family: sans-serif;
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: 1px;
   color: #404040;
 }
 
 .navbar-custom .navbar-brand {
   line-height: 1;
+  padding-left: 1.0rem;
+  padding-right: 0.0rem;
   padding-top: 0.15rem;
   padding-bottom: 0.15rem;
   font-size: 1.2rem;
