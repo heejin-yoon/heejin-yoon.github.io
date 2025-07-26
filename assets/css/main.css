@@ -177,12 +177,12 @@ img {
   transition: background .5s ease-in-out,padding .5s ease-in-out;
 }
 
-.navbar-custom,
+/* .navbar-custom,
 .navbar-custom.top-nav-short,
 .navbar-custom.top-nav-short-permanent {
   padding-top: 0;
   padding-bottom: 0;
-}
+} */
 
 .navbar-custom .navbar-brand-logo {
   -webkit-transition: padding .5s ease-in-out;
