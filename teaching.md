@@ -3,6 +3,7 @@ layout: page
 title: Teaching
 ---
 
+<div style="margin-bottom: 0em;margin-top: 0.5em;">ㅤ</div>
 
 ### Instructor (UW–Madison)
 
@@ -51,7 +52,7 @@ title: Teaching
  
    <ul>
       <li>
-        <div style="margin-bottom: 0.5em;margin-top: 0.5em;">
+        <div style="margin-bottom: 1em;margin-top: 0.5em;">
          Course evaluation survey [<a href="https://uwmadison.box.com/s/ap2fhvvxfo5rxzp84zpgwpnytxeox0rm">Undergrad</a>]
         </div>
       </li>
@@ -67,7 +68,7 @@ title: Teaching
  
    <ul>
       <li>
-        <div style="margin-bottom: 0.5em;margin-top: 0.5em;">
+        <div style="margin-bottom: 1em;margin-top: 0.5em;">
          Course evaluation survey [<a href="https://uwmadison.box.com/s/lf7g5ywmon0cjzivtb5kklf94nn3a8kw">MBA</a>/<a href="https://uwmadison.box.com/s/bmmq8xfpmnzj9gkyeir3jmrgc8v3ond5">Undergrad</a>]
         </div>
       </li>
@@ -83,7 +84,7 @@ title: Teaching
  
    <ul>
       <li>
-        <div style="margin-bottom: 0.5em;margin-top: 0.5em;">
+        <div style="margin-bottom: 1em;margin-top: 0.5em;">
          Course evaluation survey result not available due to small class size
         </div>
       </li>
