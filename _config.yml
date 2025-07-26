@@ -36,6 +36,7 @@ round-avatar: false
 # If you don't want to show a link to an RSS feed, set rss to "false".
 social-network-links:
   email: "heejin.yoon@wisc.edu"
+  gscholar: yoon09269
 #  facebook: seokho.son.korea
 #  github: seokho-son
   linkedin: heejin-yoon-31833a194
