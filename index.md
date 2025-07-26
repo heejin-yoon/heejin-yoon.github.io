@@ -8,13 +8,13 @@ nav-short: true
 <img src= "https://heejin-yoon.github.io/assets/img/profile_heejin.jpg" width="220">
 </p>
 
-<div style="margin-bottom: 1em;margin-top: 1em;">ㅤ</div>
+<div style="margin-bottom: 0.5em;margin-top: 0em;">ㅤ
 
-Welcome! I'm a fifth-year Ph.D. student in Real Estate and Urban Land Economics at the University of Wisconsin&ndash;Madison.
+  Welcome! I'm a fifth-year Ph.D. student in Real Estate and Urban Land Economics at the University of Wisconsin&ndash;Madison.
 
 Prior to joining the program, I received B.B.A. in Business Administration from Yonsei University and M.S. in Finance from KAIST College of Business.
-
-<div style="margin-bottom: 1em;margin-top: 1em;">ㅤ</div>
+  
+</div>
 
 ### Contact
 
