@@ -13,12 +13,12 @@ Click <a href="link">here</a> to download the PDF version (Last updated: July 20
 <ul>
   <li>
    <div style="margin-bottom: 1em;margin-top: 1em">
-<b>Office:</b> 5298B Grainger Hall, 975 University Ave, Madison, WI 53706, USA 
+<span style="font-weight: 800">Office:</span> 5298B Grainger Hall, 975 University Ave, Madison, WI 53706, USA 
   </div>
   </li>
   <li>
    <div style="margin-bottom: 1em;margin-top: 1em">
-<b>Email:</b> heejin.yoon [at] wisc.edu or yoon09269 [at] gmail.com
+<span style="font-weight: 800">Email:</span> heejin.yoon [at] wisc.edu or yoon09269 [at] gmail.com
   </div>
   </li>
 </ul>
@@ -32,7 +32,7 @@ Click <a href="link">here</a> to download the PDF version (Last updated: July 20
 <ul>
   <li>
    <div style="margin-bottom: 1em;margin-top: 1em">
-  University of Wisconsin–Madison <span style="float:right;"> Expected May 2026</span>
+  <span style="font-weight: 800">University of Wisconsin–Madison</span> <span style="float:right;"> Expected May 2026</span>
   </div>
   </li>
  
@@ -50,7 +50,7 @@ Click <a href="link">here</a> to download the PDF version (Last updated: July 20
     </ul>
     <li>
    <div style="margin-bottom: 1em;margin-top: 1.5em">
-  Korea Advanced Institute of Science and Technology (KAIST) <span style="float:right;"> 2020</span>
+  <span style="font-weight: 800">Korea Advanced Institute of Science and Technology (KAIST)</span> <span style="float:right;"> 2020</span>
   </div>
   </li>
      <ul>
@@ -62,7 +62,7 @@ Click <a href="link">here</a> to download the PDF version (Last updated: July 20
     </ul>
          <li>
    <div style="margin-bottom: 1em;margin-top: 1.5em">
-  Yonsei University <span style="float:right;"> 2014</span>
+  <span style="font-weight: 800">Yonsei University</span> <span style="float:right;"> 2014</span>
   </div>
   </li>
      <ul>
@@ -83,7 +83,7 @@ Click <a href="link">here</a> to download the PDF version (Last updated: July 20
 <ul>
   <li>
    <div style="margin-bottom: 1em;margin-top: 1em">
-  <i>Economist</i>, Bank of Korea (Central Bank of South Korea) <span style="float:right;"> 2014 - 2018</span>
+  Economist, <span style="font-weight: 800">Bank of Korea</span> (Central Bank of South Korea) <span style="float:right;"> 2014 - 2018</span>
   </div>
   </li>
  
@@ -101,7 +101,7 @@ Click <a href="link">here</a> to download the PDF version (Last updated: July 20
     </ul>
     <li>
    <div style="margin-bottom: 1em;margin-top: 1.5em">
-  <i>Staff Sergeant</i>, Republic of Korea Air Force (Mandatory Military Service) <span style="float:right;"> 2009 - 2011</span>
+  Staff Sergeant, <span style="font-weight: 800">Republic of Korea Air Force</span> (Mandatory Military Service) <span style="float:right;"> 2009 - 2011</span>
   </div>
   </li>
      <ul>
