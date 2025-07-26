@@ -89,6 +89,8 @@ Refinancing, and Wealth Redistribution</a>”
 
 ### Publications
 
+<div style="margin-bottom: 0.5em;margin-top: 0em;">ㅤ</div>
+
 #### _Book Chapter_
 
 <ul>
@@ -99,6 +101,7 @@ Refinancing, and Wealth Redistribution</a>”
   </li>
 </ul>
 
+<div style="margin-bottom: 0.5em;margin-top: 0em;">ㅤ</div>
 
 #### _Pre-Doctoral Works_
 
