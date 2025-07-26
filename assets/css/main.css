@@ -153,7 +153,7 @@ img {
 
 @media (min-width: 768px) {
   .disqus-comments {
-    margin-top: 2.5rem;
+    margin-top: 12.5rem;
   }
 }
 
@@ -270,8 +270,8 @@ img {
 
 @media (min-width: 768px) {
   .navbar-custom {
-    padding-top: 1.25rem;
-    padding-bottom: 1.25rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
   }
 
   .navbar-custom .navbar-brand-logo {
@@ -298,7 +298,7 @@ img {
 
 @media (min-width: 768px) {
   .navbar-custom .nav-item.dropdown:hover {
-    background: rgba(0, 0, 0, 0.1);
+    background: rgba(255, 0, 0, 0.7); /*0,0,0, 0.1*/
   }
 }
 
