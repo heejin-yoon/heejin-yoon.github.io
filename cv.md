@@ -122,17 +122,17 @@ Click <a href="link">here</a> to download the PDF version (Last updated: July 20
 <ul>
   <li>
    <div style="margin-bottom: 1em;margin-top: 1em">
-<b>Language:</b> English (fluent), Korean (native)
+<span style="font-weight: 800">Language:</span> English (fluent), Korean (native)
   </div>
   </li>
   <li>
    <div style="margin-bottom: 1em;margin-top: 1em">
-<b>Programming:</b> Julia, Python, Stata
+<span style="font-weight: 800">Programming:</span> Julia, Python, Stata
   </div>
   </li>
   <li>
    <div style="margin-bottom: 1em;margin-top: 1em">
-<b>Citizenship:</b> South Korea
+<span style="font-weight: 800">Citizenship:</span> South Korea
   </div>
   </li>
 </ul>
