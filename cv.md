@@ -108,7 +108,7 @@ Click <a href="link">here</a> to download the PDF version (Last updated: July 20
   </li>
   <li>
    <div style="margin-bottom: 1em;margin-top: 1em">
-<b>Programming:</b> Julia, Python, Stata, MATLAB
+<b>Programming:</b> Julia, Python, Stata
   </div>
   </li>
   <li>
