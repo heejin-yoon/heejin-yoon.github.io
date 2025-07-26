@@ -31,13 +31,14 @@ title: Teaching
       </li>
           <li>
         <div style="color:rgb(215,90,0);margin-bottom: 0.5em;margin-top: 0.5em;"><b>
-          Recognized with the </b> <a href="https://business.wisc.edu/centers/graaskamp/news/three-real-estate-faculty-and-teaching-staff-receive-distinguished-awards-from-the-wisconsin-school-of-business/"><b>Henry C. Naiman Outstanding Teaching Award</b>
+          Recognized with the </b> <a href="https://business.wisc.edu/centers/graaskamp/news/three-real-estate-faculty-and-teaching-staff-receive-distinguished-awards-from-the-wisconsin-school-of-business/" style="color:rgb(215,90,0)"><b>Henry C. Naiman Outstanding Teaching Award</b>
            </a>
         </div>
       </li>
     </ul>
 </ul>
 
+<div style="margin-bottom: 1em;margin-top: 1em;">ㅤ</div>
 
 ### Teaching Assistant (UW&ndash;Madison)
 
