@@ -47,3 +47,37 @@ title: false
     </ul>
 </ul>
  
+### Employment
+
+<ul>
+  <li>
+   <div style="margin-bottom: 1em;margin-top: 1em">
+  <i>Economist</i>, Bank of Korea (Central Bank of South Korea) <span style="float:right;"> 2014 - 2018</span>
+  </div>
+  </li>
+ 
+   <ul>
+      <li>
+        <div style="margin-bottom: 1em;margin-top: 0.5em;">
+         Monetary Policy Board Division<span style="float:right;"> 2016 - 2018</span>
+        </div>
+      </li>
+     <li>
+        <div style="margin-bottom: 1em;margin-top: 0.5em;">
+         Macroprudential Analysis Department<span style="float:right;"> 2014 - 2016</span>
+        </div>
+      </li>
+    </ul>
+    <li>
+   <div style="margin-bottom: 1em;margin-top: 1.5em">
+  <i>Staff Sergeant</i>, Republic of Korea Air Force (Mandatory Military Service) <span style="float:right;"> 2009 - 2011</span>
+  </div>
+  </li>
+     <ul>
+      <li>
+        <div style="margin-bottom: 1em;margin-top: 0.5em;">
+         Command and Control Center, Air Force Operations Command
+        </div>
+      </li>
+    </ul>
+</ul>
