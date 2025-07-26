@@ -3,7 +3,6 @@ layout: page
 title: Teaching
 ---
 
-<div style="margin-bottom: 0em;margin-top: 0.5em;">ㅤ</div>
 
 ### Instructor (UW–Madison)
 
