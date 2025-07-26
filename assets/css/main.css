@@ -283,12 +283,12 @@ img {
     font-size: 1.2rem;
     font-weight: 530;
     color: #404040;
-    padding-left: 0.9375rem;
-    padding-right: 0.9375rem;
+/*     padding-left: 0.9375rem;
+    padding-right: 0.9375rem; */
   }
 
   .navbar-expand-md .navbar-nav .nav-item:not(.dropdown):last-child .nav-link {
-    padding-right: 0;
+    padding-right: 2.0rem;
   }
 }
 
@@ -341,10 +341,6 @@ img {
   .navbar-custom .navbar-nav {
     padding: 0.5rem 0;
   }
-
-/*   .navbar-custom .navbar-nav .nav-link {
-    padding: 0.15rem 0 0.15rem 2rem;
-  } */
 
   .navbar-custom .nav-item.dropdown.show {
     background: rgba(0, 0, 0, 0.2);
