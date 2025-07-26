@@ -29,12 +29,12 @@ Rural India</b></a>"
         </div>
       </li>
     </ul>
+ <div style="margin-top: 1em">ㅤ</div>
      <li>
    <div style="margin-bottom: 1em;margin-top: 1em">
   "<a href="../assets/pdf/Discussion_King_et_al_BFWG.pdf"><b>What Matters for Consumer Credit Choice? Evidence from the Philippine Digital Credit Market</b></a>"
   </div>
   </li>
- <div style="margin-top: 1em"></div>
    <ul>
       <li>
         <div style="margin-bottom: 1em;margin-top: 0.5em;">
