@@ -122,7 +122,7 @@ Click <a href="link">here</a> to download the PDF version (Last updated: July 20
 <ul>
   <li>
    <div style="margin-bottom: 1em;margin-top: 1em">
-<b>Language:</b> English (fluent), Korean (fluent)
+<b>Language:</b> English (fluent), Korean (native)
   </div>
   </li>
   <li>
