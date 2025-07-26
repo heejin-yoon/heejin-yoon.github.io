@@ -36,8 +36,8 @@ html {
 
 body {
   font-family: 'Charter', 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif; /*   font-family: sans-serif; */
-  font-size: 1rem /*1.25rem;*/
-  color: #2d3748 /*   color: #404040; */;
+  /* font-size: 1rem; 1.25rem;*/
+  /* color: #2d3748; /*   color: #404040; */; */
   position: relative;
   background-color: {{ site.page-col | default: "#FFFFFF" }};
   /*{% if site.page-img %}*/
