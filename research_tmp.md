@@ -40,7 +40,7 @@ Refinancing, and Wealth Redistribution</a>”
       </li>
       <li>
         <div style="margin-bottom: 0.5em;margin-top: 0.5em;">
-         Presentations 2025: ABFER Annual Conference (Poster Session), AsianFA Annual Conference, BFWG International Conference, FIRS, USC Marshall PhD Conference in Finance, WSB Summer Research Conference
+         Presentations 2025: FMA Annual Meeting (Scheduled), Real Estate Finance and Investment Symposium (Scheduled), UEA North American Meeting (Scheduled), ABFER Annual Conference (Poster Session), AsianFA Annual Conference, BFWG International Conference, FIRS, USC Marshall PhD Conference in Finance, WSB Summer Research Conference
         </div>
       </li>
     </ul>
@@ -64,7 +64,7 @@ Refinancing, and Wealth Redistribution</a>”
       </li>
        <li>
         <div style="margin-bottom: 0.5em;margin-top: 0.5em;">
-         Presentations 2025: ABFER Annual Conference, 2024: AREUEA National Conference, Annual Conference on Asia-Pacific Financial Markets<sup>*</sup>, Asia-Pacific Association of Derivatives<sup>*</sup>, FSU-UF Critical Issues in Real Estate Symposium, Nanyang Technological University<sup>*</sup>, National University of Singapore<sup>*</sup>, Seoul National University<sup>*</sup>, Sungkyunkwan University<sup>*</sup>, TFA-KFA Joint Conference<sup>*</sup> <br> (*: presentation by coauthor)
+         Presentations 2025: ABFER Annual Conference, AREUEA International Conference<sup>*</sup>; 2024: AREUEA National Conference, Annual Conference on Asia-Pacific Financial Markets<sup>*</sup>, Asia-Pacific Association of Derivatives<sup>*</sup>, FSU-UF Critical Issues in Real Estate Symposium, Nanyang Technological University<sup>*</sup>, National University of Singapore<sup>*</sup>, Seoul National University<sup>*</sup>, Sungkyunkwan University<sup>*</sup>, TFA-KFA Joint Conference<sup>*</sup> <br> (*: presentation by coauthor)
         </div>
       </li>
     </ul>
