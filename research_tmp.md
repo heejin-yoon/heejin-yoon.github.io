@@ -14,8 +14,8 @@ My research interests lie in real estate finance, urban economics, and corporate
 
 <ul>
   <li>
-   <div style="margin-bottom: 1em;margin-top: 1em;font-weight: 900">
-“<a href="https://uwmadison.box.com/s/k1wb204duthhw3ig9itaxrqe6cp1htvf">Barriers to Reentry: Initial Borrowing Frictions,
+   <div style="margin-bottom: 1em;margin-top: 1em">
+“<a href="https://uwmadison.box.com/s/k1wb204duthhw3ig9itaxrqe6cp1htvf" style="font-weight: 900">Barriers to Reentry: Initial Borrowing Frictions,
 Refinancing, and Wealth Redistribution</a>”
    </div>
     <div style="margin-left: 1.5em;margin-bottom: 1em;margin-top: 1em;font-size: 0.9em;font-weight: 900"> 
@@ -51,8 +51,8 @@ Refinancing, and Wealth Redistribution</a>”
 ### Working Papers 
 <ul>
   <li>
-   <div style="margin-bottom: 1em;margin-top: 1em;font-weight: 900">
-“<a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4746656">Nonbank Growth and Local Housing Booms</a>” (with Hyun-Soo Choi and Yongheng Deng). 
+   <div style="margin-bottom: 1em;margin-top: 1em">
+“<a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4746656" style="font-weight: 900>Nonbank Growth and Local Housing Booms</a>” (with Hyun-Soo Choi and Yongheng Deng). 
   </div>
   </li>
  
@@ -72,8 +72,8 @@ Refinancing, and Wealth Redistribution</a>”
 
 <ul>
   <li>
-   <div style="margin-bottom: 1em;margin-top: 1em;font-weight: 900">
-“<a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4714155">How Detrimental Was the Pandemic on Commercial Mortgages? Unveiling Long-Term Consequences for Retail Sector</a>” (with Dayin Zhang).
+   <div style="margin-bottom: 1em;margin-top: 1em">
+“<a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4714155" style="font-weight: 900">How Detrimental Was the Pandemic on Commercial Mortgages? Unveiling Long-Term Consequences for Retail Sector</a>” (with Dayin Zhang).
   </div>
   </li>
  <ul>
