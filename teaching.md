@@ -4,8 +4,6 @@ title: Teaching
 ---
 
 
-<br/> 
-
 ### Instructor (UW–Madison)
 
 <ul>
