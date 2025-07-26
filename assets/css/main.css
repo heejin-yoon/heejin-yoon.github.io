@@ -228,10 +228,11 @@ img {
   line-height: 1;
   padding-top: 0.15rem;
   padding-bottom: 0.15rem;
-  padding-right: 2.0rem;
-  font-size: 1.2rem;
+  padding-left: 0.0rem;
+  padding-right: 1.0rem;
+  font-size: 1rem;
   font-family: sans-serif;
-  font-weight: 400;
+  font-weight: 300;
   letter-spacing: 1px;
   color: #404040;
 }
@@ -279,17 +280,17 @@ img {
     height: 1.5rem; /*3.125rem*/
   }
 
-  .navbar-expand-md .navbar-nav .nav-link {
-    font-size: 1.2rem;
-    font-weight: 530;
+/*   .navbar-expand-md .navbar-nav .nav-link {
+    font-size: 1rem;
+    font-weight: 400;
     color: #404040;
 /*     padding-left: 0.9375rem;
     padding-right: 0.9375rem; */
-  }
+  } */
 
-  .navbar-expand-md .navbar-nav .nav-item:not(.dropdown):last-child .nav-link {
+/*   .navbar-expand-md .navbar-nav .nav-item:not(.dropdown):last-child .nav-link {
     padding-right: 2.0rem;
-  }
+  } */
 }
 
 @media (min-width: 768px) {
