@@ -93,3 +93,27 @@ Click <a href="link">here</a> to download the PDF version (Last updated: July 20
       </li>
     </ul>
 </ul>
+
+<div style="margin-bottom: 0em;margin-top: 0.5em;">
+  ㅤ
+</div>
+
+### Other
+
+<ul>
+  <li>
+   <div style="margin-bottom: 1em;margin-top: 1em">
+<b>Language:</b> English (fluent), Korean (fluent)
+  </div>
+  </li>
+  <li>
+   <div style="margin-bottom: 1em;margin-top: 1em">
+<b>Programming:</b> Julia, Python, Stata, MATLAB
+  </div>
+  </li>
+  <li>
+   <div style="margin-bottom: 1em;margin-top: 1em">
+<b>Citizenship:</b> South Korea
+  </div>
+  </li>
+</ul>
