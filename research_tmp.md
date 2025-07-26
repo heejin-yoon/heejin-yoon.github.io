@@ -13,10 +13,12 @@ My research interests lie in real estate finance, urban economics, and corporate
 ### Job Market Paper 
 
 <ul>
-  <li><div style="margin-bottom: 1em;margin-top: 1em;">
+  <li>
+   <div style="margin-bottom: 1em;margin-top: 1em;">
 “<a href="https://uwmadison.box.com/s/k1wb204duthhw3ig9itaxrqe6cp1htvf">Barriers to Reentry: Initial Borrowing Frictions,
-Refinancing, and Wealth Redistribution</a>” </div></li>
- <div style="margin-left: 1.5em;margin-bottom: 0.5em;margin-top: 0.5em;"> 
+Refinancing, and Wealth Redistribution</a>”
+   </div>
+    <div style="margin-left: 1.5em;margin-bottom: 1em;margin-top: 0.5em;"> 
  <details>
    <summary><em>Abstract</em></summary>
   <div style="margin-left: 1em; font-size: 0.9em">
@@ -24,6 +26,8 @@ Refinancing, and Wealth Redistribution</a>” </div></li>
  </div>
  </details>
  </div>
+  </li>
+
 
 
 <ul>
@@ -38,21 +42,20 @@ Refinancing, and Wealth Redistribution</a>” </div></li>
       </li>
     </ul>
     </ul>
-
-<br/>
+    
 
 ### Working Papers 
 <ul>
-  <li><p>
+  <li><div style="margin-bottom: 1em;margin-top: 1em">
 “<a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4746656">Nonbank Growth and Local Housing Booms</a>” 
-  </p></li>
+  </div></li>
  
 <ul>
       <li>
-        <div><a href="https://www.insidemortgagefinance.com/articles/230744-more-nonbank-lending-democratizes-home-price-inflation?v=preview">IMF News</a>  </div>
+        <div style="margin-bottom: 0.5em;margin-top: 0.5em;"><a href="https://www.insidemortgagefinance.com/articles/230744-more-nonbank-lending-democratizes-home-price-inflation?v=preview">IMF News</a>  </div>
       </li>
        <li>
-        <div>Presentations 2025: ABFER Annual Conference, 2024: AREUEA National Conference, Annual Conference on Asia-Pacific Financial Markets<sup>*</sup>, Asia-Pacific Association of Derivatives<sup>*</sup>, FSU-UF Critical Issues in Real Estate Symposium, Nanyang Technological University<sup>*</sup>, National University of Singapore<sup>*</sup>, Seoul National University<sup>*</sup>, Sungkyunkwan University<sup>*</sup>, TFA-KFA Joint Conference<sup>*</sup> <br> (*: presentation by coauthor)</div>
+        <div style="margin-bottom: 0.5em;margin-top: 0.5em;">Presentations 2025: ABFER Annual Conference, 2024: AREUEA National Conference, Annual Conference on Asia-Pacific Financial Markets<sup>*</sup>, Asia-Pacific Association of Derivatives<sup>*</sup>, FSU-UF Critical Issues in Real Estate Symposium, Nanyang Technological University<sup>*</sup>, National University of Singapore<sup>*</sup>, Seoul National University<sup>*</sup>, Sungkyunkwan University<sup>*</sup>, TFA-KFA Joint Conference<sup>*</sup> <br> (*: presentation by coauthor)</div>
       </li>
     </ul>
     </ul>
