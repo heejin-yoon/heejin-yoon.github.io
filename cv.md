@@ -23,6 +23,11 @@ Click <a href="link">here</a> to download the PDF version (July 2025).
          PhD in Business (Real Estate)
         </div>
       </li>
+<!--      <li>
+        <div style="margin-bottom: 1em;margin-top: 0.5em;">
+         Committe: Lu Han (Chair), Yongheng Deng (Co-Chair), Erik Mayer
+        </div>
+      </li> -->
     </ul>
     <li>
    <div style="margin-bottom: 1em;margin-top: 1.5em">
