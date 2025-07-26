@@ -63,7 +63,7 @@ Refinancing, and Wealth Redistribution</a>”
         </div>
       </li>
        <li>
-        <div style="margin-bottom: 0.5em;margin-top: 0.5em;">
+        <div style="margin-bottom: 1em;margin-top: 0.5em;">
          Presentations 2025: ABFER Annual Conference, AREUEA International Conference<sup>*</sup>; 2024: AREUEA National Conference, Annual Conference on Asia-Pacific Financial Markets<sup>*</sup>, Asia-Pacific Association of Derivatives<sup>*</sup>, FSU-UF Critical Issues in Real Estate Symposium, Nanyang Technological University<sup>*</sup>, National University of Singapore<sup>*</sup>, Seoul National University<sup>*</sup>, Sungkyunkwan University<sup>*</sup>, TFA-KFA Joint Conference<sup>*</sup> <br> (*: presentation by coauthor)
         </div>
       </li>
