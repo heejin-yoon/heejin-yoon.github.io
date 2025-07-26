@@ -89,10 +89,15 @@ Refinancing, and Wealth Redistribution</a>”
 
 ### Publications
 
-
 #### _Book Chapter_
- 
-- “[The American Housing Finance System: Structure, Evolution, and Implications](https://oxfordre.com/economics/display/10.1093/acrefore/9780190625979.001.0001/acrefore-9780190625979-e-924)” (with Y. Deng and S. M. Wachter), 2024, August. **_Oxford Research Encyclopedia of Economics and Finance_**. [[SSRN](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4750853)]
+
+<ul>
+  <li>
+   <div style="margin-bottom: 1em;margin-top: 1em">
+“<a href="https://oxfordre.com/economics/display/10.1093/acrefore/9780190625979.001.0001/acrefore-9780190625979-e-924">The American Housing Finance System: Structure, Evolution, and Implications</a>” (with Yongheng Deng and Susan M. Wachter), 2024, August. <i>Oxford Research Encyclopedia of Economics and Finance</i>. [<a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4750853">SSRN</a>]
+  </div>
+  </li>
+</ul>
 
    <!-- - Office Hour: 1:00 pm - 2:00 pm, Tuesdays and Thursdays -->
 
