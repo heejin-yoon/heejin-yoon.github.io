@@ -8,7 +8,7 @@ nav-short: true
 <img src= "https://heejin-yoon.github.io/assets/img/profile_heejin.jpg" width="220">
 </p>
 
-<div style="margin-bottom: 0.5em;margin-top: 0em;">ㅤ
+<div style="margin-bottom: 0.5em;margin-top: -1.0em;">ㅤ
 
   Welcome! I'm a fifth-year Ph.D. student in Real Estate and Urban Land Economics at the University of Wisconsin&ndash;Madison.
 
