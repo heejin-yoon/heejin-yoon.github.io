@@ -10,7 +10,7 @@ nav-short: true
 
 <div style="margin-bottom: 0.5em;margin-top: 0.5em;">ㅤ
 
-  Welcome! I'm a fifth-year Ph.D. student in Real Estate and Urban Land Economics at the University of Wisconsin&ndash;Madison.
+Welcome! I'm a fifth-year Ph.D. student in Real Estate and Urban Land Economics at the University of Wisconsin&ndash;Madison.
 
 Prior to joining the program, I received B.B.A. in Business Administration from Yonsei University and M.S. in Finance from KAIST College of Business.
   
