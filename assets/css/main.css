@@ -225,11 +225,11 @@ img {
 }
 
 .navbar-custom .navbar-nav .nav-link {
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   color: #404040;
   line-height: 1.5;
-  padding-top: 1.85rem;
-  padding-bottom: 1.85rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 .navbar-custom .navbar-brand {
