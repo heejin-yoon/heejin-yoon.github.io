@@ -165,8 +165,8 @@ img {
 /* --- Navbar --- */
 
 .navbar-custom {
-  background-color: "#F7FAFC";  /* {{ site.navbar-col | default: "#F7FAFC" }}; */  /* #F5F5F5 */
-  border-bottom: 2px solid "#80CCFF"; /* {{ site.navbar-border-col | default: "#80CCFF" }}; */ /* EAEAEA */
+  background-color: #F7FAFC;  /* {{ site.navbar-col | default: "#F7FAFC" }}; */  /* #F5F5F5 */
+  border-bottom: 2px solid #80CCFF; /* {{ site.navbar-border-col | default: "#80CCFF" }}; */ /* EAEAEA */
   /* font-family: sans-serif; 'Helvetica Neue', Helvetica, Arial, sans-serif;*/
   {% if site.navbar-img %}
     background-image: url({{ site.navbar-img | relative_url }});
