@@ -108,12 +108,12 @@ Refinancing, and Wealth Redistribution</a>”
 <ul>
   <li>
    <div style="margin-bottom: 1em;margin-top: 1em">
-“<a href="https://www.sciencedirect.com/science/article/pii/S1566014124000463">Innovation Spillovers Within Business Groups: Evidence from Korean Chaebol</a>” (with Kyounghun Lee, Frederick Oh, and Donglim Shin), 2024. <b><i>Emerging Markets Review</i></b>, 85, 146-162.
+“<a href="https://www.sciencedirect.com/science/article/pii/S1566014124000463">Innovation Spillovers Within Business Groups: Evidence from Korean Chaebol</a>” (with Kyounghun Lee, Frederick Oh, and Donglim Shin), 2024. <b><i>Emerging Markets Review</i></b>, 60, 101151.
   </div>
   </li>
    <li>
    <div style="margin-bottom: 1em;margin-top: 1em">
-“<a href="https://doi.org/10.1016/j.iref.2023.01.019">Internal Labor Markets and Corporate Innovation: Evidence from Korean Chaebol</a>” (with Kyounghun Lee, Frederick Oh, and Donglim Shin), 2023.  <b><i>International Review of Economics</i> & <i>Finance</i></b>, 60, 101151.
+“<a href="https://doi.org/10.1016/j.iref.2023.01.019">Internal Labor Markets and Corporate Innovation: Evidence from Korean Chaebol</a>” (with Kyounghun Lee, Frederick Oh, and Donglim Shin), 2023.  <b><i>International Review of Economics</i> & <i>Finance</i></b>, 85, 146-162.
   </div>
   </li>
   <li>
