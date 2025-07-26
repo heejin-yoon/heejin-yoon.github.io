@@ -108,22 +108,22 @@ Refinancing, and Wealth Redistribution</a>”
 <ul>
   <li>
    <div style="margin-bottom: 1em;margin-top: 1em">
-“<a href="https://www.sciencedirect.com/science/article/pii/S1566014124000463">Innovation Spillovers Within Business Groups: Evidence from Korean Chaebol</a>” (with Kyounghun Lee, Frederick Oh, and Donglim Shin), 2024. <b><i>Emerging Markets Review</i></b>, 85, 146-162.
+“<a href="https://www.sciencedirect.com/science/article/pii/S1566014124000463">Innovation Spillovers Within Business Groups: Evidence from Korean Chaebol</a>” (with Kyounghun Lee, Frederick Oh, and Donglim Shin), 2023. <b><i>Emerging Markets Review</i></b>, 85, 146-162.
   </div>
   </li>
    <li>
    <div style="margin-bottom: 1em;margin-top: 1em">
-“<a href="https://doi.org/10.1016/j.iref.2023.01.019">Internal Labor Markets and Corporate Innovation: Evidence from Korean Chaebol</a>” (with Kyounghun Lee, Frederick Oh, and Donglim Shin), 2024.  <b><i>International Review of Economics</i> & <i>Finance</i></b>, 60, 101151.
+“<a href="https://doi.org/10.1016/j.iref.2023.01.019">Internal Labor Markets and Corporate Innovation: Evidence from Korean Chaebol</a>” (with Kyounghun Lee, Frederick Oh, and Donglim Shin), 2022.  <b><i>International Review of Economics</i> & <i>Finance</i></b>, 60, 101151.
   </div>
   </li>
   <li>
    <div style="margin-bottom: 1em;margin-top: 1em">
-“<a href="https://onlinelibrary.wiley.com/doi/full/10.1111/jbfa.12618">Does Venture Capital Investment Enhance Corporate Innovation? Evidence from Korea</a>” (with Kyounghun Lee, Frederick Oh, and Donglim Shin), 2024.  <b><i>Journal of Business Finance</i> & <i>Accounting</i></b>, 50(1-2), 236–266.
+“<a href="https://onlinelibrary.wiley.com/doi/full/10.1111/jbfa.12618">Does Venture Capital Investment Enhance Corporate Innovation? Evidence from Korea</a>” (with Kyounghun Lee, Frederick Oh, and Donglim Shin), 2021.  <b><i>Journal of Business Finance</i> & <i>Accounting</i></b>, 50(1-2), 236–266.
   </div>
   </li>
    <li>
    <div style="margin-bottom: 1em;margin-top: 1em">
-“<a href="https://onlinelibrary.wiley.com/doi/full/10.1111/ajfs.12333">Social Capital and Firm Innovation: Evidence from Cooperative Banking in Korea</a>” (with Frederick Oh), 2024.  <b><i>Asia-Pacific Journal of Financial Studies</i></b>, 50(2), 147-175.
+“<a href="https://onlinelibrary.wiley.com/doi/full/10.1111/ajfs.12333">Social Capital and Firm Innovation: Evidence from Cooperative Banking in Korea</a>” (with Frederick Oh), 2019.  <b><i>Asia-Pacific Journal of Financial Studies</i></b>, 50(2), 147-175.
   </div>
   </li>
   <li>
