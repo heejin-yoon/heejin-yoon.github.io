@@ -37,34 +37,57 @@ title: Teaching
     </ul>
 </ul>
 
- - **Urban and Regional Economics (Undergrad)**, Fall 2024
-
-   - [Class materials]()
-
-   - [Course evaluation survey]()
-  
-   - Featured story: "[Wisconsin School of Business Students Connect Research and Community with Madison-Based Sustainability Projects.]()" _UniverCity Alliance_, 2 Jan. 2025.
-
-   - Recognized with the [_**Henry C. Naiman Outstanding Teaching Award**_]()  
-
-<br/> 
 
 ### Teaching Assistant (UW&ndash;Madison)
 
-- **Real Estate Finance (Undergrad)**, Spring 2022, Fall 2021, Spring 2021
-
-   - Course evaluation survey ([Undergrad](https://uwmadison.box.com/s/ap2fhvvxfo5rxzp84zpgwpnytxeox0rm))
-
- - **Urban and Regional Economics (MBA/Undergrad)**, Fall 2023, Fall 2022
+<ul>
+  <li>
+   <div style="margin-bottom: 1em;margin-top: 1em">
+  <b>Real Estate Finance (Undergrad)</b>, Spring 2022, Fall 2021, Spring 2021
+  </div>
+  </li>
  
-   - Course evaluation survey ([MBA](https://uwmadison.box.com/s/lf7g5ywmon0cjzivtb5kklf94nn3a8kw)/[Undergrad](https://uwmadison.box.com/s/bmmq8xfpmnzj9gkyeir3jmrgc8v3ond5))
+   <ul>
+      <li>
+        <div style="margin-bottom: 0.5em;margin-top: 0.5em;">
+         Course evaluation survey [<a href="https://uwmadison.box.com/s/ap2fhvvxfo5rxzp84zpgwpnytxeox0rm">Undergrad</a>]
+        </div>
+      </li>
+    </ul>
+</ul>
 
-- **Advanced Real Estate Finance (PhD)**, Spring 2024
-
-   - Course evaluation survey result not available due to small class size
+<ul>
+  <li>
+   <div style="margin-bottom: 1em;margin-top: 1em">
+  <b>Urban and Regional Economics (MBA/Undergrad)</b>, Fall 2023, Fall 2022
+  </div>
+  </li>
  
+   <ul>
+      <li>
+        <div style="margin-bottom: 0.5em;margin-top: 0.5em;">
+         Course evaluation survey [<a href="https://uwmadison.box.com/s/lf7g5ywmon0cjzivtb5kklf94nn3a8kw">MBA</a>/<a href="https://uwmadison.box.com/s/bmmq8xfpmnzj9gkyeir3jmrgc8v3ond5">Undergrad</a>]
+        </div>
+      </li>
+    </ul>
+</ul>
 
-<br/>
+<ul>
+  <li>
+   <div style="margin-bottom: 1em;margin-top: 1em">
+  <b>Advanced Real Estate Finance (PhD)</b>, Spring 2024
+  </div>
+  </li>
+ 
+   <ul>
+      <li>
+        <div style="margin-bottom: 0.5em;margin-top: 0.5em;">
+         Course evaluation survey result not available due to small class size
+        </div>
+      </li>
+    </ul>
+</ul>
+
 
 <!--- ### Teaching Assistant (KAIST College of Business)
  
