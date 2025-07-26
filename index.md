@@ -21,7 +21,7 @@ Prior to joining the program, I received B.B.A. in Business Administration from 
 <div style="margin-bottom: 0.5em;margin-top: 0.5em;"></div>
 
 
-### Contact
+<---! ### Contact
 
 <ul>
   <li>
@@ -35,4 +35,6 @@ Prior to joining the program, I received B.B.A. in Business Administration from 
   </div>
   </li>
 </ul>
+
+--->
 
