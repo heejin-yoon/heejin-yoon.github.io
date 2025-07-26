@@ -26,7 +26,7 @@ title: Teaching
       </li>
           <li>
         <div style="margin-bottom: 0.5em;margin-top: 0.5em;">
-         Featured story: "<a href="https://heejin-yoon.github.io/teaching/RE420/">Wisconsin School of Business Students Connect Research and Community with Madison-Based Sustainability Projects.</a>" <b><i>UniverCity Alliance</i></b>, 2 Jan. 2025.
+         Featured story: "<a href="https://business.wisc.edu/centers/graaskamp/news/wisconsin-school-of-business-students-connect-research-and-community-with-madison-based-sustainability-projects/">Wisconsin School of Business Students Connect Research and Community with Madison-Based Sustainability Projects.</a>" <b><i>UniverCity Alliance</i></b>, 2 Jan. 2025.
         </div>
       </li>
           <li>
