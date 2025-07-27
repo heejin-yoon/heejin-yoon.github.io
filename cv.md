@@ -4,7 +4,7 @@ title: false
 ---
 
 <div style="margin-bottom: 4.0em;margin-top: 2.0em;font-size: 1.2em">
-Click <a href="link" style="font-weight: 800">here</a> to download the PDF version (Last updated: July 2025).
+Click <a href="/assets/pdf/CV_Heejin.pdf" style="font-weight: 800">here</a> to download the PDF version (Last updated: July 2025).
 </div>
 
 
