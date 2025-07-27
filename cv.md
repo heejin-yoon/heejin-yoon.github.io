@@ -4,7 +4,7 @@ title: false
 ---
 
 <div style="margin-bottom: 4.0em;margin-top: 2.0em;font-size: 1.2em">
-Click <a href="/assets/pdf/CV_Heejin.pdf" style="font-weight: 800">here</a> to download the PDF version (Last updated: July 2025).
+Click <a href="/assets/pdf/CV_Heejin.pdf" style="font-weight: 700">here</a> to download the PDF version (Last updated: July 2025).
 </div>
 
 
@@ -13,12 +13,12 @@ Click <a href="/assets/pdf/CV_Heejin.pdf" style="font-weight: 800">here</a> to d
 <ul>
   <li>
    <div style="margin-bottom: 1em;margin-top: 1em">
-<span style="font-weight: 800">Office:</span> 5298B Grainger Hall, 975 University Ave, Madison, WI 53706, USA 
+<span style="font-weight: 700">Office:</span> 5298B Grainger Hall, 975 University Ave, Madison, WI 53706, USA 
   </div>
   </li>
   <li>
    <div style="margin-bottom: 1em;margin-top: 1em">
-<span style="font-weight: 800">Email:</span> heejin.yoon [at] wisc.edu or yoon09269 [at] gmail.com
+<span style="font-weight: 700">Email:</span> heejin.yoon [at] wisc.edu or yoon09269 [at] gmail.com
   </div>
   </li>
 </ul>
@@ -32,7 +32,7 @@ Click <a href="/assets/pdf/CV_Heejin.pdf" style="font-weight: 800">here</a> to d
 <ul>
   <li>
    <div style="margin-bottom: 1em;margin-top: 1em">
-  <span style="font-weight: 800">University of Wisconsin–Madison</span> <span style="float:right;"> Expected May 2026</span>
+  <span style="font-weight: 700">University of Wisconsin–Madison</span> <span style="float:right;"> Expected May 2026</span>
   </div>
   </li>
  
@@ -50,7 +50,7 @@ Click <a href="/assets/pdf/CV_Heejin.pdf" style="font-weight: 800">here</a> to d
     </ul>
     <li>
    <div style="margin-bottom: 1em;margin-top: 1.5em">
-  <span style="font-weight: 800">Korea Advanced Institute of Science and Technology (KAIST)</span> <span style="float:right;"> 2020</span>
+  <span style="font-weight: 700">Korea Advanced Institute of Science and Technology (KAIST)</span> <span style="float:right;"> 2020</span>
   </div>
   </li>
      <ul>
@@ -62,7 +62,7 @@ Click <a href="/assets/pdf/CV_Heejin.pdf" style="font-weight: 800">here</a> to d
     </ul>
          <li>
    <div style="margin-bottom: 1em;margin-top: 1.5em">
-  <span style="font-weight: 800">Yonsei University</span> <span style="float:right;"> 2014</span>
+  <span style="font-weight: 700">Yonsei University</span> <span style="float:right;"> 2014</span>
   </div>
   </li>
      <ul>
@@ -83,7 +83,7 @@ Click <a href="/assets/pdf/CV_Heejin.pdf" style="font-weight: 800">here</a> to d
 <ul>
   <li>
    <div style="margin-bottom: 1em;margin-top: 1em">
-  Economist, <span style="font-weight: 800">Bank of Korea</span> (Central Bank of South Korea) <span style="float:right;"> 2014–2018</span>
+  <span style="font-weight: 700"><i>Economist</i>, Bank of Korea</span> (Central Bank of South Korea) <span style="float:right;"> 2014–2018</span>
   </div>
   </li>
  
@@ -101,7 +101,7 @@ Click <a href="/assets/pdf/CV_Heejin.pdf" style="font-weight: 800">here</a> to d
     </ul>
     <li>
    <div style="margin-bottom: 1em;margin-top: 1.5em">
-  Staff Sergeant, <span style="font-weight: 800">Republic of Korea Air Force</span> (Mandatory Military Service) <span style="float:right;"> 2009–2011</span>
+  <span style="font-weight: 700"><i>Staff Sergeant</i>, Republic of Korea Air Force</span> (Mandatory Military Service) <span style="float:right;"> 2009–2011</span>
   </div>
   </li>
      <ul>
@@ -122,7 +122,7 @@ Click <a href="/assets/pdf/CV_Heejin.pdf" style="font-weight: 800">here</a> to d
 <ul>
   <li>
    <div style="margin-bottom: 1em;margin-top: 1em">
-  <span style="font-weight: 800">Research</span>
+  <span style="font-weight: 700">Research</span>
   </div>
   </li>
  
@@ -140,7 +140,7 @@ Click <a href="/assets/pdf/CV_Heejin.pdf" style="font-weight: 800">here</a> to d
    </ul>
      <li>
    <div style="margin-bottom: 1em;margin-top: 1.5em">
-  <span style="font-weight: 800">Teaching</span> 
+  <span style="font-weight: 700">Teaching</span> 
   </div>
   </li>
  
@@ -163,7 +163,7 @@ Click <a href="/assets/pdf/CV_Heejin.pdf" style="font-weight: 800">here</a> to d
    </ul>
         <li>
    <div style="margin-bottom: 1em;margin-top: 1.5em">
-  <span style="font-weight: 800">Other</span>
+  <span style="font-weight: 700">Other</span>
   </div>
   </li>
  
@@ -200,17 +200,17 @@ Click <a href="/assets/pdf/CV_Heejin.pdf" style="font-weight: 800">here</a> to d
 <ul>
   <li>
    <div style="margin-bottom: 1em;margin-top: 1em">
-<span style="font-weight: 800">Language:</span> English (fluent), Korean (native)
+<span style="font-weight: 700">Language:</span> English (fluent), Korean (native)
   </div>
   </li>
   <li>
    <div style="margin-bottom: 1em;margin-top: 1em">
-<span style="font-weight: 800">Programming:</span> Julia, Python, Stata
+<span style="font-weight: 700">Programming:</span> Julia, Python, Stata
   </div>
   </li>
   <li>
    <div style="margin-bottom: 1em;margin-top: 1em">
-<span style="font-weight: 800">Citizenship:</span> South Korea
+<span style="font-weight: 700">Citizenship:</span> South Korea
   </div>
   </li>
 </ul>
