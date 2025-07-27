@@ -117,6 +117,86 @@ Click <a href="link" style="font-weight: 800">here</a> to download the PDF versi
   ㅤ
 </div>
 
+### Honors and Awards
+
+<ul>
+  <li>
+   <div style="margin-bottom: 1em;margin-top: 1em">
+  <span style="font-weight: 800">Research</span> <span style="float:right;"></span>
+  </div>
+  </li>
+ 
+   <ul>
+      <li>
+        <div style="margin-bottom: 1em;margin-top: 0.5em;">
+ Best Paper Award, USC Marshall PhD Conference in Finance <span style="float:right;"> 2025</span>
+        </div>
+      </li>
+           <li>
+        <div style="margin-bottom: 1em;margin-top: 0.5em;">
+ Best Poster Award, ABFER Annual Conference <span style="float:right;"> 2025</span>
+        </div>
+      </li>
+   </ul>
+     <li>
+   <div style="margin-bottom: 1em;margin-top: 1.5em">
+  <span style="font-weight: 800">Teaching</span> <span style="float:right;"></span>
+  </div>
+  </li>
+ 
+   <ul>
+      <li>
+        <div style="margin-bottom: 1em;margin-top: 0.5em;">
+ Henry C. Naiman Outstanding Graduate Teaching Award, Wisconsin School of Business  <span style="float:right;"> 2025</span>
+        </div>
+      </li>
+           <li>
+        <div style="margin-bottom: 1em;margin-top: 0.5em;">
+ Advanced Achievement in Teaching Award Nomination, UW–Madison  <span style="float:right;"> 2024</span>
+        </div>
+      </li>
+           </li>
+           <li>
+        <div style="margin-bottom: 1em;margin-top: 0.5em;">
+ Distinguished Teaching Award (2×), Wisconsin School of Business  <span style="float:right;"> 2021–2022, 2023–2024</span>
+        </div>
+      </li>
+   </ul>
+        <li>
+   <div style="margin-bottom: 1em;margin-top: 1.5em">
+  <span style="font-weight: 800">Other</span> <span style="float:right;"></span>
+  </div>
+  </li>
+ 
+   <ul>
+      <li>
+        <div style="margin-bottom: 1em;margin-top: 0.5em;">
+ Humane Studies Fellowship, Institute for Humane Studies  <span style="float:right;"> 2025</span>
+        </div>
+      </li>
+           <li>
+        <div style="margin-bottom: 1em;margin-top: 0.5em;">
+ Student Research Grant, UW–Madiso  <span style="float:right;"> 2025</span>
+        </div>
+      </li>
+           </li>
+           <li>
+        <div style="margin-bottom: 1em;margin-top: 0.5em;">
+ Dean’s Naming Gift Scholarship, Wisconsin School of Business  <span style="float:right;"> 2020–2025</span>
+        </div>
+      </li>
+   </ul>
+   </ul>
+
+
+<div style="margin-bottom: 0em;margin-top: 0.5em;">
+  ㅤ
+</div>
+
+
+ 
+
+
 ### Other
 
 <ul>
