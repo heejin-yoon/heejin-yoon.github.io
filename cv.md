@@ -195,7 +195,7 @@ Click <a href="link" style="font-weight: 800">here</a> to download the PDF versi
  
 
 
-### Other
+### Other Information
 
 <ul>
   <li>
