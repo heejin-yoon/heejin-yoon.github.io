@@ -147,7 +147,7 @@ Click <a href="link" style="font-weight: 800">here</a> to download the PDF versi
    <ul>
       <li>
         <div style="margin-bottom: 1em;margin-top: 0.5em;">
- Henry C. Naiman Outstanding Graduate Teaching Award, Wisconsin School of Business  <span style="float:right;"> 2025</span>
+ Henry C. Naiman Outstanding Teaching Award, Wisconsin School of Business  <span style="float:right;"> 2025</span>
         </div>
       </li>
            <li>
