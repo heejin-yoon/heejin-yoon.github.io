@@ -83,25 +83,25 @@ Click <a href="link" style="font-weight: 800">here</a> to download the PDF versi
 <ul>
   <li>
    <div style="margin-bottom: 1em;margin-top: 1em">
-  Economist, <span style="font-weight: 800">Bank of Korea</span> (Central Bank of South Korea) <span style="float:right;"> 2014 - 2018</span>
+  Economist, <span style="font-weight: 800">Bank of Korea</span> (Central Bank of South Korea) <span style="float:right;"> 2014–2018</span>
   </div>
   </li>
  
    <ul>
       <li>
         <div style="margin-bottom: 1em;margin-top: 0.5em;">
-         Monetary Policy Board Division<span style="float:right;"> 2016 - 2018</span>
+         Monetary Policy Board Division<span style="float:right;"> 2016–2018</span>
         </div>
       </li>
      <li>
         <div style="margin-bottom: 1em;margin-top: 0.5em;">
-         Macroprudential Analysis Department<span style="float:right;"> 2014 - 2016</span>
+         Macroprudential Analysis Department<span style="float:right;"> 2014–2016</span>
         </div>
       </li>
     </ul>
     <li>
    <div style="margin-bottom: 1em;margin-top: 1.5em">
-  Staff Sergeant, <span style="font-weight: 800">Republic of Korea Air Force</span> (Mandatory Military Service) <span style="float:right;"> 2009 - 2011</span>
+  Staff Sergeant, <span style="font-weight: 800">Republic of Korea Air Force</span> (Mandatory Military Service) <span style="float:right;"> 2009–2011</span>
   </div>
   </li>
      <ul>
@@ -122,7 +122,7 @@ Click <a href="link" style="font-weight: 800">here</a> to download the PDF versi
 <ul>
   <li>
    <div style="margin-bottom: 1em;margin-top: 1em">
-  <span style="font-weight: 800">Research</span> <span style="float:right;"></span>
+  <span style="font-weight: 800">Research</span>
   </div>
   </li>
  
@@ -140,7 +140,7 @@ Click <a href="link" style="font-weight: 800">here</a> to download the PDF versi
    </ul>
      <li>
    <div style="margin-bottom: 1em;margin-top: 1.5em">
-  <span style="font-weight: 800">Teaching</span> <span style="float:right;"></span>
+  <span style="font-weight: 800">Teaching</span> 
   </div>
   </li>
  
@@ -163,7 +163,7 @@ Click <a href="link" style="font-weight: 800">here</a> to download the PDF versi
    </ul>
         <li>
    <div style="margin-bottom: 1em;margin-top: 1.5em">
-  <span style="font-weight: 800">Other</span> <span style="float:right;"></span>
+  <span style="font-weight: 800">Other</span>
   </div>
   </li>
  
