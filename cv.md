@@ -155,7 +155,6 @@ Click <a href="link" style="font-weight: 800">here</a> to download the PDF versi
  Advanced Achievement in Teaching Award Nomination, UW–Madison  <span style="float:right;"> 2024</span>
         </div>
       </li>
-           </li>
            <li>
         <div style="margin-bottom: 1em;margin-top: 0.5em;">
  Distinguished Teaching Award (2×), Wisconsin School of Business  <span style="float:right;"> 2021–2022, 2023–2024</span>
@@ -176,10 +175,9 @@ Click <a href="link" style="font-weight: 800">here</a> to download the PDF versi
       </li>
            <li>
         <div style="margin-bottom: 1em;margin-top: 0.5em;">
- Student Research Grant, UW–Madiso  <span style="float:right;"> 2025</span>
+ Student Research Grant, UW–Madison  <span style="float:right;"> 2025</span>
         </div>
       </li>
-           </li>
            <li>
         <div style="margin-bottom: 1em;margin-top: 0.5em;">
  Dean’s Naming Gift Scholarship, Wisconsin School of Business  <span style="float:right;"> 2020–2025</span>
