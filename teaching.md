@@ -20,7 +20,7 @@ title: false
       </li>
       <li>
         <div style="margin-bottom: 0.5em;margin-top: 0.5em;">
-         <a href="https://uwmadison.box.com/s/nusin6et3ga9mbs4jgk34vh3kgetq4ot">Course evaluation survey</a>  
+         <a href="/assets/pdf/RE420_Fall24.pdf">Course evaluation survey</a>  
         </div>
       </li>
           <li>
@@ -51,7 +51,7 @@ title: false
    <ul>
       <li>
         <div style="margin-bottom: 1em;margin-top: 0.5em;">
-         Course evaluation survey [<a href="https://uwmadison.box.com/s/ap2fhvvxfo5rxzp84zpgwpnytxeox0rm">Undergrad</a>]
+         Course evaluation survey [<a href="/assets/pdf/RE410_Fall21.pdf">Undergrad</a>]
         </div>
       </li>
     </ul>
@@ -67,7 +67,7 @@ title: false
    <ul>
       <li>
         <div style="margin-bottom: 1em;margin-top: 0.5em;">
-         Course evaluation survey [<a href="https://uwmadison.box.com/s/lf7g5ywmon0cjzivtb5kklf94nn3a8kw">MBA</a>/<a href="https://uwmadison.box.com/s/bmmq8xfpmnzj9gkyeir3jmrgc8v3ond5">Undergrad</a>]
+         Course evaluation survey [<a href="/assets/pdf/RE720_Fall23.pdf">MBA</a>/<a href="/assets/pdf/RE420_Fall23.pdf">Undergrad</a>]
         </div>
       </li>
     </ul>
