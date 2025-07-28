@@ -30,7 +30,7 @@ title: false
       </li>
           <li>
         <div style="color:rgb(215,90,0);margin-bottom: 0.5em;margin-top: 0.5em;">
-          Recognized with the  <a href="https://business.wisc.edu/centers/graaskamp/news/three-real-estate-faculty-and-teaching-staff-receive-distinguished-awards-from-the-wisconsin-school-of-business/" style="color:rgb(215,90,0);font-weight: 700"><i>Henry C. Naiman Outstanding Teaching Award</i>
+          Recognized with the  <a href="https://business.wisc.edu/centers/graaskamp/news/three-real-estate-faculty-and-teaching-staff-receive-distinguished-awards-from-the-wisconsin-school-of-business/" style="color:rgb(215,90,0);font-weight: 700">Henry C. Naiman Outstanding Teaching Award
            </a>
         </div>
       </li>
