@@ -15,8 +15,8 @@ My research interests lie in real estate finance, urban economics, and corporate
 <ul>
   <li>
    <div style="margin-bottom: 1em;margin-top: 1em">
-“<a href="../assets/pdf/JMP_Heejin.pdf" style="font-weight: 700">Barriers to Reentry: Initial Borrowing Frictions,
-Refinancing, and Wealth Redistribution</a>”
+<a href="../assets/pdf/JMP_Heejin.pdf" style="font-weight: 700">Barriers to Reentry: Initial Borrowing Frictions,
+Refinancing, and Wealth Redistribution</a>
    </div>
     <div style="margin-left: 1.5em;margin-bottom: 1em;margin-top: 1em;font-size: 0.9em"> 
  <details>
@@ -53,7 +53,7 @@ financial losses than White borrowers, largely due to a lower baseline likelihoo
 <ul>
   <li>
    <div style="margin-bottom: 1em;margin-top: 1em">
-“<a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4746656" style="font-weight: 700">Nonbank Growth and Local Housing Booms</a>” (with Hyun-Soo Choi and Yongheng Deng). 
+<a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4746656" style="font-weight: 700">Nonbank Growth and Local Housing Booms</a> (with Hyun-Soo Choi and Yongheng Deng). 
   </div>
   </li>
  
@@ -74,7 +74,7 @@ financial losses than White borrowers, largely due to a lower baseline likelihoo
 <ul>
   <li>
    <div style="margin-bottom: 1em;margin-top: 1em">
-“<a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4714155" style="font-weight: 700">How Detrimental Was the Pandemic on Commercial Mortgages? Unveiling Long-Term Consequences for Retail Sector</a>” (with Dayin Zhang).
+<a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4714155" style="font-weight: 700">How Detrimental Was the Pandemic on Commercial Mortgages? Unveiling Long-Term Consequences for Retail Sector</a> (with Dayin Zhang).
   </div>
   </li>
  <ul>
@@ -97,7 +97,7 @@ financial losses than White borrowers, largely due to a lower baseline likelihoo
 <ul>
   <li>
    <div style="margin-bottom: 1em;margin-top: 1em">
-“<a href="https://oxfordre.com/economics/display/10.1093/acrefore/9780190625979.001.0001/acrefore-9780190625979-e-924" style="font-weight: 700">The American Housing Finance System: Structure, Evolution, and Implications</a>” (with Yongheng Deng and Susan M. Wachter), 2024, August. <b><i>Oxford Research Encyclopedia of Economics and Finance</i></b>. [<a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4750853">SSRN</a>]
+<a href="https://oxfordre.com/economics/display/10.1093/acrefore/9780190625979.001.0001/acrefore-9780190625979-e-924" style="font-weight: 700">The American Housing Finance System: Structure, Evolution, and Implications</a> (with Yongheng Deng and Susan M. Wachter), 2024, August. <b><i>Oxford Research Encyclopedia of Economics and Finance</i></b>. [<a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4750853">SSRN</a>]
   </div>
   </li>
 </ul>
@@ -109,27 +109,27 @@ financial losses than White borrowers, largely due to a lower baseline likelihoo
 <ul>
   <li>
    <div style="margin-bottom: 1em;margin-top: 1em">
-“<a href="https://www.sciencedirect.com/science/article/pii/S1566014124000463" style="font-weight: 700">Innovation Spillovers Within Business Groups: Evidence from Korean Chaebol</a>” (with Kyounghun Lee, Frederick Oh, and Donglim Shin), 2024. <b><i>Emerging Markets Review</i></b>, 60, 101151.
+<a href="https://www.sciencedirect.com/science/article/pii/S1566014124000463" style="font-weight: 700">Innovation Spillovers Within Business Groups: Evidence from Korean Chaebol</a> (with Kyounghun Lee, Frederick Oh, and Donglim Shin), 2024. <b><i>Emerging Markets Review</i></b>, 60, 101151.
   </div>
   </li>
    <li>
    <div style="margin-bottom: 1em;margin-top: 1em">
-“<a href="https://doi.org/10.1016/j.iref.2023.01.019" style="font-weight: 700">Internal Labor Markets and Corporate Innovation: Evidence from Korean Chaebol</a>” (with Kyounghun Lee, Frederick Oh, and Donglim Shin), 2023.  <b><i>International Review of Economics</i> & <i>Finance</i></b>, 85, 146-162.
+<a href="https://doi.org/10.1016/j.iref.2023.01.019" style="font-weight: 700">Internal Labor Markets and Corporate Innovation: Evidence from Korean Chaebol</a> (with Kyounghun Lee, Frederick Oh, and Donglim Shin), 2023.  <b><i>International Review of Economics</i> & <i>Finance</i></b>, 85, 146-162.
   </div>
   </li>
   <li>
    <div style="margin-bottom: 1em;margin-top: 1em">
-“<a href="https://onlinelibrary.wiley.com/doi/full/10.1111/jbfa.12618" style="font-weight: 700">Does Venture Capital Investment Enhance Corporate Innovation? Evidence from Korea</a>” (with Kyounghun Lee, Frederick Oh, and Donglim Shin), 2022.  <b><i>Journal of Business Finance</i> & <i>Accounting</i></b>, 50(1-2), 236–266.
+<a href="https://onlinelibrary.wiley.com/doi/full/10.1111/jbfa.12618" style="font-weight: 700">Does Venture Capital Investment Enhance Corporate Innovation? Evidence from Korea</a> (with Kyounghun Lee, Frederick Oh, and Donglim Shin), 2022.  <b><i>Journal of Business Finance</i> & <i>Accounting</i></b>, 50(1-2), 236–266.
   </div>
   </li>
    <li>
    <div style="margin-bottom: 1em;margin-top: 1em">
-“<a href="https://onlinelibrary.wiley.com/doi/full/10.1111/ajfs.12333" style="font-weight: 700">Social Capital and Firm Innovation: Evidence from Cooperative Banking in Korea</a>” (with Frederick Oh), 2021.  <b><i>Asia-Pacific Journal of Financial Studies</i></b>, 50(2), 147-175.
+<a href="https://onlinelibrary.wiley.com/doi/full/10.1111/ajfs.12333" style="font-weight: 700">Social Capital and Firm Innovation: Evidence from Cooperative Banking in Korea</a> (with Frederick Oh), 2021.  <b><i>Asia-Pacific Journal of Financial Studies</i></b>, 50(2), 147-175.
   </div>
   </li>
   <li>
    <div style="margin-bottom: 1em;margin-top: 1em">
-“<a href="https://www.tandfonline.com/doi/abs/10.1080/10168737.2019.1570300" style="font-weight: 700">The Role of Chonsei as a Price Protector in the Korean Housing Market</a>” (with Frederick Oh), 2019.  <b><i>International Economic Journal</i></b>, 33(1), 27-41. 
+<a href="https://www.tandfonline.com/doi/abs/10.1080/10168737.2019.1570300" style="font-weight: 700">The Role of Chonsei as a Price Protector in the Korean Housing Market</a> (with Frederick Oh), 2019.  <b><i>International Economic Journal</i></b>, 33(1), 27-41. 
   </div>
   </li>
 </ul>
