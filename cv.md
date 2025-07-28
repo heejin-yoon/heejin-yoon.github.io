@@ -68,7 +68,7 @@ Click <a href="/assets/pdf/CV_Heejin.pdf" style="font-weight: 700">here</a> to d
      <ul>
       <li>
         <div style="margin-bottom: 1em;margin-top: 0.5em;">
-         BBA in Business
+         BBA in Business Administration
         </div>
       </li>
     </ul>
