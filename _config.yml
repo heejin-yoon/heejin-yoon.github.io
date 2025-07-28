@@ -16,7 +16,7 @@ navbar-links:
   CV: "cv"
   Research: "research"
   Teaching: "teaching"
-  # Discussion: "discussion"
+  Discussion: "discussion"
 
 
 # [수정필요] 아바타 로고 사용 시에는 이미지 파일을 지정 (이미지 파일 업로드 후, 위치 지정)
