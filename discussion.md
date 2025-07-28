@@ -11,8 +11,8 @@ title: false
 <ul>
   <li>
    <div style="margin-bottom: 1em;margin-top: 1em">
-  "<a href="../assets/pdf/Discussion_Ke_AsianFA.pdf"><b>Does Climate Change Hinder Women’s Financial Inclusion? Evidence from
-Rural India</b></a>"
+  <a href="../assets/pdf/Discussion_Ke_AsianFA.pdf"><b>Does Climate Change Hinder Women’s Financial Inclusion? Evidence from
+Rural India</b></a>
   </div>
   </li>
  
@@ -30,7 +30,7 @@ Rural India</b></a>"
     </ul>
      <li>
    <div style="margin-bottom: 1em;margin-top: 1.5em">
-  "<a href="../assets/pdf/Discussion_King_et_al_BFWG.pdf"><b>What Matters for Consumer Credit Choice? Evidence from the Philippine Digital Credit Market</b></a>"
+  <a href="../assets/pdf/Discussion_King_et_al_BFWG.pdf"><b>What Matters for Consumer Credit Choice? Evidence from the Philippine Digital Credit Market</b></a>
   </div>
   </li>
    <ul>
