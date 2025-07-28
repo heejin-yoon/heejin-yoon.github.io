@@ -4,6 +4,9 @@ title: false
 ---
 
 
+<div style="margin-bottom: 4.0em;margin-top: 2.0em;font-size: 1em">
+  Below are selected discussion slides from recent conferences, where I served as a discussant.
+</div>
 
 <ul>
   <li>
