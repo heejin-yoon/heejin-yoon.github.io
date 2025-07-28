@@ -422,7 +422,7 @@ footer {
   padding: 1.875rem 0;
   border-top: 1px transparent solid; /* #EAEAEA */
   margin-top: 1.875rem;
-  font-size: 0.5rem;
+  font-size: 0.75rem;
   background-color: #F7FAFC; /* {{ site.footer-col | default: "#F7FAFC" }}; */
   {% if site.footer-img %}
     background-image: url({{ site.footer-img | relative_url }});
@@ -448,6 +448,7 @@ footer .copyright {
   text-align: center;
   margin-bottom: 0;
   margin-top: 0;
+  font-size: 1rem;
 }
 footer .theme-by {
   text-align: center;
