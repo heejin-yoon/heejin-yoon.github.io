@@ -997,3 +997,7 @@ pre {
   display: flex;
   flex-direction: column;
 }
+
+main.content {
+  flex: 1;                      /* this pushes the footer to the bottom */
+}
