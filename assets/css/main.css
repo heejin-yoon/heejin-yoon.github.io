@@ -990,3 +990,10 @@ pre {
   background-color: rgba(255, 0, 0, 0.7); /* shows you how much space it's occupying */
 }
  */
+
+
+.page-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
