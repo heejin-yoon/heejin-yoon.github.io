@@ -14,7 +14,7 @@ My research interests lie in real estate finance, urban economics, and corporate
 
 <ul>
   <li>
-   <div style="margin-bottom: 1em;margin-top: 1em">
+   <div style="margin-bottom: 1em;margin-top: 1em;font-weight: 700">
 <!-- <a href="../assets/pdf/JMP_Heejin.pdf" style="font-weight: 700"></a> -->
     Barriers to Reentry: Initial Borrowing Frictions,
 Refinancing, and Wealth Redistribution
