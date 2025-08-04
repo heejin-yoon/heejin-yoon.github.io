@@ -570,7 +570,6 @@ footer .footer-custom-content {
 
 .intro-header {
   margin: 8.125rem 0 1.25rem;
-  margin-top: 9.125rem !important;
   position: relative;
 }
 .intro-header.big-img {
@@ -945,14 +944,11 @@ pre {
   height: 1.250rem !important;
 }
 
-
-
-.page-container {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+@media (max-width: 767px) {
+  .intro-header {
+    margin-top: 8.125rem !important;
+    position: relative;
+  }
 }
 
-main.content {
-  flex: 1;                      /* this pushes the footer to the bottom */
-}
+
