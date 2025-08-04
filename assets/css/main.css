@@ -282,22 +282,6 @@ img {
     text-align: center;
   }
 
-/*
-   .navbar-expand-md .navbar-nav .nav-link {
-    font-size: 1rem;
-    font-weight: 400;
-    color: #404040;
-     padding-left: 0.9375rem;
-    padding-right: 0.9375rem; 
-  } 
-*/
-
-/*   .navbar-expand-md .navbar-nav .nav-item:not(.dropdown):last-child .nav-link {
-    padding-right: 2.0rem;
-  } */
-}
-
-@media (min-width: 768px) {
   .navbar-custom .nav-item.dropdown .dropdown-menu .dropdown-item {
     padding-left: 0.625rem;
     border: 1px solid {{ site.navbar-border-col | default: "#EAEAEA" }};
