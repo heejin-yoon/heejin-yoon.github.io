@@ -553,7 +553,7 @@ footer .footer-custom-content {
 /* --- Post and page headers --- */
 
 .intro-header {
-  margin: 8.125rem 0 1.25rem;
+  /* margin: 8.125rem 0 1.25rem; */
   position: relative;
 }
 .intro-header.big-img {
@@ -634,8 +634,8 @@ footer .footer-custom-content {
   
 @media (min-width: 768px) {
   .intro-header {
-    margin-top: 8.125rem;
-    margin: 8.125rem 0 1.25rem;
+    /* margin-top: 8.125rem;
+    margin: 8.125rem 0 1.25rem; */
   }
   .intro-header.big-img {
     margin-top: 5.6875rem; /* Full navbar is small navbar + 20px padding on each side when expanded */
@@ -926,13 +926,6 @@ pre {
 .navbar-custom.top-nav-short .navbar-brand-logo img,
 .navbar-custom.top-nav-short-permanent .navbar-brand-logo img {
   height: 1.250rem !important;
-}
-
-@media (max-width: 767px) {
-  .intro-header {
-    margin-top: 8.125rem !important;
-    position: relative;
-  }
 }
 
 
