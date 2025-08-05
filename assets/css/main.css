@@ -411,15 +411,15 @@ footer .footer-custom-content {
   font-family: 'Charter', sans-serif;
 }
 
-@media (max-width: 768px) {
+@media (min-width: 768px) {
   footer {
-    padding: 3.125rem 0 !important;
+    padding: 3.125rem 0;
   }
   footer .footer-links {
     font-size: 1.125rem;
   }
   footer .copyright {
-    font-size: 1rem !important;
+    font-size: 1rem;
   }
   footer .footer-custom-content {
     font-size: 1rem;
