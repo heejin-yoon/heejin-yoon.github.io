@@ -412,8 +412,10 @@ footer .footer-custom-content {
 }
 
 @media (min-width: 768px) {
-  footer {
+  footer .container-md.beautiful-jekyll-footer {
     margin-top: -4em;
+  }
+  footer {
     padding: 3.125rem 0;
   }
   footer .footer-links {
