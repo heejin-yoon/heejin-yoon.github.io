@@ -370,7 +370,7 @@ img {
 /* --- Footer --- */
 
 footer {
-  padding: 1.875rem 0;
+/*   padding: 1.875rem 0; */
   border-top: 1px transparent solid; /* #EAEAEA */
   margin-top: 0.0rem;
   font-size: 0.75rem;
@@ -416,7 +416,7 @@ footer .footer-custom-content {
     margin-top: -4em;
   }
   footer {
-    padding: 3.125rem 0;
+  padding: 3.125rem 0 0rem 0;
   }
   footer .footer-links {
     font-size: 1.125rem;
