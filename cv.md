@@ -29,48 +29,47 @@ Click <a href="/assets/pdf/CV_Heejin.pdf" style="font-weight: 700">here</a> to d
 
 ### Education
 
-<style>
-  .cv-entry {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    flex-wrap: wrap;          /* allows stacking on small screens */
-    margin: 0.5em 0;
-  }
-  .cv-entry strong { font-weight: 700; }
-  .cv-entry .date { white-space: nowrap; margin-left: 1em; }
-</style>
-
 <ul>
   <li>
-    <div class="cv-entry">
-      <strong>University of Wisconsin–Madison</strong>
-      <span class="date">Expected May 2026</span>
-    </div>
-    <ul>
-      <li>PhD in Business (Real Estate)</li>
-    </ul>
+   <div style="margin-bottom: 1em;margin-top: 1em">
+  <span style="font-weight: 700">University of Wisconsin–Madison</span> <span style="float:right;"> Expected May 2026</span>
+  </div>
   </li>
+ 
+   <ul>
+      <li>
+        <div style="margin-bottom: 1em;margin-top: 0.5em;">
+         PhD in Business (Real Estate)
+        </div>
+      </li>
+    </ul>
+    <li>
+      
+   <div style="margin-bottom: 1em;margin-top: 1.5em">
+  <span style="font-weight: 700">Korea Advanced Institute of Science and Technology (KAIST)</span> <span style="float:right;"> 2020</span>
+  </div>
+  </li>
+     <ul>
+      <li>
+        <div style="margin-bottom: 1em;margin-top: 0.5em;">
+         MS in Finance
+        </div>
+      </li>
+    </ul>
+         <li>
+           
+   <div style="margin-bottom: 1em;margin-top: 1.5em">
+  <span style="font-weight: 700">Yonsei University</span> <span style="float:right;"> 2014</span>
+  </div>
+  </li>
+     <ul>
+      <li>
+        <div style="margin-bottom: 1em;margin-top: 0.5em;">
+         BBA in Business Administration
+        </div>
+      </li>
+    </ul>
 
-  <li>
-    <div class="cv-entry">
-      <strong>Korea Advanced Institute of Science and Technology (KAIST)</strong>
-      <span class="date">2020</span>
-    </div>
-    <ul>
-      <li>MS in Finance</li>
-    </ul>
-  </li>
-
-  <li>
-    <div class="cv-entry">
-      <strong>Yonsei University</strong>
-      <span class="date">2014</span>
-    </div>
-    <ul>
-      <li>BBA in Business Administration</li>
-    </ul>
-  </li>
 </ul>
 
 <div style="margin-bottom: 0em;margin-top: 0.5em;">
