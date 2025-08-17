@@ -78,67 +78,6 @@ Click <a href="/assets/pdf/CV_Heejin.pdf" style="font-weight: 700">here</a> to d
   ㅤ
 </div>
 
-### References
-
-<style> 
-  .refs-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px 16px;
-    margin-top: 0.75em;
-    margin-bottom: 2em;
-  }
-  @media (max-width: 720px) { .refs-grid { grid-template-columns: 1fr; } }
-  .ref-card {
-    border: 1px solid #e5e7eb;
-    border-radius: 8px;
-    background: #fff;
-    padding: 0.75em 1em;
-  }
-  .ref-name { font-weight: 700; margin: 0 0 0.25em 0; }
-  .ref-role { font-style: italic; font-weight: 400; }
-  .ref-line { margin: 0.25em 0; }
-  .ref-email a { word-break: break-word; }
-  @media print {
-    .ref-card { border: 0; padding: 0; break-inside: avoid; }
-    .refs-grid { gap: 6px 12px; }
-    a { color: inherit; text-decoration: none; }
-  }
-</style>
-
-<div class="refs-grid">
-  <div class="ref-card">
-    <div class="ref-name">Lu Han <span class="ref-role">(Co-Chair)</span></div>
-    <div class="ref-line">Nathan F. Brand Chair in Real Estate and Urban Land Economics</div>
-    <div class="ref-line">Wisconsin School of Business, UW–Madison</div>
-    <div class="ref-email"><a href="mailto:lu.han@wisc.edu">lu.han@wisc.edu</a></div>
-  </div>
-
-  <div class="ref-card">
-    <div class="ref-name">Yongheng Deng <span class="ref-role">(Co-Chair)</span></div>
-    <div class="ref-line">John P. Morgridge Distinguished Chair in Business</div>
-    <div class="ref-line">Wisconsin School of Business, UW–Madison</div>
-    <div class="ref-email"><a href="mailto:yongheng.deng@wisc.edu">yongheng.deng@wisc.edu</a></div>
-  </div>
-
-  <div class="ref-card">
-    <div class="ref-name">Anthony A. DeFusco</div>
-    <div class="ref-line">Jeffrey J. Diermeier Distinguished Chair in Finance</div>
-    <div class="ref-line">Wisconsin School of Business, UW–Madison</div>
-    <div class="ref-email"><a href="mailto:anthony.defusco@wisc.edu">anthony.defusco@wisc.edu</a></div>
-  </div>
-
-  <div class="ref-card">
-    <div class="ref-name">Erik J. Mayer</div>
-    <div class="ref-line">Assistant Professor of Finance</div>
-    <div class="ref-line">Wisconsin School of Business, UW–Madison</div>
-    <div class="ref-email"><a href="mailto:erik.mayer@wisc.edu">erik.mayer@wisc.edu</a></div>
-  </div>
-</div>
-
-<div style="margin-bottom: 0em;margin-top: 0.5em;">
-  ㅤ
-</div>
 
 ### Employment
 
@@ -276,3 +215,66 @@ Click <a href="/assets/pdf/CV_Heejin.pdf" style="font-weight: 700">here</a> to d
   </div>
   </li>
 </ul>
+
+
+### References
+
+<style> 
+  .refs-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px 16px;
+    margin-top: 0.75em;
+    margin-bottom: 2em;
+  }
+  @media (max-width: 720px) { .refs-grid { grid-template-columns: 1fr; } }
+  .ref-card {
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    background: #fff;
+    padding: 0.75em 1em;
+  }
+  .ref-name { font-weight: 700; margin: 0 0 0.25em 0; }
+  .ref-role { font-style: italic; font-weight: 400; }
+  .ref-line { margin: 0.25em 0; }
+  .ref-email a { word-break: break-word; }
+  @media print {
+    .ref-card { border: 0; padding: 0; break-inside: avoid; }
+    .refs-grid { gap: 6px 12px; }
+    a { color: inherit; text-decoration: none; }
+  }
+</style>
+
+<div class="refs-grid">
+  <div class="ref-card">
+    <div class="ref-name">Lu Han <span class="ref-role">(Co-Chair)</span></div>
+    <div class="ref-line">Nathan F. Brand Chair in Real Estate and Urban Land Economics</div>
+    <div class="ref-line">Wisconsin School of Business, UW–Madison</div>
+    <div class="ref-email"><a href="mailto:lu.han@wisc.edu">lu.han@wisc.edu</a></div>
+  </div>
+
+  <div class="ref-card">
+    <div class="ref-name">Yongheng Deng <span class="ref-role">(Co-Chair)</span></div>
+    <div class="ref-line">John P. Morgridge Distinguished Chair in Business</div>
+    <div class="ref-line">Wisconsin School of Business, UW–Madison</div>
+    <div class="ref-email"><a href="mailto:yongheng.deng@wisc.edu">yongheng.deng@wisc.edu</a></div>
+  </div>
+
+  <div class="ref-card">
+    <div class="ref-name">Anthony A. DeFusco</div>
+    <div class="ref-line">Jeffrey J. Diermeier Distinguished Chair in Finance</div>
+    <div class="ref-line">Wisconsin School of Business, UW–Madison</div>
+    <div class="ref-email"><a href="mailto:anthony.defusco@wisc.edu">anthony.defusco@wisc.edu</a></div>
+  </div>
+
+  <div class="ref-card">
+    <div class="ref-name">Erik J. Mayer</div>
+    <div class="ref-line">Assistant Professor of Finance</div>
+    <div class="ref-line">Wisconsin School of Business, UW–Madison</div>
+    <div class="ref-email"><a href="mailto:erik.mayer@wisc.edu">erik.mayer@wisc.edu</a></div>
+  </div>
+</div>
+
+<div style="margin-bottom: 0em;margin-top: 0.5em;">
+  ㅤ
+</div>
