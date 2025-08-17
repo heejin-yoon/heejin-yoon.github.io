@@ -78,14 +78,9 @@ Click <a href="/assets/pdf/CV_Heejin.pdf" style="font-weight: 700">here</a> to d
   ㅤ
 </div>
 
-<div style="margin-bottom: 0em;margin-top: 0.5em;">
-  ㅤ
-</div>
-
 ### References
 
-<!-- Local styles scoped to this section -->
-<style>
+<style> 
   .refs-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -141,6 +136,9 @@ Click <a href="/assets/pdf/CV_Heejin.pdf" style="font-weight: 700">here</a> to d
   </div>
 </div>
 
+<div style="margin-bottom: 0em;margin-top: 0.5em;">
+  ㅤ
+</div>
 
 ### Employment
 
