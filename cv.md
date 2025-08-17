@@ -201,7 +201,7 @@ Click <a href="/assets/pdf/CV_Heejin.pdf" style="font-weight: 700">here</a> to d
 <ul>
   <li>
    <div style="margin-bottom: 1em;margin-top: 1em">
-<span style="font-weight: 700">Language:</span> English (fluent), Korean (native)
+<span style="font-weight: 700">Language:</span> English, Korean
   </div>
   </li>
   <li>
