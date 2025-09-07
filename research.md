@@ -127,6 +127,8 @@ We examine whether venture capital (VC) investment enhances corporate innovation
   </li>
 </ul>
 
+<div style="margin-bottom: 0.2em;margin-top: 0em;">ㅤ</div>
+
 #### _Book Chapter_
 
 <ul>
