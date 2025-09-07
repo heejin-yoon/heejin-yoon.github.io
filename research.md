@@ -109,6 +109,26 @@ We investigate commercial mortgages for retail properties following the second w
 
 <div style="margin-bottom: 0.0em;margin-top: 0em;">ㅤ</div>
 
+#### _Peer Reviewed Journal_
+
+#### _Pre-Doctoral Works_
+
+<ul>
+ <li>
+   <div style="margin-bottom: 1em;margin-top: 1em">
+<a href="https://onlinelibrary.wiley.com/doi/full/10.1111/jbfa.12618" style="font-weight: 700">Does Venture Capital Investment Enhance Corporate Innovation? Evidence from Korea</a> (with Kyounghun Lee, Frederick Oh, and Donglim Shin), 2022.  <b><i>Journal of Business Finance</i> & <i>Accounting</i></b>, 50(1-2), 236–266.
+  </div>
+          <div style="margin-left: 1.5em;margin-bottom: 1em;margin-top: 1em;font-size: 0.9em"> 
+ <details>
+   <summary><span style="font-family: Helvetica, Arial, sans-serif;font-weight: 700">Abstract</span></summary>
+  <div style="margin-left: 1em;text-align: justify;">
+We examine whether venture capital (VC) investment enhances corporate innovation in Korea. Using a matched sample of 802 firms from 1998 to 2012, we find that after the first round of VC investment, VC-backed firms are more innovative than non-VC-backed firms. Our results suggest that the positive influence of VC investment largely comes from the ability of VC firms to reduce information asymmetry between investors and ventures: VC funds managed by independent venture capitalists significantly enhance corporate innovation, whereas those managed by governmental venture capitalists do not. Furthermore, this positive influence becomes more pronounced where there is greater information asymmetry. Finally, we show that funds with profit-based compensation structures are more likely to encourage corporate innovation than those with fee-based compensation structures.
+ </div>
+ </details>
+ </div>
+  </li>
+</ul>
+
 #### _Book Chapter_
 
 <ul>
@@ -128,7 +148,7 @@ The U.S. housing finance system has been characterized by fixed-rate, long-term,
 </ul>
 
 <div style="margin-bottom: 0.2em;margin-top: 0em;">ㅤ</div>
-
+<!---
 #### _Pre-Doctoral Works_
 
 <ul>
@@ -198,3 +218,4 @@ In this study, we investigate whether ‘Chonsei,’ the distinctive type of hou
  </div>
   </li>
 </ul>
+-->
