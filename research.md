@@ -109,7 +109,7 @@ We investigate commercial mortgages for retail properties following the second w
 
 <div style="margin-bottom: 0.0em;margin-top: 0em;">ㅤ</div>
 
-#### _Peer Reviewed Journal_
+#### _Peer-Reviewed Journal_
 
 <ul>
  <li>
