@@ -32,14 +32,14 @@ Click <a href="/assets/pdf/CV_Heejin.pdf" style="font-weight: 700">here</a> to d
 <ul>
   <li>
    <div style="margin-bottom: 1em;margin-top: 1em">
-  <span style="font-weight: 700">University of Wisconsin–Madison</span> <span style="float:right;"> Expected May 2026</span>
+  <span style="font-weight: 700">University of Wisconsin–Madison, Wisconsin School of Business</span> <span style="float:right;"> Expected May 2026</span>
   </div>
   </li>
  
    <ul>
       <li>
         <div style="margin-bottom: 1em;margin-top: 0.5em;">
-         PhD in Business (Real Estate)
+         PhD in Real Estate and Urban Land Economics (Minor: Economics)
         </div>
       </li>
     </ul>
