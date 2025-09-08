@@ -76,7 +76,7 @@ Click <a href="/assets/pdf/CV_Heejin.pdf" style="font-weight: 700">here</a> to d
   ㅤ
 </div>
 
-
+<!---
 ### Employment
 
 <ul>
@@ -190,7 +190,7 @@ Click <a href="/assets/pdf/CV_Heejin.pdf" style="font-weight: 700">here</a> to d
   ㅤ
 </div>
 
-
+-->
  
 
 
