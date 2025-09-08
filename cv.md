@@ -248,17 +248,17 @@ Click <a href="/assets/pdf/CV_Heejin.pdf" style="font-weight: 700">here</a> to d
 
 <div class="refs-grid">
   <div class="ref-card">
-    <div class="ref-name">Lu Han <span class="ref-role">(Co-Chair)</span></div>
-    <div class="ref-line">Nathan F. Brand Chair in Real Estate and Urban Land Economics</div>
-    <div class="ref-line">Wisconsin School of Business, UW–Madison</div>
-    <div class="ref-email"><a href="mailto:lu.han@wisc.edu">lu.han@wisc.edu</a></div>
-  </div>
-
-  <div class="ref-card">
     <div class="ref-name">Yongheng Deng <span class="ref-role">(Co-Chair)</span></div>
     <div class="ref-line">John P. Morgridge Distinguished Chair in Business</div>
     <div class="ref-line">Wisconsin School of Business, UW–Madison</div>
     <div class="ref-email"><a href="mailto:yongheng.deng@wisc.edu">yongheng.deng@wisc.edu</a></div>
+  </div>
+
+  <div class="ref-card">
+    <div class="ref-name">Lu Han <span class="ref-role">(Co-Chair)</span></div>
+    <div class="ref-line">Nathan F. Brand Chair in Real Estate and Urban Land Economics</div>
+    <div class="ref-line">Wisconsin School of Business, UW–Madison</div>
+    <div class="ref-email"><a href="mailto:lu.han@wisc.edu">lu.han@wisc.edu</a></div>
   </div>
 
   <div class="ref-card">
