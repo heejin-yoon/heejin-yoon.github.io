@@ -32,21 +32,21 @@ Click <a href="/assets/pdf/HeejinYoon_CV.pdf" style="font-weight: 700">here</a> 
 <ul>
   <li>
    <div style="margin-bottom: 1em;margin-top: 1em">
-  <span style="font-weight: 700">University of Wisconsin–Madison, Wisconsin School of Business</span> <span style="float:right;"> Expected May 2026</span>
+  <span style="font-weight: 700">UW–Madison, Wisconsin School of Business</span> <span style="float:right;"> Expected May 2026</span>
   </div>
   </li>
  
    <ul>
       <li>
         <div style="margin-bottom: 1em;margin-top: 0.5em;">
-         PhD in Real Estate and Urban Land Economics (Minor: Economics)
+         PhD in Real Estate & Urban Land Economics
         </div>
       </li>
     </ul>
     <li>
       
    <div style="margin-bottom: 1em;margin-top: 1.5em">
-  <span style="font-weight: 700">Korea Advanced Institute of Science and Technology (KAIST)</span> <span style="float:right;"> 2020</span>
+  <span style="font-weight: 700">Korea Advanced Institute of Science and Technology</span> <span style="float:right;"> 2020</span>
   </div>
   </li>
      <ul>
