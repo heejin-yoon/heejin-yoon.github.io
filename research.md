@@ -40,6 +40,11 @@ a structural refinancing model indicate that origination delays impose an averag
          Winner of the Best Poster Award, ABFER Annual Conference 2025
         </div>
       </li>
+        <li>
+        <div style="color:rgb(215,90,0);margin-bottom: 0.5em;margin-top: 0.5em;font-weight: 700">
+   Recipient of the Humane Studies Fellowship, Institute for Humane Studies 2025
+        </div>
+      </li>
       <li>
         <div style="margin-bottom: 0.5em;margin-top: 0.5em;">
          Presentations 2025: ABFER Annual Conference Poster Session, AsianFA Annual Conference, BFWG International Conference, FIRS, USC Marshall PhD Conference in Finance, WSB Summer Research Conference, FMA Annual Meeting (Scheduled), Real Estate Finance and Investment Symposium (Scheduled), UEA North American Meeting (Scheduled)
