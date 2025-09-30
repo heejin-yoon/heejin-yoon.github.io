@@ -23,7 +23,7 @@ Refinancing, and Wealth Redistribution</a>
  <details>
    <summary><span style="font-family: Helvetica, Arial, sans-serif;font-weight: 700">Abstract</span></summary>
   <div style="margin-left: 1em;text-align: justify;">
-This paper examines how frictions encountered during the <i>initial</i> home-purchase mortgage origination process shape borrowers’ future refinancing behavior and long-term financial outcomes. Leveraging variation in loan officer <i>workload</i> as a quasi-random source of lender-induced delays, I find that experiencing a 60+ day origination delay reduces quarterly refinancing rates by 16—24%. 
+This paper examines how frictions encountered during the <i>initial</i> home-purchase mortgage origination process shape borrowers’ future refinancing behavior and long-term financial outcomes. Leveraging variation in loan officer <i>workload</i> as a quasi-random source of lender-induced delays, I find that experiencing a 60+ day origination delay reduces quarterly refinancing rates by 16–24%. 
 Exposure to these origination frictions is disproportionately concentrated among minority borrowers, low-income households, and those with lower credit scores, with evidence consistent with lender bias contributing to racial disparities. I quantify the financial consequences of origination delays using both a back-of-the-envelope calculation and a model-based simulation, which imply present-value overpayments of roughly $6,500 to $8,500 per delayed borrower. The simulations also evaluate policy alternatives including streamlined refinancing, automatically refinancing mortgages, and type-specific mortgage pricing, and illustrate how each option influences refinancing behavior and the cumulative cost of mortgage repayment.
  </div>
  </details>
