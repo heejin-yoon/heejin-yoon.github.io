@@ -42,6 +42,11 @@ Exposure to these origination frictions is disproportionately concentrated among
       </li>
         <li>
         <div style="color:rgb(215,90,0);margin-bottom: 0.5em;margin-top: 0.5em;font-weight: 700">
+         Winner of KAFA Dr. Bong-Soo Lee Memorial Scholarship, Korea-America Finance Association 2025
+        </div>
+      </li>
+        <li>
+        <div style="color:rgb(215,90,0);margin-bottom: 0.5em;margin-top: 0.5em;font-weight: 700">
    Recipient of the Humane Studies Fellowship, Institute for Humane Studies 2025
         </div>
       </li>
