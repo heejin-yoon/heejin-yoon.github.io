@@ -8,8 +8,8 @@ title: false
 Below are discussion slides from conferences where I served as a discussant. 
 </div>
 
-<!-- <ul>
-    <li>
+<ul>
+<!--     <li>
    <div style="margin-bottom: 1em;margin-top: 1em">
   <b>Credit Expansion and Housing Cycle</b>
   </div>
