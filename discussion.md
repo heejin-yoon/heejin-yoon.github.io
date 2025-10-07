@@ -25,7 +25,7 @@ Below are discussion slides from conferences where I served as a discussant.
          Asian Finance Association Annual Conference (June 27, 2025)
         </div>
       </li>
-    </ul>
+    </ul>-->
     <li>
    <div style="margin-bottom: 1em;margin-top: 1em">
   <b>Quantifying the Welfare Effects of Gentrification on
@@ -44,7 +44,7 @@ Incumbent Low-Income Renters</b>
          UEA North American Meeting (October 4, 2025)
         </div>
       </li>
-    </ul> -->
+    </ul> 
   <li>
    <div style="margin-bottom: 1em;margin-top: 1em">
   <a href="../assets/pdf/Discussion_Ke_AsianFA.pdf"><b>Does Climate Change Hinder Women’s Financial Inclusion? Evidence from
