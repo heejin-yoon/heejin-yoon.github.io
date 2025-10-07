@@ -28,7 +28,7 @@ Below are discussion slides from conferences where I served as a discussant.
     </ul>-->
     <li>
    <div style="margin-bottom: 1em;margin-top: 1em">
-  <a href="../assets/pdf/Discussion_French_et_al_UEA"><b>Quantifying the Welfare Effects of Gentrification on
+  <a href="../assets/pdf/Discussion_French_et_al_UEA.pdf"><b>Quantifying the Welfare Effects of Gentrification on
 Incumbent Low-Income Renters</b></a>
   </div>
   </li>
