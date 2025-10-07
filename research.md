@@ -52,7 +52,7 @@ Exposure to these origination frictions is disproportionately concentrated among
       </li>
       <li>
         <div style="margin-bottom: 0.5em;margin-top: 0.5em;">
-         Presentations 2025: ABFER Annual Conference Poster Session, AsianFA Annual Conference, BFWG International Conference, FIRS PhD Session, USC Marshall PhD Conference in Finance, WSB Summer Research Conference, Boca Finance and Real Estate Conference (Scheduled), FMA Annual Meeting Job Market Paper Session (Scheduled), Real Estate Finance and Investment Symposium (Scheduled), UEA North American Meeting (Scheduled)
+         Presentations 2025: ABFER Annual Conference Poster Session, AsianFA Annual Conference, BFWG International Conference, FIRS PhD Session, UEA North American Meeting, USC Marshall PhD Conference in Finance, WSB Summer Research Conference, FMA Annual Meeting Job Market Paper Session (Scheduled), Real Estate Finance and Investment Symposium (Scheduled)
         </div>
       </li>
     </ul>
