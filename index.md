@@ -12,7 +12,7 @@ nav-short: true
 
 <div style="margin-bottom: 0.5em;margin-top: 0.5em;"></div>
 
-Welcome! I’m a PhD Candidate at the Wisconsin School of Business, University of Wisconsin–Madison.
+Welcome! I’m Heejin Yoon, a PhD candidate at the Wisconsin School of Business, University of Wisconsin–Madison.
 
 <div style="margin-bottom: 0.0em;margin-top: -0.5em;"></div>
 
