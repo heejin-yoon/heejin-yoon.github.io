@@ -39,7 +39,17 @@ Click <a href="/assets/pdf/HeejinYoon_CV.pdf" style="font-weight: 700">here</a> 
    <ul>
       <li>
         <div style="margin-bottom: 1em;margin-top: 0.5em;">
-         PhD in Real Estate & Urban Land Economics
+         <span style="font-weight: 700">PhD in Business</span> (Minor in Economics)
+        </div>
+      </li>
+      <li>
+        <div style="margin-bottom: 1em;margin-top: 0.5em;">
+         <span style="font-weight: 700">Committee</span>: Yongheng Deng (co-chair), Lu Han (co-chair), Anthony DeFusco, Erik Mayer
+        </div>
+      </li>
+      <li>
+        <div style="margin-bottom: 1em;margin-top: 0.5em;">
+         <span style="font-weight: 700">Fields</span>: Real Estate Finance, Household Finance, Financial Intermediation
         </div>
       </li>
     </ul>
@@ -52,7 +62,7 @@ Click <a href="/assets/pdf/HeejinYoon_CV.pdf" style="font-weight: 700">here</a> 
      <ul>
       <li>
         <div style="margin-bottom: 1em;margin-top: 0.5em;">
-         MS in Finance
+         <span style="font-weight: 700">MS in Finance</span>
         </div>
       </li>
     </ul>
@@ -65,7 +75,7 @@ Click <a href="/assets/pdf/HeejinYoon_CV.pdf" style="font-weight: 700">here</a> 
      <ul>
       <li>
         <div style="margin-bottom: 1em;margin-top: 0.5em;">
-         BBA in Business Administration
+         <span style="font-weight: 700">BBA in Business Administration</span>
         </div>
       </li>
     </ul>
