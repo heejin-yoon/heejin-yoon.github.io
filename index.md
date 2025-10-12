@@ -12,12 +12,16 @@ nav-short: true
 
 <div style="margin-bottom: 0.5em;margin-top: 0.5em;"></div>
 
-Welcome! I'm a PhD Candidate in Real Estate and Urban Land Economics at the Wisconsin School of Business, University of Wisconsin–Madison.
+Welcome! I’m a PhD Candidate at the Wisconsin School of Business, University of Wisconsin–Madison.
 
 <div style="margin-bottom: 0.0em;margin-top: -0.5em;"></div>
 
-My research interests lie in mortgage markets, household finance, and financial intermediation, with a particular focus on lending frictions and their implications for household welfare and economic inequality.
+My research interests include mortgage markets, household finance, and financial intermediation, with a particular focus on lending frictions and their consequences for household welfare and economic inequality.
 <!--- Prior to joining the program, I received B.B.A. in Business Administration from Yonsei University and M.S. in Finance from KAIST College of Business. --->
+
+<div style="margin-bottom: 0.0em;margin-top: -0.5em;"></div>
+
+<b>I am on the 2025(–)2026 job market.</b>
 
 <div style="margin-bottom: 0.0em;margin-top: -0.5em;"></div>
 
