@@ -3,6 +3,12 @@ layout: page
 title: false
 ---
 
+<style>
+body {
+  font-size: 90%;
+}
+</style>
+
 <div style="margin-bottom: 2.5em;margin-top: -2.0em;font-size: 1.2em">
 Click <a href="/assets/pdf/HeejinYoon_CV.pdf" style="font-weight: 700">here</a> to download the full PDF version (Last updated: October 2025).
 </div>
