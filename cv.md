@@ -38,7 +38,7 @@ Click <a href="/assets/pdf/HeejinYoon_CV.pdf" style="font-weight: 700">here</a> 
 <ul>
   <li>
    <div style="margin-bottom: 1em;margin-top: 1em">
-  <span style="font-weight: 700">UW–Madison, Wisconsin School of Business</span> <span style="float:right;"> Expected May 2026</span>
+  <span style="font-weight: 700">University of Wisconsin–Madison, Wisconsin School of Business</span> <span style="float:right;"> Expected May 2026</span>
   </div>
   </li>
  
