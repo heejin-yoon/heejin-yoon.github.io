@@ -45,7 +45,7 @@ Click <a href="/assets/pdf/HeejinYoon_CV.pdf" style="font-weight: 700">here</a> 
    <ul>
       <li>
         <div style="margin-bottom: 1em;margin-top: 0.5em;">
-         <span style="font-weight: 700">PhD in Business</span> (Real Estate & Urban Economics; Minor in Economics)
+         <span style="font-weight: 700">PhD in Business</span> <span style="font-size: 0.9em">(Real Estate & Urban Economics; Minor in Economics)</span>
         </div>
       </li>
       <li>
