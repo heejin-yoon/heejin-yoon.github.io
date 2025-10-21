@@ -27,7 +27,7 @@ Below are discussion slides from conferences where I served as a discussant.
       </li>
     </ul>-->
     <li>
-   <div style="margin-bottom: 1em;margin-top: 1em">
+   <div style="margin-bottom: 1em;margin-top: 1.5em">
   <a href="../assets/pdf/Discussion_French_et_al_UEA.pdf"><b>Quantifying the Welfare Effects of Gentrification on
 Incumbent Low-Income Renters</b></a>
   </div>
@@ -46,7 +46,7 @@ Incumbent Low-Income Renters</b></a>
       </li>
     </ul> 
   <li>
-   <div style="margin-bottom: 1em;margin-top: 1em">
+   <div style="margin-bottom: 1em;margin-top: 1.5em">
   <a href="../assets/pdf/Discussion_Ke_AsianFA.pdf"><b>Does Climate Change Hinder Women’s Financial Inclusion? Evidence from
 Rural India</b></a>
   </div>
