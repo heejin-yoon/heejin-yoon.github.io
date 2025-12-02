@@ -93,13 +93,13 @@ We study the effect of uneven nonbank mortgage expansion on localized housing ma
 <ul>
   <li>
    <div style="margin-bottom: 1em;margin-top: 1em">
-<a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4714155" style="font-weight: 700">How Detrimental Was the Pandemic on Commercial Mortgages? Unveiling Long-Term Consequences for Retail Sector</a> (with Dayin Zhang).
+<a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4714155" style="font-weight: 700">Retail Apocalypse and the Incidence of Loss: Landlord Financial Distress and Tenant Closures</a> (with Dayin Zhang).
   </div>
        <div style="margin-left: 1.5em;margin-bottom: 1em;margin-top: 1em;font-size: 0.9em"> 
  <details>
    <summary><span style="font-family: Helvetica, Arial, sans-serif;font-weight: 700">Abstract</span></summary>
   <div style="margin-left: 1em;text-align: justify;">
-We investigate commercial mortgages for retail properties following the second wave of the COVID-19 pandemic, employing a novel instrumental variable (IV) strategy. Utilizing exogenous geographic variations in COVID-19 spread induced by different rainfall levels during Black Lives Matter (BLM) protests, we find that the spread of COVID-19 results in reduced customer visits to retail stores, leading to a surge in financial distress for retail property owners. Subsequently, we observe an increase in business closures in defaulted retail properties in the following year, particularly in areas where tenant eviction moratoriums are not enforced. Our findings suggest that (1) the pandemic would lead to a substantial surge of mortgage defaults if there was no debt forbearance; and (2) the financial pressures on landlords with defaulted mortgages lead to more stringent eviction practices against distressed tenants. The adverse real impact on local businesses could be alleviated through either debt forbearance or eviction moratorium policies.
+This paper examines how negative retail demand shocks are shared between commercial landlords and tenants, and how eviction protections shift this burden. Exploiting plausibly exogenous regional variation in the summer 2020 spread of COVID-19, instrumented by rainfall during Black Lives Matter protests, we show that adverse retail demand shocks transmit to landlords and their lenders through higher delinquency and foreclosure rates on retail mortgages. In response, distressed landlords reshuffle their tenant base by evicting in-line stores while retaining anchor tenants, consistent with cutting weaker renters to restore cash flow. Where eviction protections are in place, small retailers are shielded and losses remain on leveraged landlords’ balance sheets.
  </div>
  </details>
  </div>   
