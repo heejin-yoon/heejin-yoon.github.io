@@ -42,7 +42,7 @@ Exposure to these origination frictions is disproportionately concentrated among
       </li>
         <li>
         <div style="color:rgb(215,90,0);margin-bottom: 0.5em;margin-top: 0.5em;font-weight: 700">
-         Winner of the Best Poster Award (Honorable Mention), AREUEA-ASSA Conference 2026
+         Winner of the Best Poster Award Honorable Mention, AREUEA-ASSA Conference 2026
         </div>
       </li>
         <li>
