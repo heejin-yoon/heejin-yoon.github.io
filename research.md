@@ -100,13 +100,9 @@ We study the effect of uneven nonbank mortgage expansion on localized housing ma
    <div style="margin-bottom: 1em;margin-top: 1em">
 <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4714155" style="font-weight: 700">Retail Apocalypse and the Incidence of Loss: Landlord Financial Distress and Tenant Closures</a> (with Dayin Zhang).
   </div>
-    <ul>
-     <li>
         <div style="margin-bottom: 0.5em;margin-top: 0.5em;">
          Revise and resubmit at <i>Real Estate Economics</i>
         </div>
-      </li>
-    </ul>
        <div style="margin-left: 1.5em;margin-bottom: 1em;margin-top: 1em;font-size: 0.9em"> 
  <details>
    <summary><span style="font-family: Helvetica, Arial, sans-serif;font-weight: 700">Abstract</span></summary>
