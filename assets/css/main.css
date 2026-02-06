@@ -15,7 +15,8 @@ layout: null
 
 html {
   height: 100%;
-  font-size: 105%;
+  #font-size: 105%;
+  font-size: 90%;
 } 
 
 body {
