@@ -9,11 +9,6 @@ layout: null
   font-weight: 500;
   font-style: normal;
 }
-i, em {
-  font-style: italic;
-  font-synthesis: none;
-  font-variation-settings: "slnt" -8;
-}
 
 /* --- General --- */
 
