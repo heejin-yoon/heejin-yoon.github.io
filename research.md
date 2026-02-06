@@ -57,7 +57,7 @@ Exposure to these origination frictions is disproportionately concentrated among
       </li>
       <li>
         <div style="margin-bottom: 0.5em;margin-top: 0.5em;">
-         Presentations 2026: AREUEA-ASSA Doctoral Poster Session, AREUEA Virtual Seminar; 2025: ABFER Annual Conference Poster Session, AsianFA Annual Conference, BFWG International Conference, FIRS PhD Session, FMA Annual Meeting Job Market Paper Session, KAIST, UF-Cambridge Real Estate Finance and Investment Symposium, UEA North American Meeting, USC Marshall PhD Conference in Finance, WSB Summer Research Conference 
+         Presentations 2026: AREUEA-ASSA Doctoral Poster Session, AREUEA National Conference Special Session<sup>*</sup> (Scheduled), AREUEA Virtual Seminar (Scheduled); 2025: ABFER Annual Conference Poster Session, AsianFA Annual Conference, BFWG International Conference, FIRS PhD Session, FMA Annual Meeting Job Market Paper Session, KAIST, UF-Cambridge Real Estate Finance and Investment Symposium, UEA North American Meeting, USC Marshall PhD Conference in Finance, WSB Summer Research Conference 
         </div>
       </li>
     </ul>
