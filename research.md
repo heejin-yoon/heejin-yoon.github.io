@@ -66,6 +66,35 @@ Exposure to these origination frictions is disproportionately concentrated among
 <div style="margin-bottom: 1em;margin-top: 1em;">ㅤ</div>
 
 ### Working Papers 
+
+<!--- PAPER 1 -->
+<ul>
+  <li>
+   <div style="margin-bottom: 1em;margin-top: 1em">
+<a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4714155" style="font-weight: 700">Retail Apocalypse and the Incidence of Loss: Landlord Financial Distress and Tenant Closures</a> (with Dayin Zhang).
+  </div>
+        <div style="margin-bottom: 0.5em;margin-top: -0.5em;">
+         Revise and resubmit at <b><i>Real Estate Economics</i></b>
+        </div>
+       <div style="margin-left: 1.5em;margin-bottom: 1em;margin-top: 1em;font-size: 0.9em"> 
+ <details>
+   <summary><span style="font-family: Helvetica, Arial, sans-serif;font-weight: 700">Abstract</span></summary>
+  <div style="margin-left: 1em;text-align: justify;">
+This paper examines how negative retail demand shocks are shared between commercial landlords and tenants, and how eviction protections shift this burden. Exploiting plausibly exogenous regional variation in the summer 2020 spread of COVID-19, instrumented by rainfall during Black Lives Matter protests, we show that adverse retail demand shocks transmit to landlords and their lenders through higher delinquency and foreclosure rates on retail mortgages. In response, distressed landlords reshuffle their tenant base by evicting in-line stores while retaining anchor tenants, consistent with cutting weaker renters to restore cash flow. Where eviction protections are in place, small retailers are shielded and losses remain on leveraged landlords’ balance sheets.
+ </div>
+ </details>
+ </div>   
+  </li>
+ <ul>
+  <li>
+        <div style="margin-bottom: 0.5em;margin-top: 0.5em;">
+         Presentations 2022: AREUEA-ASSA Conference<sup>*</sup> <br> (*: presentation by coauthor) 
+        </div>
+      </li>
+    </ul>
+</ul>
+
+<!--- PAPER 2 -->
 <ul>
   <li>
    <div style="margin-bottom: 1em;margin-top: 1em">
@@ -95,31 +124,10 @@ We study the effect of uneven nonbank mortgage expansion on localized housing ma
     </ul>
 </ul>
 
-<ul>
-  <li>
-   <div style="margin-bottom: 1em;margin-top: 1em">
-<a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4714155" style="font-weight: 700">Retail Apocalypse and the Incidence of Loss: Landlord Financial Distress and Tenant Closures</a> (with Dayin Zhang).
-  </div>
-        <div style="margin-bottom: 0.5em;margin-top: -0.5em;">
-         Revise and resubmit at <b><i>Real Estate Economics</i></b>
-        </div>
-       <div style="margin-left: 1.5em;margin-bottom: 1em;margin-top: 1em;font-size: 0.9em"> 
- <details>
-   <summary><span style="font-family: Helvetica, Arial, sans-serif;font-weight: 700">Abstract</span></summary>
-  <div style="margin-left: 1em;text-align: justify;">
-This paper examines how negative retail demand shocks are shared between commercial landlords and tenants, and how eviction protections shift this burden. Exploiting plausibly exogenous regional variation in the summer 2020 spread of COVID-19, instrumented by rainfall during Black Lives Matter protests, we show that adverse retail demand shocks transmit to landlords and their lenders through higher delinquency and foreclosure rates on retail mortgages. In response, distressed landlords reshuffle their tenant base by evicting in-line stores while retaining anchor tenants, consistent with cutting weaker renters to restore cash flow. Where eviction protections are in place, small retailers are shielded and losses remain on leveraged landlords’ balance sheets.
- </div>
- </details>
- </div>   
-  </li>
- <ul>
-  <li>
-        <div style="margin-bottom: 0.5em;margin-top: 0.5em;">
-         Presentations 2022: AREUEA-ASSA Conference<sup>*</sup> <br> (*: presentation by coauthor) 
-        </div>
-      </li>
-    </ul>
-</ul>
+
+<!--- PAPER 3 -->
+<!--- PAPER 4 -->
+
 
 <div style="margin-bottom: 1em;margin-top: 1em;">ㅤ</div>
 
