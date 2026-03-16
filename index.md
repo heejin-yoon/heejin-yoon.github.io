@@ -16,12 +16,12 @@ Welcome! I’m Heejin Yoon, a PhD candidate at the Wisconsin School of Business,
 
 <div style="margin-bottom: 0.0em;margin-top: -0.5em;"></div>
 
-Starting in Fall 2026, I will join the William Newman Department of Real Estate at Baruch College, City University of New York, as an Assistant Professor.
+My research interests include mortgage markets, household finance, and financial intermediation, with a particular focus on lending frictions and their consequences for household welfare and economic inequality.
+<!--- Prior to joining the program, I received B.B.A. in Business Administration from Yonsei University and M.S. in Finance from KAIST College of Business. --->
 
 <div style="margin-bottom: 0.0em;margin-top: -0.5em;"></div>
 
-My research interests include mortgage markets, household finance, and financial intermediation, with a particular focus on lending frictions and their consequences for household welfare and economic inequality.
-<!--- Prior to joining the program, I received B.B.A. in Business Administration from Yonsei University and M.S. in Finance from KAIST College of Business. --->
+Starting in Fall 2026, I will join the William Newman Department of Real Estate at Baruch College, City University of New York, as an Assistant Professor.
 
 <div style="margin-bottom: 0.0em;margin-top: -0.5em;"></div>
 
