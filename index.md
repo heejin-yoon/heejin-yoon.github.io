@@ -12,7 +12,11 @@ nav-short: true
 
 <div style="margin-bottom: 0.5em;margin-top: 0.5em;"></div>
 
-Welcome! I’m Heejin Yoon, a PhD candidate at the Wisconsin School of Business, University of Wisconsin–Madison. Starting in Fall 2026, I will join the William Newman Department of Real Estate at Baruch College, City University of New York, as an Assistant Professor.
+Welcome! I’m Heejin Yoon, a PhD candidate at the Wisconsin School of Business, University of Wisconsin–Madison. 
+
+<div style="margin-bottom: 0.0em;margin-top: -0.5em;"></div>
+
+Starting in Fall 2026, I will join the William Newman Department of Real Estate at Baruch College, City University of New York, as an Assistant Professor.
 
 <div style="margin-bottom: 0.0em;margin-top: -0.5em;"></div>
 
