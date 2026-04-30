@@ -91,6 +91,7 @@ This paper examines how negative retail demand shocks are shared between commerc
       </li>
     </ul>
 </ul>
+
 <div style="margin-bottom: 0em;margin-top: 0em;">ㅤ</div>
 
 <!--- PAPER 2 -->
@@ -122,6 +123,8 @@ We study the effect of uneven nonbank mortgage expansion on localized housing ma
       </li>
     </ul>
 </ul>
+
+<div style="margin-bottom: 0em;margin-top: 0em;">ㅤ</div>
 
 
 <!--- PAPER 3 -->
