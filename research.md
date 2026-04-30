@@ -13,7 +13,7 @@ My research interests lie in real estate finance, urban economics, and corporate
 
 ### Working Papers 
 
-<div style="margin-bottom: 1em;margin-top: 0em;">ㅤ</div>
+<div style="margin-bottom: 0em;margin-top: 0em;">ㅤ</div>
 
 <!--- JMP -->
 
