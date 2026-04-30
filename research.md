@@ -10,7 +10,11 @@ My research interests lie in real estate finance, urban economics, and corporate
 
 <!--- My research can also be found in [Google Scholar](https://scholar.google.com/citations?user=jjDsVq8AAAAJ&hl=en). -->
 
-### Job Market Paper 
+<div style="margin-bottom: 1em;margin-top: 1em;">ㅤ</div>
+
+### Working Papers 
+
+<!--- JMP -->
 
 <ul>
   <li>
@@ -62,10 +66,6 @@ Exposure to these origination frictions is disproportionately concentrated among
       </li>
     </ul>
 </ul>
-
-<div style="margin-bottom: 1em;margin-top: 1em;">ㅤ</div>
-
-### Working Papers 
 
 <!--- PAPER 1 -->
 <ul>
