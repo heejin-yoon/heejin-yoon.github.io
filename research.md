@@ -66,6 +66,7 @@ Exposure to these origination frictions is disproportionately concentrated among
       </li>
     </ul>
 </ul>
+<div style="margin-bottom: 0em;margin-top: 0em;">ㅤ</div>
 
 <!--- PAPER 1 -->
 <ul>
@@ -90,6 +91,7 @@ This paper examines how negative retail demand shocks are shared between commerc
       </li>
     </ul>
 </ul>
+<div style="margin-bottom: 0em;margin-top: 0em;">ㅤ</div>
 
 <!--- PAPER 2 -->
 <ul>
