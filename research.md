@@ -61,7 +61,7 @@ Exposure to these origination frictions is disproportionately concentrated among
       </li>
       <li>
         <div style="margin-bottom: 0.5em;margin-top: 0.5em;">
-         Presentations 2026: AREUEA-ASSA Doctoral Poster Session, AREUEA National Conference (Scheduled), AREUEA Virtual Seminar, Baruch College (CUNY), Korea Capital Market Institute, Korea Institute of Finance, Korea Institute of Public Finance, Korea Insurance Research Institute, London School of Economics, National University of Singapore, Santa Clara University, University of North Dakota, Yonsei Alumni Finance Seminar; 2025: ABFER Annual Conference Poster Session, AsianFA Annual Conference, BFWG International Conference, FIRS PhD Session, FMA Annual Meeting Job Market Paper Session, KAIST, Marquette University, UF-Cambridge Real Estate Finance and Investment Symposium, UEA North American Meeting, USC Marshall PhD Conference in Finance, WSB Summer Research Conference 
+         Presentations 2026: AREUEA-ASSA Doctoral Poster Session, AREUEA National Conference (Junior Scholar Program Session), AREUEA Virtual Seminar, Baruch College (CUNY), Korea Capital Market Institute, Korea Institute of Finance, Korea Institute of Public Finance, Korea Insurance Research Institute, London School of Economics, National University of Singapore, Santa Clara University, University of North Dakota, Yonsei Alumni Finance Seminar; 2025: ABFER Annual Conference Poster Session, AsianFA Annual Conference, BFWG International Conference, FIRS PhD Session, FMA Annual Meeting Job Market Paper Session, KAIST, Marquette University, UF-Cambridge Real Estate Finance and Investment Symposium, UEA North American Meeting, USC Marshall PhD Conference in Finance, WSB Summer Research Conference 
         </div>
       </li>
     </ul>
@@ -86,7 +86,7 @@ This paper examines how negative retail demand shocks are shared between commerc
  <ul>
   <li>
         <div style="margin-bottom: 0.5em;margin-top: 0.5em;">
-         Presentations 2026: AREUEA National Conference Special Session<sup>*</sup> (Scheduled); 2022: AREUEA-ASSA Conference<sup>*</sup> <br> (*: presentation by coauthor) 
+         Presentations 2026: AREUEA National Conference Special Session<sup>*</sup>; 2022: AREUEA-ASSA Conference<sup>*</sup> <br> (*: presentation by coauthor) 
         </div>
       </li>
     </ul>
