@@ -9,9 +9,28 @@ Below are discussion slides from conferences where I served as a discussant.
 </div>
 
 <ul>
-<!--     <li>
+<li>
    <div style="margin-bottom: 1em;margin-top: 1em">
-  <b>Credit Expansion and Housing Cycle</b>
+  <a href="../assets/pdf/Discussion_Berger_et_al_WI.pdf"><b>Unawareness, Impatience, and Mental Cost in Mortgage Refinancing
+Decisions</b></a>
+  </div>
+  </li>
+   <ul>
+      <li>
+        <div style="margin-bottom: 1em;margin-top: 0.5em;">
+         Written by: Jack Berger, Haizhen Lin, Ruli Xiao, Jun Zhu
+        </div>
+      </li>
+        <li>
+        <div style="margin-bottom: 1em;margin-top: 0.5em;">
+         Wisconsin RE PhD Alumni Conference (May 31, 2026)
+        </div>
+      </li>
+    </ul>
+
+<li>
+   <div style="margin-bottom: 1em;margin-top: 1em">
+  <a href="../assets/pdf/Discussion_LI_FMA.pdf"><b>Credit Expansion and Housing Cycle</b></a>
   </div>
   </li>
    <ul>
@@ -22,11 +41,14 @@ Below are discussion slides from conferences where I served as a discussant.
       </li>
         <li>
         <div style="margin-bottom: 1em;margin-top: 0.5em;">
-         Asian Finance Association Annual Conference (June 27, 2025)
+         FMA Annual Meeting (October 23, 2025)
         </div>
       </li>
-    </ul>-->
-    <li>
+    </ul>
+   
+
+   
+ <li>
    <div style="margin-bottom: 1em;margin-top: 1.5em">
   <a href="../assets/pdf/Discussion_French_et_al_UEA.pdf"><b>Quantifying the Welfare Effects of Gentrification on
 Incumbent Low-Income Renters</b></a>
