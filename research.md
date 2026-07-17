@@ -86,7 +86,7 @@ This paper examines how negative retail demand shocks are shared between commerc
  <ul>
   <li>
         <div style="margin-bottom: 0.5em;margin-top: 0.5em;">
-         Presentations 2026: AREUEA National Conference Special Session<sup>*</sup>; 2022: AREUEA-ASSA Conference<sup>*</sup> <br> (*: presentation by coauthor) 
+         Presentations 2026: AREUEA National Conference<sup>*</sup>; 2022: AREUEA-ASSA Conference<sup>*</sup> <br> (*: presentation by coauthor) 
         </div>
       </li>
     </ul>
