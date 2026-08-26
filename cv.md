@@ -1,6 +1,6 @@
 ---
 layout: page
-title: false
+title: CV
 ---
 
 <style>
@@ -19,14 +19,38 @@ Click <a href="/assets/pdf/HeejinYoon_CV.pdf" style="font-weight: 700">here</a> 
 <ul>
   <li>
    <div style="margin-bottom: 1em;margin-top: 1em">
-<span style="font-weight: 700">Office:</span> 5298B Grainger Hall, 975 University Ave, Madison, WI 53706, USA 
+<span style="font-weight: 700">Office:</span> Room 418, Steven L. Newman Hall, 137 East 22nd Street, New York, NY 10010, USA
   </div>
   </li>
   <li>
    <div style="margin-bottom: 1em;margin-top: 1em">
-<span style="font-weight: 700">Email:</span> heejin.yoon [at] wisc.edu or yoon09269 [at] gmail.com
+<span style="font-weight: 700">Email:</span> heejin.yoon [at] baruch.cuny.edu or yoon09269 [at] gmail.com
   </div>
   </li>
+</ul>
+
+<div style="margin-bottom: 0em;margin-top: 0.5em;">
+  ㅤ
+</div>
+
+
+### Academic Appointment
+
+<ul>
+  <li>
+   <div style="margin-bottom: 1em;margin-top: 1em">
+  <span style="font-weight: 700">Baruch College, City University of New York</span>
+  <span style="float:right;">2026–</span>
+  </div>
+  </li>
+
+  <ul>
+    <li>
+      <div style="margin-bottom: 1em;margin-top: 0.5em;">
+      Assistant Professor, William Newman Department of Real Estate, Zicklin School of Business
+      </div>
+    </li>
+  </ul>
 </ul>
 
 <div style="margin-bottom: 0em;margin-top: 0.5em;">
@@ -38,7 +62,7 @@ Click <a href="/assets/pdf/HeejinYoon_CV.pdf" style="font-weight: 700">here</a> 
 <ul>
   <li>
    <div style="margin-bottom: 1em;margin-top: 1em">
-  <span style="font-weight: 700">University of Wisconsin–Madison, Wisconsin School of Business</span> <span style="float:right;"> Expected May 2026</span>
+  <span style="font-weight: 700">University of Wisconsin–Madison, Wisconsin School of Business</span> <span style="float:right;"> 2026</span>
   </div>
   </li>
  
@@ -51,11 +75,6 @@ Click <a href="/assets/pdf/HeejinYoon_CV.pdf" style="font-weight: 700">here</a> 
       <li>
         <div style="margin-bottom: 1em;margin-top: 0.5em;">
          <span style="font-weight: 700">Committee</span>: Yongheng Deng (co-chair), Lu Han (co-chair), Anthony DeFusco, Erik Mayer
-        </div>
-      </li>
-      <li>
-        <div style="margin-bottom: 1em;margin-top: 0.5em;">
-         <span style="font-weight: 700">Fields</span>: Real Estate Finance, Household Finance, Financial Intermediation
         </div>
       </li>
     </ul>
