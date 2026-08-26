@@ -21,7 +21,7 @@ My research interests include mortgage markets, household finance, and financial
 
 <div style="margin-bottom: 0.0em;margin-top: -0.5em;"></div>
 
-<b>Email:</b> heejin.yoon [at] wisc.edu or yoon09269 [at] gmail.com
+<b>Email:</b> heejin.yoon [at] baruch.cuny.edu or yoon09269 [at] gmail.com
 
 <div style="margin-bottom: 2em;">ㅤ</div>
 
