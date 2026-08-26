@@ -12,7 +12,7 @@ nav-short: true
 
 <div style="margin-bottom: 0.5em;margin-top: 0.5em;"></div>
 
-Welcome! I’m Heejin Yoon, a PhD candidate at the Wisconsin School of Business, University of Wisconsin–Madison. 
+Welcome! I’m Heejin Yoon, an Assistant Professor in the William Newman Department of Real Estate at the Zicklin School of Business, Baruch College, City University of New York.
 
 <div style="margin-bottom: 0.0em;margin-top: -0.5em;"></div>
 
@@ -43,7 +43,7 @@ Starting in Fall 2026, I will join the William Newman Department of Real Estate 
   </li>
   <li>
    <div style="margin-bottom: 1em;margin-top: 1em">
-<b>Email:</b> heejin.yoon [at] wisc.edu or yoon09269 [at] gmail.com
+<b>Email:</b> heejin.yoon [at] baruch.cuny.edu or yoon09269 [at] gmail.com
   </div>
   </li>
 </ul>
