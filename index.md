@@ -21,10 +21,6 @@ My research interests include mortgage markets, household finance, and financial
 
 <div style="margin-bottom: 0.0em;margin-top: -0.5em;"></div>
 
-Starting in Fall 2026, I will join the William Newman Department of Real Estate at Baruch College, City University of New York, as an Assistant Professor.
-
-<div style="margin-bottom: 0.0em;margin-top: -0.5em;"></div>
-
 <b>Email:</b> heejin.yoon [at] wisc.edu or yoon09269 [at] gmail.com
 
 <div style="margin-bottom: 2em;">ㅤ</div>
