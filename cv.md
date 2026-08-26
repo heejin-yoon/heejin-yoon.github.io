@@ -5,7 +5,7 @@ title: false
 
 <style>
 body {
-  font-size: 90%;
+  font-size: 95%;
 }
 </style>
 
