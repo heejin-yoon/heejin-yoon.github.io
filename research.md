@@ -24,13 +24,13 @@ My research interests lie in real estate finance, urban economics, and corporate
 Refinancing, and Wealth Redistribution</a> (Job Market Paper)
    </div>
     <div style="margin-left: 1.5em;margin-bottom: 1em;margin-top: 1em;font-size: 0.9em"> 
- <details>
+ <!--- <details>
    <summary><span style="font-family: Helvetica, Arial, sans-serif;font-weight: 700">Abstract</span></summary>
   <div style="margin-left: 1em;text-align: justify;">
 This paper examines how frictions encountered during the <i>initial</i> home-purchase mortgage origination process shape borrowers’ future refinancing behavior and long-term financial outcomes. Leveraging variation in loan officer <i>workload</i> as a quasi-random source of lender-induced delays, I find that experiencing a 60+ day origination delay reduces quarterly refinancing rates by 16–24%. 
 Exposure to these origination frictions is disproportionately concentrated among minority borrowers, low-income households, and those with lower credit scores, with evidence consistent with lender bias contributing to racial disparities. I quantify the cost of origination delays using both a back-of-the-envelope calculation and a model-based simulation, which imply present-value overpayments of approximately $6,500 to $8,500 per delayed borrower. I also evaluate policy alternatives including streamlined refinancing, automatic refinancing, and type-specific pricing, using the simulations to show how each option affects refinancing behavior and total mortgage payments.
  </div>
- </details>
+ </details> -->
  </div>
   </li>
  <ul>
