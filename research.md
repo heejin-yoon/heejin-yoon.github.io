@@ -24,13 +24,12 @@ My research interests lie in real estate finance, urban economics, and corporate
 Refinancing, and Wealth Redistribution</a> (Job Market Paper)
    </div>
     <div style="margin-left: 1.5em;margin-bottom: 1em;margin-top: 1em;font-size: 0.9em"> 
- <!--- <details>
+  <details>
    <summary><span style="font-family: Helvetica, Arial, sans-serif;font-weight: 700">Abstract</span></summary>
   <div style="margin-left: 1em;text-align: justify;">
-This paper examines how frictions encountered during the <i>initial</i> home-purchase mortgage origination process shape borrowers’ future refinancing behavior and long-term financial outcomes. Leveraging variation in loan officer <i>workload</i> as a quasi-random source of lender-induced delays, I find that experiencing a 60+ day origination delay reduces quarterly refinancing rates by 16–24%. 
-Exposure to these origination frictions is disproportionately concentrated among minority borrowers, low-income households, and those with lower credit scores, with evidence consistent with lender bias contributing to racial disparities. I quantify the cost of origination delays using both a back-of-the-envelope calculation and a model-based simulation, which imply present-value overpayments of approximately $6,500 to $8,500 per delayed borrower. I also evaluate policy alternatives including streamlined refinancing, automatic refinancing, and type-specific pricing, using the simulations to show how each option affects refinancing behavior and total mortgage payments.
+This paper examines how frictions encountered during the <i>initial</i> home-purchase mortgage origination process shape borrowers’ subsequent refinancing behavior and long-term financial outcomes. Leveraging variation in loan officer <i>workload</i> as a plausibly exogenous source of origination delays, I find that each additional day of lender-induced delay reduces the quarterly refinancing probability by 5.1–5.5 basis points, or 3.6–3.8% relative to the sample mean. The reduction is particularly pronounced for refinancing with the original lender, suggesting that negative borrowing experiences discourage borrowers from re-engaging with their lenders. Exposure to these origination frictions is disproportionately concentrated among minority borrowers, low-income households, and those with lower credit scores, with suggestive evidence of lender-side bias contributing to racial disparities. I quantify the cost of origination delays using both a back-of-the-envelope calculation and a model-based simulation, which imply present-value overpayments of $1,436 and $1,299, respectively, for a 10-day origination delay. The simulated loss reaches $4,158 for a 30-day delay. I also evaluate policy alternatives including streamlined refinancing, automatic refinancing, and type-specific pricing, using the simulations to show how each option affects refinancing behavior and total mortgage payments.
  </div>
- </details> -->
+ </details> 
  </div>
   </li>
  <ul>
